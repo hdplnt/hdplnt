@@ -478,7 +478,7 @@
     </div>
     <div class="kpi-grid cols-4" id="shn-hydro-kpi"></div>
     <div class="section-divider">
-      <span class="section-label">주간 실적 차트</span>
+      <span class="section-label">일일 실적 차트</span>
       <div class="divider-line"></div>
     </div>
     <div class="chart-grid cols-2">
@@ -932,9 +932,10 @@ function mkChart(id, cfg) { destroyChart(id); charts[id] = new Chart(q(id), cfg)
 // 샤힌 렌더링
 // ══════════════════════════════════════════════════
 function renderShn(upToIdx) {
-  const slice  = SHN_DATA.slice(0, upToIdx + 1); // 차트: 오름차순
+  const slice  = SHN_DATA.slice(0, upToIdx + 1); // 전체 (KPI/테이블용)
+  const chart30 = slice.slice(-30);               // 최근 30일 (차트용)
   const d      = slice[slice.length - 1];
-  const labels = slice.map(r => r.date);
+  const labels = chart30.map(r => r.date);
 
   // KPI: 최근일 → 최근7일 → 합계 → SCC → UO
   const w7    = slice.slice(-7);                          // 최근 7일 (기준일 포함)
@@ -1012,21 +1013,21 @@ function renderShn(upToIdx) {
 
   // SCC+UO 합산 일일 bar (stacked) + 합계 누계 line (우축)
   mkChart('shn-daily-chart', { type:'bar', data:{ labels, datasets:[
-    { label:'SCC 일일', data:slice.map(r=>r.scc), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, stack:'daily', yAxisID:'y', order:2 },
-    { label:'UO 일일',  data:slice.map(r=>r.uo),  backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, stack:'daily', yAxisID:'y', order:2 },
-    { label:'합계 누계', data:slice.map(r=>r.totCum), type:'line', borderColor:'#b35c00', backgroundColor:'rgba(179,92,0,0.06)', fill:true, tension:0.3, pointRadius:0, yAxisID:'y2', order:1 }
+    { label:'SCC 일일', data:chart30.map(r=>r.scc), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, stack:'daily', yAxisID:'y', order:2 },
+    { label:'UO 일일',  data:chart30.map(r=>r.uo),  backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, stack:'daily', yAxisID:'y', order:2 },
+    { label:'합계 누계', data:chart30.map(r=>r.totCum), type:'line', borderColor:'#b35c00', backgroundColor:'rgba(179,92,0,0.06)', fill:true, tension:0.3, pointRadius:0, yAxisID:'y2', order:1 }
   ]}, options:{ ...base, scales:{
     x:xOpt,
     y:{ stacked:true, ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} },
     y2:{ position:'right', stacked:false, ticks:{font:{size:9}, callback:v=>(v/1000).toFixed(0)+'k'}, grid:{display:false} }
   }} });
 
-  const minP = Math.max(55, Math.floor(Math.min(...slice.map(r=>r.sccPct)) - 2));
+  const minP = Math.max(55, Math.floor(Math.min(...chart30.map(r=>r.sccPct)) - 2));
   const maxP = Math.min(100, Math.ceil(Math.max(...slice.map(r=>r.uoPct)) + 2));
   mkChart('shn-progress-chart', { type:'line', data:{ labels, datasets:[
-    { label:'SCC%',  data:slice.map(r=>+r.sccPct.toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2 },
-    { label:'UO%',   data:slice.map(r=>+r.uoPct.toFixed(1)),  borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2 },
-    { label:'합계%', data:slice.map(r=>+r.totPct.toFixed(1)), borderColor:'#b35c00', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[4,3] }
+    { label:'SCC%',  data:chart30.map(r=>+r.sccPct.toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'UO%',   data:chart30.map(r=>+r.uoPct.toFixed(1)),  borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'합계%', data:chart30.map(r=>+r.totPct.toFixed(1)), borderColor:'#b35c00', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:2, borderDash:[4,3] }
   ]}, options:{ ...base, scales:{ x:xOpt, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
   // 테이블: 최근 14행, 최신→과거 내림차순
@@ -1575,9 +1576,10 @@ const SHN_HYDRO = [
 // 샤힌 수압 렌더링
 // ══════════════════════════════════════════════════
 function renderShnHydro(upToIdx) {
-  const slice  = SHN_HYDRO.slice(0, upToIdx + 1);
-  const d      = slice[slice.length - 1];
-  const labels = slice.map(r => r.date);
+  const slice   = SHN_HYDRO.slice(0, upToIdx + 1); // 전체 (KPI/테이블용)
+  const chart14 = slice.slice(-14);                 // 최근 14일 (차트용)
+  const d       = slice[slice.length - 1];
+  const labels  = chart14.map(r => r.date);
 
   const wdRemain = 5568 - d.wdCum;
   const hpRemain = 5568 - d.hpCum;
@@ -1625,10 +1627,10 @@ function renderShnHydro(upToIdx) {
 
   // 일일 Walkdown + 수압 bar
   mkChart('shn-hydro-bar', { type:'bar', data:{ labels, datasets:[
-    { label:'Walkdown', data:slice.map(r=>r.wd), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, order:2 },
-    { label:'수압',     data:slice.map(r=>r.hp), backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, order:2 },
-    { label:'WD 누계',  data:slice.map(r=>r.wdCum), type:'line', borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
-    { label:'HP 누계',  data:slice.map(r=>r.hpCum), type:'line', borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
+    { label:'Walkdown', data:chart14.map(r=>r.wd), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, order:2 },
+    { label:'수압',     data:chart14.map(r=>r.hp), backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, order:2 },
+    { label:'WD 누계',  data:chart14.map(r=>r.wdCum), type:'line', borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
+    { label:'HP 누계',  data:chart14.map(r=>r.hpCum), type:'line', borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
   ]}, options:{ ...base, scales:{
     x: xT,
     y:  { stacked:false, ticks:{font:{size:9}}, grid:{color:'#f0f0f0'}, title:{display:true, text:'일일 (PKG)', font:{size:9}} },
@@ -1639,8 +1641,8 @@ function renderShnHydro(upToIdx) {
   const minP = 0;
   const maxP = Math.min(100, Math.ceil(Math.max(...slice.map(r=>r.wdCum/5568*100)) + 2));
   mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
-    { label:'Walkdown%', data:slice.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'rgba(26,95,180,0.06)', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
-    { label:'수압%',     data:slice.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', backgroundColor:'rgba(13,122,95,0.06)',  fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'rgba(26,95,180,0.06)', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'수압%',     data:chart14.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', backgroundColor:'rgba(13,122,95,0.06)',  fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
   // 테이블 최신→과거
