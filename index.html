@@ -470,12 +470,11 @@
   <!-- 수압 서브패널 -->
   <div id="sub-shn-hydro" class="sub-panel sub-content">
     <div class="panel-date-bar">
-      <span class="date-label">🗓 기준 주간 (샤힌 — 수압)</span>
+      <span class="date-label">🗓 기준일 (샤힌 — 수압)</span>
       <select class="date-select" id="shn-hydro-select" onchange="renderShnHydro(parseInt(this.value))"></select>
     </div>
     <div class="panel-title">
-      샤힌 (SHN1) — 주간 배관 Pressure Test 현황
-      <span class="mode-tag">계획 대비 실적</span>
+      샤힌 (SHN1) — 배관 Pressure Test 일일 현황
     </div>
     <div class="kpi-grid cols-4" id="shn-hydro-kpi"></div>
     <div class="section-divider">
@@ -484,21 +483,22 @@
     </div>
     <div class="chart-grid cols-2">
       <div class="chart-card">
-        <div class="chart-card-title">주간 계획 vs 실적 (PKG)
+        <div class="chart-card-title">일일 Walkdown / 수압 실적 (PKG)
           <span class="pct-pill neutral" id="shn-hydro-bar-badge">—</span>
         </div>
         <div class="legend-row">
-          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>계획</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>실적</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>Walkdown(일)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>수압(일)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4; opacity:0.5"></span>WD 누계</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f; opacity:0.5"></span>수압 누계</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="shn-hydro-bar"></canvas></div>
       </div>
       <div class="chart-card">
         <div class="chart-card-title">누계 진도율 (%)</div>
         <div class="legend-row">
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SCC%</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>UO%</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>합계%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>Walkdown%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>수압%</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="shn-hydro-progress"></canvas></div>
       </div>
@@ -869,6 +869,7 @@ const SHN_DATA = [
   {date:'4/24', scc:4686, sccCum:557452, sccW:401, sccPct:82.3, uo:483,  uoCum:127002, uoW:48, uoPct:86.5, totCum:684454, totW:449, totPct:83.1},
   {date:'4/25', scc:4551, sccCum:562003, sccW:375, sccPct:83.0, uo:565,  uoCum:127568, uoW:48, uoPct:86.8, totCum:689570, totW:423, totPct:83.7},
   {date:'4/26', scc:2284, sccCum:564287, sccW:142, sccPct:83.4, uo:99,   uoCum:127667, uoW:10, uoPct:86.9, totCum:691954, totW:152, totPct:84.0},
+  {date:'4/27', scc:5021, sccCum:569920, sccW:401, sccPct:84.2, uo:562,  uoCum:128302, uoW:51, uoPct:87.3, totCum:698221, totW:452, totPct:84.7},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1539,142 +1540,129 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: SCC 7,461 / UO 791 / 합계 8,252 PKG
+// ※ 샤힌 수압 총물량: 5,568 PKG (일일 실적)
 const SHN_HYDRO = [
-  {week:'2/25주', sccPlan:18,   sccAct:3,    sccCum:20,  sccPct:0.3, uoPlan:39,  uoAct:0,    uoCum:40,  uoPct:5.1,  totPlan:57,   totAct:3,    totCum:60,  totPct:0.7},
-  {week:'3/4주',  sccPlan:9,    sccAct:10,   sccCum:30,  sccPct:0.4, uoPlan:4,   uoAct:5,    uoCum:45,  uoPct:5.7,  totPlan:13,   totAct:15,   totCum:75,  totPct:0.9},
-  {week:'3/11주', sccPlan:23,   sccAct:7,    sccCum:37,  sccPct:0.5, uoPlan:12,  uoAct:22,   uoCum:67,  uoPct:8.5,  totPlan:35,   totAct:29,   totCum:104, totPct:1.3},
-  {week:'3/18주', sccPlan:38,   sccAct:5,    sccCum:42,  sccPct:0.6, uoPlan:26,  uoAct:8,    uoCum:75,  uoPct:9.5,  totPlan:64,   totAct:13,   totCum:117, totPct:1.4},
-  {week:'3/25주', sccPlan:45,   sccAct:5,    sccCum:47,  sccPct:0.6, uoPlan:52,  uoAct:33,   uoCum:108, uoPct:13.7, totPlan:97,   totAct:38,   totCum:155, totPct:1.9},
-  {week:'4/1주',  sccPlan:75,   sccAct:90,   sccCum:137, sccPct:1.8, uoPlan:20,  uoAct:36,   uoCum:144, uoPct:18.2, totPlan:95,   totAct:126,  totCum:281, totPct:3.4},
-  {week:'4/8주',  sccPlan:91,   sccAct:141,  sccCum:278, sccPct:3.7, uoPlan:31,  uoAct:29,   uoCum:173, uoPct:21.9, totPlan:122,  totAct:170,  totCum:451, totPct:5.5},
-  {week:'4/15주', sccPlan:112,  sccAct:98,   sccCum:376, sccPct:5.0, uoPlan:33,  uoAct:39,   uoCum:212, uoPct:26.8, totPlan:145,  totAct:137,  totCum:588, totPct:7.1},
-  {week:'4/22주', sccPlan:129,  sccAct:105,  sccCum:481, sccPct:6.4, uoPlan:39,  uoAct:35,   uoCum:247, uoPct:31.2, totPlan:168,  totAct:140,  totCum:728, totPct:8.8},
-  {week:'4/29주', sccPlan:150,  sccAct:null, sccCum:null, sccPct:null, uoPlan:40, uoAct:null, uoCum:null, uoPct:null, totPlan:190,  totAct:null, totCum:null, totPct:null},
-  {week:'5/6주',  sccPlan:259,  sccAct:null, sccCum:null, sccPct:null, uoPlan:46, uoAct:null, uoCum:null, uoPct:null, totPlan:305,  totAct:null, totCum:null, totPct:null},
-  {week:'5/13주', sccPlan:848,  sccAct:null, sccCum:null, sccPct:null, uoPlan:70, uoAct:null, uoCum:null, uoPct:null, totPlan:918,  totAct:null, totCum:null, totPct:null},
-  {week:'5/20주', sccPlan:1121, sccAct:null, sccCum:null, sccPct:null, uoPlan:87, uoAct:null, uoCum:null, uoPct:null, totPlan:1208, totAct:null, totCum:null, totPct:null},
-  {week:'5/27주', sccPlan:1217, sccAct:null, sccCum:null, sccPct:null, uoPlan:89, uoAct:null, uoCum:null, uoPct:null, totPlan:1306, totAct:null, totCum:null, totPct:null},
-  {week:'6/3주',  sccPlan:1163, sccAct:null, sccCum:null, sccPct:null, uoPlan:86, uoAct:null, uoCum:null, uoPct:null, totPlan:1249, totAct:null, totCum:null, totPct:null},
-  {week:'6/10주', sccPlan:1128, sccAct:null, sccCum:null, sccPct:null, uoPlan:69, uoAct:null, uoCum:null, uoPct:null, totPlan:1197, totAct:null, totCum:null, totPct:null},
-  {week:'6/17주', sccPlan:1035, sccAct:null, sccCum:null, sccPct:null, uoPlan:48, uoAct:null, uoCum:null, uoPct:null, totPlan:1083, totAct:null, totCum:null, totPct:null},
+  {date:'4/1',  pkgReady:2,  pkgReview:8,  wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0, rstCum:0},
+  {date:'4/2',  pkgReady:11, pkgReview:2,  wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/3',  pkgReady:50, pkgReview:5,  wd:11, wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/4',  pkgReady:2,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/5',  pkgReady:0,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/6',  pkgReady:35, pkgReview:6,  wd:4,  wdCum:152, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/7',  pkgReady:29, pkgReview:14, wd:6,  wdCum:158, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/8',  pkgReady:40, pkgReview:1,  wd:3,  wdCum:161, hp:1,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/9',  pkgReady:35, pkgReview:7,  wd:3,  wdCum:164, hp:0,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/10', pkgReady:3,  pkgReview:36, wd:5,  wdCum:169, hp:3,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/11', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/12', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
+  {date:'4/13', pkgReady:20, pkgReview:1,  wd:7,  wdCum:176, hp:3,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0},
+  {date:'4/14', pkgReady:19, pkgReview:44, wd:36, wdCum:212, hp:0,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0},
+  {date:'4/15', pkgReady:13, pkgReview:13, wd:10, wdCum:222, hp:33, hpCum:82,  hpPct:1.5, rst:0, rstCum:0},
+  {date:'4/16', pkgReady:40, pkgReview:23, wd:7,  wdCum:229, hp:3,  hpCum:85,  hpPct:1.5, rst:0, rstCum:0},
+  {date:'4/17', pkgReady:16, pkgReview:7,  wd:30, wdCum:259, hp:17, hpCum:102, hpPct:1.8, rst:0, rstCum:0},
+  {date:'4/18', pkgReady:4,  pkgReview:2,  wd:6,  wdCum:265, hp:2,  hpCum:104, hpPct:1.9, rst:0, rstCum:0},
+  {date:'4/19', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:265, hp:0,  hpCum:104, hpPct:1.9, rst:0, rstCum:0},
+  {date:'4/20', pkgReady:37, pkgReview:18, wd:13, wdCum:278, hp:2,  hpCum:106, hpPct:1.9, rst:0, rstCum:0},
+  {date:'4/21', pkgReady:85, pkgReview:31, wd:15, wdCum:293, hp:2,  hpCum:108, hpPct:1.9, rst:0, rstCum:0},
+  {date:'4/22', pkgReady:28, pkgReview:13, wd:7,  wdCum:300, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:0},
+  {date:'4/23', pkgReady:7,  pkgReview:32, wd:26, wdCum:326, hp:3,  hpCum:123, hpPct:2.2, rst:0, rstCum:0},
+  {date:'4/24', pkgReady:6,  pkgReview:19, wd:25, wdCum:351, hp:7,  hpCum:130, hpPct:2.3, rst:0, rstCum:0},
+  {date:'4/25', pkgReady:5,  pkgReview:7,  wd:9,  wdCum:360, hp:11, hpCum:141, hpPct:2.5, rst:0, rstCum:0},
+  {date:'4/26', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:360, hp:0,  hpCum:141, hpPct:2.5, rst:0, rstCum:0},
+  {date:'4/27', pkgReady:2,  pkgReview:8,  wd:25, wdCum:385, hp:4,  hpCum:145, hpPct:2.6, rst:0, rstCum:0},
+  {date:'4/28', pkgReady:9,  pkgReview:0,  wd:0,  wdCum:385, hp:1,  hpCum:146, hpPct:2.6, rst:0, rstCum:0},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
 // ══════════════════════════════════════════════════
 function renderShnHydro(upToIdx) {
-  // 실적 있는 마지막 인덱스 찾기
-  const lastActIdx = SHN_HYDRO.reduce((acc, r, i) => r.totAct !== null ? i : acc, 0);
-  const safeIdx    = Math.min(upToIdx, lastActIdx);
-  const d          = SHN_HYDRO[safeIdx];
-  if (!d || d.totCum === null) return;
+  const slice  = SHN_HYDRO.slice(0, upToIdx + 1);
+  const d      = slice[slice.length - 1];
+  const labels = slice.map(r => r.date);
 
-  const labels = SHN_HYDRO.map(r => r.week);
-  const sccRemain = 7461 - d.sccCum;
-  const uoRemain  = 791  - d.uoCum;
-  const totRemain = 8252 - d.totCum;
-  const diff      = d.totAct - d.totPlan;
+  const wdRemain = 5568 - d.wdCum;
+  const hpRemain = 5568 - d.hpCum;
+
+  // 7일 이동평균 (Walkdown, 수압)
+  const last7   = slice.slice(-7);
+  const avg7wd  = +(last7.reduce((s,r)=>s+r.wd,0)/last7.length).toFixed(1);
+  const avg7hp  = +(last7.reduce((s,r)=>s+r.hp,0)/last7.length).toFixed(1);
 
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
-      <div class="kpi-label">합계 누계 (${d.week})</div>
-      <div class="kpi-value blue">${fmtN(d.totCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 8,252 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.totPct.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totPct.toFixed(1)}%</b> | 잔여 ${fmtN(totRemain)} PKG</div>
+      <div class="kpi-label">Walkdown 누계</div>
+      <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">PKG</span></div>
+      <div class="kpi-sub">총 물량: 5,568 PKG</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/5568*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/5568*100).toFixed(1)}%</b> | 잔여 ${fmtN(wdRemain)} PKG</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">이번주 실적 vs 계획</div>
-      <div class="kpi-value ${diff >= 0 ? 'teal' : 'coral'}">${fmtN(d.totAct)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">계획: ${fmtN(d.totPlan)} PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill ${diff >= 0 ? 'teal' : 'coral'}" style="width:${Math.min(100, d.totAct/d.totPlan*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">${diff >= 0 ? '<span class="diff-tag plus">+'+fmtN(Math.abs(diff))+' 초과</span>' : '<span class="diff-tag minus">△'+fmtN(Math.abs(diff))+' 미달</span>'}</div>
+      <div class="kpi-label">수압 누계</div>
+      <div class="kpi-value teal">${fmtN(d.hpCum)} <span style="font-size:12px">PKG</span></div>
+      <div class="kpi-sub">총 물량: 5,568 PKG</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.hpPct.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.hpPct.toFixed(1)}%</b> | 잔여 ${fmtN(hpRemain)} PKG</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">SCC 누계</div>
-      <div class="kpi-value amber">${fmtN(d.sccCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 7,461 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.sccPct.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sccPct.toFixed(1)}%</b> | 잔여 ${fmtN(sccRemain)}</div>
+      <div class="kpi-label">일일 실적 (${d.date})</div>
+      <div class="kpi-value amber">${fmtN(d.wd)} <span style="font-size:12px">WD</span> / ${fmtN(d.hp)} <span style="font-size:12px">HP</span></div>
+      <div class="kpi-sub">PKG Ready: ${fmtN(d.pkgReady)} | Review: ${fmtN(d.pkgReview)}</div>
+      <div class="kpi-sub" style="margin-top:4px">7일 평균 WD: ${avg7wd} | HP: ${avg7hp}</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">UO 누계</div>
-      <div class="kpi-value teal">${fmtN(d.uoCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 791 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.uoPct.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.uoPct.toFixed(1)}%</b> | 잔여 ${fmtN(uoRemain)}</div>
+      <div class="kpi-label">복원 누계</div>
+      <div class="kpi-value coral">${fmtN(d.rstCum)} <span style="font-size:12px">PKG</span></div>
+      <div class="kpi-sub">수압 누계 대비</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${d.hpCum>0?(d.rstCum/d.hpCum*100).toFixed(0):0}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">${d.hpCum>0?(d.rstCum/d.hpCum*100).toFixed(1):0}% 복원 완료</div>
     </div>`;
 
-  const latDiff = d.totAct - d.totPlan;
-  q('shn-hydro-bar-badge').textContent = latDiff >= 0 ? '계획 초과' : '계획 미달';
-  q('shn-hydro-bar-badge').className   = 'pct-pill ' + (latDiff >= 0 ? 'good' : 'behind');
+  // badge 숨김 (계획 없으므로)
+  const badge = document.getElementById('shn-hydro-bar-badge');
+  if (badge) badge.style.display = 'none';
 
   const base = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
-  const xT   = { ticks:{font:{size:9}}, grid:{display:false} };
+  const xT   = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
 
-  // bar 차트 — 계획 전체 + 실적(null 허용)
+  // 일일 Walkdown + 수압 bar
   mkChart('shn-hydro-bar', { type:'bar', data:{ labels, datasets:[
-    { label:'계획', data:SHN_HYDRO.map(r=>r.totPlan), backgroundColor:'rgba(179,92,0,0.55)',  borderRadius:2 },
-    { label:'실적', data:SHN_HYDRO.map(r=>r.totAct),  backgroundColor:'rgba(26,95,180,0.85)', borderRadius:2 },
-  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+    { label:'Walkdown', data:slice.map(r=>r.wd), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, order:2 },
+    { label:'수압',     data:slice.map(r=>r.hp), backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, order:2 },
+    { label:'WD 누계',  data:slice.map(r=>r.wdCum), type:'line', borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
+    { label:'HP 누계',  data:slice.map(r=>r.hpCum), type:'line', borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
+  ]}, options:{ ...base, scales:{
+    x: xT,
+    y:  { stacked:false, ticks:{font:{size:9}}, grid:{color:'#f0f0f0'}, title:{display:true, text:'일일 (PKG)', font:{size:9}} },
+    y2: { position:'right', ticks:{font:{size:9}}, grid:{display:false}, title:{display:true, text:'누계 (PKG)', font:{size:9}} }
+  }} });
 
-  // 진도율 라인 — 실적 있는 행만
-  const actSlice  = SHN_HYDRO.filter(r => r.totAct !== null);
-  const actLabels = actSlice.map(r => r.week);
-  const actPcts   = actSlice.map(r => r.sccPct);
-  const minP = Math.max(0, Math.floor(Math.min(...actPcts) - 1));
-  const maxP = Math.min(100, Math.ceil(Math.max(...actSlice.map(r => r.uoPct)) + 2));
-  mkChart('shn-hydro-progress', { type:'line', data:{ labels:actLabels, datasets:[
-    { label:'SCC%',  data:actSlice.map(r=>+r.sccPct.toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
-    { label:'UO%',   data:actSlice.map(r=>+r.uoPct.toFixed(1)),  borderColor:'#0d7a5f', tension:0.3, pointRadius:3, borderWidth:2 },
-    { label:'합계%', data:actSlice.map(r=>+r.totPct.toFixed(1)), borderColor:'#b35c00', tension:0.3, pointRadius:3, borderWidth:2, borderDash:[4,3] }
+  // 누계 진도율
+  const minP = 0;
+  const maxP = Math.min(100, Math.ceil(Math.max(...slice.map(r=>r.wdCum/5568*100)) + 2));
+  mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
+    { label:'Walkdown%', data:slice.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'rgba(26,95,180,0.06)', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'수압%',     data:slice.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', backgroundColor:'rgba(13,122,95,0.06)',  fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
-  // 테이블 — 실적 있는 행 최신순 + 미래 계획행
-  const actRows  = actSlice.slice().reverse();
-  const planRows = SHN_HYDRO.filter(r => r.totAct === null);
-  const allRows  = [...actRows, ...planRows];
-  const na = '—';
+  // 테이블 최신→과거
+  const rows = slice.slice().reverse();
   q('shn-hydro-table').innerHTML = `<thead><tr>
-    <th>주간</th>
-    <th>SCC 계획</th><th>SCC 실적</th><th>SCC 누계</th><th>SCC%</th>
-    <th>UO 계획</th><th>UO 실적</th><th>UO 누계</th><th>UO%</th>
-    <th>합계 계획</th><th>합계 실적</th><th>합계 누계</th><th>합계%</th>
-  </tr></thead><tbody>${allRows.map((r,i)=>{
-    const hasAct = r.totAct !== null;
-    const df = hasAct ? r.totAct - r.totPlan : null;
-    return `<tr class="${i===0&&hasAct?'highlight':''}">
-      <td class="date-col">${r.week}</td>
-      <td>${fmtN(r.sccPlan)}</td>
-      <td>${hasAct ? fmtN(r.sccAct) : na}</td>
-      <td>${hasAct ? fmtN(r.sccCum) : na}</td>
-      <td>${hasAct ? '<span class="pct-pill neutral">'+r.sccPct.toFixed(1)+'%</span>' : na}</td>
-      <td>${fmtN(r.uoPlan)}</td>
-      <td>${hasAct ? fmtN(r.uoAct) : na}</td>
-      <td>${hasAct ? fmtN(r.uoCum) : na}</td>
-      <td>${hasAct ? '<span class="pct-pill good">'+r.uoPct.toFixed(1)+'%</span>' : na}</td>
-      <td>${fmtN(r.totPlan)}</td>
-      <td>${hasAct ? fmtN(r.totAct) : na}</td>
-      <td>${hasAct ? fmtN(r.totCum) : na}</td>
-      <td>${hasAct ? '<span class="pct-pill '+(df>=0?'good':'behind')+'">'+r.totPct.toFixed(1)+'%</span>' : na}</td>
-    </tr>`;
-  }).join('')}</tbody>`;
+    <th>일자</th>
+    <th>PKG Ready</th><th>PKG Review</th>
+    <th>Walkdown</th><th>WD 누계</th><th>WD%</th>
+    <th>수압</th><th>수압 누계</th><th>수압%</th>
+    <th>복원</th><th>복원 누계</th>
+  </tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i===0?'highlight':''}">
+    <td class="date-col">${r.date}</td>
+    <td>${fmtN(r.pkgReady)}</td><td>${fmtN(r.pkgReview)}</td>
+    <td>${fmtN(r.wd)}</td><td>${fmtN(r.wdCum)}</td>
+    <td><span class="pct-pill neutral">${(r.wdCum/5568*100).toFixed(1)}%</span></td>
+    <td>${fmtN(r.hp)}</td><td>${fmtN(r.hpCum)}</td>
+    <td><span class="pct-pill ${r.hpPct>=2?'good':'behind'}">${r.hpPct.toFixed(1)}%</span></td>
+    <td>${fmtN(r.rst)}</td><td>${fmtN(r.rstCum)}</td>
+  </tr>`).join('')}</tbody>`;
 }
 // ─── 초기 렌더 ────────────────────────────────────
-// 수압 드롭다운: 실적 있는 주만
-(function() {
-  const sel = document.getElementById('shn-hydro-select');
-  if (!sel) return;
-  SHN_HYDRO.forEach((r, i) => {
-    if (r.totAct !== null) {
-      const opt = document.createElement('option');
-      opt.value = i; opt.text = r.week;
-      sel.appendChild(opt);
-    }
-  });
-  sel.value = SHN_HYDRO.reduce((acc, r, i) => r.totAct !== null ? i : acc, 0);
-  sel.onchange = () => renderShnHydro(parseInt(sel.value));
-})();
+buildSelect('shn-hydro-select', SHN_HYDRO, 'date', renderShnHydro);
 buildSelect('shn-date-select',  SHN_DATA,       'date', renderShn);
 buildSelect('sace-date-select', SACE_DATA,      'week', renderSace);
 buildSelect('sac2-date-select', SAC2_DATA,      'week', renderSac2);
@@ -1683,7 +1671,7 @@ buildSelect('eshn-date-select', ELEC_SHN_DATA,  'week', renderElecShn);
 buildSelect('ishn-date-select', INST_SHN_DATA,  'week', renderInstShn);
 
 renderShn(SHN_DATA.length - 1);
-renderShnHydro(SHN_HYDRO.reduce((acc, r, i) => r.totAct !== null ? i : acc, 0));
+renderShnHydro(SHN_HYDRO.length - 1);
 renderSace(SACE_DATA.length - 1);
 renderSac2(SAC2_DATA.length - 1);
 renderSta4(STA4_DATA.length - 1);
