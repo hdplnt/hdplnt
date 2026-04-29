@@ -476,6 +476,15 @@
     <div class="panel-title">
       샤힌 (SHN1) — 배관 Pressure Test 일일 현황
     </div>
+    <div class="section-divider">
+      <span class="section-label">CW라인 / Steam라인 별도 현황</span>
+      <div class="divider-line"></div>
+    </div>
+    <div class="kpi-grid cols-4" id="shn-cw-steam-kpi"></div>
+    <div class="section-divider" style="margin-top:18px;">
+      <span class="section-label">전체 수압 현황</span>
+      <div class="divider-line"></div>
+    </div>
     <div class="kpi-grid cols-4" id="shn-hydro-kpi"></div>
     <div class="section-divider">
       <span class="section-label">일일 실적 차트</span>
@@ -503,8 +512,8 @@
         <div class="chart-wrap" style="height:220px"><canvas id="shn-hydro-progress"></canvas></div>
       </div>
     </div>
-    <div class="section-divider">
-      <span class="section-label">주간 실적 테이블</span>
+    <div class="section-divider" style="margin-top:18px;">
+      <span class="section-label">일일 실적 테이블</span>
       <div class="divider-line"></div>
     </div>
     <div class="chart-card">
@@ -870,6 +879,7 @@ const SHN_DATA = [
   {date:'4/25', scc:4551, sccCum:562003, sccW:375, sccPct:83.0, uo:565,  uoCum:127568, uoW:48, uoPct:86.8, totCum:689570, totW:423, totPct:83.7},
   {date:'4/26', scc:2284, sccCum:564287, sccW:142, sccPct:83.4, uo:99,   uoCum:127667, uoW:10, uoPct:86.9, totCum:691954, totW:152, totPct:84.0},
   {date:'4/27', scc:5021, sccCum:569920, sccW:401, sccPct:84.2, uo:562,  uoCum:128302, uoW:51, uoPct:87.3, totCum:698221, totW:452, totPct:84.7},
+  {date:'4/28', scc:4870, sccCum:574789, sccW:401, sccPct:84.9, uo:783,  uoCum:129085, uoW:50, uoPct:87.9, totCum:703874, totW:451, totPct:85.4},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1541,53 +1551,53 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: 5,568 PKG (일일 실적)
+// ※ 샤힌 수압 총물량: 5,568 PKG | CW:108 PKG | Steam:365 PKG
 const SHN_HYDRO = [
-  {date:'4/1',  pkgReady:2,  pkgReview:8,  wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0, rstCum:0},
-  {date:'4/2',  pkgReady:11, pkgReview:2,  wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/3',  pkgReady:50, pkgReview:5,  wd:11, wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/4',  pkgReady:2,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/5',  pkgReady:0,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/6',  pkgReady:35, pkgReview:6,  wd:4,  wdCum:152, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/7',  pkgReady:29, pkgReview:14, wd:6,  wdCum:158, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/8',  pkgReady:40, pkgReview:1,  wd:3,  wdCum:161, hp:1,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/9',  pkgReady:35, pkgReview:7,  wd:3,  wdCum:164, hp:0,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/10', pkgReady:3,  pkgReview:36, wd:5,  wdCum:169, hp:3,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/11', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/12', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0},
-  {date:'4/13', pkgReady:20, pkgReview:1,  wd:7,  wdCum:176, hp:3,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0},
-  {date:'4/14', pkgReady:19, pkgReview:44, wd:36, wdCum:212, hp:0,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0},
-  {date:'4/15', pkgReady:13, pkgReview:13, wd:10, wdCum:222, hp:33, hpCum:82,  hpPct:1.5, rst:0, rstCum:0},
-  {date:'4/16', pkgReady:40, pkgReview:23, wd:7,  wdCum:229, hp:3,  hpCum:85,  hpPct:1.5, rst:0, rstCum:0},
-  {date:'4/17', pkgReady:16, pkgReview:7,  wd:30, wdCum:259, hp:17, hpCum:102, hpPct:1.8, rst:0, rstCum:0},
-  {date:'4/18', pkgReady:4,  pkgReview:2,  wd:6,  wdCum:265, hp:2,  hpCum:104, hpPct:1.9, rst:0, rstCum:0},
-  {date:'4/19', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:265, hp:0,  hpCum:104, hpPct:1.9, rst:0, rstCum:0},
-  {date:'4/20', pkgReady:37, pkgReview:18, wd:13, wdCum:278, hp:2,  hpCum:106, hpPct:1.9, rst:0, rstCum:0},
-  {date:'4/21', pkgReady:85, pkgReview:31, wd:15, wdCum:293, hp:2,  hpCum:108, hpPct:1.9, rst:0, rstCum:0},
-  {date:'4/22', pkgReady:28, pkgReview:13, wd:7,  wdCum:300, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:0},
-  {date:'4/23', pkgReady:7,  pkgReview:32, wd:26, wdCum:326, hp:3,  hpCum:123, hpPct:2.2, rst:0, rstCum:0},
-  {date:'4/24', pkgReady:6,  pkgReview:19, wd:25, wdCum:351, hp:7,  hpCum:130, hpPct:2.3, rst:0, rstCum:0},
-  {date:'4/25', pkgReady:5,  pkgReview:7,  wd:9,  wdCum:360, hp:11, hpCum:141, hpPct:2.5, rst:0, rstCum:0},
-  {date:'4/26', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:360, hp:0,  hpCum:141, hpPct:2.5, rst:0, rstCum:0},
-  {date:'4/27', pkgReady:2,  pkgReview:8,  wd:25, wdCum:385, hp:4,  hpCum:145, hpPct:2.6, rst:0, rstCum:0},
+  {date:'4/1',  pkgReady:2,  pkgReview:8,  wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0, rstCum:0, cwWd:2,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/2',  pkgReady:11, pkgReview:2,  wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/3',  pkgReady:50, pkgReview:5,  wd:11, wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/4',  pkgReady:2,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/5',  pkgReady:0,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/6',  pkgReady:35, pkgReview:6,  wd:4,  wdCum:152, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/7',  pkgReady:29, pkgReview:14, wd:6,  wdCum:158, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/8',  pkgReady:40, pkgReview:1,  wd:3,  wdCum:161, hp:1,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/9',  pkgReady:35, pkgReview:7,  wd:3,  wdCum:164, hp:0,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/10', pkgReady:3,  pkgReview:36, wd:5,  wdCum:169, hp:3,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/11', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/12', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/13', pkgReady:20, pkgReview:1,  wd:7,  wdCum:176, hp:3,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/14', pkgReady:19, pkgReview:44, wd:36, wdCum:212, hp:0,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/15', pkgReady:13, pkgReview:13, wd:10, wdCum:222, hp:33, hpCum:82,  hpPct:1.5, rst:0, rstCum:0, cwWd:2,  cwWdCum:10, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/16', pkgReady:40, pkgReview:23, wd:7,  wdCum:229, hp:3,  hpCum:85,  hpPct:1.5, rst:0, rstCum:0, cwWd:0,  cwWdCum:10, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/17', pkgReady:16, pkgReview:7,  wd:30, wdCum:259, hp:17, hpCum:102, hpPct:1.8, rst:0, rstCum:0, cwWd:4,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/18', pkgReady:4,  pkgReview:2,  wd:6,  wdCum:265, hp:2,  hpCum:104, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/19', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:265, hp:0,  hpCum:104, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/20', pkgReady:37, pkgReview:18, wd:13, wdCum:278, hp:2,  hpCum:106, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/21', pkgReady:85, pkgReview:31, wd:15, wdCum:293, hp:2,  hpCum:108, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
+  {date:'4/22', pkgReady:28, pkgReview:13, wd:7,  wdCum:300, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:2, stHpCum:4, stHpPct:1.1},
+  {date:'4/23', pkgReady:7,  pkgReview:32, wd:26, wdCum:326, hp:3,  hpCum:123, hpPct:2.2, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:2, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
+  {date:'4/24', pkgReady:6,  pkgReview:19, wd:25, wdCum:351, hp:7,  hpCum:130, hpPct:2.3, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
+  {date:'4/25', pkgReady:5,  pkgReview:7,  wd:9,  wdCum:360, hp:11, hpCum:141, hpPct:2.5, rst:0, rstCum:0, cwWd:0,  cwWdCum:42, cwHp:0, cwHpCum:7,  cwHpPct:6.5, stWd:0, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
+  {date:'4/26', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:360, hp:0,  hpCum:141, hpPct:2.5, rst:0, rstCum:0, cwWd:0,  cwWdCum:42, cwHp:0, cwHpCum:7,  cwHpPct:6.5, stWd:0, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
+  {date:'4/27', pkgReady:2,  pkgReview:8,  wd:25, wdCum:385, hp:4,  hpCum:145, hpPct:2.6, rst:0, rstCum:0, cwWd:2,  cwWdCum:44, cwHp:2, cwHpCum:9,  cwHpPct:8.3, stWd:3, stWdCum:26, stHp:0, stHpCum:4, stHpPct:1.1},
+  {date:'4/28', pkgReady:16, pkgReview:10, wd:2,  wdCum:387, hp:10, hpCum:155, hpPct:2.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:44, cwHp:9, cwHpCum:18, cwHpPct:16.7, stWd:0, stWdCum:26, stHp:0, stHpCum:4, stHpPct:1.1},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
 // ══════════════════════════════════════════════════
 function renderShnHydro(upToIdx) {
-  const slice   = SHN_HYDRO.slice(0, upToIdx + 1); // 전체 (KPI/테이블용)
-  const chart14 = slice.slice(-14);                 // 최근 14일 (차트용)
+  const slice   = SHN_HYDRO.slice(0, upToIdx + 1);
+  const chart14 = slice.slice(-14);
   const d       = slice[slice.length - 1];
-  const labels  = chart14.map(r => r.date);
+  if (!d) return;
 
   const wdRemain = 5568 - d.wdCum;
   const hpRemain = 5568 - d.hpCum;
+  const last7    = slice.slice(-7);
+  const avg7wd   = +(last7.reduce((s,r)=>s+r.wd,0)/last7.length).toFixed(1);
+  const avg7hp   = +(last7.reduce((s,r)=>s+r.hp,0)/last7.length).toFixed(1);
 
-  // 7일 이동평균 (Walkdown, 수압)
-  const last7   = slice.slice(-7);
-  const avg7wd  = +(last7.reduce((s,r)=>s+r.wd,0)/last7.length).toFixed(1);
-  const avg7hp  = +(last7.reduce((s,r)=>s+r.hp,0)/last7.length).toFixed(1);
-
+  // ── KPI ──
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">Walkdown 누계</div>
@@ -1617,14 +1627,14 @@ function renderShnHydro(upToIdx) {
       <div class="kpi-sub" style="margin-top:5px">${d.hpCum>0?(d.rstCum/d.hpCum*100).toFixed(1):0}% 복원 완료</div>
     </div>`;
 
-  // badge 숨김 (계획 없으므로)
   const badge = document.getElementById('shn-hydro-bar-badge');
   if (badge) badge.style.display = 'none';
 
   const base = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
   const xT   = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
+  const labels = chart14.map(r => r.date);
 
-  // 일일 Walkdown + 수압 bar
+  // ── 일일 bar 차트 ──
   mkChart('shn-hydro-bar', { type:'bar', data:{ labels, datasets:[
     { label:'Walkdown', data:chart14.map(r=>r.wd), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, order:2 },
     { label:'수압',     data:chart14.map(r=>r.hp), backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, order:2 },
@@ -1632,26 +1642,54 @@ function renderShnHydro(upToIdx) {
     { label:'HP 누계',  data:chart14.map(r=>r.hpCum), type:'line', borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
   ]}, options:{ ...base, scales:{
     x: xT,
-    y:  { stacked:false, ticks:{font:{size:9}}, grid:{color:'#f0f0f0'}, title:{display:true, text:'일일 (PKG)', font:{size:9}} },
+    y:  { ticks:{font:{size:9}}, grid:{color:'#f0f0f0'}, title:{display:true, text:'일일 (PKG)', font:{size:9}} },
     y2: { position:'right', ticks:{font:{size:9}}, grid:{display:false}, title:{display:true, text:'누계 (PKG)', font:{size:9}} }
   }} });
 
-  // 누계 진도율
+  // ── 누계 진도율 ──
   const minP = 0;
-  const maxP = Math.min(100, Math.ceil(Math.max(...slice.map(r=>r.wdCum/5568*100)) + 2));
+  const maxP = Math.min(100, Math.ceil(Math.max(...chart14.map(r=>r.wdCum/5568*100)) + 2));
   mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
-    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', backgroundColor:'rgba(26,95,180,0.06)', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
-    { label:'수압%',     data:chart14.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', backgroundColor:'rgba(13,122,95,0.06)',  fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'수압%',     data:chart14.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
-  // 테이블 최신→과거
+  // ── CW / Steam KPI ──
+  q('shn-cw-steam-kpi').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">CW라인 Walkdown 누계</div>
+      <div class="kpi-value blue">${fmtN(d.cwWdCum)} <span style="font-size:12px">/ 108 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.cwWdCum/108*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.cwWdCum/108*100).toFixed(1)}%</b></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">CW라인 수압 누계</div>
+      <div class="kpi-value teal">${fmtN(d.cwHpCum)} <span style="font-size:12px">/ 108 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${(d.cwHpCum/108*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.cwHpPct.toFixed(1)}%</b></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Steam라인 Walkdown 누계</div>
+      <div class="kpi-value amber">${fmtN(d.stWdCum)} <span style="font-size:12px">/ 365 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/365*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.stWdCum/365*100).toFixed(1)}%</b></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Steam라인 수압 누계</div>
+      <div class="kpi-value coral">${fmtN(d.stHpCum)} <span style="font-size:12px">/ 365 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/365*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.stHpPct.toFixed(1)}%</b></div>
+    </div>`;
+
+  // ── 테이블 ──
   const rows = slice.slice().reverse();
   q('shn-hydro-table').innerHTML = `<thead><tr>
     <th>일자</th>
     <th>PKG Ready</th><th>PKG Review</th>
-    <th>Walkdown</th><th>WD 누계</th><th>WD%</th>
-    <th>수압</th><th>수압 누계</th><th>수압%</th>
-    <th>복원</th><th>복원 누계</th>
+    <th>WD</th><th>WD누계</th><th>WD%</th>
+    <th>수압</th><th>수압누계</th><th>수압%</th>
+    <th>CW_WD</th><th>CW_WD누계</th><th>CW_HP</th><th>CW_HP누계</th><th>CW_HP%</th>
+    <th>ST_WD</th><th>ST_WD누계</th><th>ST_HP</th><th>ST_HP누계</th><th>ST_HP%</th>
   </tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i===0?'highlight':''}">
     <td class="date-col">${r.date}</td>
     <td>${fmtN(r.pkgReady)}</td><td>${fmtN(r.pkgReview)}</td>
@@ -1659,26 +1697,29 @@ function renderShnHydro(upToIdx) {
     <td><span class="pct-pill neutral">${(r.wdCum/5568*100).toFixed(1)}%</span></td>
     <td>${fmtN(r.hp)}</td><td>${fmtN(r.hpCum)}</td>
     <td><span class="pct-pill ${r.hpPct>=2?'good':'behind'}">${r.hpPct.toFixed(1)}%</span></td>
-    <td>${fmtN(r.rst)}</td><td>${fmtN(r.rstCum)}</td>
+    <td>${fmtN(r.cwWd)}</td><td>${fmtN(r.cwWdCum)}</td><td>${fmtN(r.cwHp)}</td><td>${fmtN(r.cwHpCum)}</td>
+    <td><span class="pct-pill neutral">${r.cwHpPct.toFixed(1)}%</span></td>
+    <td>${fmtN(r.stWd)}</td><td>${fmtN(r.stWdCum)}</td><td>${fmtN(r.stHp)}</td><td>${fmtN(r.stHpCum)}</td>
+    <td><span class="pct-pill neutral">${r.stHpPct.toFixed(1)}%</span></td>
   </tr>`).join('')}</tbody>`;
 }
 // ─── 초기 렌더 ────────────────────────────────────
-buildSelect('shn-hydro-select', SHN_HYDRO, 'date', renderShnHydro);
+buildSelect('shn-hydro-select', SHN_HYDRO,      'date', renderShnHydro);
+buildSelect('eshn-date-select', ELEC_SHN_DATA,  'week', renderElecShn);
+buildSelect('ishn-date-select', INST_SHN_DATA,  'week', renderInstShn);
 buildSelect('shn-date-select',  SHN_DATA,       'date', renderShn);
 buildSelect('sace-date-select', SACE_DATA,      'week', renderSace);
 buildSelect('sac2-date-select', SAC2_DATA,      'week', renderSac2);
 buildSelect('sta4-date-select', STA4_DATA,      'week', renderSta4);
-buildSelect('eshn-date-select', ELEC_SHN_DATA,  'week', renderElecShn);
-buildSelect('ishn-date-select', INST_SHN_DATA,  'week', renderInstShn);
 
 renderShn(SHN_DATA.length - 1);
 renderShnHydro(SHN_HYDRO.length - 1);
+renderElecShn(ELEC_SHN_DATA.length - 1);
+renderInstShn(INST_SHN_DATA.length - 1);
 renderSace(SACE_DATA.length - 1);
 renderSac2(SAC2_DATA.length - 1);
 renderSta4(STA4_DATA.length - 1);
-renderElecShn(ELEC_SHN_DATA.length - 1);
-renderInstShn(INST_SHN_DATA.length - 1);
 
 </script>
 </body>
-</html
+</html>
