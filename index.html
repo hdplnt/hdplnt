@@ -1564,7 +1564,7 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: 5,568 PKG | CW:108 PKG | Steam:365 PKG
+// ※ 샤힌 수압 총물량: 5,568 PKG | CW:107 PKG | Steam:365 PKG
 const SHN_HYDRO = [
   {date:'4/1',  pkgReady:2,  pkgReview:8,  wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0, rstCum:0, cwWd:2,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
   {date:'4/2',  pkgReady:11, pkgReview:2,  wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
@@ -1595,6 +1595,15 @@ const SHN_HYDRO = [
   {date:'4/27', pkgReady:2,   pkgReview:8,  wd:25, wdCum:386, hp:4,  hpCum:146, hpPct:2.6, rst:0, rstCum:45, cwWd:2,  cwWdCum:44, cwHp:2, cwHpCum:9,  cwHpPct:8.3,  stWd:3, stWdCum:27, stHp:0, stHpCum:4, stHpPct:1.1},
   {date:'4/28', pkgReady:100, pkgReview:94, wd:2,  wdCum:388, hp:10, hpCum:156, hpPct:2.8, rst:1, rstCum:46, cwWd:0,  cwWdCum:44, cwHp:9, cwHpCum:18, cwHpPct:16.7, stWd:0, stWdCum:27, stHp:0, stHpCum:4, stHpPct:1.1},
   {date:'4/29', pkgReady:117, pkgReview:84, wd:91, wdCum:479, hp:5,  hpCum:161, hpPct:2.9, rst:1, rstCum:47, cwWd:0,  cwWdCum:44, cwHp:5, cwHpCum:23, cwHpPct:21.3, stWd:1, stWdCum:28, stHp:0, stHpCum:4, stHpPct:1.1},
+
+  {date:'4/30', pkgReady:11,  pkgReview:71,  wd:102, wdCum:579, hp:87,  hpCum:248, hpPct:4.5, rst:0,  rstCum:66,  cwWd:0,  cwWdCum:44, cwHp:1,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/1',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:579, hp:0,   hpCum:248, hpPct:4.5, rst:0,  rstCum:66,  cwWd:0,  cwWdCum:44, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/2',  pkgReady:45,  pkgReview:5,   wd:19,  wdCum:598, hp:3,   hpCum:251, hpPct:4.5, rst:3,  rstCum:69,  cwWd:8,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/3',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:598, hp:0,   hpCum:251, hpPct:4.5, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/4',  pkgReady:39,  pkgReview:24,  wd:3,   wdCum:601, hp:104, hpCum:355, hpPct:6.4, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:20, stHpCum:24, stHpPct:6.6},
+  {date:'5/5',  pkgReady:1,   pkgReview:0,   wd:0,   wdCum:601, hp:0,   hpCum:355, hpPct:6.4, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/6',  pkgReady:36,  pkgReview:7,   wd:26,  wdCum:627, hp:17,  hpCum:372, hpPct:6.7, rst:11, rstCum:80,  cwWd:21, cwWdCum:73, cwHp:2,  cwHpCum:26, cwHpPct:24.3, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/7',  pkgReady:12,  pkgReview:30,  wd:12,  wdCum:639, hp:18,  hpCum:390, hpPct:7.0, rst:2,  rstCum:82,  cwWd:0,  cwWdCum:73, cwHp:4,  cwHpCum:30, cwHpPct:28.0, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1672,14 +1681,14 @@ function renderShnHydro(upToIdx) {
   q('shn-cw-steam-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">CW라인 Walkdown 누계</div>
-      <div class="kpi-value blue">${fmtN(d.cwWdCum)} <span style="font-size:12px">/ 108 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.cwWdCum/108*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.cwWdCum/108*100).toFixed(1)}%</b></div>
+      <div class="kpi-value blue">${fmtN(d.cwWdCum)} <span style="font-size:12px">/ 107 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.cwWdCum/107*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.cwWdCum/107*100).toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">CW라인 수압 누계</div>
-      <div class="kpi-value teal">${fmtN(d.cwHpCum)} <span style="font-size:12px">/ 108 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${(d.cwHpCum/108*100).toFixed(0)}%"></div></div>
+      <div class="kpi-value teal">${fmtN(d.cwHpCum)} <span style="font-size:12px">/ 107 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${(d.cwHpCum/107*100).toFixed(0)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.cwHpPct.toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
