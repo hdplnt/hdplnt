@@ -408,6 +408,7 @@
       <button class="subtab-btn" onclick="switchSubTab('shn','hydro',this)">💧 수압</button>
       <button class="subtab-btn" onclick="switchSubTab('shn','elec',this)">⚡ 전기</button>
       <button class="subtab-btn" onclick="switchSubTab('shn','inst',this)">🎛 계장</button>
+      <button class="subtab-btn" onclick="switchSubTab('shn','precomm',this)">🔧 Precomm</button>
     </div>
   </div>
 
@@ -629,6 +630,66 @@
       </div>
     </div>
   </div>
+  <!-- 샤힌 Precomm 서브패널 -->
+  <div id="sub-shn-precomm" class="sub-panel sub-content">
+    <div class="panel-date-bar">
+      <span class="date-label">🗓 기준 주간 (샤힌 — Precomm)</span>
+      <select class="date-select" id="shn-precomm-select" onchange="renderShnPrecomm(parseInt(this.value))"></select>
+    </div>
+    <div class="panel-title">샤힌 (SHN1) — Pre-Commissioning 주간 실적<span class="mode-tag">계획 대비 실적</span></div>
+    <div class="section-divider"><span class="section-label">⚡ Motor Solo Run (SCC: 307대 / UO: 180대)</span><div class="divider-line"></div></div>
+    <div class="kpi-grid cols-4" id="shn-motor-kpi"></div>
+    <div class="chart-grid cols-2">
+      <div class="chart-card">
+        <div class="chart-card-title">Motor Solo Run — 주간 계획 vs 실적 (대)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SCC 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SCC 실적</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>UO 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>UO 실적</span>
+        </div>
+        <div class="chart-wrap" style="height:210px"><canvas id="shn-motor-bar"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Motor Solo Run — 누계 진도율 (%)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SCC 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SCC 실적%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>UO 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>UO 실적%</span>
+        </div>
+        <div class="chart-wrap" style="height:210px"><canvas id="shn-motor-progress"></canvas></div>
+      </div>
+    </div>
+    <div class="section-divider" style="margin-top:18px;"><span class="section-label">🎛 Loop Test (SCC: 18,640 EA / UO: 6,064 EA)</span><div class="divider-line"></div></div>
+    <div class="kpi-grid cols-4" id="shn-loop-kpi"></div>
+    <div class="chart-grid cols-2">
+      <div class="chart-card">
+        <div class="chart-card-title">Loop Test — 주간 계획 vs 실적 (EA)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SCC 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SCC 실적</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>UO 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>UO 실적</span>
+        </div>
+        <div class="chart-wrap" style="height:210px"><canvas id="shn-loop-bar"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Loop Test — 누계 진도율 (%)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SCC 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SCC 실적%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>UO 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>UO 실적%</span>
+        </div>
+        <div class="chart-wrap" style="height:210px"><canvas id="shn-loop-progress"></canvas></div>
+      </div>
+    </div>
+    <div class="section-divider" style="margin-top:18px;"><span class="section-label">주간 실적 테이블</span><div class="divider-line"></div></div>
+    <div class="chart-card"><div style="overflow-x:auto;overflow-y:auto;max-height:none;">
+      <table class="data-table" id="shn-precomm-table"></table>
+    </div></div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -639,6 +700,7 @@
     <div class="subtab-wrap">
       <button class="subtab-btn active" onclick="switchSubTab('sace','pipe',this)">🔩 배관</button>
       <button class="subtab-btn" onclick="switchSubTab('sace','inst',this)">🎛 계장</button>
+      <button class="subtab-btn" onclick="switchSubTab('sace','precomm',this)">🔧 Precomm</button>
     </div>
   </div>
   <div id="sub-sace-pipe" class="sub-panel active sub-content">
@@ -750,6 +812,41 @@
     </div>
     <div class="section-divider"><span class="section-label">주간 실적 테이블</span><div class="divider-line"></div></div>
     <div class="chart-card"><div style="overflow-x:auto"><table class="data-table" id="isace-table"></table></div></div>
+  </div>
+  <!-- 자푸라1 Precomm 서브패널 -->
+  <div id="sub-sace-precomm" class="sub-panel sub-content">
+    <div class="panel-date-bar">
+      <span class="date-label">🗓 기준 주간 (자푸라1 — Precomm)</span>
+      <select class="date-select" id="sace-precomm-select" onchange="renderSacePrecomm(parseInt(this.value))"></select>
+    </div>
+    <div class="panel-title">자푸라1 (SACE) — Pre-Commissioning 주간 실적<span class="mode-tag">Loop Test — SRU2 / SRU3</span></div>
+    <div class="kpi-grid cols-4" id="sace-loop-kpi"></div>
+    <div class="chart-grid cols-2">
+      <div class="chart-card">
+        <div class="chart-card-title">Loop Test — 주간 계획 vs 실적 (EA)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SRU2 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SRU2 실적</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>SRU3 계획</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>SRU3 실적</span>
+        </div>
+        <div class="chart-wrap" style="height:220px"><canvas id="sace-loop-bar"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-title">Loop Test — 누계 진도율 (%)</div>
+        <div class="legend-row">
+          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>SRU2 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>SRU2 실적%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#7b5ea7"></span>SRU3 계획%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>SRU3 실적%</span>
+        </div>
+        <div class="chart-wrap" style="height:220px"><canvas id="sace-loop-progress"></canvas></div>
+      </div>
+    </div>
+    <div class="section-divider" style="margin-top:18px;"><span class="section-label">주간 실적 테이블</span><div class="divider-line"></div></div>
+    <div class="chart-card"><div style="overflow-x:auto;overflow-y:auto;max-height:none;">
+      <table class="data-table" id="sace-precomm-table"></table>
+    </div></div>
   </div>
 </div>
 
@@ -1379,14 +1476,16 @@ function switchSubTab(site, tab, btn) {
   setTimeout(() => {
     const g = id => document.getElementById(id);
     if (site === 'shn') {
-      if (tab === 'pipe')  { const s = g('shn-date-select');   if (s) renderShn(parseInt(s.value)); }
-      if (tab === 'hydro') { const s = g('shn-hydro-select');  if (s) renderShnHydro(parseInt(s.value)); }
-      if (tab === 'elec')  { const s = g('eshn-date-select');  if (s) renderElecShn(parseInt(s.value)); }
-      if (tab === 'inst')  { const s = g('ishn-date-select');  if (s) renderInstShn(parseInt(s.value)); }
+      if (tab === 'pipe')    { const s = g('shn-date-select');      if (s) renderShn(parseInt(s.value)); }
+      if (tab === 'hydro')   { const s = g('shn-hydro-select');     if (s) renderShnHydro(parseInt(s.value)); }
+      if (tab === 'elec')    { const s = g('eshn-date-select');     if (s) renderElecShn(parseInt(s.value)); }
+      if (tab === 'inst')    { const s = g('ishn-date-select');     if (s) renderInstShn(parseInt(s.value)); }
+      if (tab === 'precomm') { const s = g('shn-precomm-select');   if (s) renderShnPrecomm(parseInt(s.value)); }
     }
     if (site === 'sace') {
-      if (tab === 'pipe')  { const s = g('sace-date-select');  if (s) renderSace(parseInt(s.value)); }
-      if (tab === 'inst')  { const s = g('isace-date-select'); if (s) renderInstSace(parseInt(s.value)); }
+      if (tab === 'pipe')    { const s = g('sace-date-select');      if (s) renderSace(parseInt(s.value)); }
+      if (tab === 'inst')    { const s = g('isace-date-select');     if (s) renderInstSace(parseInt(s.value)); }
+      if (tab === 'precomm') { const s = g('sace-precomm-select');   if (s) renderSacePrecomm(parseInt(s.value)); }
     }
     if (site === 'sac2') {
       if (tab === 'pipe')  { const s = g('sac2-date-select');  if (s) renderSac2(parseInt(s.value)); }
@@ -2101,10 +2200,237 @@ function renderInstSace(upToIdx) {
     <td>${fmtN(r.totC)}</td><td><span class="pct-pill neutral">${r.totP.toFixed(1)}%</span></td>
   </tr>`).join('')}</tbody>`;
 }
+// ══════════════════════════════════════════════════
+// 샤힌 Precomm — Motor Solo Run (SCC:307대 / UO:180대)
+// ══════════════════════════════════════════════════
+const SHN_MOTOR = [
+  {week:'1/28주', sccPlan:0,  sccPlanC:0,   sccPlanP:0.0,  sccAct:0,  sccActC:0,   sccActP:0.0,  uoPlan:6,  uoPlanC:6,   uoPlanP:3.3,  uoAct:5,  uoActC:5,   uoActP:2.8},
+  {week:'2/4주',  sccPlan:0,  sccPlanC:0,   sccPlanP:0.0,  sccAct:0,  sccActC:0,   sccActP:0.0,  uoPlan:0,  uoPlanC:6,   uoPlanP:3.3,  uoAct:0,  uoActC:5,   uoActP:2.8},
+  {week:'2/11주', sccPlan:0,  sccPlanC:0,   sccPlanP:0.0,  sccAct:0,  sccActC:0,   sccActP:0.0,  uoPlan:0,  uoPlanC:6,   uoPlanP:3.3,  uoAct:0,  uoActC:5,   uoActP:2.8},
+  {week:'2/18주', sccPlan:0,  sccPlanC:0,   sccPlanP:0.0,  sccAct:0,  sccActC:0,   sccActP:0.0,  uoPlan:0,  uoPlanC:6,   uoPlanP:3.3,  uoAct:0,  uoActC:5,   uoActP:2.8},
+  {week:'2/25주', sccPlan:5,  sccPlanC:5,   sccPlanP:1.6,  sccAct:4,  sccActC:4,   sccActP:1.3,  uoPlan:11, uoPlanC:17,  uoPlanP:9.4,  uoAct:5,  uoActC:10,  uoActP:5.6},
+  {week:'3/4주',  sccPlan:6,  sccPlanC:11,  sccPlanP:3.6,  sccAct:4,  sccActC:8,   sccActP:2.6,  uoPlan:20, uoPlanC:37,  uoPlanP:20.6, uoAct:20, uoActC:30,  uoActP:16.7},
+  {week:'3/11주', sccPlan:0,  sccPlanC:11,  sccPlanP:3.6,  sccAct:0,  sccActC:8,   sccActP:2.6,  uoPlan:7,  uoPlanC:44,  uoPlanP:24.4, uoAct:12, uoActC:42,  uoActP:23.3},
+  {week:'3/18주', sccPlan:0,  sccPlanC:11,  sccPlanP:3.6,  sccAct:0,  sccActC:8,   sccActP:2.6,  uoPlan:11, uoPlanC:55,  uoPlanP:30.6, uoAct:11, uoActC:53,  uoActP:29.4},
+  {week:'3/25주', sccPlan:4,  sccPlanC:15,  sccPlanP:4.9,  sccAct:0,  sccActC:8,   sccActP:2.6,  uoPlan:6,  uoPlanC:61,  uoPlanP:33.9, uoAct:0,  uoActC:53,  uoActP:29.4},
+  {week:'4/1주',  sccPlan:10, sccPlanC:25,  sccPlanP:8.1,  sccAct:20, sccActC:28,  sccActP:9.1,  uoPlan:8,  uoPlanC:69,  uoPlanP:38.3, uoAct:4,  uoActC:57,  uoActP:31.7},
+  {week:'4/8주',  sccPlan:0,  sccPlanC:25,  sccPlanP:8.1,  sccAct:0,  sccActC:28,  sccActP:9.1,  uoPlan:7,  uoPlanC:76,  uoPlanP:42.2, uoAct:24, uoActC:81,  uoActP:45.0},
+  {week:'4/15주', sccPlan:10, sccPlanC:35,  sccPlanP:11.4, sccAct:5,  sccActC:33,  sccActP:10.7, uoPlan:20, uoPlanC:96,  uoPlanP:53.3, uoAct:25, uoActC:106, uoActP:58.9},
+  {week:'4/22주', sccPlan:14, sccPlanC:49,  sccPlanP:16.0, sccAct:19, sccActC:52,  sccActP:16.9, uoPlan:8,  uoPlanC:104, uoPlanP:57.8, uoAct:12, uoActC:118, uoActP:65.6},
+  {week:'4/29주', sccPlan:43, sccPlanC:92,  sccPlanP:30.0, sccAct:36, sccActC:88,  sccActP:28.7, uoPlan:16, uoPlanC:120, uoPlanP:66.7, uoAct:13, uoActC:131, uoActP:72.8},
+  {week:'5/6주',  sccPlan:13, sccPlanC:105, sccPlanP:34.2, sccAct:33, sccActC:121, sccActP:39.4, uoPlan:29, uoPlanC:149, uoPlanP:82.8, uoAct:11, uoActC:142, uoActP:78.9},
+];
+
+// ══════════════════════════════════════════════════
+// 샤힌 Precomm — Loop Test (SCC:18,640 EA / UO:6,064 EA)
+// ══════════════════════════════════════════════════
+const SHN_LOOP = [
+  {week:'3/4주',  sccPlan:100,  sccPlanC:100,  sccPlanP:0.5,  sccAct:52,  sccActC:52,   sccActP:0.3,  uoPlan:0,   uoPlanC:0,    uoPlanP:0.0,  uoAct:13,  uoActC:13,   uoActP:0.2},
+  {week:'3/11주', sccPlan:180,  sccPlanC:280,  sccPlanP:1.5,  sccAct:571, sccActC:623,  sccActP:3.3,  uoPlan:70,  uoPlanC:70,   uoPlanP:1.2,  uoAct:46,  uoActC:59,   uoActP:1.0},
+  {week:'3/18주', sccPlan:450,  sccPlanC:730,  sccPlanP:3.9,  sccAct:364, sccActC:987,  sccActP:5.3,  uoPlan:339, uoPlanC:409,  uoPlanP:6.7,  uoAct:208, uoActC:267,  uoActP:4.4},
+  {week:'3/25주', sccPlan:570,  sccPlanC:1300, sccPlanP:7.0,  sccAct:32,  sccActC:1019, sccActP:5.5,  uoPlan:283, uoPlanC:692,  uoPlanP:11.4, uoAct:270, uoActC:537,  uoActP:8.9},
+  {week:'4/1주',  sccPlan:270,  sccPlanC:1570, sccPlanP:8.4,  sccAct:225, sccActC:1244, sccActP:6.7,  uoPlan:160, uoPlanC:852,  uoPlanP:14.1, uoAct:241, uoActC:778,  uoActP:12.8},
+  {week:'4/8주',  sccPlan:490,  sccPlanC:2060, sccPlanP:11.1, sccAct:178, sccActC:1422, sccActP:7.6,  uoPlan:148, uoPlanC:1000, uoPlanP:16.5, uoAct:198, uoActC:976,  uoActP:16.1},
+  {week:'4/15주', sccPlan:560,  sccPlanC:2620, sccPlanP:14.1, sccAct:585, sccActC:2007, sccActP:10.8, uoPlan:96,  uoPlanC:1096, uoPlanP:18.1, uoAct:204, uoActC:1180, uoActP:19.5},
+  {week:'4/22주', sccPlan:640,  sccPlanC:3260, sccPlanP:17.5, sccAct:254, sccActC:2261, sccActP:12.1, uoPlan:190, uoPlanC:1286, uoPlanP:21.2, uoAct:87,  uoActC:1267, uoActP:20.9},
+  {week:'4/29주', sccPlan:850,  sccPlanC:4110, sccPlanP:22.0, sccAct:344, sccActC:2605, sccActP:14.0, uoPlan:390, uoPlanC:1676, uoPlanP:27.6, uoAct:250, uoActC:1517, uoActP:25.0},
+  {week:'5/6주',  sccPlan:1000, sccPlanC:5110, sccPlanP:27.4, sccAct:238, sccActC:2843, sccActP:15.3, uoPlan:599, uoPlanC:2275, uoPlanP:37.5, uoAct:269, uoActC:1786, uoActP:29.5},
+];
+
+// ══════════════════════════════════════════════════
+// 자푸라1 Precomm — Loop Test (SRU2:2,027 EA / SRU3:2,027 EA)
+// ══════════════════════════════════════════════════
+const SACE_LOOP = [
+  {week:'3/19주', sru2Plan:0,   sru2PlanC:412,  sru2PlanP:20.3, sru2Act:0,  sru2ActC:412, sru2ActP:20.3, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:422, sru3ActP:20.8},
+  {week:'3/26주', sru2Plan:0,   sru2PlanC:412,  sru2PlanP:20.3, sru2Act:0,  sru2ActC:412, sru2ActP:20.3, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:422, sru3ActP:20.8},
+  {week:'4/2주',  sru2Plan:0,   sru2PlanC:412,  sru2PlanP:20.3, sru2Act:13, sru2ActC:425, sru2ActP:21.0, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:1,  sru3ActC:423, sru3ActP:20.9},
+  {week:'4/9주',  sru2Plan:0,   sru2PlanC:412,  sru2PlanP:20.3, sru2Act:4,  sru2ActC:429, sru2ActP:21.2, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
+  {week:'4/16주', sru2Plan:0,   sru2PlanC:412,  sru2PlanP:20.3, sru2Act:21, sru2ActC:450, sru2ActP:22.2, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
+  {week:'4/23주', sru2Plan:150, sru2PlanC:562,  sru2PlanP:27.7, sru2Act:13, sru2ActC:463, sru2ActP:22.8, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
+  {week:'4/30주', sru2Plan:269, sru2PlanC:831,  sru2PlanP:41.0, sru2Act:70, sru2ActC:533, sru2ActP:26.3, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
+  {week:'5/7주',  sru2Plan:269, sru2PlanC:1100, sru2PlanP:54.3, sru2Act:39, sru2ActC:572, sru2ActP:28.2, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
+];
+// ══════════════════════════════════════════════════
+// 샤힌 Precomm 렌더링
+// ══════════════════════════════════════════════════
+function renderShnPrecomm(upToIdx) {
+  if (!document.getElementById('shn-motor-kpi')) return;
+  const mSlice = SHN_MOTOR.slice(0, upToIdx + 1);
+  const lSlice = SHN_LOOP.slice(0, upToIdx + 1);
+  const mD = mSlice[mSlice.length - 1];
+  const lD = lSlice[lSlice.length - 1];
+  const labels = mSlice.map(r => r.week);
+  const base = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
+  const xT   = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
+
+  // Motor KPI
+  const mDiff = mD.sccActC + mD.uoActC - mD.sccPlanC - mD.uoPlanC;
+  q('shn-motor-kpi').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">SCC Motor 누계</div>
+      <div class="kpi-value blue">${fmtN(mD.sccActC)} <span style="font-size:11px">/ 307 대</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${mD.sccActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${mD.sccActP.toFixed(1)}%</b> | 계획 ${mD.sccPlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">UO Motor 누계</div>
+      <div class="kpi-value teal">${fmtN(mD.uoActC)} <span style="font-size:11px">/ 180 대</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${mD.uoActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${mD.uoActP.toFixed(1)}%</b> | 계획 ${mD.uoPlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 SCC 실적</div>
+      <div class="kpi-value amber">${fmtN(mD.sccAct)} <span style="font-size:11px">대</span></div>
+      <div class="kpi-sub">계획: ${fmtN(mD.sccPlan)} 대</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 UO 실적</div>
+      <div class="kpi-value coral">${fmtN(mD.uoAct)} <span style="font-size:11px">대</span></div>
+      <div class="kpi-sub">계획: ${fmtN(mD.uoPlan)} 대</div>
+    </div>`;
+
+  mkChart('shn-motor-bar', { type:'bar', data:{ labels, datasets:[
+    { label:'SCC 계획', data:mSlice.map(r=>r.sccPlan), backgroundColor:'rgba(179,92,0,0.45)',  borderRadius:2 },
+    { label:'SCC 실적', data:mSlice.map(r=>r.sccAct),  backgroundColor:'rgba(26,95,180,0.85)', borderRadius:2 },
+    { label:'UO 계획',  data:mSlice.map(r=>r.uoPlan),  backgroundColor:'rgba(123,94,167,0.45)',borderRadius:2 },
+    { label:'UO 실적',  data:mSlice.map(r=>r.uoAct),   backgroundColor:'rgba(13,122,95,0.85)', borderRadius:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+
+  mkChart('shn-motor-progress', { type:'line', data:{ labels, datasets:[
+    { label:'SCC 계획%', data:mSlice.map(r=>r.sccPlanP), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'SCC 실적%', data:mSlice.map(r=>r.sccActP),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+    { label:'UO 계획%',  data:mSlice.map(r=>r.uoPlanP),  borderColor:'#7b5ea7', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'UO 실적%',  data:mSlice.map(r=>r.uoActP),   borderColor:'#0d7a5f', tension:0.3, pointRadius:3, borderWidth:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, max:100, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
+
+  // Loop KPI
+  q('shn-loop-kpi').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">SCC Loop 누계</div>
+      <div class="kpi-value blue">${fmtN(lD.sccActC)} <span style="font-size:11px">/ 18,640 EA</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${lD.sccActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${lD.sccActP.toFixed(1)}%</b> | 계획 ${lD.sccPlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">UO Loop 누계</div>
+      <div class="kpi-value teal">${fmtN(lD.uoActC)} <span style="font-size:11px">/ 6,064 EA</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${lD.uoActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${lD.uoActP.toFixed(1)}%</b> | 계획 ${lD.uoPlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 SCC 실적</div>
+      <div class="kpi-value amber">${fmtN(lD.sccAct)} <span style="font-size:11px">EA</span></div>
+      <div class="kpi-sub">계획: ${fmtN(lD.sccPlan)} EA</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 UO 실적</div>
+      <div class="kpi-value coral">${fmtN(lD.uoAct)} <span style="font-size:11px">EA</span></div>
+      <div class="kpi-sub">계획: ${fmtN(lD.uoPlan)} EA</div>
+    </div>`;
+
+  mkChart('shn-loop-bar', { type:'bar', data:{ labels, datasets:[
+    { label:'SCC 계획', data:lSlice.map(r=>r.sccPlan), backgroundColor:'rgba(179,92,0,0.45)',  borderRadius:2 },
+    { label:'SCC 실적', data:lSlice.map(r=>r.sccAct),  backgroundColor:'rgba(26,95,180,0.85)', borderRadius:2 },
+    { label:'UO 계획',  data:lSlice.map(r=>r.uoPlan),  backgroundColor:'rgba(123,94,167,0.45)',borderRadius:2 },
+    { label:'UO 실적',  data:lSlice.map(r=>r.uoAct),   backgroundColor:'rgba(13,122,95,0.85)', borderRadius:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+
+  mkChart('shn-loop-progress', { type:'line', data:{ labels, datasets:[
+    { label:'SCC 계획%', data:lSlice.map(r=>r.sccPlanP), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'SCC 실적%', data:lSlice.map(r=>r.sccActP),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+    { label:'UO 계획%',  data:lSlice.map(r=>r.uoPlanP),  borderColor:'#7b5ea7', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'UO 실적%',  data:lSlice.map(r=>r.uoActP),   borderColor:'#0d7a5f', tension:0.3, pointRadius:3, borderWidth:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, max:100, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
+
+  // 테이블
+  const rows = mSlice.slice().reverse();
+  q('shn-precomm-table').innerHTML = `<thead><tr>
+    <th rowspan="2">주간</th>
+    <th colspan="4">Motor Solo Run (대)</th>
+    <th colspan="4">Loop Test (EA)</th>
+  </tr><tr>
+    <th>SCC 계획</th><th>SCC 실적</th><th>SCC누계</th><th>SCC%</th>
+    <th>SCC 계획</th><th>SCC 실적</th><th>SCC누계</th><th>SCC%</th>
+  </tr></thead><tbody>${rows.map((r,i)=>{
+    const l = lSlice[lSlice.findIndex(x=>x.week===r.week)] || {};
+    return `<tr class="${i===0?'highlight':''}">
+      <td class="date-col">${r.week}</td>
+      <td>${fmtN(r.sccPlan)}</td><td>${fmtN(r.sccAct)}</td><td>${fmtN(r.sccActC)}</td>
+      <td><span class="pct-pill ${r.sccActP>=r.sccPlanP?'good':'behind'}">${r.sccActP.toFixed(1)}%</span></td>
+      <td>${fmtN(l.sccPlan||0)}</td><td>${fmtN(l.sccAct||0)}</td><td>${fmtN(l.sccActC||0)}</td>
+      <td><span class="pct-pill ${(l.sccActP||0)>=(l.sccPlanP||0)?'good':'behind'}">${(l.sccActP||0).toFixed(1)}%</span></td>
+    </tr>`;
+  }).join('')}</tbody>`;
+}
+
+// ══════════════════════════════════════════════════
+// 자푸라1 Precomm 렌더링
+// ══════════════════════════════════════════════════
+function renderSacePrecomm(upToIdx) {
+  if (!document.getElementById('sace-loop-kpi')) return;
+  const slice  = SACE_LOOP.slice(0, upToIdx + 1);
+  const d      = slice[slice.length - 1];
+  const labels = slice.map(r => r.week);
+  const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
+  const xT     = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
+
+  q('sace-loop-kpi').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-label">SRU2 Loop 누계</div>
+      <div class="kpi-value blue">${fmtN(d.sru2ActC)} <span style="font-size:11px">/ 2,027 EA</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sru2ActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${d.sru2ActP.toFixed(1)}%</b> | 계획 ${d.sru2PlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">SRU3 Loop 누계</div>
+      <div class="kpi-value teal">${fmtN(d.sru3ActC)} <span style="font-size:11px">/ 2,027 EA</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.sru3ActP.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:4px">실적 <b>${d.sru3ActP.toFixed(1)}%</b> | 계획 ${d.sru3PlanP.toFixed(1)}%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 SRU2 실적</div>
+      <div class="kpi-value amber">${fmtN(d.sru2Act)} <span style="font-size:11px">EA</span></div>
+      <div class="kpi-sub">계획: ${fmtN(d.sru2Plan)} EA</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">이번주 SRU3 실적</div>
+      <div class="kpi-value coral">${fmtN(d.sru3Act)} <span style="font-size:11px">EA</span></div>
+      <div class="kpi-sub">계획: ${fmtN(d.sru3Plan)} EA</div>
+    </div>`;
+
+  mkChart('sace-loop-bar', { type:'bar', data:{ labels, datasets:[
+    { label:'SRU2 계획', data:slice.map(r=>r.sru2Plan), backgroundColor:'rgba(179,92,0,0.45)',  borderRadius:2 },
+    { label:'SRU2 실적', data:slice.map(r=>r.sru2Act),  backgroundColor:'rgba(26,95,180,0.85)', borderRadius:2 },
+    { label:'SRU3 계획', data:slice.map(r=>r.sru3Plan), backgroundColor:'rgba(123,94,167,0.45)',borderRadius:2 },
+    { label:'SRU3 실적', data:slice.map(r=>r.sru3Act),  backgroundColor:'rgba(13,122,95,0.85)', borderRadius:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+
+  mkChart('sace-loop-progress', { type:'line', data:{ labels, datasets:[
+    { label:'SRU2 계획%', data:slice.map(r=>r.sru2PlanP), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'SRU2 실적%', data:slice.map(r=>r.sru2ActP),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+    { label:'SRU3 계획%', data:slice.map(r=>r.sru3PlanP), borderColor:'#7b5ea7', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'SRU3 실적%', data:slice.map(r=>r.sru3ActP),  borderColor:'#0d7a5f', tension:0.3, pointRadius:3, borderWidth:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ min:15, max:60, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
+
+  const rows = slice.slice().reverse();
+  q('sace-precomm-table').innerHTML = `<thead><tr>
+    <th>주간</th>
+    <th>SRU2 계획</th><th>SRU2 실적</th><th>SRU2 누계</th><th>SRU2%</th>
+    <th>SRU3 계획</th><th>SRU3 실적</th><th>SRU3 누계</th><th>SRU3%</th>
+  </tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i===0?'highlight':''}">
+    <td class="date-col">${r.week}</td>
+    <td>${fmtN(r.sru2Plan)}</td><td>${fmtN(r.sru2Act)}</td><td>${fmtN(r.sru2ActC)}</td>
+    <td><span class="pct-pill ${r.sru2ActP>=r.sru2PlanP?'good':'behind'}">${r.sru2ActP.toFixed(1)}%</span></td>
+    <td>${fmtN(r.sru3Plan)}</td><td>${fmtN(r.sru3Act)}</td><td>${fmtN(r.sru3ActC)}</td>
+    <td><span class="pct-pill ${r.sru3ActP>=r.sru3PlanP?'good':'behind'}">${r.sru3ActP.toFixed(1)}%</span></td>
+  </tr>`).join('')}</tbody>`;
+}
 // ─── 초기 렌더 ────────────────────────────────────
 buildSelect('shn-hydro-select', SHN_HYDRO,      'date', renderShnHydro);
 buildSelect('eshn-date-select', ELEC_SHN_DATA,  'week', renderElecShn);
 buildSelect('ishn-date-select', INST_SHN_DATA,  'week', renderInstShn);
+buildSelect('shn-precomm-select', SHN_MOTOR,   'week', renderShnPrecomm);
+buildSelect('sace-precomm-select',SACE_LOOP,   'week', renderSacePrecomm);
 buildSelect('shn-date-select',  SHN_DATA,       'date', renderShn);
 buildSelect('sace-date-select',  SACE_DATA,       'week', renderSace);
 buildSelect('isace-date-select', INST_SACE_DATA,  'week', renderInstSace);
@@ -2115,6 +2441,8 @@ buildSelect('esta4-date-select', ELEC_STA4_DATA,  'week', renderElecSta4);
 buildSelect('ista4-date-select', INST_STA4_DATA,  'week', renderInstSta4);
 
 renderShn(SHN_DATA.length - 1);
+renderShnPrecomm(SHN_MOTOR.length - 1);
+renderSacePrecomm(SACE_LOOP.length - 1);
 renderShnHydro(SHN_HYDRO.length - 1);
 renderElecShn(ELEC_SHN_DATA.length - 1);
 renderInstShn(INST_SHN_DATA.length - 1);
