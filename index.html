@@ -122,6 +122,7 @@
     gap: 0;
     padding: 8px 20px 0;
     min-width: max-content;
+    width: max-content;
   }
   .tab-btn {
     padding: 6px 18px;
@@ -333,6 +334,7 @@
     gap: 0;
     margin-bottom: 0;
     border-bottom: 1px solid var(--border);
+    min-width: max-content;
   }
   .subtab-btn {
     padding: 4px 14px;
@@ -358,7 +360,11 @@
   /* ── 서브탭 외부 래퍼 ── */
   .subtab-outer {
     padding: 0 20px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .subtab-outer::-webkit-scrollbar { display: none; }
   /* ── 서브패널 콘텐츠 패딩 ── */
   .sub-content {
     padding: 14px 20px 28px;
