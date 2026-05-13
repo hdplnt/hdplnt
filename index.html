@@ -1105,6 +1105,7 @@ const SHN_DATA = [
   {date:'5/9',  scc:1933, sccCum:599236, sccW:341, sccPct:84.8, uo:572,  uoCum:133376, uoW:45, uoPct:90.8, totCum:732612, totW:386, totPct:85.8},
   {date:'5/10', scc:260,  sccCum:599496, sccW:35,  sccPct:84.8, uo:373,  uoCum:133749, uoW:31, uoPct:91.0, totCum:733245, totW:66,  totPct:85.9},
   {date:'5/11', scc:2100, sccCum:601596, sccW:376, sccPct:85.1, uo:521,  uoCum:134270, uoW:46, uoPct:91.4, totCum:735866, totW:422, totPct:86.2},
+  {date:'5/12', scc:2312, sccCum:603909, sccW:368, sccPct:85.4, uo:542,  uoCum:134812, uoW:46, uoPct:91.8, totCum:738720, totW:414, totPct:86.5},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1797,50 +1798,50 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: 5,568 PKG | CW:107 PKG | Steam:365 PKG
+// ※ 샤힌 수압 총물량: 5,601 PKG | CW:107 PKG | Steam:365 PKG
 const SHN_HYDRO = [
-  {date:'4/1',  pkgReady:2,  pkgReview:8,  wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0, rstCum:0, cwWd:2,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/2',  pkgReady:11, pkgReview:2,  wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/3',  pkgReady:50, pkgReview:5,  wd:11, wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/4',  pkgReady:2,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/5',  pkgReady:0,  pkgReview:0,  wd:0,  wdCum:148, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/6',  pkgReady:35, pkgReview:6,  wd:4,  wdCum:152, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/7',  pkgReady:29, pkgReview:14, wd:6,  wdCum:158, hp:0,  hpCum:42,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/8',  pkgReady:40, pkgReview:1,  wd:3,  wdCum:161, hp:1,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/9',  pkgReady:35, pkgReview:7,  wd:3,  wdCum:164, hp:0,  hpCum:43,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/10', pkgReady:3,  pkgReview:36, wd:5,  wdCum:169, hp:3,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/11', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/12', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:169, hp:0,  hpCum:46,  hpPct:0.8, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/13', pkgReady:20, pkgReview:1,  wd:7,  wdCum:176, hp:3,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/14', pkgReady:19, pkgReview:44, wd:36, wdCum:212, hp:0,  hpCum:49,  hpPct:0.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:8,  cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/15', pkgReady:13, pkgReview:13, wd:10, wdCum:222, hp:33, hpCum:82,  hpPct:1.5, rst:0, rstCum:0, cwWd:2,  cwWdCum:10, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/16', pkgReady:40, pkgReview:23, wd:7,  wdCum:229, hp:3,  hpCum:85,  hpPct:1.5, rst:0, rstCum:0, cwWd:0,  cwWdCum:10, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/17', pkgReady:16, pkgReview:7,  wd:30, wdCum:259, hp:17, hpCum:102, hpPct:1.8, rst:0, rstCum:0, cwWd:4,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/18', pkgReady:4,  pkgReview:2,  wd:6,  wdCum:265, hp:2,  hpCum:104, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/19', pkgReady:0,  pkgReview:0,  wd:0,  wdCum:265, hp:0,  hpCum:104, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/20', pkgReady:37, pkgReview:18, wd:13, wdCum:278, hp:2,  hpCum:106, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/21', pkgReady:85, pkgReview:31, wd:15, wdCum:293, hp:2,  hpCum:108, hpPct:1.9, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:0, stHpCum:2, stHpPct:0.5},
-  {date:'4/22', pkgReady:28, pkgReview:13, wd:7,  wdCum:300, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:7,  stHp:2, stHpCum:4, stHpPct:1.1},
-  {date:'4/23', pkgReady:7,  pkgReview:32, wd:26, wdCum:326, hp:3,  hpCum:123, hpPct:2.2, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:2, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/24', pkgReady:6,  pkgReview:19, wd:25, wdCum:351, hp:7,  hpCum:130, hpPct:2.3, rst:0, rstCum:0, cwWd:0,  cwWdCum:14, cwHp:0, cwHpCum:0,  cwHpPct:0.0, stWd:0, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/25', pkgReady:5,  pkgReview:7,  wd:9,  wdCum:360, hp:11, hpCum:141, hpPct:2.5, rst:0, rstCum:0, cwWd:0,  cwWdCum:42, cwHp:0, cwHpCum:7,  cwHpPct:6.5, stWd:0, stWdCum:23, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/26', pkgReady:0,   pkgReview:0,  wd:0,  wdCum:361, hp:0,  hpCum:142, hpPct:2.6, rst:0, rstCum:45, cwWd:0,  cwWdCum:42, cwHp:0, cwHpCum:7,  cwHpPct:6.5,  stWd:0, stWdCum:24, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/27', pkgReady:2,   pkgReview:8,  wd:25, wdCum:386, hp:4,  hpCum:146, hpPct:2.6, rst:0, rstCum:45, cwWd:2,  cwWdCum:44, cwHp:2, cwHpCum:9,  cwHpPct:8.3,  stWd:3, stWdCum:27, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/28', pkgReady:100, pkgReview:94, wd:2,  wdCum:388, hp:10, hpCum:156, hpPct:2.8, rst:1, rstCum:46, cwWd:0,  cwWdCum:44, cwHp:9, cwHpCum:18, cwHpPct:16.7, stWd:0, stWdCum:27, stHp:0, stHpCum:4, stHpPct:1.1},
-  {date:'4/29', pkgReady:117, pkgReview:84, wd:91, wdCum:479, hp:5,  hpCum:161, hpPct:2.9, rst:1, rstCum:47, cwWd:0,  cwWdCum:44, cwHp:5, cwHpCum:23, cwHpPct:21.3, stWd:1, stWdCum:28, stHp:0, stHpCum:4, stHpPct:1.1},
-
-  {date:'4/30', pkgReady:11,  pkgReview:71,  wd:102, wdCum:579, hp:87,  hpCum:248, hpPct:4.5, rst:0,  rstCum:66,  cwWd:0,  cwWdCum:44, cwHp:1,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/1',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:579, hp:0,   hpCum:248, hpPct:4.5, rst:0,  rstCum:66,  cwWd:0,  cwWdCum:44, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/2',  pkgReady:45,  pkgReview:5,   wd:19,  wdCum:598, hp:3,   hpCum:251, hpPct:4.5, rst:3,  rstCum:69,  cwWd:8,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/3',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:598, hp:0,   hpCum:251, hpPct:4.5, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/4',  pkgReady:39,  pkgReview:24,  wd:3,   wdCum:601, hp:104, hpCum:355, hpPct:6.4, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:20, stHpCum:24, stHpPct:6.6},
-  {date:'5/5',  pkgReady:1,   pkgReview:0,   wd:0,   wdCum:601, hp:0,   hpCum:355, hpPct:6.4, rst:0,  rstCum:69,  cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/6',  pkgReady:37,  pkgReview:10,  wd:26,  wdCum:635, hp:17,  hpCum:372, hpPct:6.7, rst:11, rstCum:80,  cwWd:21, cwWdCum:73, cwHp:2,  cwHpCum:26, cwHpPct:24.3, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/7',  pkgReady:14,  pkgReview:30,  wd:12,  wdCum:647, hp:18,  hpCum:390, hpPct:7.0, rst:6,  rstCum:86,  cwWd:0,  cwWdCum:73, cwHp:4,  cwHpCum:30, cwHpPct:28.0, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/8',  pkgReady:36,  pkgReview:19,  wd:24,  wdCum:671, hp:11,  hpCum:401, hpPct:7.2, rst:0,  rstCum:86,  cwWd:4,  cwWdCum:77, cwHp:6,  cwHpCum:36, cwHpPct:33.6, stWd:1, stWdCum:28, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/9',  pkgReady:20,  pkgReview:44,  wd:10,  wdCum:688, hp:18,  hpCum:419, hpPct:7.5, rst:3,  rstCum:89,  cwWd:6,  cwWdCum:83, cwHp:4,  cwHpCum:40, cwHpPct:37.4, stWd:0, stWdCum:28, stHp:1,  stHpCum:25, stHpPct:6.8},
-  {date:'5/10', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:688, hp:0,   hpCum:419, hpPct:7.5, rst:0,  rstCum:89,  cwWd:0,  cwWdCum:83, cwHp:0,  cwHpCum:40, cwHpPct:37.4, stWd:0, stWdCum:28, stHp:0,  stHpCum:25, stHpPct:6.8},
-  {date:'5/11', pkgReady:24,  pkgReview:5,   wd:37,  wdCum:725, hp:27,  hpCum:446, hpPct:8.0, rst:0,  rstCum:89,  cwWd:2,  cwWdCum:85, cwHp:16, cwHpCum:56, cwHpPct:52.3, stWd:5, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
+  {date:'4/1',  pkgReady:2,   pkgReview:8,   wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0,  rstCum:21, cwWd:2,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/2',  pkgReady:12,  pkgReview:2,   wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/3',  pkgReady:51,  pkgReview:5,   wd:10, wdCum:147, hp:0,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/4',  pkgReady:2,   pkgReview:0,   wd:0,  wdCum:147, hp:0,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/5',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:147, hp:0,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/6',  pkgReady:41,  pkgReview:6,   wd:4,  wdCum:151, hp:0,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/7',  pkgReady:29,  pkgReview:14,  wd:6,  wdCum:157, hp:0,  hpCum:42,  hpPct:0.7, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/8',  pkgReady:41,  pkgReview:6,   wd:3,  wdCum:160, hp:1,  hpCum:43,  hpPct:0.8, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/9',  pkgReady:35,  pkgReview:7,   wd:3,  wdCum:163, hp:0,  hpCum:43,  hpPct:0.8, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/10', pkgReady:5,   pkgReview:36,  wd:5,  wdCum:168, hp:3,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/11', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:168, hp:0,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/12', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:168, hp:0,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/13', pkgReady:24,  pkgReview:1,   wd:7,  wdCum:175, hp:3,  hpCum:49,  hpPct:0.9, rst:3,  rstCum:24, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/14', pkgReady:20,  pkgReview:47,  wd:36, wdCum:211, hp:0,  hpCum:49,  hpPct:0.9, rst:5,  rstCum:29, cwWd:0,  cwWdCum:8,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/15', pkgReady:25,  pkgReview:13,  wd:10, wdCum:221, hp:33, hpCum:82,  hpPct:1.5, rst:2,  rstCum:31, cwWd:2,  cwWdCum:10, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/16', pkgReady:45,  pkgReview:23,  wd:7,  wdCum:228, hp:3,  hpCum:85,  hpPct:1.5, rst:3,  rstCum:34, cwWd:0,  cwWdCum:10, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/17', pkgReady:16,  pkgReview:7,   wd:30, wdCum:258, hp:1,  hpCum:86,  hpPct:1.5, rst:0,  rstCum:34, cwWd:4,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/18', pkgReady:7,   pkgReview:2,   wd:6,  wdCum:264, hp:2,  hpCum:88,  hpPct:1.6, rst:0,  rstCum:34, cwWd:0,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/19', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:264, hp:0,  hpCum:88,  hpPct:1.6, rst:0,  rstCum:34, cwWd:0,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/20', pkgReady:42,  pkgReview:17,  wd:13, wdCum:277, hp:2,  hpCum:90,  hpPct:1.6, rst:3,  rstCum:37, cwWd:0,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/21', pkgReady:93,  pkgReview:32,  wd:15, wdCum:292, hp:2,  hpCum:92,  hpPct:1.6, rst:2,  rstCum:39, cwWd:0,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/22', pkgReady:29,  pkgReview:16,  wd:7,  wdCum:299, hp:12, hpCum:104, hpPct:1.9, rst:10, rstCum:49, cwWd:0,  cwWdCum:14, cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:2,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/23', pkgReady:7,   pkgReview:33,  wd:25, wdCum:324, hp:20, hpCum:124, hpPct:2.2, rst:2,  rstCum:51, cwWd:10, cwWdCum:24, cwHp:1,  cwHpCum:1,  cwHpPct:0.9,  stWd:9, stWdCum:16, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/24', pkgReady:13,  pkgReview:15,  wd:33, wdCum:357, hp:7,  hpCum:131, hpPct:2.3, rst:4,  rstCum:55, cwWd:12, cwWdCum:36, cwHp:2,  cwHpCum:3,  cwHpPct:2.8,  stWd:4, stWdCum:20, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/25', pkgReady:5,   pkgReview:7,   wd:9,  wdCum:366, hp:11, hpCum:142, hpPct:2.5, rst:4,  rstCum:59, cwWd:6,  cwWdCum:42, cwHp:4,  cwHpCum:7,  cwHpPct:6.5,  stWd:2, stWdCum:22, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/26', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:366, hp:0,  hpCum:142, hpPct:2.5, rst:0,  rstCum:59, cwWd:0,  cwWdCum:42, cwHp:0,  cwHpCum:7,  cwHpPct:6.5,  stWd:0, stWdCum:22, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/27', pkgReady:15,  pkgReview:8,   wd:24, wdCum:390, hp:4,  hpCum:146, hpPct:2.6, rst:0,  rstCum:59, cwWd:2,  cwWdCum:44, cwHp:2,  cwHpCum:9,  cwHpPct:8.4,  stWd:3, stWdCum:25, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/28', pkgReady:100, pkgReview:102, wd:2,  wdCum:392, hp:10, hpCum:156, hpPct:2.8, rst:3,  rstCum:62, cwWd:0,  cwWdCum:44, cwHp:9,  cwHpCum:18, cwHpPct:16.8, stWd:0, stWdCum:25, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/29', pkgReady:145, pkgReview:97,  wd:100,wdCum:492, hp:5,  hpCum:161, hpPct:2.9, rst:4,  rstCum:66, cwWd:0,  cwWdCum:44, cwHp:5,  cwHpCum:23, cwHpPct:21.5, stWd:2, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/30', pkgReady:11,  pkgReview:49,  wd:102,wdCum:594, hp:87, hpCum:248, hpPct:4.4, rst:0,  rstCum:66, cwWd:0,  cwWdCum:44, cwHp:1,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/1',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:594, hp:0,  hpCum:248, hpPct:4.4, rst:0,  rstCum:66, cwWd:0,  cwWdCum:44, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/2',  pkgReady:45,  pkgReview:5,   wd:19, wdCum:613, hp:3,  hpCum:251, hpPct:4.5, rst:3,  rstCum:69, cwWd:8,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/3',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:613, hp:0,  hpCum:251, hpPct:4.5, rst:0,  rstCum:69, cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/4',  pkgReady:42,  pkgReview:25,  wd:3,  wdCum:616, hp:104,hpCum:355, hpPct:6.3, rst:0,  rstCum:69, cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:20, stHpCum:24, stHpPct:6.6},
+  {date:'5/5',  pkgReady:3,   pkgReview:0,   wd:0,  wdCum:616, hp:0,  hpCum:355, hpPct:6.3, rst:0,  rstCum:69, cwWd:0,  cwWdCum:52, cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/6',  pkgReady:38,  pkgReview:11,  wd:26, wdCum:642, hp:17, hpCum:372, hpPct:6.6, rst:11, rstCum:80, cwWd:21, cwWdCum:73, cwHp:2,  cwHpCum:26, cwHpPct:24.3, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/7',  pkgReady:28,  pkgReview:32,  wd:12, wdCum:654, hp:18, hpCum:390, hpPct:7.0, rst:6,  rstCum:86, cwWd:0,  cwWdCum:73, cwHp:4,  cwHpCum:30, cwHpPct:28.0, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/8',  pkgReady:43,  pkgReview:29,  wd:24, wdCum:678, hp:11, hpCum:401, hpPct:7.2, rst:0,  rstCum:86, cwWd:4,  cwWdCum:77, cwHp:6,  cwHpCum:36, cwHpPct:33.6, stWd:1, stWdCum:28, stHp:0,  stHpCum:24, stHpPct:6.6},
+  {date:'5/9',  pkgReady:20,  pkgReview:44,  wd:10, wdCum:688, hp:18, hpCum:419, hpPct:7.5, rst:3,  rstCum:89, cwWd:6,  cwWdCum:83, cwHp:4,  cwHpCum:40, cwHpPct:37.4, stWd:0, stWdCum:28, stHp:1,  stHpCum:25, stHpPct:6.8},
+  {date:'5/10', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:688, hp:0,  hpCum:419, hpPct:7.5, rst:0,  rstCum:89, cwWd:0,  cwWdCum:83, cwHp:0,  cwHpCum:40, cwHpPct:37.4, stWd:0, stWdCum:28, stHp:0,  stHpCum:25, stHpPct:6.8},
+  {date:'5/11', pkgReady:24,  pkgReview:5,   wd:37, wdCum:725, hp:27, hpCum:446, hpPct:8.0, rst:0,  rstCum:89, cwWd:2,  cwWdCum:85, cwHp:16, cwHpCum:56, cwHpPct:52.3, stWd:5, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
+  {date:'5/12', pkgReady:22, pkgReview:19, wd:11, wdCum:732, hp:11, hpCum:457, hpPct:8.2, rst:0, rstCum:89, cwWd:1, cwWdCum:86, cwHp:6, cwHpCum:62, cwHpPct:57.9, stWd:0, stWdCum:33, stHp:0, stHpCum:25, stHpPct:6.8},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1852,8 +1853,8 @@ function renderShnHydro(upToIdx) {
   const d       = slice[slice.length - 1];
   if (!d) return;
 
-  const wdRemain = 5568 - d.wdCum;
-  const hpRemain = 5568 - d.hpCum;
+  const wdRemain = 5601 - d.wdCum;
+  const hpRemain = 5601 - d.hpCum;
   const last7    = slice.slice(-7);
   const avg7wd   = +(last7.reduce((s,r)=>s+r.wd,0)/last7.length).toFixed(1);
   const avg7hp   = +(last7.reduce((s,r)=>s+r.hp,0)/last7.length).toFixed(1);
@@ -1863,14 +1864,14 @@ function renderShnHydro(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">Walkdown 누계</div>
       <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 5,568 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/5568*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/5568*100).toFixed(1)}%</b> | 잔여 ${fmtN(wdRemain)} PKG</div>
+      <div class="kpi-sub">총 물량: 5,601 PKG</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/5601*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/5601*100).toFixed(1)}%</b> | 잔여 ${fmtN(wdRemain)} PKG</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">수압 누계</div>
       <div class="kpi-value teal">${fmtN(d.hpCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 5,568 PKG</div>
+      <div class="kpi-sub">총 물량: 5,601 PKG</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.hpPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.hpPct.toFixed(1)}%</b> | 잔여 ${fmtN(hpRemain)} PKG</div>
     </div>
@@ -1909,9 +1910,9 @@ function renderShnHydro(upToIdx) {
 
   // ── 누계 진도율 ──
   const minP = 0;
-  const maxP = Math.min(100, Math.ceil(Math.max(...chart14.map(r=>r.wdCum/5568*100)) + 2));
+  const maxP = Math.min(100, Math.ceil(Math.max(...chart14.map(r=>r.wdCum/5601*100)) + 2));
   mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
-    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5568*100).toFixed(1)), borderColor:'#1a5fb4', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
+    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5601*100).toFixed(1)), borderColor:'#1a5fb4', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
     { label:'수압%',     data:chart14.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
@@ -1955,7 +1956,7 @@ function renderShnHydro(upToIdx) {
     <td class="date-col">${r.date}</td>
     <td>${fmtN(r.pkgReady)}</td><td>${fmtN(r.pkgReview)}</td>
     <td>${fmtN(r.wd)}</td><td>${fmtN(r.wdCum)}</td>
-    <td><span class="pct-pill neutral">${(r.wdCum/5568*100).toFixed(1)}%</span></td>
+    <td><span class="pct-pill neutral">${(r.wdCum/5601*100).toFixed(1)}%</span></td>
     <td>${fmtN(r.hp)}</td><td>${fmtN(r.hpCum)}</td>
     <td><span class="pct-pill ${r.hpPct>=2?'good':'behind'}">${r.hpPct.toFixed(1)}%</span></td>
     <td>${fmtN(r.cwWd)}</td><td>${fmtN(r.cwWdCum)}</td><td>${fmtN(r.cwHp)}</td><td>${fmtN(r.cwHpCum)}</td>
