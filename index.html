@@ -2363,19 +2363,23 @@ function renderShnPrecomm(upToIdx) {
   const rows = mSlice.slice().reverse();
   q('shn-precomm-table').innerHTML = `<thead><tr>
     <th rowspan="2">주간</th>
-    <th colspan="4">Motor Solo Run (대)</th>
-    <th colspan="4">Loop Test (EA)</th>
+    <th colspan="4">Motor Solo Run (SCC+UO, 대)</th>
+    <th colspan="4">Loop Test (SCC+UO, EA)</th>
   </tr><tr>
-    <th>SCC 계획</th><th>SCC 실적</th><th>SCC누계</th><th>SCC%</th>
-    <th>SCC 계획</th><th>SCC 실적</th><th>SCC누계</th><th>SCC%</th>
+    <th>계획</th><th>실적</th><th>누계</th><th>진도율</th>
+    <th>계획</th><th>실적</th><th>누계</th><th>진도율</th>
   </tr></thead><tbody>${rows.map((r,i)=>{
     const l = lSlice[lSlice.findIndex(x=>x.week===r.week)] || {};
+    const mPlan=r.sccPlan+r.uoPlan, mAct=r.sccAct+r.uoAct, mCum=r.sccActC+r.uoActC;
+    const mPlanCum=r.sccPlanC+r.uoPlanC, mPct=+(mCum/487*100).toFixed(1), mPlanPct=+(mPlanCum/487*100).toFixed(1);
+    const lPlan=(l.sccPlan||0)+(l.uoPlan||0), lAct=(l.sccAct||0)+(l.uoAct||0), lCum=(l.sccActC||0)+(l.uoActC||0);
+    const lPlanCum=(l.sccPlanC||0)+(l.uoPlanC||0), lPct=+(lCum/24704*100).toFixed(1), lPlanPct=+(lPlanCum/24704*100).toFixed(1);
     return `<tr class="${i===0?'highlight':''}">
       <td class="date-col">${r.week}</td>
-      <td>${fmtN(r.sccPlan)}</td><td>${fmtN(r.sccAct)}</td><td>${fmtN(r.sccActC)}</td>
-      <td><span class="pct-pill ${r.sccActP>=r.sccPlanP?'good':'behind'}">${r.sccActP.toFixed(1)}%</span></td>
-      <td>${fmtN(l.sccPlan||0)}</td><td>${fmtN(l.sccAct||0)}</td><td>${fmtN(l.sccActC||0)}</td>
-      <td><span class="pct-pill ${(l.sccActP||0)>=(l.sccPlanP||0)?'good':'behind'}">${(l.sccActP||0).toFixed(1)}%</span></td>
+      <td>${fmtN(mPlan)}</td><td>${fmtN(mAct)}</td><td>${fmtN(mCum)}</td>
+      <td><span class="pct-pill ${mPct>=mPlanPct?'good':'behind'}">${mPct.toFixed(1)}%</span></td>
+      <td>${fmtN(lPlan)}</td><td>${fmtN(lAct)}</td><td>${fmtN(lCum)}</td>
+      <td><span class="pct-pill ${lPct>=lPlanPct?'good':'behind'}">${lPct.toFixed(1)}%</span></td>
     </tr>`;
   }).join('')}</tbody>`;
 }
