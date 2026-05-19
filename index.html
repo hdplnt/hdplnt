@@ -1103,6 +1103,7 @@ const SHN_DATA = [
   {date:'5/15', scc:3846, sccCum:615350, sccW:365, sccPct:87.0, uo:431,  uoCum:136432, uoW:47, uoPct:92.9, totCum:751783, totW:412, totPct:88.0},
   {date:'5/16', scc:2060, sccCum:617410, sccW:259, sccPct:87.3, uo:492,  uoCum:136925, uoW:42, uoPct:93.2, totCum:754334, totW:301, totPct:88.3},
   {date:'5/17', scc:1033, sccCum:618443, sccW:153, sccPct:87.5, uo:243,  uoCum:137168, uoW:29, uoPct:93.4, totCum:755610, totW:182, totPct:88.5},
+  {date:'5/18', scc:3185, sccCum:621628, sccW:358, sccPct:87.9, uo:490,  uoCum:137658, uoW:46, uoPct:93.7, totCum:759286, totW:404, totPct:88.9},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1800,7 +1801,7 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: 5,597 PKG | CW:107 PKG | Steam:365 PKG
+// ※ 샤힌 수압 총물량: 5,597 PKG | CW:107 PKG | Steam:368 PKG
 const SHN_HYDRO = [
   {date:'4/1',  pkgReady:2,   pkgReview:8,   wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0,  rstCum:21,  cwWd:2,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
   {date:'4/2',  pkgReady:12,  pkgReview:2,   wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
@@ -1845,10 +1846,11 @@ const SHN_HYDRO = [
   {date:'5/11', pkgReady:42,  pkgReview:9,   wd:33, wdCum:722, hp:27, hpCum:447, hpPct:8.0, rst:2,  rstCum:92,  cwWd:2,  cwWdCum:85,  cwHp:16, cwHpCum:57, cwHpPct:53.3, stWd:5, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
   {date:'5/12', pkgReady:35,  pkgReview:19,  wd:11, wdCum:733, hp:11, hpCum:458, hpPct:8.2, rst:0,  rstCum:92,  cwWd:1,  cwWdCum:86,  cwHp:6,  cwHpCum:63, cwHpPct:58.9, stWd:0, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
   {date:'5/13', pkgReady:37,  pkgReview:40,  wd:20,  wdCum:753, hp:16,  hpCum:478, hpPct:8.5, rst:8,  rstCum:98,  cwWd:0,  cwWdCum:86,  cwHp:7,  cwHpCum:74, cwHpPct:69.2, stWd:0, stWdCum:33, stHp:1,  stHpCum:26, stHpPct:7.1},
-  {date:'5/14', pkgReady:52,  pkgReview:17,  wd:24,  wdCum:777, hp:18,  hpCum:496, hpPct:8.9, rst:4,  rstCum:102, cwWd:17, cwWdCum:103, cwHp:0,  cwHpCum:74, cwHpPct:69.2, stWd:3, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/15', pkgReady:9,   pkgReview:25,  wd:27,  wdCum:804, hp:11,  hpCum:507, hpPct:9.1, rst:0,  rstCum:102, cwWd:1,  cwWdCum:104, cwHp:0,  cwHpCum:74, cwHpPct:69.2, stWd:0, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/16', pkgReady:40,  pkgReview:42,  wd:10,  wdCum:814, hp:10,  hpCum:517, hpPct:9.2, rst:4,  rstCum:106, cwWd:0,  cwWdCum:104, cwHp:4,  cwHpCum:78, cwHpPct:72.9, stWd:4, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:814, hp:0,   hpCum:517, hpPct:9.2, rst:0,  rstCum:106, cwWd:0,  cwWdCum:104, cwHp:0,  cwHpCum:78, cwHpPct:72.9, stWd:0, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
+  {date:'5/14', pkgReady:58,  pkgReview:17,  wd:24, wdCum:777, hp:18, hpCum:495, hpPct:8.8, rst:4,  rstCum:105, cwWd:17, cwWdCum:103, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:3, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
+  {date:'5/15', pkgReady:10,  pkgReview:25,  wd:27, wdCum:804, hp:12, hpCum:507, hpPct:9.1, rst:1,  rstCum:106, cwWd:1,  cwWdCum:104, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:0, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
+  {date:'5/16', pkgReady:40,  pkgReview:44,  wd:12, wdCum:816, hp:11, hpCum:518, hpPct:9.3, rst:4,  rstCum:110, cwWd:0,  cwWdCum:104, cwHp:4,  cwHpCum:77,  cwHpPct:72.0, stWd:4, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
+  {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:816, hp:0,  hpCum:518, hpPct:9.3, rst:0,  rstCum:110, cwWd:0,  cwWdCum:104, cwHp:0,  cwHpCum:77,  cwHpPct:72.0, stWd:0, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
+  {date:'5/18', pkgReady:43,  pkgReview:14,  wd:17, wdCum:833, hp:30, hpCum:548, hpPct:9.8, rst:9,  rstCum:119, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1939,14 +1941,14 @@ function renderShnHydro(upToIdx) {
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Steam라인 Walkdown 누계</div>
-      <div class="kpi-value amber">${fmtN(d.stWdCum)} <span style="font-size:12px">/ 365 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/365*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.stWdCum/365*100).toFixed(1)}%</b></div>
+      <div class="kpi-value amber">${fmtN(d.stWdCum)} <span style="font-size:12px">/ 368 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/368*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.stWdCum/368*100).toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Steam라인 수압 누계</div>
-      <div class="kpi-value coral">${fmtN(d.stHpCum)} <span style="font-size:12px">/ 365 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/365*100).toFixed(0)}%"></div></div>
+      <div class="kpi-value coral">${fmtN(d.stHpCum)} <span style="font-size:12px">/ 368 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/368*100).toFixed(0)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.stHpPct.toFixed(1)}%</b></div>
     </div>`;
 
