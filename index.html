@@ -1105,6 +1105,7 @@ const SHN_DATA = [
   {date:'5/17', scc:1033, sccCum:618443, sccW:153, sccPct:87.5, uo:243,  uoCum:137168, uoW:29, uoPct:93.4, totCum:755610, totW:182, totPct:88.5},
   {date:'5/18', scc:3185, sccCum:621628, sccW:358, sccPct:87.9, uo:490,  uoCum:137658, uoW:46, uoPct:93.7, totCum:759286, totW:404, totPct:88.9},
   {date:'5/19', scc:3304, sccCum:624932, sccW:355, sccPct:88.4, uo:476,  uoCum:138133, uoW:46, uoPct:94.0, totCum:763065, totW:401, totPct:89.4},
+  {date:'5/20', scc:386,  sccCum:625318, sccW:204, sccPct:88.4, uo:20,   uoCum:138153, uoW:38, uoPct:94.0, totCum:763471, totW:242, totPct:89.4},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1851,8 +1852,9 @@ const SHN_HYDRO = [
   {date:'5/15', pkgReady:10,  pkgReview:25,  wd:27, wdCum:804, hp:12, hpCum:507, hpPct:9.1, rst:1,  rstCum:106, cwWd:1,  cwWdCum:104, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:0, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
   {date:'5/16', pkgReady:40,  pkgReview:44,  wd:12, wdCum:816, hp:11, hpCum:518, hpPct:9.3, rst:4,  rstCum:110, cwWd:0,  cwWdCum:104, cwHp:4,  cwHpCum:77,  cwHpPct:72.0, stWd:4, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
   {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:817, hp:0,  hpCum:518, hpPct:9.3,  rst:0,  rstCum:118, cwWd:0,  cwWdCum:104, cwHp:0,  cwHpCum:77,  cwHpPct:72.0, stWd:0, stWdCum:41, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/18', pkgReady:53,  pkgReview:14,  wd:17, wdCum:834, hp:30, hpCum:548, hpPct:9.8,  rst:10, rstCum:128, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:43, stHp:4,  stHpCum:30, stHpPct:8.2},
-  {date:'5/19', pkgReady:55,  pkgReview:9,   wd:10, wdCum:844, hp:23, hpCum:571, hpPct:10.2, rst:0,  rstCum:128, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:43, stHp:0,  stHpCum:30, stHpPct:8.2},
+  {date:'5/18', pkgReady:87,  pkgReview:14,  wd:17, wdCum:833, hp:30, hpCum:548, hpPct:9.8,  rst:10, rstCum:126, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
+  {date:'5/19', pkgReady:61,  pkgReview:43,  wd:10, wdCum:843, hp:23, hpCum:571, hpPct:10.2, rst:0,  rstCum:126, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:0,  stHpCum:30, stHpPct:8.2},
+  {date:'5/20', pkgReady:10,  pkgReview:57,  wd:40, wdCum:883, hp:14, hpCum:585, hpPct:10.5, rst:0,  rstCum:126, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:6,  stHpCum:36, stHpPct:9.8},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1888,7 +1890,7 @@ function renderShnHydro(upToIdx) {
     </div>
     <div class="kpi-card">
       <div class="kpi-label">일일 실적 (${d.date})</div>
-      <div class="kpi-value amber">${fmtN(d.wd)} <span style="font-size:12px">WD</span> / ${fmtN(d.hp)} <span style="font-size:12px">HP</span></div>
+      <div class="kpi-value amber">${fmtN(d.wd)} <span style="font-size:12px">Walkdown</span> / ${fmtN(d.hp)} <span style="font-size:12px">Hydrotest</span></div>
       <div class="kpi-sub">PKG Ready: ${fmtN(d.pkgReady)} | Review: ${fmtN(d.pkgReview)}</div>
       <div class="kpi-sub" style="margin-top:4px">7일 평균 WD: ${avg7wd} | HP: ${avg7hp}</div>
     </div>
