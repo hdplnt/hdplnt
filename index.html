@@ -1106,6 +1106,7 @@ const SHN_DATA = [
   {date:'5/18', scc:3185, sccCum:621628, sccW:358, sccPct:87.9, uo:490,  uoCum:137658, uoW:46, uoPct:93.7, totCum:759286, totW:404, totPct:88.9},
   {date:'5/19', scc:3304, sccCum:624932, sccW:355, sccPct:88.4, uo:476,  uoCum:138133, uoW:46, uoPct:94.0, totCum:763065, totW:401, totPct:89.4},
   {date:'5/20', scc:386,  sccCum:625318, sccW:204, sccPct:88.4, uo:20,   uoCum:138153, uoW:38, uoPct:94.0, totCum:763471, totW:242, totPct:89.4},
+  {date:'5/21', scc:1393, sccCum:626711, sccW:286, sccPct:88.6, uo:24,   uoCum:138177, uoW:46, uoPct:94.1, totCum:764888, totW:332, totPct:89.6},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1474,6 +1475,7 @@ const ELEC_SHN_DATA = [
   {week:'4/29주', scc:34302, sccCum:826348,  sccW:0, sccPct:94.2, uo:1297, uoCum:449915, uoW:0, uoPct:99.0, totCum:1276263, totPct:95.9},
   {week:'5/6주',  scc:3566,  sccCum:829914,  sccW:0, sccPct:94.7, uo:0,    uoCum:449915, uoW:0, uoPct:99.0, totCum:1279829, totPct:96.1},
   {week:'5/13주', scc:11877, sccCum:841791,  sccW:0, sccPct:96.0, uo:216,  uoCum:450131, uoW:0, uoPct:99.0, totCum:1291922, totPct:97.0},
+  {week:'5/20주', scc:13355, sccCum:855146,  sccW:0, sccPct:97.5, uo:1503, uoCum:451634, uoW:0, uoPct:99.3, totCum:1306780, totPct:98.1},
 ];
 
 
@@ -1608,6 +1610,7 @@ const INST_SHN_DATA = [
   {week:'4/29주', scc:68903, sccCum:1134616, sccW:0, sccPct:80.8, uo:5150, uoCum:433124, uoW:0, uoPct:94.4, totCum:1567740, totPct:84.2},
   {week:'5/6주',  scc:23770, sccCum:1158386, sccW:0, sccPct:82.5, uo:2618, uoCum:435742, uoW:0, uoPct:94.9, totCum:1594128, totPct:85.6},
   {week:'5/13주', scc:34381, sccCum:1192767, sccW:0, sccPct:85.0, uo:2607, uoCum:438349, uoW:0, uoPct:95.5, totCum:1631116, totPct:87.6},
+  {week:'5/20주', scc:31938, sccCum:1224705, sccW:0, sccPct:87.3, uo:5339, uoCum:443688, uoW:0, uoPct:96.7, totCum:1668393, totPct:89.6},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 계장 렌더링
@@ -1852,9 +1855,10 @@ const SHN_HYDRO = [
   {date:'5/15', pkgReady:10,  pkgReview:25,  wd:27, wdCum:804, hp:12, hpCum:507, hpPct:9.1, rst:1,  rstCum:106, cwWd:1,  cwWdCum:104, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:0, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
   {date:'5/16', pkgReady:40,  pkgReview:44,  wd:12, wdCum:816, hp:11, hpCum:518, hpPct:9.3, rst:4,  rstCum:110, cwWd:0,  cwWdCum:104, cwHp:4,  cwHpCum:77,  cwHpPct:72.0, stWd:4, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
   {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:817, hp:0,  hpCum:518, hpPct:9.3,  rst:0,  rstCum:118, cwWd:0,  cwWdCum:104, cwHp:0,  cwHpCum:77,  cwHpPct:72.0, stWd:0, stWdCum:41, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/18', pkgReady:87,  pkgReview:14,  wd:17, wdCum:833, hp:30, hpCum:548, hpPct:9.8,  rst:10, rstCum:126, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
-  {date:'5/19', pkgReady:61,  pkgReview:43,  wd:10, wdCum:843, hp:23, hpCum:571, hpPct:10.2, rst:0,  rstCum:126, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:0,  stHpCum:30, stHpPct:8.2},
-  {date:'5/20', pkgReady:10,  pkgReview:57,  wd:40, wdCum:883, hp:14, hpCum:585, hpPct:10.5, rst:0,  rstCum:126, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:6,  stHpCum:36, stHpPct:9.8},
+  {date:'5/18', pkgReady:87,  pkgReview:14,  wd:17, wdCum:833, hp:29,  hpCum:547,  hpPct:9.8,  rst:10, rstCum:128, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
+  {date:'5/19', pkgReady:60,  pkgReview:43,  wd:10, wdCum:843, hp:23,  hpCum:570,  hpPct:10.2, rst:1,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:0,  stHpCum:30, stHpPct:8.2},
+  {date:'5/20', pkgReady:10,  pkgReview:57,  wd:40, wdCum:883, hp:17,  hpCum:587,  hpPct:10.5, rst:0,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:103, cwHpPct:96.3, stWd:0, stWdCum:42, stHp:6,  stHpCum:36, stHpPct:9.8},
+  {date:'5/21', pkgReady:18,  pkgReview:5,   wd:58, wdCum:941, hp:46,  hpCum:633,  hpPct:11.3, rst:8,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:4,  cwHpCum:107, cwHpPct:100.0, stWd:3, stWdCum:45, stHp:0,  stHpCum:36, stHpPct:9.8},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1897,9 +1901,9 @@ function renderShnHydro(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">복원 누계</div>
       <div class="kpi-value coral">${fmtN(d.rstCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">수압 누계 대비</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${d.hpCum>0?(d.rstCum/d.hpCum*100).toFixed(0):0}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">${d.hpCum>0?(d.rstCum/d.hpCum*100).toFixed(1):0}% 복원 완료</div>
+      <div class="kpi-sub">총 물량 대비 (5,597 PKG)</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/5597*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/5597*100).toFixed(1)}% 복원 완료</div>
     </div>`;
 
   const badge = document.getElementById('shn-hydro-bar-badge');
@@ -2246,7 +2250,8 @@ const SHN_MOTOR = [
   {week:'4/22주', sccPlan:14, sccPlanC:49,  sccPlanP:16.0, sccAct:19, sccActC:52,  sccActP:16.9, uoPlan:8,  uoPlanC:104, uoPlanP:57.8, uoAct:12, uoActC:118, uoActP:65.6},
   {week:'4/29주', sccPlan:43, sccPlanC:92,  sccPlanP:30.0, sccAct:36, sccActC:88,  sccActP:28.7, uoPlan:16, uoPlanC:120, uoPlanP:66.7, uoAct:13, uoActC:131, uoActP:72.8},
   {week:'5/6주',  sccPlan:13, sccPlanC:105, sccPlanP:34.2, sccAct:33,  sccActC:121, sccActP:39.4, uoPlan:29, uoPlanC:149, uoPlanP:82.8, uoAct:11, uoActC:142, uoActP:78.9},
-  {week:'5/13주', sccPlan:23, sccPlanC:128, sccPlanP:41.7, sccAct:0,   sccActC:121, sccActP:39.4, uoPlan:14, uoPlanC:163, uoPlanP:90.6, uoAct:5,  uoActC:147, uoActP:81.7},
+  {week:'5/13주', sccPlan:23, sccPlanC:128,  sccPlanP:41.7, sccAct:0,  sccActC:121,  sccActP:39.4, uoPlan:14, uoPlanC:163,  uoPlanP:90.6,  uoAct:5,  uoActC:147,  uoActP:81.7},
+  {week:'5/20주', sccPlan:26, sccPlanC:154,  sccPlanP:50.2, sccAct:49, sccActC:170,  sccActP:55.4, uoPlan:17, uoPlanC:180,  uoPlanP:100.0, uoAct:6,  uoActC:153,  uoActP:85.0},
 ];
 
 // ══════════════════════════════════════════════════
@@ -2263,7 +2268,8 @@ const SHN_LOOP = [
   {week:'4/22주', sccPlan:640,  sccPlanC:3260, sccPlanP:17.5, sccAct:254, sccActC:2261, sccActP:12.1, uoPlan:190, uoPlanC:1286, uoPlanP:21.2, uoAct:87,  uoActC:1267, uoActP:20.9},
   {week:'4/29주', sccPlan:850,  sccPlanC:4110, sccPlanP:22.0, sccAct:344, sccActC:2605, sccActP:14.0, uoPlan:390, uoPlanC:1676, uoPlanP:27.6, uoAct:250, uoActC:1517, uoActP:25.0},
   {week:'5/6주',  sccPlan:1000, sccPlanC:5110,  sccPlanP:27.4, sccAct:238, sccActC:2843, sccActP:15.3, uoPlan:599, uoPlanC:2275,  uoPlanP:37.5, uoAct:269, uoActC:1786, uoActP:29.5},
-  {week:'5/13주', sccPlan:1600, sccPlanC:6710,  sccPlanP:36.0, sccAct:314, sccActC:3157, sccActP:16.9, uoPlan:705, uoPlanC:2980,  uoPlanP:49.1, uoAct:461, uoActC:2247, uoActP:37.1},
+  {week:'5/13주', sccPlan:1600, sccPlanC:6710,  sccPlanP:36.0, sccAct:314, sccActC:3157,  sccActP:16.9, uoPlan:705,  uoPlanC:2980,  uoPlanP:49.1, uoAct:461, uoActC:2247,  uoActP:37.1},
+  {week:'5/20주', sccPlan:2035, sccPlanC:8745,  sccPlanP:46.9, sccAct:419, sccActC:3576,  sccActP:19.2, uoPlan:776,  uoPlanC:3756,  uoPlanP:61.9, uoAct:470, uoActC:2717,  uoActP:44.8},
 ];
 
 // ══════════════════════════════════════════════════
