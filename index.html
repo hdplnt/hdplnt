@@ -907,23 +907,20 @@
       <span class="date-label">🗓 기준 주간 (자푸라2 — 전기)</span>
       <select class="date-select" id="esac2-date-select" onchange="renderElecSac2(parseInt(this.value))"></select>
     </div>
-    <div class="panel-title">자푸라2 (SAC2) — 주간 전기 Cable 포설 실적<span class="mode-tag">EL02 / EL03</span></div>
+    <div class="panel-title">자푸라2 (SAC2) — 주간 전기 Cable 포설 실적<span class="mode-tag">통합</span></div>
     <div class="kpi-grid cols-3" id="esac2-kpi"></div>
     <div class="chart-grid cols-2">
       <div class="chart-card">
-        <div class="chart-card-title">주간 EL02/EL03 실적 (M)</div>
+        <div class="chart-card-title">주간 실적 (M)</div>
         <div class="legend-row">
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>EL02</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>EL03</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>주간 실적</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="esac2-bar"></canvas></div>
       </div>
       <div class="chart-card">
         <div class="chart-card-title">누계 진도율 (%)</div>
         <div class="legend-row">
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>EL02%</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>EL03%</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#b35c00"></span>합계%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>진도율%</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="esac2-progress"></canvas></div>
       </div>
@@ -1107,6 +1104,9 @@ const SHN_DATA = [
   {date:'5/19', scc:3304, sccCum:624932, sccW:355, sccPct:88.4, uo:476,  uoCum:138133, uoW:46, uoPct:94.0, totCum:763065, totW:401, totPct:89.4},
   {date:'5/20', scc:386,  sccCum:625318, sccW:204, sccPct:88.4, uo:20,   uoCum:138153, uoW:38, uoPct:94.0, totCum:763471, totW:242, totPct:89.4},
   {date:'5/21', scc:1393, sccCum:626711, sccW:286, sccPct:88.6, uo:24,   uoCum:138177, uoW:46, uoPct:94.1, totCum:764888, totW:332, totPct:89.6},
+  {date:'5/24', scc:2837, sccCum:636442, sccW:263, sccPct:90.0, uo:350,  uoCum:139632, uoW:42, uoPct:95.1, totCum:776074, totW:305, totPct:90.9},
+  {date:'5/25', scc:3212, sccCum:639654, sccW:299, sccPct:90.5, uo:454,  uoCum:140086, uoW:39, uoPct:95.4, totCum:779740, totW:338, totPct:91.3},
+  {date:'5/26', scc:2644, sccCum:642297, sccW:267, sccPct:90.8, uo:470,  uoCum:140556, uoW:44, uoPct:95.7, totCum:782853, totW:311, totPct:91.7},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1123,6 +1123,7 @@ const SACE_DATA = [
   {week:'4/30주', sru2W:1205,  sru2C:76747, sru2P:96.8, sru2Hp:100, sru2HC:661,  sru2HPct:60.6, sru3W:3267, sru3C:53094, sru3P:67.0, sru3Hp:10, sru3HC:96,  sru3HPct:9.1},
   {week:'5/7주',  sru2W:864,   sru2C:77611, sru2P:97.9, sru2Hp:80,  sru2HC:741,  sru2HPct:68.0, sru3W:3041, sru3C:56135, sru3P:70.8, sru3Hp:6,  sru3HC:102, sru3HPct:9.6},
   {week:'5/14주', sru2W:722,   sru2C:78333, sru2P:98.8, sru2Hp:155, sru2HC:886,  sru2HPct:80.8, sru3W:3133, sru3C:59268, sru3P:74.7, sru3Hp:30, sru3HC:132, sru3HPct:12.3},
+  {week:'5/21주', sru2W:416,   sru2C:78749, sru2P:99.2, sru2Hp:95,  sru2HC:981,  sru2HPct:89.3, sru3W:2629, sru3C:61897, sru3P:77.9, sru3Hp:25, sru3HC:157, sru3HPct:14.6},
 ];
 
 const STA4_DATA = [
@@ -1137,6 +1138,7 @@ const STA4_DATA = [
   {week:'4/30주', plan:5503,  planC:172827, planP:65.7, planW:116.7, actual:4726, actC:165858, actP:63.1, actW:156.0, prod:5.05},
   {week:'5/7주',  plan:5559,  planC:178385, planP:67.8, planW:116.7, actual:3463, actC:169321, actP:64.4, actW:156.0, prod:3.70},
   {week:'5/14주', plan:5963,  planC:184348, planP:70.1, planW:116.7, actual:3537, actC:172858, actP:65.7, actW:156.0, prod:3.77},
+  {week:'5/21주', plan:6003,  planC:190351, planP:72.4, planW:116.7, actual:2484, actC:175342, actP:66.7, actW:156.0, prod:2.65},
 ];
 
 // ─── 유틸 ─────────────────────────────────────────
@@ -1702,6 +1704,7 @@ const SAC2_DATA = [
   {week:'4/30주', plan:6940,  planC:65638,  planP:21.1, actual:5762, actC:68117,  actP:21.9, actW:119, prod:8.07},
   {week:'5/7주',  plan:6940,  planC:72578,  planP:23.4, actual:5734, actC:73851,  actP:23.8, actW:125, prod:7.65},
   {week:'5/14주', plan:6940,  planC:79519,  planP:25.6, actual:6332, actC:80182,  actP:25.8, actW:131, prod:8.03},
+  {week:'5/21주', plan:6940,  planC:86459,  planP:27.8, actual:6287, actC:86470,  actP:27.8, actW:155, prod:6.75},
 ];
 // ══════════════════════════════════════════════════
 // 자푸라2 렌더링
@@ -1858,7 +1861,12 @@ const SHN_HYDRO = [
   {date:'5/18', pkgReady:87,  pkgReview:14,  wd:17, wdCum:833, hp:29,  hpCum:547,  hpPct:9.8,  rst:10, rstCum:128, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
   {date:'5/19', pkgReady:60,  pkgReview:43,  wd:10, wdCum:843, hp:23,  hpCum:570,  hpPct:10.2, rst:1,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:0,  stHpCum:30, stHpPct:8.2},
   {date:'5/20', pkgReady:10,  pkgReview:57,  wd:40, wdCum:883, hp:17,  hpCum:587,  hpPct:10.5, rst:0,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:103, cwHpPct:96.3, stWd:0, stWdCum:42, stHp:6,  stHpCum:36, stHpPct:9.8},
-  {date:'5/21', pkgReady:18,  pkgReview:5,   wd:58, wdCum:941, hp:46,  hpCum:633,  hpPct:11.3, rst:8,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:4,  cwHpCum:107, cwHpPct:100.0, stWd:3, stWdCum:45, stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/21', pkgReady:18,  pkgReview:5,   wd:58,  wdCum:941,  hp:46,  hpCum:633,  hpPct:11.3, rst:8,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:4,  cwHpCum:107, cwHpPct:100.0, stWd:3,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/22', pkgReady:39,  pkgReview:33,  wd:2,   wdCum:943,  hp:7,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/23', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:943,  hp:0,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/24', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:943,  hp:0,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/25', pkgReady:5,   pkgReview:9,   wd:34,  wdCum:977,  hp:3,   hpCum:643,  hpPct:11.5, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:6,  stWdCum:51,  stHp:0,  stHpCum:36, stHpPct:9.8},
+  {date:'5/26', pkgReady:41,  pkgReview:20,  wd:67,  wdCum:1044, hp:3,   hpCum:646,  hpPct:11.5, rst:15, rstCum:152, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:1,  stWdCum:52,  stHp:1,  stHpCum:37, stHpPct:10.1},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1993,17 +2001,22 @@ const ELEC_STA4_DATA = [
   {week:'4/22주', daily:27015, cum:965122,  pct:65.5},
   {week:'5/6주',  daily:20419, cum:1021328, pct:69.3},
   {week:'5/13주', daily:18688, cum:1040016, pct:70.6},
+  {week:'5/20주', daily:42294, cum:1082242, pct:73.5},
 ];
 
 // ══════════════════════════════════════════════════
 // 자푸라2 전기 Cable 포설 데이터 (EL02: 1,294,787 M / EL03: 726,731 M / 합계: 2,021,518 M)
 // ══════════════════════════════════════════════════
 const ELEC_SAC2_DATA = [
-  {week:'3/25주', el02:4973,  el02C:338907, el02P:26.2, el03:0,    el03C:0,    el03P:0.0, totC:338907, totP:16.8},
-  {week:'4/1주',  el02:7869,  el02C:346776, el02P:26.8, el03:0,    el03C:0,    el03P:0.0, totC:346776, totP:17.2},
-  {week:'4/8주',  el02:6066,  el02C:352842, el02P:27.3, el03:381,  el03C:381,  el03P:0.1, totC:353223, totP:17.5},
-  {week:'4/15주', el02:38248, el02C:391090, el02P:30.2, el03:246,  el03C:627,  el03P:0.1, totC:391717, totP:19.4},
-  {week:'4/22주', el02:34255, el02C:425345, el02P:32.9, el03:0,    el03C:627,  el03P:0.1, totC:425972, totP:21.1},
+  {week:'3/26주', daily:3973,  cum:337907,  pct:15.8},
+  {week:'4/2주',  daily:5597,  cum:343504,  pct:16.1},
+  {week:'4/9주',  daily:4066,  cum:347570,  pct:16.3},
+  {week:'4/16주', daily:38248, cum:385818,  pct:18.0},
+  {week:'4/23주', daily:40164, cum:425982,  pct:19.9},
+  {week:'4/30주', daily:40625, cum:466607,  pct:21.8},
+  {week:'5/7주',  daily:52884, cum:519491,  pct:24.3},
+  {week:'5/14주', daily:46388, cum:565879,  pct:26.5},
+  {week:'5/21주', daily:23610, cum:589489,  pct:27.6},
 ];
 
 // ══════════════════════════════════════════════════
@@ -2018,6 +2031,7 @@ const INST_STA4_DATA = [
   {week:'4/30주', daily:15261, cum:492071, pct:56.8},
   {week:'5/7주',  daily:10304, cum:502375, pct:58.0},
   {week:'5/14주', daily:10713, cum:513088, pct:59.2},
+  {week:'5/21주', daily:12066, cum:525154, pct:60.6},
 ];
 
 // ══════════════════════════════════════════════════
@@ -2032,7 +2046,8 @@ const INST_SACE_DATA = [
   {week:'4/23주', sru2:16059, sru2C:132002, sru2P:93.8, sru3:0,     sru3C:55179, sru3P:39.5, totC:187181, totP:66.8},
   {week:'4/30주', sru2:6372,  sru2C:138374, sru2P:98.4, sru3:1358,  sru3C:56537, sru3P:40.5, totC:194911, totP:69.5},
   {week:'5/7주',  sru2:750,   sru2C:139124, sru2P:98.9, sru3:13070, sru3C:69607, sru3P:49.8, totC:208731, totP:74.5},
-  {week:'5/14주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:0,     sru3C:69607, sru3P:49.8, totC:208731, totP:74.5},
+  {week:'5/14주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:17717, sru3C:87324,  sru3P:62.5, totC:226448, totP:80.8},
+  {week:'5/21주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:14358, sru3C:101682, sru3P:72.8, totC:240806, totP:85.9},
 ];
 // ══════════════════════════════════════════════════
 // 아미랄 전기 렌더링 (총물량: 1,472,808 M)
@@ -2128,59 +2143,46 @@ function renderInstSta4(upToIdx) {
 // 자푸라2 전기 렌더링 (EL02: 1,294,787 M / EL03: 726,731 M / 합계: 2,021,518 M)
 // ══════════════════════════════════════════════════
 function renderElecSac2(upToIdx) {
-  if (!document.getElementById("esac2-kpi")) return;
+  if (!document.getElementById('esac2-kpi')) return;
   const slice  = ELEC_SAC2_DATA.slice(0, upToIdx + 1);
   const d      = slice[slice.length - 1];
   const labels = slice.map(r => r.week);
+  const remain = 2138139 - d.cum;
   const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
-  const xT     = { ticks:{font:{size:10}}, grid:{display:false} };
+  const xT     = { ticks:{font:{size:10}, maxRotation:45}, grid:{display:false} };
 
   q('esac2-kpi').innerHTML = `
     <div class="kpi-card">
-      <div class="kpi-label">EL02 누계</div>
-      <div class="kpi-value blue">${fmtN(d.el02C)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 1,294,787 M</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.el02P.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.el02P.toFixed(1)}%</b></div>
+      <div class="kpi-label">Cable 누계 (${d.week})</div>
+      <div class="kpi-value blue">${fmtN(d.cum)} <span style="font-size:12px">M</span></div>
+      <div class="kpi-sub">총 물량: 2,138,139 M</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.pct.toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.pct.toFixed(1)}%</b> | 잔여 ${fmtN(remain)} M</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">EL03 누계</div>
-      <div class="kpi-value teal">${fmtN(d.el03C)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 726,731 M</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.el03P.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.el03P.toFixed(1)}%</b></div>
+      <div class="kpi-label">이번주 실적</div>
+      <div class="kpi-value amber">${fmtN(d.daily)} <span style="font-size:12px">M</span></div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">EL02+EL03 합계 누계</div>
-      <div class="kpi-value amber">${fmtN(d.totC)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 2,021,518 M</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.totP.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totP.toFixed(1)}%</b></div>
+      <div class="kpi-label">잔여 물량</div>
+      <div class="kpi-value coral">${fmtN(remain)} <span style="font-size:12px">M</span></div>
     </div>`;
 
   mkChart('esac2-bar', { type:'bar', data:{ labels, datasets:[
-    { label:'EL02', data:slice.map(r=>r.el02), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2 },
-    { label:'EL03', data:slice.map(r=>r.el03), backgroundColor:'rgba(13,122,95,0.75)',  borderRadius:2 },
-  ]}, options:{ ...base, scales:{ x:xT, y:{ stacked:false, ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+    { label:'주간', data:slice.map(r=>r.daily), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
 
+  const minP = Math.max(0, Math.floor(Math.min(...slice.map(r=>r.pct)) - 1));
   mkChart('esac2-progress', { type:'line', data:{ labels, datasets:[
-    { label:'EL02%', data:slice.map(r=>+r.el02P.toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
-    { label:'EL03%', data:slice.map(r=>+r.el03P.toFixed(1)), borderColor:'#0d7a5f', tension:0.3, pointRadius:3, borderWidth:2 },
-    { label:'합계%', data:slice.map(r=>+r.totP.toFixed(1)),  borderColor:'#b35c00', tension:0.3, pointRadius:3, borderWidth:2, borderDash:[4,3] },
-  ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, max:40, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
+    { label:'%', data:slice.map(r=>+r.pct.toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:Math.ceil(Math.max(...slice.map(r=>r.pct))+2), ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
-  q('esac2-table').innerHTML = `<thead><tr><th>주간</th><th>EL02 주간</th><th>EL02 누계</th><th>EL02%</th><th>EL03 주간</th><th>EL03 누계</th><th>EL03%</th><th>합계 누계</th><th>합계%</th></tr></thead>
+  q('esac2-table').innerHTML = `<thead><tr><th>주간</th><th>주간 실적 (M)</th><th>누계 (M)</th><th>진도율</th></tr></thead>
   <tbody>${slice.slice().reverse().map((r,i)=>`<tr class="${i===0?'highlight':''}">
-    <td class="date-col">${r.week}</td>
-    <td>${fmtN(r.el02)}</td><td>${fmtN(r.el02C)}</td><td><span class="pct-pill neutral">${r.el02P.toFixed(1)}%</span></td>
-    <td>${fmtN(r.el03)}</td><td>${fmtN(r.el03C)}</td><td><span class="pct-pill neutral">${r.el03P.toFixed(1)}%</span></td>
-    <td>${fmtN(r.totC)}</td><td><span class="pct-pill neutral">${r.totP.toFixed(1)}%</span></td>
+    <td class="date-col">${r.week}</td><td>${fmtN(r.daily)}</td><td>${fmtN(r.cum)}</td>
+    <td><span class="pct-pill neutral">${r.pct.toFixed(1)}%</span></td>
   </tr>`).join('')}</tbody>`;
 }
-
-// ══════════════════════════════════════════════════
-// 자푸라1 계장 렌더링 (SRU2: 140,663 M / SRU3: 139,679 M / 합계: 280,342 M)
-// ══════════════════════════════════════════════════
 function renderInstSace(upToIdx) {
   if (!document.getElementById("isace-kpi")) return;
   const slice  = INST_SACE_DATA.slice(0, upToIdx + 1);
@@ -2284,7 +2286,8 @@ const SACE_LOOP = [
   {week:'4/23주', sru2Plan:150, sru2PlanC:562,  sru2PlanP:27.7, sru2Act:13, sru2ActC:463, sru2ActP:22.8, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
   {week:'4/30주', sru2Plan:269, sru2PlanC:831,  sru2PlanP:41.0, sru2Act:70, sru2ActC:533, sru2ActP:26.3, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423, sru3ActP:20.9},
   {week:'5/7주',  sru2Plan:269, sru2PlanC:1100, sru2PlanP:54.3, sru2Act:39, sru2ActC:572,  sru2ActP:28.2, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
-  {week:'5/14주', sru2Plan:269, sru2PlanC:1369, sru2PlanP:67.5, sru2Act:74, sru2ActC:646,  sru2ActP:31.9, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
+  {week:'5/14주', sru2Plan:269, sru2PlanC:1369, sru2PlanP:67.5, sru2Act:74,  sru2ActC:646,  sru2ActP:31.9, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
+  {week:'5/21주', sru2Plan:269, sru2PlanC:1638, sru2PlanP:80.8, sru2Act:175, sru2ActC:821,  sru2ActP:40.5, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 Precomm 렌더링
