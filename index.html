@@ -484,10 +484,10 @@
       샤힌 (SHN1) — 배관 Pressure Test 일일 현황
     </div>
     <div class="section-divider">
-      <span class="section-label">CW라인 / Steam라인 별도 현황</span>
+      <span class="section-label">Steam 라인 별도 현황</span>
       <div class="divider-line"></div>
     </div>
-    <div class="kpi-grid cols-4" id="shn-cw-steam-kpi"></div>
+    <div class="kpi-grid cols-2" id="shn-cw-steam-kpi"></div>
     <div class="section-divider" style="margin-top:18px;">
       <span class="section-label">전체 수압 현황</span>
       <div class="divider-line"></div>
@@ -1109,6 +1109,9 @@ const SHN_DATA = [
   {date:'5/26', scc:2644, sccCum:642297, sccW:267, sccPct:90.8, uo:470,  uoCum:140556, uoW:44, uoPct:95.7, totCum:782853, totW:311, totPct:91.7},
   {date:'5/27', scc:0,    sccCum:642297, sccW:41,  sccPct:90.8, uo:0,    uoCum:140556, uoW:2,  uoPct:95.7, totCum:782853, totW:43,  totPct:91.7},
   {date:'5/28', scc:3380, sccCum:645677, sccW:340, sccPct:91.3, uo:872,  uoCum:141428, uoW:43, uoPct:96.3, totCum:787105, totW:383, totPct:92.2},
+  {date:'5/29', scc:4225, sccCum:649902, sccW:336, sccPct:91.9, uo:573,  uoCum:142001, uoW:44, uoPct:96.7, totCum:791903, totW:380, totPct:92.7},
+  {date:'5/30', scc:3332, sccCum:653234, sccW:305, sccPct:92.4, uo:656,  uoCum:142657, uoW:39, uoPct:97.1, totCum:795891, totW:344, totPct:93.2},
+  {date:'5/31', scc:2093, sccCum:655328, sccW:258, sccPct:92.7, uo:542,  uoCum:143199, uoW:30, uoPct:97.5, totCum:798527, totW:288, totPct:93.5},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1197,9 +1200,8 @@ function renderShn(upToIdx) {
   const w7startDate = w7[0].date;
 
   // ── 잔여 소화 예상: 7일 평균 일일 생산성 기반 ──
-  // 실제 작업일(합계 > 0)만 사용해 하루 평균 생산량 산출
-  const w7workDays = w7.filter(r => (r.scc + r.uo) > 0);
-  const w7avgDaily = w7workDays.length > 0 ? w7tot / w7workDays.length : 0;
+  // 7일 고정 기준으로 하루 평균 생산량 산출
+  const w7avgDaily = w7.length > 0 ? w7tot / 7 : 0;
   const totRemain  = 853929 - d.totCum;
   const sccRemain  = 707026 - d.sccCum;
   const uoRemain   = 146903 - d.uoCum;
@@ -1228,7 +1230,7 @@ function renderShn(upToIdx) {
       <div class="kpi-label">잔여 소화 예상 (현 생산성 유지 시)</div>
       <div class="kpi-sub" style="font-size:12px; margin-bottom:6px;">${forecastTxt}</div>
       <div class="kpi-sub">잔여: ${fmtN(totRemain)} D/I</div>
-      <div class="kpi-sub" style="margin-top:3px">7일 평균 일산: ${avgDailyDisp} D/I/일 <span style="color:var(--text-muted)">(작업일 ${w7workDays.length}일 기준)</span></div>
+      <div class="kpi-sub" style="margin-top:3px">7일 평균 일산: ${avgDailyDisp} D/I/일 <span style="color:var(--text-muted)">(7일 평균 기준)</span></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SCC+UO 합계 누계</div>
@@ -1870,7 +1872,10 @@ const SHN_HYDRO = [
   {date:'5/25', pkgReady:5,   pkgReview:9,   wd:34,  wdCum:977,  hp:3,   hpCum:643,  hpPct:11.5, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:6,  stWdCum:51,  stHp:0,  stHpCum:36, stHpPct:9.8},
   {date:'5/26', pkgReady:44,  pkgReview:24,  wd:66, wdCum:1102, hp:6,  hpCum:687, hpPct:12.3, rst:20, rstCum:177, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:1,  stWdCum:59, stHp:1, stHpCum:37, stHpPct:10.1},
   {date:'5/27', pkgReady:44,  pkgReview:0,   wd:2,  wdCum:1104, hp:2,  hpCum:689, hpPct:12.3, rst:0,  rstCum:177, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:59, stHp:0, stHpCum:37, stHpPct:10.1},
-  {date:'5/28', pkgReady:149, pkgReview:39,  wd:73, wdCum:1177, hp:54, hpCum:743, hpPct:13.3, rst:11, rstCum:188, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:17, stWdCum:76, stHp:0, stHpCum:37, stHpPct:10.1},
+  {date:'5/28', pkgReady:149, pkgReview:39,  wd:73, wdCum:1177, hp:54, hpCum:743,  hpPct:13.3, rst:11, rstCum:188, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:17, stWdCum:76,  stHp:0,  stHpCum:37, stHpPct:10.1},
+  {date:'5/29', pkgReady:72,  pkgReview:31,  wd:49, wdCum:1228, hp:8,  hpCum:770,  hpPct:13.8, rst:8,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:6,  stWdCum:82,  stHp:2,  stHpCum:39, stHpPct:10.6},
+  {date:'5/30', pkgReady:34,  pkgReview:0,   wd:30, wdCum:1258, hp:30, hpCum:800,  hpPct:14.3, rst:0,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:82,  stHp:9,  stHpCum:48, stHpPct:13.0},
+  {date:'5/31', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:1258, hp:0,  hpCum:800,  hpPct:14.3, rst:0,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:82,  stHp:0,  stHpCum:48, stHpPct:13.0},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -1947,18 +1952,6 @@ function renderShnHydro(upToIdx) {
 
   // ── CW / Steam KPI ──
   q('shn-cw-steam-kpi').innerHTML = `
-    <div class="kpi-card">
-      <div class="kpi-label">CW라인 Walkdown 누계</div>
-      <div class="kpi-value blue">${fmtN(d.cwWdCum)} <span style="font-size:12px">/ 107 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.cwWdCum/107*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.cwWdCum/107*100).toFixed(1)}%</b></div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">CW라인 수압 누계</div>
-      <div class="kpi-value teal">${fmtN(d.cwHpCum)} <span style="font-size:12px">/ 107 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${(d.cwHpCum/107*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.cwHpPct.toFixed(1)}%</b></div>
-    </div>
     <div class="kpi-card">
       <div class="kpi-label">Steam라인 Walkdown 누계</div>
       <div class="kpi-value amber">${fmtN(d.stWdCum)} <span style="font-size:12px">/ 368 PKG</span></div>
