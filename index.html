@@ -492,7 +492,7 @@
       <span class="section-label">전체 수압 현황</span>
       <div class="divider-line"></div>
     </div>
-    <div class="kpi-grid cols-4" id="shn-hydro-kpi" style="grid-template-columns:repeat(5,1fr)"></div>
+    <div class="kpi-grid cols-4" id="shn-hydro-kpi" style="grid-template-columns:repeat(3,1fr)"></div>
     <div class="section-divider">
       <span class="section-label">일일 실적 차트</span>
       <div class="divider-line"></div>
@@ -1918,7 +1918,7 @@ function renderShnHydro(upToIdx) {
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/9576*100).toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/9576*100).toFixed(1)}% 복원 완료</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card" style="grid-column:span 2;">
       <div class="kpi-label">일일 실적 (${d.date})</div>
       <div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--text-primary)">
         ${fmtN(d.wd)} <span style="font-size:11px;color:var(--text-secondary)">Walkdown</span>
