@@ -492,21 +492,19 @@
       <span class="section-label">전체 수압 현황</span>
       <div class="divider-line"></div>
     </div>
-    <div class="kpi-grid cols-4" id="shn-hydro-kpi"></div>
+    <div class="kpi-grid cols-4" id="shn-hydro-kpi" style="grid-template-columns:repeat(5,1fr)"></div>
     <div class="section-divider">
       <span class="section-label">일일 실적 차트</span>
       <div class="divider-line"></div>
     </div>
     <div class="chart-grid cols-2">
       <div class="chart-card">
-        <div class="chart-card-title">일일 Walkdown / 수압 실적 (PKG)
+        <div class="chart-card-title">일일 Walkdown / Test (PKG)
           <span class="pct-pill neutral" id="shn-hydro-bar-badge">—</span>
         </div>
         <div class="legend-row">
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>Walkdown(일)</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>수압(일)</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4; opacity:0.5"></span>WD 누계</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f; opacity:0.5"></span>수압 누계</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>Walkdown</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>Test</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="shn-hydro-bar"></canvas></div>
       </div>
@@ -514,7 +512,7 @@
         <div class="chart-card-title">누계 진도율 (%)</div>
         <div class="legend-row">
           <span class="legend-item"><span class="legend-dot" style="background:#1a5fb4"></span>Walkdown%</span>
-          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>수압%</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#0d7a5f"></span>Test%</span>
         </div>
         <div class="chart-wrap" style="height:220px"><canvas id="shn-hydro-progress"></canvas></div>
       </div>
@@ -1112,6 +1110,7 @@ const SHN_DATA = [
   {date:'5/29', scc:4225, sccCum:649902, sccW:336, sccPct:91.9, uo:573,  uoCum:142001, uoW:44, uoPct:96.7, totCum:791903, totW:380, totPct:92.7},
   {date:'5/30', scc:3332, sccCum:653234, sccW:305, sccPct:92.4, uo:656,  uoCum:142657, uoW:39, uoPct:97.1, totCum:795891, totW:344, totPct:93.2},
   {date:'5/31', scc:2093, sccCum:655328, sccW:258, sccPct:92.7, uo:542,  uoCum:143199, uoW:30, uoPct:97.5, totCum:798527, totW:288, totPct:93.5},
+  {date:'6/1',  scc:2791, sccCum:658119, sccW:322, sccPct:93.1, uo:555,  uoCum:143754, uoW:40, uoPct:97.9, totCum:801873, totW:362, totPct:93.9},
 ];
 
 // ※ 총물량 변경: SRU2 79,059 D/I / SRU3 76,238 D/I / 수압SRU2 1,065건 / 수압SRU3 1,054건
@@ -1813,242 +1812,173 @@ function renderSac2(upToIdx) {
 }
 
 
-// ※ 샤힌 수압 총물량: 5,597 PKG | CW:107 PKG | Steam:368 PKG
+// ※ 샤힌 수압 총물량: Test 9,576 PKG / 수압 5,626 PKG | CW:107 PKG | Steam:368 PKG
 const SHN_HYDRO = [
-  {date:'4/1',  pkgReady:2,   pkgReview:8,   wd:2,  wdCum:137, hp:0,  hpCum:39,  hpPct:0.7, rst:0,  rstCum:21,  cwWd:2,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/2',  pkgReady:12,  pkgReview:2,   wd:0,  wdCum:137, hp:3,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/3',  pkgReady:51,  pkgReview:5,   wd:10, wdCum:147, hp:0,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/4',  pkgReady:2,   pkgReview:0,   wd:0,  wdCum:147, hp:0,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/5',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:147, hp:0,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/6',  pkgReady:41,  pkgReview:6,   wd:4,  wdCum:151, hp:0,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/7',  pkgReady:29,  pkgReview:14,  wd:6,  wdCum:157, hp:0,  hpCum:42,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/8',  pkgReady:24,  pkgReview:6,   wd:3,  wdCum:160, hp:1,  hpCum:43,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/9',  pkgReady:35,  pkgReview:7,   wd:3,  wdCum:163, hp:0,  hpCum:43,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/10', pkgReady:10,  pkgReview:36,  wd:5,  wdCum:168, hp:3,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/11', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:168, hp:0,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/12', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:168, hp:0,  hpCum:46,  hpPct:0.8, rst:0,  rstCum:21,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/13', pkgReady:24,  pkgReview:1,   wd:7,  wdCum:175, hp:3,  hpCum:49,  hpPct:0.9, rst:3,  rstCum:24,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/14', pkgReady:20,  pkgReview:47,  wd:36, wdCum:211, hp:0,  hpCum:49,  hpPct:0.9, rst:5,  rstCum:29,  cwWd:0,  cwWdCum:8,   cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/15', pkgReady:25,  pkgReview:13,  wd:10, wdCum:221, hp:33, hpCum:82,  hpPct:1.5, rst:2,  rstCum:31,  cwWd:2,  cwWdCum:10,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/16', pkgReady:45,  pkgReview:23,  wd:8,  wdCum:229, hp:3,  hpCum:85,  hpPct:1.5, rst:3,  rstCum:34,  cwWd:0,  cwWdCum:10,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/17', pkgReady:16,  pkgReview:7,   wd:30, wdCum:259, hp:1,  hpCum:86,  hpPct:1.5, rst:0,  rstCum:34,  cwWd:4,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/18', pkgReady:7,   pkgReview:2,   wd:6,  wdCum:265, hp:2,  hpCum:88,  hpPct:1.6, rst:0,  rstCum:34,  cwWd:0,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/19', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:265, hp:0,  hpCum:88,  hpPct:1.6, rst:0,  rstCum:34,  cwWd:0,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/20', pkgReady:42,  pkgReview:17,  wd:13, wdCum:278, hp:2,  hpCum:90,  hpPct:1.6, rst:1,  rstCum:35,  cwWd:0,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/21', pkgReady:91,  pkgReview:32,  wd:15, wdCum:293, hp:2,  hpCum:92,  hpPct:1.6, rst:2,  rstCum:37,  cwWd:0,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:0,  stHpCum:2,  stHpPct:0.5},
-  {date:'4/22', pkgReady:29,  pkgReview:16,  wd:7,  wdCum:300, hp:12, hpCum:104, hpPct:1.9, rst:10, rstCum:47,  cwWd:0,  cwWdCum:14,  cwHp:0,  cwHpCum:0,  cwHpPct:0.0,  stWd:0, stWdCum:7,  stHp:2,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/23', pkgReady:7,   pkgReview:33,  wd:25, wdCum:325, hp:20, hpCum:124, hpPct:2.2, rst:2,  rstCum:49,  cwWd:10, cwWdCum:24,  cwHp:1,  cwHpCum:1,  cwHpPct:0.9,  stWd:9, stWdCum:16, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/24', pkgReady:13,  pkgReview:15,  wd:33, wdCum:358, hp:7,  hpCum:131, hpPct:2.3, rst:4,  rstCum:53,  cwWd:12, cwWdCum:36,  cwHp:2,  cwHpCum:3,  cwHpPct:2.8,  stWd:4, stWdCum:20, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/25', pkgReady:5,   pkgReview:7,   wd:9,  wdCum:367, hp:11, hpCum:142, hpPct:2.5, rst:4,  rstCum:57,  cwWd:6,  cwWdCum:42,  cwHp:4,  cwHpCum:7,  cwHpPct:6.5,  stWd:2, stWdCum:22, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/26', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:367, hp:0,  hpCum:142, hpPct:2.5, rst:0,  rstCum:57,  cwWd:0,  cwWdCum:42,  cwHp:0,  cwHpCum:7,  cwHpPct:6.5,  stWd:0, stWdCum:22, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/27', pkgReady:23,  pkgReview:8,   wd:24, wdCum:391, hp:4,  hpCum:146, hpPct:2.6, rst:0,  rstCum:57,  cwWd:2,  cwWdCum:44,  cwHp:2,  cwHpCum:9,  cwHpPct:8.4,  stWd:3, stWdCum:25, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/28', pkgReady:100, pkgReview:102, wd:2,  wdCum:393, hp:10, hpCum:156, hpPct:2.8, rst:3,  rstCum:60,  cwWd:0,  cwWdCum:44,  cwHp:9,  cwHpCum:18, cwHpPct:16.8, stWd:0, stWdCum:25, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/29', pkgReady:148, pkgReview:97,  wd:100,wdCum:493, hp:5,  hpCum:161, hpPct:2.9, rst:4,  rstCum:64,  cwWd:0,  cwWdCum:44,  cwHp:5,  cwHpCum:23, cwHpPct:21.5, stWd:2, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'4/30', pkgReady:11,  pkgReview:38,  wd:102,wdCum:595, hp:87, hpCum:248, hpPct:4.4, rst:0,  rstCum:64,  cwWd:0,  cwWdCum:44,  cwHp:1,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/1',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:595, hp:0,  hpCum:248, hpPct:4.4, rst:0,  rstCum:64,  cwWd:0,  cwWdCum:44,  cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/2',  pkgReady:45,  pkgReview:5,   wd:19, wdCum:614, hp:3,  hpCum:251, hpPct:4.5, rst:3,  rstCum:67,  cwWd:8,  cwWdCum:52,  cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/3',  pkgReady:0,   pkgReview:0,   wd:0,  wdCum:614, hp:0,  hpCum:251, hpPct:4.5, rst:0,  rstCum:67,  cwWd:0,  cwWdCum:52,  cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
-  {date:'5/4',  pkgReady:42,  pkgReview:25,  wd:3,  wdCum:617, hp:104,hpCum:355, hpPct:6.3, rst:0,  rstCum:67,  cwWd:0,  cwWdCum:52,  cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:20, stHpCum:24, stHpPct:6.6},
-  {date:'5/5',  pkgReady:3,   pkgReview:0,   wd:0,  wdCum:617, hp:0,  hpCum:355, hpPct:6.3, rst:0,  rstCum:67,  cwWd:0,  cwWdCum:52,  cwHp:0,  cwHpCum:24, cwHpPct:22.4, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/6',  pkgReady:37,  pkgReview:11,  wd:26, wdCum:643, hp:17, hpCum:372, hpPct:6.6, rst:13, rstCum:80,  cwWd:21, cwWdCum:73,  cwHp:2,  cwHpCum:26, cwHpPct:24.3, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/7',  pkgReady:28,  pkgReview:31,  wd:12, wdCum:655, hp:18, hpCum:390, hpPct:7.0, rst:6,  rstCum:86,  cwWd:0,  cwWdCum:73,  cwHp:4,  cwHpCum:30, cwHpPct:28.0, stWd:0, stWdCum:27, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/8',  pkgReady:48,  pkgReview:29,  wd:24, wdCum:679, hp:11, hpCum:401, hpPct:7.2, rst:0,  rstCum:86,  cwWd:4,  cwWdCum:77,  cwHp:6,  cwHpCum:36, cwHpPct:33.6, stWd:1, stWdCum:28, stHp:0,  stHpCum:24, stHpPct:6.6},
-  {date:'5/9',  pkgReady:20,  pkgReview:49,  wd:10, wdCum:689, hp:19, hpCum:420, hpPct:7.5, rst:4,  rstCum:90,  cwWd:6,  cwWdCum:83,  cwHp:5,  cwHpCum:41, cwHpPct:38.3, stWd:0, stWdCum:28, stHp:1,  stHpCum:25, stHpPct:6.8},
-  {date:'5/10', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:689, hp:0,  hpCum:420, hpPct:7.5, rst:0,  rstCum:90,  cwWd:0,  cwWdCum:83,  cwHp:0,  cwHpCum:41, cwHpPct:38.3, stWd:0, stWdCum:28, stHp:0,  stHpCum:25, stHpPct:6.8},
-  {date:'5/11', pkgReady:42,  pkgReview:9,   wd:33, wdCum:722, hp:27, hpCum:447, hpPct:8.0, rst:2,  rstCum:92,  cwWd:2,  cwWdCum:85,  cwHp:16, cwHpCum:57, cwHpPct:53.3, stWd:5, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
-  {date:'5/12', pkgReady:35,  pkgReview:19,  wd:11, wdCum:733, hp:11, hpCum:458, hpPct:8.2, rst:0,  rstCum:92,  cwWd:1,  cwWdCum:86,  cwHp:6,  cwHpCum:63, cwHpPct:58.9, stWd:0, stWdCum:33, stHp:0,  stHpCum:25, stHpPct:6.8},
-  {date:'5/13', pkgReady:37,  pkgReview:40,  wd:20,  wdCum:753, hp:16,  hpCum:478, hpPct:8.5, rst:8,  rstCum:98,  cwWd:0,  cwWdCum:86,  cwHp:7,  cwHpCum:74, cwHpPct:69.2, stWd:0, stWdCum:33, stHp:1,  stHpCum:26, stHpPct:7.1},
-  {date:'5/14', pkgReady:58,  pkgReview:17,  wd:24, wdCum:777, hp:18, hpCum:495, hpPct:8.8, rst:4,  rstCum:105, cwWd:17, cwWdCum:103, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:3, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/15', pkgReady:10,  pkgReview:25,  wd:27, wdCum:804, hp:12, hpCum:507, hpPct:9.1, rst:1,  rstCum:106, cwWd:1,  cwWdCum:104, cwHp:0,  cwHpCum:73,  cwHpPct:68.2, stWd:0, stWdCum:36, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/16', pkgReady:40,  pkgReview:44,  wd:12, wdCum:816, hp:11, hpCum:518, hpPct:9.3, rst:4,  rstCum:110, cwWd:0,  cwWdCum:104, cwHp:4,  cwHpCum:77,  cwHpPct:72.0, stWd:4, stWdCum:40, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:817, hp:0,  hpCum:518, hpPct:9.3,  rst:0,  rstCum:118, cwWd:0,  cwWdCum:104, cwHp:0,  cwHpCum:77,  cwHpPct:72.0, stWd:0, stWdCum:41, stHp:0,  stHpCum:26, stHpPct:7.1},
-  {date:'5/18', pkgReady:87,  pkgReview:14,  wd:17, wdCum:833, hp:29,  hpCum:547,  hpPct:9.8,  rst:10, rstCum:128, cwWd:3,  cwWdCum:107, cwHp:20, cwHpCum:97,  cwHpPct:90.7, stWd:2, stWdCum:42, stHp:4,  stHpCum:30, stHpPct:8.2},
-  {date:'5/19', pkgReady:60,  pkgReview:43,  wd:10, wdCum:843, hp:23,  hpCum:570,  hpPct:10.2, rst:1,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:100, cwHpPct:93.5, stWd:0, stWdCum:42, stHp:0,  stHpCum:30, stHpPct:8.2},
-  {date:'5/20', pkgReady:10,  pkgReview:57,  wd:40, wdCum:883, hp:17,  hpCum:587,  hpPct:10.5, rst:0,  rstCum:129, cwWd:0,  cwWdCum:107, cwHp:3,  cwHpCum:103, cwHpPct:96.3, stWd:0, stWdCum:42, stHp:6,  stHpCum:36, stHpPct:9.8},
-  {date:'5/21', pkgReady:18,  pkgReview:5,   wd:58,  wdCum:941,  hp:46,  hpCum:633,  hpPct:11.3, rst:8,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:4,  cwHpCum:107, cwHpPct:100.0, stWd:3,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
-  {date:'5/22', pkgReady:39,  pkgReview:33,  wd:2,   wdCum:943,  hp:7,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
-  {date:'5/23', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:943,  hp:0,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
-  {date:'5/24', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:943,  hp:0,   hpCum:640,  hpPct:11.4, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:45,  stHp:0,  stHpCum:36, stHpPct:9.8},
-  {date:'5/25', pkgReady:5,   pkgReview:9,   wd:34,  wdCum:977,  hp:3,   hpCum:643,  hpPct:11.5, rst:0,  rstCum:137, cwWd:0,  cwWdCum:107, cwHp:0,  cwHpCum:107, cwHpPct:100.0, stWd:6,  stWdCum:51,  stHp:0,  stHpCum:36, stHpPct:9.8},
-  {date:'5/26', pkgReady:44,  pkgReview:24,  wd:66, wdCum:1102, hp:6,  hpCum:687, hpPct:12.3, rst:20, rstCum:177, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:1,  stWdCum:59, stHp:1, stHpCum:37, stHpPct:10.1},
-  {date:'5/27', pkgReady:44,  pkgReview:0,   wd:2,  wdCum:1104, hp:2,  hpCum:689, hpPct:12.3, rst:0,  rstCum:177, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:59, stHp:0, stHpCum:37, stHpPct:10.1},
-  {date:'5/28', pkgReady:149, pkgReview:39,  wd:73, wdCum:1177, hp:54, hpCum:743,  hpPct:13.3, rst:11, rstCum:188, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:17, stWdCum:76,  stHp:0,  stHpCum:37, stHpPct:10.1},
-  {date:'5/29', pkgReady:72,  pkgReview:31,  wd:49, wdCum:1228, hp:8,  hpCum:770,  hpPct:13.8, rst:8,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:6,  stWdCum:82,  stHp:2,  stHpCum:39, stHpPct:10.6},
-  {date:'5/30', pkgReady:34,  pkgReview:0,   wd:30, wdCum:1258, hp:30, hpCum:800,  hpPct:14.3, rst:0,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:82,  stHp:9,  stHpCum:48, stHpPct:13.0},
-  {date:'5/31', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:1258, hp:0,  hpCum:800,  hpPct:14.3, rst:0,  rstCum:194, cwWd:0, cwWdCum:107, cwHp:0, cwHpCum:107, cwHpPct:100.0, stWd:0,  stWdCum:82,  stHp:0,  stHpCum:48, stHpPct:13.0},
+  {date:'4/1',  pkgReady:30,  pkgReview:80,  wd:19,  wdCum:137,  tst:24,  tstCum:39,   tstPct:0.4,  hp:0,  hpCum:45,  hpPct:0.8,  rst:0,  rstCum:3,  cwWdCum:28,  cwHpCum:20,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/2',  pkgReady:71,  pkgReview:59,  wd:46,  wdCum:183,  tst:48,  tstCum:87,   tstPct:0.9,  hp:4,  hpCum:49,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/3',  pkgReady:59,  pkgReview:20,  wd:37,  wdCum:220,  tst:26,  tstCum:113,  tstPct:1.2,  hp:1,  hpCum:50,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/4',  pkgReady:13,  pkgReview:19,  wd:0,   wdCum:220,  tst:0,   tstCum:113,  tstPct:1.2,  hp:0,  hpCum:50,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/5',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:220,  tst:0,   tstCum:113,  tstPct:1.2,  hp:0,  hpCum:50,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/6',  pkgReady:98,  pkgReview:28,  wd:21,  wdCum:241,  tst:18,  tstCum:131,  tstPct:1.4,  hp:1,  hpCum:51,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/7',  pkgReady:51,  pkgReview:40,  wd:70,  wdCum:311,  tst:70,  tstCum:201,  tstPct:2.1,  hp:0,  hpCum:51,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/8',  pkgReady:34,  pkgReview:55,  wd:46,  wdCum:357,  tst:43,  tstCum:244,  tstPct:2.5,  hp:1,  hpCum:52,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/9',  pkgReady:52,  pkgReview:11,  wd:17,  wdCum:374,  tst:13,  tstCum:257,  tstPct:2.7,  hp:0,  hpCum:52,  hpPct:0.9,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/10', pkgReady:25,  pkgReview:55,  wd:39,  wdCum:413,  tst:38,  tstCum:295,  tstPct:3.1,  hp:4,  hpCum:56,  hpPct:1.0,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/11', pkgReady:14,  pkgReview:0,   wd:2,   wdCum:415,  tst:2,   tstCum:297,  tstPct:3.1,  hp:0,  hpCum:56,  hpPct:1.0,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/12', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:415,  tst:0,   tstCum:297,  tstPct:3.1,  hp:0,  hpCum:56,  hpPct:1.0,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/13', pkgReady:72,  pkgReview:63,  wd:9,   wdCum:424,  tst:5,   tstCum:302,  tstPct:3.2,  hp:5,  hpCum:61,  hpPct:1.1,  rst:0,  rstCum:3,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/14', pkgReady:43,  pkgReview:70,  wd:75,  wdCum:499,  tst:37,  tstCum:339,  tstPct:3.5,  hp:1,  hpCum:62,  hpPct:1.1,  rst:1,  rstCum:4,  cwWdCum:30,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/15', pkgReady:97,  pkgReview:45,  wd:15,  wdCum:514,  tst:39,  tstCum:378,  tstPct:3.9,  hp:34, hpCum:96,  hpPct:1.7,  rst:0,  rstCum:4,  cwWdCum:32,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/16', pkgReady:105, pkgReview:65,  wd:39,  wdCum:553,  tst:32,  tstCum:410,  tstPct:4.3,  hp:3,  hpCum:99,  hpPct:1.8,  rst:0,  rstCum:4,  cwWdCum:32,  cwHpCum:22,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/17', pkgReady:33,  pkgReview:35,  wd:54,  wdCum:607,  tst:18,  tstCum:428,  tstPct:4.5,  hp:1,  hpCum:100, hpPct:1.8,  rst:0,  rstCum:4,  cwWdCum:37,  cwHpCum:23,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/18', pkgReady:10,  pkgReview:9,   wd:17,  wdCum:624,  tst:15,  tstCum:443,  tstPct:4.6,  hp:4,  hpCum:104, hpPct:1.8,  rst:0,  rstCum:4,  cwWdCum:37,  cwHpCum:23,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/19', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:624,  tst:0,   tstCum:443,  tstPct:4.6,  hp:0,  hpCum:104, hpPct:1.8,  rst:0,  rstCum:4,  cwWdCum:37,  cwHpCum:23,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/20', pkgReady:64,  pkgReview:25,  wd:18,  wdCum:642,  tst:5,   tstCum:448,  tstPct:4.7,  hp:2,  hpCum:106, hpPct:1.9,  rst:0,  rstCum:4,  cwWdCum:39,  cwHpCum:25,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/21', pkgReady:149, pkgReview:46,  wd:26,  wdCum:668,  tst:11,  tstCum:459,  tstPct:4.8,  hp:2,  hpCum:108, hpPct:1.9,  rst:0,  rstCum:4,  cwWdCum:41,  cwHpCum:27,  stWd:0,  stWdCum:8,  stHp:0,  stHpCum:2,  stHpPct:0.5},
+  {date:'4/22', pkgReady:50,  pkgReview:39,  wd:26,  wdCum:694,  tst:26,  tstCum:485,  tstPct:5.1,  hp:12, hpCum:120, hpPct:2.1,  rst:0,  rstCum:4,  cwWdCum:50,  cwHpCum:32,  stWd:0,  stWdCum:8,  stHp:2,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/23', pkgReady:25,  pkgReview:63,  wd:59,  wdCum:753,  tst:37,  tstCum:522,  tstPct:5.5,  hp:21, hpCum:141, hpPct:2.5,  rst:0,  rstCum:4,  cwWdCum:65,  cwHpCum:37,  stWd:10, stWdCum:18, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/24', pkgReady:24,  pkgReview:29,  wd:57,  wdCum:810,  tst:32,  tstCum:554,  tstPct:5.8,  hp:9,  hpCum:150, hpPct:2.7,  rst:0,  rstCum:4,  cwWdCum:78,  cwHpCum:40,  stWd:4,  stWdCum:22, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/25', pkgReady:12,  pkgReview:7,   wd:21,  wdCum:831,  tst:20,  tstCum:574,  tstPct:6.0,  hp:11, hpCum:161, hpPct:2.9,  rst:0,  rstCum:4,  cwWdCum:94,  cwHpCum:53,  stWd:2,  stWdCum:24, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/26', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:831,  tst:0,   tstCum:574,  tstPct:6.0,  hp:0,  hpCum:161, hpPct:2.9,  rst:0,  rstCum:4,  cwWdCum:94,  cwHpCum:53,  stWd:0,  stWdCum:24, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/27', pkgReady:49,  pkgReview:20,  wd:45,  wdCum:876,  tst:38,  tstCum:612,  tstPct:6.4,  hp:6,  hpCum:167, hpPct:3.0,  rst:0,  rstCum:4,  cwWdCum:106, cwHpCum:65,  stWd:3,  stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/28', pkgReady:115, pkgReview:105, wd:12,  wdCum:888,  tst:17,  tstCum:629,  tstPct:6.6,  hp:10, hpCum:177, hpPct:3.1,  rst:1,  rstCum:5,  cwWdCum:106, cwHpCum:74,  stWd:0,  stWdCum:27, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/29', pkgReady:154, pkgReview:145, wd:106, wdCum:994,  tst:18,  tstCum:647,  tstPct:6.8,  hp:5,  hpCum:182, hpPct:3.2,  rst:5,  rstCum:10, cwWdCum:108, cwHpCum:83,  stWd:2,  stWdCum:29, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'4/30', pkgReady:18,  pkgReview:50,  wd:125, wdCum:1119, tst:99,  tstCum:746,  tstPct:7.8,  hp:87, hpCum:269, hpPct:4.8,  rst:4,  rstCum:14, cwWdCum:112, cwHpCum:86,  stWd:0,  stWdCum:29, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/1',  pkgReady:0,   pkgReview:0,   wd:1,   wdCum:1120, tst:0,   tstCum:746,  tstPct:7.8,  hp:0,  hpCum:269, hpPct:4.8,  rst:0,  rstCum:14, cwWdCum:113, cwHpCum:86,  stWd:0,  stWdCum:29, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/2',  pkgReady:7,   pkgReview:7,   wd:52,  wdCum:1172, tst:38,  tstCum:784,  tstPct:8.2,  hp:5,  hpCum:274, hpPct:4.9,  rst:0,  rstCum:14, cwWdCum:154, cwHpCum:119, stWd:0,  stWdCum:29, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/3',  pkgReady:0,   pkgReview:0,   wd:0,   wdCum:1172, tst:0,   tstCum:784,  tstPct:8.2,  hp:0,  hpCum:274, hpPct:4.9,  rst:0,  rstCum:14, cwWdCum:154, cwHpCum:119, stWd:0,  stWdCum:29, stHp:0,  stHpCum:4,  stHpPct:1.1},
+  {date:'5/4',  pkgReady:54,  pkgReview:26,  wd:7,   wdCum:1179, tst:107, tstCum:891,  tstPct:9.3,  hp:104,hpCum:378, hpPct:6.7,  rst:0,  rstCum:14, cwWdCum:156, cwHpCum:120, stWd:0,  stWdCum:29, stHp:20, stHpCum:24, stHpPct:6.5},
+  {date:'5/5',  pkgReady:6,   pkgReview:1,   wd:0,   wdCum:1179, tst:0,   tstCum:891,  tstPct:9.3,  hp:0,  hpCum:378, hpPct:6.7,  rst:0,  rstCum:14, cwWdCum:156, cwHpCum:120, stWd:0,  stWdCum:29, stHp:0,  stHpCum:24, stHpPct:6.5},
+  {date:'5/6',  pkgReady:74,  pkgReview:15,  wd:30,  wdCum:1209, tst:21,  tstCum:912,  tstPct:9.5,  hp:17, hpCum:395, hpPct:7.0,  rst:3,  rstCum:17, cwWdCum:179, cwHpCum:125, stWd:0,  stWdCum:29, stHp:0,  stHpCum:24, stHpPct:6.5},
+  {date:'5/7',  pkgReady:70,  pkgReview:43,  wd:24,  wdCum:1233, tst:29,  tstCum:941,  tstPct:9.8,  hp:18, hpCum:413, hpPct:7.3,  rst:0,  rstCum:17, cwWdCum:180, cwHpCum:129, stWd:0,  stWdCum:29, stHp:0,  stHpCum:24, stHpPct:6.5},
+  {date:'5/8',  pkgReady:81,  pkgReview:40,  wd:37,  wdCum:1270, tst:27,  tstCum:968,  tstPct:10.1, hp:11, hpCum:424, hpPct:7.5,  rst:0,  rstCum:17, cwWdCum:186, cwHpCum:139, stWd:1,  stWdCum:30, stHp:0,  stHpCum:24, stHpPct:6.5},
+  {date:'5/9',  pkgReady:20,  pkgReview:50,  wd:10,  wdCum:1280, tst:22,  tstCum:990,  tstPct:10.3, hp:22, hpCum:446, hpPct:7.9,  rst:0,  rstCum:17, cwWdCum:192, cwHpCum:147, stWd:0,  stWdCum:30, stHp:1,  stHpCum:25, stHpPct:6.7},
+  {date:'5/10', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:1280, tst:0,   tstCum:990,  tstPct:10.3, hp:0,  hpCum:446, hpPct:7.9,  rst:0,  rstCum:17, cwWdCum:192, cwHpCum:147, stWd:0,  stWdCum:30, stHp:0,  stHpCum:25, stHpPct:6.7},
+  {date:'5/11', pkgReady:111, pkgReview:62,  wd:37,  wdCum:1317, tst:35,  tstCum:1025, tstPct:10.7, hp:27, hpCum:473, hpPct:8.4,  rst:6,  rstCum:23, cwWdCum:194, cwHpCum:164, stWd:5,  stWdCum:35, stHp:0,  stHpCum:25, stHpPct:6.7},
+  {date:'5/12', pkgReady:81,  pkgReview:51,  wd:36,  wdCum:1353, tst:35,  tstCum:1060, tstPct:11.1, hp:11, hpCum:484, hpPct:8.6,  rst:0,  rstCum:23, cwWdCum:213, cwHpCum:189, stWd:0,  stWdCum:35, stHp:0,  stHpCum:25, stHpPct:6.7},
+  {date:'5/13', pkgReady:61,  pkgReview:56,  wd:27,  wdCum:1380, tst:22,  tstCum:1082, tstPct:11.3, hp:16, hpCum:500, hpPct:8.9,  rst:0,  rstCum:23, cwWdCum:213, cwHpCum:196, stWd:0,  stWdCum:35, stHp:1,  stHpCum:26, stHpPct:7.0},
+  {date:'5/14', pkgReady:74,  pkgReview:27,  wd:54,  wdCum:1434, tst:47,  tstCum:1129, tstPct:11.8, hp:18, hpCum:518, hpPct:9.2,  rst:0,  rstCum:23, cwWdCum:248, cwHpCum:212, stWd:3,  stWdCum:38, stHp:0,  stHpCum:26, stHpPct:7.0},
+  {date:'5/15', pkgReady:118, pkgReview:31,  wd:39,  wdCum:1473, tst:20,  tstCum:1149, tstPct:12.0, hp:12, hpCum:530, hpPct:9.4,  rst:0,  rstCum:23, cwWdCum:249, cwHpCum:212, stWd:0,  stWdCum:38, stHp:0,  stHpCum:26, stHpPct:7.0},
+  {date:'5/16', pkgReady:44,  pkgReview:60,  wd:15,  wdCum:1488, tst:13,  tstCum:1162, tstPct:12.1, hp:11, hpCum:541, hpPct:9.6,  rst:0,  rstCum:23, cwWdCum:249, cwHpCum:216, stWd:4,  stWdCum:42, stHp:0,  stHpCum:26, stHpPct:7.0},
+  {date:'5/17', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:1488, tst:0,   tstCum:1162, tstPct:12.1, hp:0,  hpCum:541, hpPct:9.6,  rst:0,  rstCum:23, cwWdCum:249, cwHpCum:216, stWd:0,  stWdCum:42, stHp:0,  stHpCum:26, stHpPct:7.0},
+  {date:'5/18', pkgReady:111, pkgReview:25,  wd:39,  wdCum:1527, tst:47,  tstCum:1209, tstPct:12.6, hp:30, hpCum:571, hpPct:10.1, rst:0,  rstCum:23, cwWdCum:264, cwHpCum:245, stWd:2,  stWdCum:44, stHp:4,  stHpCum:30, stHpPct:8.1},
+  {date:'5/19', pkgReady:100, pkgReview:59,  wd:27,  wdCum:1554, tst:37,  tstCum:1246, tstPct:13.0, hp:23, hpCum:594, hpPct:10.6, rst:0,  rstCum:23, cwWdCum:266, cwHpCum:250, stWd:0,  stWdCum:44, stHp:0,  stHpCum:30, stHpPct:8.1},
+  {date:'5/20', pkgReady:92,  pkgReview:65,  wd:59,  wdCum:1613, tst:23,  tstCum:1269, tstPct:13.3, hp:17, hpCum:611, hpPct:10.9, rst:0,  rstCum:23, cwWdCum:274, cwHpCum:255, stWd:0,  stWdCum:44, stHp:6,  stHpCum:36, stHpPct:9.7},
+  {date:'5/21', pkgReady:97,  pkgReview:16,  wd:94,  wdCum:1707, tst:69,  tstCum:1338, tstPct:14.0, hp:46, hpCum:657, hpPct:11.7, rst:0,  rstCum:23, cwWdCum:285, cwHpCum:264, stWd:5,  stWdCum:49, stHp:1,  stHpCum:37, stHpPct:10.0},
+  {date:'5/22', pkgReady:39,  pkgReview:46,  wd:80,  wdCum:1787, tst:35,  tstCum:1373, tstPct:14.3, hp:8,  hpCum:665, hpPct:11.8, rst:0,  rstCum:23, cwWdCum:299, cwHpCum:276, stWd:3,  stWdCum:52, stHp:0,  stHpCum:37, stHpPct:10.0},
+  {date:'5/23', pkgReady:5,   pkgReview:7,   wd:34,  wdCum:1821, tst:52,  tstCum:1425, tstPct:14.9, hp:35, hpCum:700, hpPct:12.4, rst:0,  rstCum:23, cwWdCum:304, cwHpCum:288, stWd:2,  stWdCum:54, stHp:0,  stHpCum:37, stHpPct:10.0},
+  {date:'5/24', pkgReady:0,   pkgReview:0,   wd:0,   wdCum:1821, tst:0,   tstCum:1425, tstPct:14.9, hp:0,  hpCum:700, hpPct:12.4, rst:0,  rstCum:23, cwWdCum:304, cwHpCum:288, stWd:0,  stWdCum:54, stHp:0,  stHpCum:37, stHpPct:10.0},
+  {date:'5/25', pkgReady:15,  pkgReview:13,  wd:53,  wdCum:1874, tst:21,  tstCum:1446, tstPct:15.1, hp:4,  hpCum:704, hpPct:12.5, rst:0,  rstCum:23, cwWdCum:306, cwHpCum:301, stWd:6,  stWdCum:60, stHp:0,  stHpCum:37, stHpPct:10.0},
+  {date:'5/26', pkgReady:73,  pkgReview:30,  wd:88,  wdCum:1962, tst:16,  tstCum:1462, tstPct:15.3, hp:6,  hpCum:710, hpPct:12.6, rst:0,  rstCum:23, cwWdCum:306, cwHpCum:304, stWd:1,  stWdCum:61, stHp:1,  stHpCum:38, stHpPct:10.2},
+  {date:'5/27', pkgReady:98,  pkgReview:3,   wd:6,   wdCum:1968, tst:5,   tstCum:1467, tstPct:15.3, hp:2,  hpCum:712, hpPct:12.7, rst:0,  rstCum:23, cwWdCum:306, cwHpCum:304, stWd:0,  stWdCum:61, stHp:0,  stHpCum:38, stHpPct:10.2},
+  {date:'5/28', pkgReady:287, pkgReview:45,  wd:107, wdCum:2075, tst:77,  tstCum:1544, tstPct:16.1, hp:73, hpCum:785, hpPct:14.0, rst:4,  rstCum:27, cwWdCum:308, cwHpCum:305, stWd:17, stWdCum:78, stHp:0,  stHpCum:38, stHpPct:10.2},
+  {date:'5/29', pkgReady:112, pkgReview:37,  wd:86,  wdCum:2161, tst:16,  tstCum:1560, tstPct:16.3, hp:8,  hpCum:793, hpPct:14.1, rst:0,  rstCum:27, cwWdCum:308, cwHpCum:305, stWd:6,  stWdCum:84, stHp:2,  stHpCum:40, stHpPct:10.8},
+  {date:'5/30', pkgReady:42,  pkgReview:0,   wd:45,  wdCum:2206, tst:50,  tstCum:1610, tstPct:16.8, hp:30, hpCum:823, hpPct:14.6, rst:0,  rstCum:27, cwWdCum:308, cwHpCum:305, stWd:0,  stWdCum:84, stHp:9,  stHpCum:49, stHpPct:13.2},
+  {date:'5/31', pkgReady:0,   pkgReview:0,   wd:0,  wdCum:2207, tst:1,  tstCum:1608, tstPct:16.8, hp:0,  hpCum:823, hpPct:14.6, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:84, stHp:0, stHpCum:49, stHpPct:13.2},
+  {date:'6/1',  pkgReady:173, pkgReview:39,  wd:54, wdCum:2261, tst:16, tstCum:1624, tstPct:17.0, hp:0,  hpCum:823, hpPct:14.6, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:84, stHp:0, stHpCum:49, stHpPct:13.2},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
 // ══════════════════════════════════════════════════
 function renderShnHydro(upToIdx) {
-  if (!document.getElementById("shn-hydro-kpi")) return;
-  const slice   = SHN_HYDRO.slice(0, upToIdx + 1);
-  const chart14 = slice.slice(-14);
-  const d       = slice[slice.length - 1];
-  if (!d) return;
+  if (!document.getElementById('shn-hydro-kpi')) return;
+  const slice  = SHN_HYDRO.slice(0, upToIdx + 1);
+  const d      = slice[slice.length - 1];
+  const labels = slice.map(r => r.date);
+  const sl14   = slice.slice(-14);
+  const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
+  const xT     = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
 
-  const wdRemain = 5597 - d.wdCum;
-  const hpRemain = 5597 - d.hpCum;
-  const last7    = slice.slice(-7);
-  const avg7wd   = +(last7.reduce((s,r)=>s+r.wd,0)/last7.length).toFixed(1);
-  const avg7hp   = +(last7.reduce((s,r)=>s+r.hp,0)/last7.length).toFixed(1);
-
-  // ── KPI ──
+  // ── KPI: 전체 현황 ──
+  const totRemain = 9576 - d.tstCum;
+  const hpRemain  = 5626 - d.hpCum;
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">Walkdown 누계</div>
-      <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 5,597 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/5597*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/5597*100).toFixed(1)}%</b> | 잔여 ${fmtN(wdRemain)} PKG</div>
+      <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">/ 9,576 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/9576*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/9576*100).toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">수압 누계</div>
-      <div class="kpi-value teal">${fmtN(d.hpCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량: 5,597 PKG</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.hpPct.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.hpPct.toFixed(1)}%</b> | 잔여 ${fmtN(hpRemain)} PKG</div>
+      <div class="kpi-label">Test 누계 (전체)</div>
+      <div class="kpi-value teal">${fmtN(d.tstCum)} <span style="font-size:12px">/ 9,576 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.tstPct}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.tstPct}%</b> | 잔여 ${fmtN(totRemain)} PKG</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">일일 실적 (${d.date})</div>
-      <div class="kpi-value amber">${fmtN(d.wd)} <span style="font-size:12px">Walkdown</span> / ${fmtN(d.hp)} <span style="font-size:12px">Hydrotest</span></div>
-      <div class="kpi-sub">PKG Ready: ${fmtN(d.pkgReady)} | Review: ${fmtN(d.pkgReview)}</div>
-      <div class="kpi-sub" style="margin-top:4px">7일 평균 WD: ${avg7wd} | HP: ${avg7hp}</div>
+      <div class="kpi-label">수압 (Hydrotest) 누계</div>
+      <div class="kpi-value amber">${fmtN(d.hpCum)} <span style="font-size:12px">/ 5,626 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.hpPct}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.hpPct}%</b> | 잔여 ${fmtN(hpRemain)} PKG</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">복원 누계</div>
       <div class="kpi-value coral">${fmtN(d.rstCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량 대비 (5,597 PKG)</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/5597*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/5597*100).toFixed(1)}% 복원 완료</div>
-    </div>`;
-
-  const badge = document.getElementById('shn-hydro-bar-badge');
-  if (badge) badge.style.display = 'none';
-
-  const base = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
-  const xT   = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
-  const labels = chart14.map(r => r.date);
-
-  // ── 일일 bar 차트 ──
-  mkChart('shn-hydro-bar', { type:'bar', data:{ labels, datasets:[
-    { label:'Walkdown', data:chart14.map(r=>r.wd), backgroundColor:'rgba(26,95,180,0.75)', borderRadius:2, order:2 },
-    { label:'수압',     data:chart14.map(r=>r.hp), backgroundColor:'rgba(13,122,95,0.75)', borderRadius:2, order:2 },
-    { label:'WD 누계',  data:chart14.map(r=>r.wdCum), type:'line', borderColor:'#1a5fb4', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
-    { label:'HP 누계',  data:chart14.map(r=>r.hpCum), type:'line', borderColor:'#0d7a5f', backgroundColor:'transparent', tension:0.3, pointRadius:0, borderWidth:1.5, yAxisID:'y2', order:1 },
-  ]}, options:{ ...base, scales:{
-    x: xT,
-    y:  { ticks:{font:{size:9}}, grid:{color:'#f0f0f0'}, title:{display:true, text:'일일 (PKG)', font:{size:9}} },
-    y2: { position:'right', ticks:{font:{size:9}}, grid:{display:false}, title:{display:true, text:'누계 (PKG)', font:{size:9}} }
-  }} });
-
-  // ── 누계 진도율 ──
-  const minP = 0;
-  const maxP = Math.min(100, Math.ceil(Math.max(...chart14.map(r=>r.wdCum/5597*100)) + 2));
-  mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
-    { label:'Walkdown%', data:chart14.map(r=>+(r.wdCum/5597*100).toFixed(1)), borderColor:'#1a5fb4', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
-    { label:'수압%',     data:chart14.map(r=>+r.hpPct.toFixed(1)),            borderColor:'#0d7a5f', fill:false, tension:0.3, pointRadius:0, borderWidth:2 },
-  ]}, options:{ ...base, scales:{ x:xT, y:{ min:minP, max:maxP, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
-
-  // ── CW / Steam KPI ──
-  q('shn-cw-steam-kpi').innerHTML = `
-    <div class="kpi-card">
-      <div class="kpi-label">Steam라인 Walkdown 누계</div>
-      <div class="kpi-value amber">${fmtN(d.stWdCum)} <span style="font-size:12px">/ 368 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/368*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.stWdCum/368*100).toFixed(1)}%</b></div>
+      <div class="kpi-sub">총 물량 대비 (9,576 PKG)</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/9576*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/9576*100).toFixed(1)}% 복원 완료</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Steam라인 수압 누계</div>
-      <div class="kpi-value coral">${fmtN(d.stHpCum)} <span style="font-size:12px">/ 368 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/368*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.stHpPct.toFixed(1)}%</b></div>
+      <div class="kpi-label">일일 실적 (${d.date})</div>
+      <div style="margin-top:8px;font-size:13px;font-weight:600;color:var(--text-primary)">
+        ${fmtN(d.wd)} <span style="font-size:11px;color:var(--text-secondary)">Walkdown</span>
+      </div>
+      <div style="margin-top:4px;font-size:13px;font-weight:600;color:#0d7a5f">
+        ${fmtN(d.tst)} <span style="font-size:11px;color:var(--text-secondary)">Test(전체)</span>
+      </div>
+      <div style="margin-top:4px;font-size:13px;font-weight:600;color:#e2a800">
+        ${fmtN(d.hp)} <span style="font-size:11px;color:var(--text-secondary)">Hydrotest</span>
+      </div>
+    </div>
+  `;
+
+  // ── 차트: 최근 14일 ──
+  const chart14Labels = sl14.map(r => r.date);
+
+  // Bar: Walkdown / Test
+  mkChart('shn-hydro-bar', { type:'bar', data:{ labels:chart14Labels, datasets:[
+    { label:'Walkdown', data:sl14.map(r=>r.wd),  backgroundColor:'rgba(26,95,180,0.7)',  borderRadius:2 },
+    { label:'Test',     data:sl14.map(r=>r.tst), backgroundColor:'rgba(13,122,95,0.7)',  borderRadius:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
+
+  // 누계 진도율 라인 (전체 기간)
+  mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
+    { label:'Walkdown%', data:slice.map(r=>+(r.wdCum/9576*100).toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:2, borderWidth:2 },
+    { label:'Test%',     data:slice.map(r=>r.tstPct),                        borderColor:'#0d7a5f', tension:0.3, pointRadius:2, borderWidth:2 },
+  ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
+
+  // ── Steam KPI (컴팩트) ──
+  q('shn-cw-steam-kpi').innerHTML = `
+    <div class="kpi-card" style="padding:10px 12px;">
+      <div class="kpi-label" style="font-size:10px">Steam Walkdown 누계</div>
+      <div style="font-size:15px;font-weight:700;color:#e2a800;margin:4px 0">${fmtN(d.stWdCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 368 PKG</span></div>
+      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/368*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:3px;font-size:10px"><b>${(d.stWdCum/368*100).toFixed(1)}%</b></div>
+    </div>
+    <div class="kpi-card" style="padding:10px 12px;">
+      <div class="kpi-label" style="font-size:10px">Steam 수압 누계</div>
+      <div style="font-size:15px;font-weight:700;color:#e05c3a;margin:4px 0">${fmtN(d.stHpCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 368 PKG</span></div>
+      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/368*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:3px;font-size:10px"><b>${d.stHpPct.toFixed(1)}%</b></div>
     </div>`;
 
   // ── 테이블 ──
-  const rows = slice.slice().reverse();
+  const tRows = slice.slice().reverse();
   q('shn-hydro-table').innerHTML = `<thead><tr>
-    <th>일자</th>
-    <th>PKG Ready</th><th>PKG Review</th>
-    <th>WD</th><th>WD누계</th><th>WD%</th>
+    <th>날짜</th>
+    <th>WD</th><th>WD누계</th>
+    <th>Test(전체)</th><th>Test누계</th><th>Test%</th>
     <th>수압</th><th>수압누계</th><th>수압%</th>
-    <th>CW_WD</th><th>CW_WD누계</th><th>CW_HP</th><th>CW_HP누계</th><th>CW_HP%</th>
-    <th>ST_WD</th><th>ST_WD누계</th><th>ST_HP</th><th>ST_HP누계</th><th>ST_HP%</th>
-  </tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i===0?'highlight':''}">
+    <th>복원</th><th>복원누계</th>
+  </tr></thead><tbody>${tRows.map((r,i)=>`<tr class="${i===0?'highlight':''}">
     <td class="date-col">${r.date}</td>
-    <td>${fmtN(r.pkgReady)}</td><td>${fmtN(r.pkgReview)}</td>
     <td>${fmtN(r.wd)}</td><td>${fmtN(r.wdCum)}</td>
-    <td><span class="pct-pill neutral">${(r.wdCum/5597*100).toFixed(1)}%</span></td>
-    <td>${fmtN(r.hp)}</td><td>${fmtN(r.hpCum)}</td>
-    <td><span class="pct-pill ${r.hpPct>=2?'good':'behind'}">${r.hpPct.toFixed(1)}%</span></td>
-    <td>${fmtN(r.cwWd)}</td><td>${fmtN(r.cwWdCum)}</td><td>${fmtN(r.cwHp)}</td><td>${fmtN(r.cwHpCum)}</td>
-    <td><span class="pct-pill neutral">${r.cwHpPct.toFixed(1)}%</span></td>
-    <td>${fmtN(r.stWd)}</td><td>${fmtN(r.stWdCum)}</td><td>${fmtN(r.stHp)}</td><td>${fmtN(r.stHpCum)}</td>
-    <td><span class="pct-pill neutral">${r.stHpPct.toFixed(1)}%</span></td>
+    <td>${fmtN(r.tst)}</td><td>${fmtN(r.tstCum)}</td><td><span class="pct-pill neutral">${r.tstPct}%</span></td>
+    <td>${fmtN(r.hp)}</td><td>${fmtN(r.hpCum)}</td><td><span class="pct-pill neutral">${r.hpPct}%</span></td>
+    <td>${fmtN(r.rst)}</td><td>${fmtN(r.rstCum)}</td>
   </tr>`).join('')}</tbody>`;
 }
-// ══════════════════════════════════════════════════
-// 아미랄 전기 Cable 포설 데이터 (총물량: 1,472,808 M)
-// ══════════════════════════════════════════════════
-const ELEC_STA4_DATA = [
-  {week:'3/25주', daily:23790, cum:853623,  pct:58.0},
-  {week:'4/1주',  daily:37336, cum:890959,  pct:60.5},
-  {week:'4/8주',  daily:31921, cum:922880,  pct:62.7},
-  {week:'4/15주', daily:15227, cum:938107,  pct:63.7},
-  {week:'4/22주', daily:27015, cum:965122,  pct:65.5},
-  {week:'5/6주',  daily:20419, cum:1021328, pct:69.3},
-  {week:'5/13주', daily:18688, cum:1040016, pct:70.6},
-  {week:'5/20주', daily:42294, cum:1082242, pct:73.5},
-];
 
-// ══════════════════════════════════════════════════
-// 자푸라2 전기 Cable 포설 데이터 (EL02: 1,294,787 M / EL03: 726,731 M / 합계: 2,021,518 M)
-// ══════════════════════════════════════════════════
-const ELEC_SAC2_DATA = [
-  {week:'3/26주', daily:3973,  cum:337907,  pct:15.8},
-  {week:'4/2주',  daily:5597,  cum:343504,  pct:16.1},
-  {week:'4/9주',  daily:4066,  cum:347570,  pct:16.3},
-  {week:'4/16주', daily:38248, cum:385818,  pct:18.0},
-  {week:'4/23주', daily:40164, cum:425982,  pct:19.9},
-  {week:'4/30주', daily:40625, cum:466607,  pct:21.8},
-  {week:'5/7주',  daily:52884, cum:519491,  pct:24.3},
-  {week:'5/14주', daily:46388, cum:565879,  pct:26.5},
-  {week:'5/21주', daily:23610, cum:589489,  pct:27.6},
-];
-
-// ══════════════════════════════════════════════════
-// 아미랄 계장 Cable 포설 데이터 (총물량: 866,630 M)
-// ══════════════════════════════════════════════════
-const INST_STA4_DATA = [
-  {week:'3/26주', daily:10646, cum:613462, pct:70.8},
-  {week:'4/2주',  daily:21954, cum:436467, pct:50.4},
-  {week:'4/9주',  daily:13497, cum:449964, pct:51.9},
-  {week:'4/16주', daily:15424, cum:465388, pct:53.7},
-  {week:'4/23주', daily:11422, cum:476810, pct:55.0},
-  {week:'4/30주', daily:15261, cum:492071, pct:56.8},
-  {week:'5/7주',  daily:10304, cum:502375, pct:58.0},
-  {week:'5/14주', daily:10713, cum:513088, pct:59.2},
-  {week:'5/21주', daily:12066, cum:525154, pct:60.6},
-];
-
-// ══════════════════════════════════════════════════
-// 자푸라1 계장 Cable 포설 데이터 (SRU2: 140,663 M / SRU3: 139,679 M / 합계: 280,342 M)
-// ══════════════════════════════════════════════════
-const INST_SACE_DATA = [
-  {week:'3/19주', sru2:0,     sru2C:66667,  sru2P:47.4, sru3:0,     sru3C:55179, sru3P:39.5, totC:121846, totP:43.5},
-  {week:'3/26주', sru2:0,     sru2C:66667,  sru2P:47.4, sru3:0,     sru3C:55179, sru3P:39.5, totC:121846, totP:43.5},
-  {week:'4/2주',  sru2:14578, sru2C:81245,  sru2P:57.8, sru3:0,     sru3C:55179, sru3P:39.5, totC:136424, totP:48.7},
-  {week:'4/9주',  sru2:17673, sru2C:98918,  sru2P:70.3, sru3:0,     sru3C:55179, sru3P:39.5, totC:154097, totP:55.0},
-  {week:'4/16주', sru2:17025, sru2C:115943, sru2P:82.4, sru3:0,     sru3C:55179, sru3P:39.5, totC:171122, totP:61.0},
-  {week:'4/23주', sru2:16059, sru2C:132002, sru2P:93.8, sru3:0,     sru3C:55179, sru3P:39.5, totC:187181, totP:66.8},
-  {week:'4/30주', sru2:6372,  sru2C:138374, sru2P:98.4, sru3:1358,  sru3C:56537, sru3P:40.5, totC:194911, totP:69.5},
-  {week:'5/7주',  sru2:750,   sru2C:139124, sru2P:98.9, sru3:13070, sru3C:69607, sru3P:49.8, totC:208731, totP:74.5},
-  {week:'5/14주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:17717, sru3C:87324,  sru3P:62.5, totC:226448, totP:80.8},
-  {week:'5/21주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:14358, sru3C:101682, sru3P:72.8, totC:240806, totP:85.9},
-];
-// ══════════════════════════════════════════════════
-// 아미랄 전기 렌더링 (총물량: 1,472,808 M)
-// ══════════════════════════════════════════════════
 function renderElecSta4(upToIdx) {
   if (!document.getElementById("esta4-kpi")) return;
   const slice  = ELEC_STA4_DATA.slice(0, upToIdx + 1);
@@ -2231,6 +2161,115 @@ function renderInstSace(upToIdx) {
   </tr>`).join('')}</tbody>`;
 }
 // ══════════════════════════════════════════════════
+// 아미랄 전기 Cable 포설 데이터 (총물량: 1,472,808 M)
+// ══════════════════════════════════════════════════
+const ELEC_STA4_DATA = [
+  {week:'3/25주', daily:23790, cum:853623,  pct:58.0},
+  {week:'4/1주',  daily:37336, cum:890959,  pct:60.5},
+  {week:'4/8주',  daily:31921, cum:922880,  pct:62.7},
+  {week:'4/15주', daily:15227, cum:938107,  pct:63.7},
+  {week:'4/22주', daily:27015, cum:965122,  pct:65.5},
+  {week:'5/6주',  daily:20419, cum:1021328, pct:69.3},
+  {week:'5/13주', daily:18688, cum:1039948, pct:70.6},
+  {week:'5/20주', daily:42294, cum:1082242, pct:73.5},
+];
+
+// ══════════════════════════════════════════════════
+// 자푸라2 전기 Cable 포설 데이터 (총물량: 2,138,139 M)
+// ══════════════════════════════════════════════════
+const ELEC_SAC2_DATA = [
+  {week:'3/26주', daily:3973,  cum:337907,  pct:15.8},
+  {week:'4/2주',  daily:5597,  cum:343504,  pct:16.1},
+  {week:'4/9주',  daily:4066,  cum:347570,  pct:16.3},
+  {week:'4/16주', daily:38248, cum:385818,  pct:18.0},
+  {week:'4/23주', daily:40164, cum:425982,  pct:19.9},
+  {week:'4/30주', daily:40625, cum:466607,  pct:21.8},
+  {week:'5/7주',  daily:52884, cum:519491,  pct:24.3},
+  {week:'5/14주', daily:46388, cum:565879,  pct:26.5},
+  {week:'5/21주', daily:23610, cum:589489,  pct:27.6},
+];
+
+// ══════════════════════════════════════════════════
+// 아미랄 계장 Cable 포설 데이터 (총물량: 866,630 M)
+// ══════════════════════════════════════════════════
+const INST_STA4_DATA = [
+  {week:'3/26주', daily:10646, cum:613462, pct:70.8},
+  {week:'4/2주',  daily:21954, cum:436467, pct:50.4},
+  {week:'4/9주',  daily:13497, cum:449964, pct:51.9},
+  {week:'4/16주', daily:15424, cum:465388, pct:53.7},
+  {week:'4/23주', daily:11422, cum:476810, pct:55.0},
+  {week:'4/30주', daily:15261, cum:492071, pct:56.8},
+  {week:'5/7주',  daily:10304, cum:502375, pct:58.0},
+  {week:'5/14주', daily:10713, cum:513088, pct:59.2},
+  {week:'5/21주', daily:12066, cum:525154, pct:60.6},
+];
+
+// ══════════════════════════════════════════════════
+// 자푸라1 계장 Cable 포설 데이터 (SRU2: 140,663 M / SRU3: 139,679 M / 합계: 280,342 M)
+// ══════════════════════════════════════════════════
+const INST_SACE_DATA = [
+  {week:'3/19주', sru2:0,     sru2C:66667,  sru2P:47.4, sru3:0,     sru3C:55179,  sru3P:39.5, totC:121846, totP:43.5},
+  {week:'3/26주', sru2:0,     sru2C:66667,  sru2P:47.4, sru3:0,     sru3C:55179,  sru3P:39.5, totC:121846, totP:43.5},
+  {week:'4/2주',  sru2:14578, sru2C:81245,  sru2P:57.8, sru3:0,     sru3C:55179,  sru3P:39.5, totC:136424, totP:48.7},
+  {week:'4/9주',  sru2:17673, sru2C:98918,  sru2P:70.3, sru3:0,     sru3C:55179,  sru3P:39.5, totC:154097, totP:55.0},
+  {week:'4/16주', sru2:17025, sru2C:115943, sru2P:82.4, sru3:0,     sru3C:55179,  sru3P:39.5, totC:171122, totP:61.0},
+  {week:'4/23주', sru2:16059, sru2C:132002, sru2P:93.8, sru3:0,     sru3C:55179,  sru3P:39.5, totC:187181, totP:66.8},
+  {week:'4/30주', sru2:6372,  sru2C:138374, sru2P:98.4, sru3:1358,  sru3C:56537,  sru3P:40.5, totC:194911, totP:69.5},
+  {week:'5/7주',  sru2:750,   sru2C:139124, sru2P:98.9, sru3:13070, sru3C:69607,  sru3P:49.8, totC:208731, totP:74.5},
+  {week:'5/14주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:17717, sru3C:87324,  sru3P:62.5, totC:226448, totP:80.8},
+  {week:'5/21주', sru2:0,     sru2C:139124, sru2P:98.9, sru3:14358, sru3C:101682, sru3P:72.8, totC:240806, totP:85.9},
+];
+
+// ══════════════════════════════════════════════════
+// 자푸라2 토목 / 건축 데이터
+// ══════════════════════════════════════════════════
+const SAC2_CIVIL = {
+  PKG1: [
+    {date:'3/26주', fdn:{d:329,  c:33363,  p:88.5}, pav:{d:null, c:3736.6, p:25.5}, sump:{d:null, c:11288, p:91.1}, ditch:{d:null, c:13649, p:66.9}},
+    {date:'4/2주',  fdn:{d:330,  c:33693,  p:89.3}, pav:{d:352.6,c:4089.2, p:27.9}, sump:{d:22,   c:11310, p:91.3}, ditch:{d:306,  c:13955, p:68.4}},
+    {date:'4/9주',  fdn:{d:82,   c:33775,  p:89.6}, pav:{d:132,  c:4221.2, p:28.9}, sump:{d:0,    c:11310, p:91.3}, ditch:{d:5,    c:13960, p:68.4}},
+    {date:'4/16주', fdn:{d:43.1, c:33818.1,p:89.7}, pav:{d:96.3, c:4317.5, p:29.5}, sump:{d:0,    c:11310, p:91.3}, ditch:{d:73,   c:14033, p:68.7}},
+    {date:'4/23주', fdn:{d:147,  c:33965.1,p:90.1}, pav:{d:194.6,c:4512.1, p:30.8}, sump:{d:23,   c:11333, p:91.5}, ditch:{d:0,    c:14033, p:68.7}},
+    {date:'4/28주', fdn:{d:329,  c:34294.1,p:90.9}, pav:{d:303.2,c:4815.3, p:32.9}, sump:{d:null, c:11333, p:91.5}, ditch:{d:140,  c:14173, p:69.4}},
+  ],
+  PKG2: [
+    {date:'3/26주', fdn:{d:null, c:50,   p:8.5},  sump:{d:null, c:0,    p:null}, ditch:{d:null, c:35,   p:8.8}},
+    {date:'4/2주',  fdn:{d:0,    c:50,   p:8.5},  sump:{d:0,    c:0,    p:null}, ditch:{d:13.5, c:48.5, p:12.2}},
+    {date:'4/9주',  fdn:{d:0,    c:50,   p:8.5},  sump:{d:0,    c:0,    p:null}, ditch:{d:0,    c:48.5, p:12.2}},
+    {date:'4/16주', fdn:{d:22,   c:72,   p:12.2}, sump:{d:0,    c:0,    p:null}, ditch:{d:5,    c:53.5, p:13.5}},
+    {date:'4/23주', fdn:{d:42,   c:114,  p:19.4}, sump:{d:0,    c:0,    p:null}, ditch:{d:0,    c:53.5, p:13.5}},
+    {date:'4/28주', fdn:{d:0,    c:114,  p:19.4}, sump:{d:0,    c:0,    p:null}, ditch:{d:0,    c:53.5, p:13.5}},
+  ],
+};
+
+const SAC2_BLD = {
+  PKG1: [
+    {date:'3/26주', conc:{d:null, c:14737.25,p:100.0}, fin:{d:null, c:29386.61,p:99.6}},
+    {date:'4/2주',  conc:{d:0,    c:14737.25,p:100.0}, fin:{d:8,    c:29394.61,p:99.6}},
+    {date:'4/9주',  conc:{d:0,    c:14737.25,p:100.0}, fin:{d:0,    c:29394.61,p:99.6}},
+    {date:'4/16주', conc:{d:0,    c:14737.25,p:100.0}, fin:{d:0,    c:29394.61,p:99.6}},
+    {date:'4/23주', conc:{d:0,    c:14737.25,p:100.0}, fin:{d:0,    c:29394.61,p:99.6}},
+    {date:'4/28주', conc:{d:null, c:14737.25,p:100.0}, fin:{d:null, c:29394.61,p:99.6}},
+  ],
+  PKG2: [
+    {date:'3/26주', conc:{d:null, c:11570,   p:87.0}, fin:{d:null,  c:23298.51,p:49.4}},
+    {date:'4/2주',  conc:{d:20,   c:11590,   p:87.2}, fin:{d:170,   c:23468.51,p:49.7}},
+    {date:'4/9주',  conc:{d:44,   c:11634,   p:87.5}, fin:{d:14,    c:23482.51,p:49.8}},
+    {date:'4/16주', conc:{d:48.8, c:11682.83,p:87.9}, fin:{d:15.5,  c:23498.03,p:49.8}},
+    {date:'4/23주', conc:{d:105.5,c:11788.33,p:88.7}, fin:{d:1340,  c:24838.03,p:52.6}},
+    {date:'4/28주', conc:{d:67.0, c:11855.37,p:89.2}, fin:{d:2852,  c:27690.03,p:58.7}},
+  ],
+  PKG3: [
+    {date:'3/26주', conc:{d:null, c:9771.02, p:87.1}, fin:{d:null,  c:17790.11,p:42.2}},
+    {date:'4/2주',  conc:{d:110,  c:9881.02, p:88.1}, fin:{d:190,   c:17980.11,p:42.7}},
+    {date:'4/9주',  conc:{d:73.0, c:9954.04, p:88.7}, fin:{d:282,   c:18262.11,p:43.4}},
+    {date:'4/16주', conc:{d:163.0,c:10117.06,p:90.2}, fin:{d:303.7, c:18565.85,p:44.1}},
+    {date:'4/23주', conc:{d:110,  c:10227.06,p:91.1}, fin:{d:221,   c:18786.85,p:44.6}},
+    {date:'4/28주', conc:{d:36.9, c:10263.91,p:91.5}, fin:{d:3,     c:18789.85,p:44.6}},
+  ],
+};
+
+// ══════════════════════════════════════════════════
 // 샤힌 Precomm — Motor Solo Run (SCC:307대 / UO:180대)
 // ══════════════════════════════════════════════════
 const SHN_MOTOR = [
@@ -2251,6 +2290,7 @@ const SHN_MOTOR = [
   {week:'5/6주',  sccPlan:13, sccPlanC:105, sccPlanP:34.2, sccAct:33,  sccActC:121, sccActP:39.4, uoPlan:29, uoPlanC:149, uoPlanP:82.8, uoAct:11, uoActC:142, uoActP:78.9},
   {week:'5/13주', sccPlan:23, sccPlanC:128,  sccPlanP:41.7, sccAct:0,  sccActC:121,  sccActP:39.4, uoPlan:14, uoPlanC:163,  uoPlanP:90.6,  uoAct:5,  uoActC:147,  uoActP:81.7},
   {week:'5/20주', sccPlan:26, sccPlanC:154,  sccPlanP:50.2, sccAct:49, sccActC:170,  sccActP:55.4, uoPlan:17, uoPlanC:180,  uoPlanP:100.0, uoAct:6,  uoActC:153,  uoActP:85.0},
+  {week:'5/27주', sccPlan:29, sccPlanC:183,  sccPlanP:59.6, sccAct:13, sccActC:183,  sccActP:59.6, uoPlan:0,  uoPlanC:180,  uoPlanP:100.0, uoAct:2,  uoActC:155,  uoActP:87.6},
 ];
 
 // ══════════════════════════════════════════════════
@@ -2269,6 +2309,7 @@ const SHN_LOOP = [
   {week:'5/6주',  sccPlan:1000, sccPlanC:5110,  sccPlanP:27.4, sccAct:238, sccActC:2843, sccActP:15.3, uoPlan:599, uoPlanC:2275,  uoPlanP:37.5, uoAct:269, uoActC:1786, uoActP:29.5},
   {week:'5/13주', sccPlan:1600, sccPlanC:6710,  sccPlanP:36.0, sccAct:314, sccActC:3157,  sccActP:16.9, uoPlan:705,  uoPlanC:2980,  uoPlanP:49.1, uoAct:461, uoActC:2247,  uoActP:37.1},
   {week:'5/20주', sccPlan:2035, sccPlanC:8745,  sccPlanP:46.9, sccAct:419, sccActC:3576,  sccActP:19.2, uoPlan:776,  uoPlanC:3756,  uoPlanP:61.9, uoAct:470, uoActC:2717,  uoActP:44.8},
+  {week:'5/27주', sccPlan:2220, sccPlanC:10965, sccPlanP:58.8, sccAct:328, sccActC:3904,  sccActP:20.9, uoPlan:756,  uoPlanC:4512,  uoPlanP:74.4, uoAct:403, uoActC:3120,  uoActP:51.5},
 ];
 
 // ══════════════════════════════════════════════════
@@ -2285,6 +2326,7 @@ const SACE_LOOP = [
   {week:'5/7주',  sru2Plan:269, sru2PlanC:1100, sru2PlanP:54.3, sru2Act:39, sru2ActC:572,  sru2ActP:28.2, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
   {week:'5/14주', sru2Plan:269, sru2PlanC:1369, sru2PlanP:67.5, sru2Act:74,  sru2ActC:646,  sru2ActP:31.9, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
   {week:'5/21주', sru2Plan:269, sru2PlanC:1638, sru2PlanP:80.8, sru2Act:175, sru2ActC:821,  sru2ActP:40.5, sru3Plan:0,   sru3PlanC:422,  sru3PlanP:20.8, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
+  {week:'5/28주', sru2Plan:219, sru2PlanC:1857, sru2PlanP:91.6, sru2Act:100, sru2ActC:921,  sru2ActP:45.4, sru3Plan:120, sru3PlanC:542,  sru3PlanP:26.7, sru3Act:0,  sru3ActC:423,  sru3ActP:20.9},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 Precomm 렌더링
