@@ -1829,7 +1829,7 @@ function renderSac2(upToIdx) {
 }
 
 
-// 샤힌 수압 총물량: Test 9,576 PKG / 수압 5,626 PKG | CW:107 PKG | Steam:368 PKG
+// 샤힌 수압 총물량: Test 9,586 PKG / 수압 5,626 PKG | CW:107 PKG | Steam:368 PKG
 const SHN_HYDRO = [
   {date:"4/1", pkgReady:30, pkgReview:80, wd:19, wdCum:452, tst:24, tstCum:324, tstPct:3.4, hp:0, hpCum:45, hpPct:0.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.5},
   {date:"4/2", pkgReady:52, pkgReview:59, wd:46, wdCum:498, tst:48, tstCum:372, tstPct:3.9, hp:4, hpCum:49, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.5},
@@ -1915,18 +1915,18 @@ function renderShnHydro(upToIdx) {
   const xT     = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
 
   // ── KPI: 전체 현황 ──
-  const totRemain = 9576 - d.tstCum;
+  const totRemain = 9586 - d.tstCum;
   const hpRemain  = 5626 - d.hpCum;
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">Walkdown 누계</div>
-      <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">/ 9,576 PKG</span></div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/9576*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/9576*100).toFixed(1)}%</b></div>
+      <div class="kpi-value blue">${fmtN(d.wdCum)} <span style="font-size:12px">/ 9,586 PKG</span></div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${(d.wdCum/9586*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.wdCum/9586*100).toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Test 누계 (전체)</div>
-      <div class="kpi-value teal">${fmtN(d.tstCum)} <span style="font-size:12px">/ 9,576 PKG</span></div>
+      <div class="kpi-value teal">${fmtN(d.tstCum)} <span style="font-size:12px">/ 9,586 PKG</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.tstPct}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.tstPct}%</b> | 잔여 ${fmtN(totRemain)} PKG</div>
     </div>
@@ -1939,9 +1939,9 @@ function renderShnHydro(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">복원 누계</div>
       <div class="kpi-value coral">${fmtN(d.rstCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량 대비 (9,576 PKG)</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/9576*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/9576*100).toFixed(1)}% 복원 완료</div>
+      <div class="kpi-sub">총 물량 대비 (9,586 PKG)</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/9586*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/9586*100).toFixed(1)}% 복원 완료</div>
     </div>
     <div class="kpi-card" style="grid-column:span 2;">
       <div class="kpi-label">일일 실적 (${d.date})</div>
@@ -1968,7 +1968,7 @@ function renderShnHydro(upToIdx) {
 
   // 누계 진도율 라인 (전체 기간)
   mkChart('shn-hydro-progress', { type:'line', data:{ labels, datasets:[
-    { label:'Walkdown%', data:slice.map(r=>+(r.wdCum/9576*100).toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:2, borderWidth:2 },
+    { label:'Walkdown%', data:slice.map(r=>+(r.wdCum/9586*100).toFixed(1)), borderColor:'#1a5fb4', tension:0.3, pointRadius:2, borderWidth:2 },
     { label:'Test%',     data:slice.map(r=>r.tstPct),                        borderColor:'#0d7a5f', tension:0.3, pointRadius:2, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
