@@ -1238,9 +1238,9 @@ function renderShn(upToIdx) {
   // ── 잔여 소화 예상: 7일 평균 일일 생산성 기반 ──
   // 7일 고정 기준으로 하루 평균 생산량 산출
   const w7avgDaily = w7.length > 0 ? w7tot / 7 : 0;
-  const totRemain  = 855992 - d.totCum;
+  const totRemain  = 856147 - d.totCum;
   const sccRemain  = 707026 - d.sccCum;
-  const uoRemain   = 148966 - d.uoCum;
+  const uoRemain   = 149121 - d.uoCum;
   // 주 6일 근무 가정 (금요일 휴무 없이 계산 시 참고용)
   const estDays    = w7avgDaily > 0 ? Math.ceil(totRemain / w7avgDaily) : null;
   const estWeeks   = estDays !== null ? (estDays / 6).toFixed(1) : null;
