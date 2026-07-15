@@ -3,80 +3,455 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pressure Test 현황 대시보드</title>
+    <title>DAUG 제외 Pressure Test 계획/실적 대시보드</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * {margin: 0;padding: 0;box-sizing: border-box;}
-        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);min-height: 100vh;padding: 20px;color: #fff;}
-        .dashboard-header {text-align: center;margin-bottom: 30px;padding: 20px;background: rgba(255,255,255,0.1);border-radius: 15px;backdrop-filter: blur(10px);}
-        .dashboard-header h1 {font-size: 2rem;color: #4fc3f7;margin-bottom: 10px;}
-        .dashboard-header p {color: #aaa;font-size: 0.9rem;}
-        .kpi-container {display: grid;grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));gap: 20px;margin-bottom: 30px;}
-        .kpi-card {background: rgba(255,255,255,0.1);border-radius: 15px;padding: 25px;text-align: center;backdrop-filter: blur(10px);border: 1px solid rgba(255,255,255,0.1);transition: transform 0.3s ease;}
-        .kpi-card:hover {transform: translateY(-5px);}
-        .kpi-card .label {font-size: 0.85rem;color: #aaa;margin-bottom: 10px;text-transform: uppercase;letter-spacing: 1px;}
-        .kpi-card .value {font-size: 2.2rem;font-weight: bold;color: #4fc3f7;}
-        .kpi-card .sub-value {font-size: 0.9rem;color: #888;margin-top: 5px;}
-        .kpi-card.positive .value {color: #4caf50;}
-        .kpi-card.warning .value {color: #ff9800;}
-        .charts-container {display: grid;grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));gap: 20px;margin-bottom: 30px;}
-        .chart-card {background: rgba(255,255,255,0.1);border-radius: 15px;padding: 20px;backdrop-filter: blur(10px);border: 1px solid rgba(255,255,255,0.1);}
-        .chart-card h3 {color: #4fc3f7;margin-bottom: 15px;font-size: 1.1rem;}
-        .chart-wrapper {height: 300px;position: relative;}
-        .progress-section {background: rgba(255,255,255,0.1);border-radius: 15px;padding: 25px;margin-bottom: 30px;backdrop-filter: blur(10px);}
-        .progress-section h3 {color: #4fc3f7;margin-bottom: 20px;}
-        .progress-bar-container {background: rgba(0,0,0,0.3);border-radius: 10px;height: 30px;overflow: hidden;}
-        .progress-bar {height: 100%;background: linear-gradient(90deg, #4fc3f7, #00bcd4);border-radius: 10px;display: flex;align-items: center;justify-content: center;font-weight: bold;}
-        .progress-labels {display: flex;justify-content: space-between;margin-top: 10px;font-size: 0.85rem;color: #aaa;}
-        .table-section {background: rgba(255,255,255,0.1);border-radius: 15px;padding: 20px;backdrop-filter: blur(10px);overflow-x: auto;}
-        .table-section h3 {color: #4fc3f7;margin-bottom: 15px;}
-        table {width: 100%;border-collapse: collapse;font-size: 0.85rem;}
-        th, td {padding: 12px 8px;text-align: center;border-bottom: 1px solid rgba(255,255,255,0.1);}
-        th {background: rgba(79, 195, 247, 0.2);color: #4fc3f7;font-weight: 600;}
-        tr:hover {background: rgba(255,255,255,0.05);}
-        .positive-cell {color: #4caf50;}
-        .negative-cell {color: #f44336;}
-        .highlight-row {background: rgba(79, 195, 247, 0.1);}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dashboard-header .subtitle { color: #8892b0; font-size: 0.9rem; }
+        .update-time { color: #64ffda; font-size: 0.85rem; margin-top: 10px; }
+        
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .kpi-card.plan { border-left: 4px solid #ff9f43; }
+        .kpi-card.actual { border-left: 4px solid #00d2ff; }
+        .kpi-card.diff-positive { border-left: 4px solid #00ff88; }
+        .kpi-card.diff-negative { border-left: 4px solid #ff6b6b; }
+        
+        .kpi-value { font-size: 2.5rem; font-weight: bold; margin: 10px 0; }
+        .kpi-card.plan .kpi-value { color: #ff9f43; }
+        .kpi-card.actual .kpi-value { color: #00d2ff; }
+        .kpi-card.diff-positive .kpi-value { color: #00ff88; }
+        .kpi-card.diff-negative .kpi-value { color: #ff6b6b; }
+        
+        .kpi-label { color: #8892b0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .kpi-sub { color: #64ffda; font-size: 0.8rem; margin-top: 5px; }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .chart-card h3 { color: #ccd6f6; margin-bottom: 15px; font-size: 1.1rem; }
+        .chart-wrapper { position: relative; height: 350px; }
+        
+        .progress-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .progress-section h3 { color: #ccd6f6; margin-bottom: 20px; }
+        .progress-bar-container { margin-bottom: 20px; }
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 8px; color: #8892b0; }
+        
+        .progress-bar {
+            height: 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 15px;
+            transition: width 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .progress-fill.plan { background: linear-gradient(90deg, #ff9f43, #ffbe76); }
+        .progress-fill.actual { background: linear-gradient(90deg, #00d2ff, #00e5ff); }
+        
+        .table-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-x: auto;
+        }
+        
+        .table-section h3 { color: #ccd6f6; margin-bottom: 15px; }
+        
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-controls input {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        
+        .filter-controls input:focus { outline: none; border-color: #00d2ff; }
+        
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th, td { padding: 12px 15px; text-align: right; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        th { background: rgba(0,210,255,0.2); color: #64ffda; font-weight: 600; position: sticky; top: 0; }
+        th:first-child, td:first-child { text-align: left; }
+        tr:hover { background: rgba(255,255,255,0.05); }
+        
+        .positive { color: #00ff88; }
+        .negative { color: #ff6b6b; }
+        .today-row { background: rgba(100,255,218,0.1) !important; }
+        .table-scroll { max-height: 400px; overflow-y: auto; }
+        
+        @media (max-width: 768px) {
+            .charts-container { grid-template-columns: 1fr; }
+            .kpi-container { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-header h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
     <div class="dashboard-header">
-        <h1>📊 Pressure Test 현황 대시보드</h1>
-        <p>PICS 기준 | 2026-07-08 기준 데이터 | 1~10공구 (DAUG 제외)</p>
+        <h1>🔧 DAUG 제외 Pressure Test 계획/실적 대시보드</h1>
+        <div class="subtitle">Total: 9,125 | Python Standalone Script</div>
+        <div class="update-time" id="updateTime"></div>
     </div>
-    <div class="kpi-container">
-        <div class="kpi-card"><div class="label">전체 계획</div><div class="value">9,032</div><div class="sub-value">Total Plan</div></div>
-        <div class="kpi-card"><div class="label">현재 실적 누계</div><div class="value">3,456</div><div class="sub-value">07-Jul 기준</div></div>
-        <div class="kpi-card warning"><div class="label">진행률</div><div class="value">38.3%</div><div class="sub-value">실적/계획</div></div>
-        <div class="kpi-card positive"><div class="label">누적 차이</div><div class="value">+4</div><div class="sub-value">계획 대비 초과</div></div>
-    </div>
+    
+    <div class="kpi-container" id="kpiContainer"></div>
+    
     <div class="progress-section">
-        <h3>📈 전체 진행 현황</h3>
-        <div class="progress-bar-container"><div class="progress-bar" style="width: 38.3%">38.3%</div></div>
-        <div class="progress-labels"><span>시작: 3,323 (Until 1st July)</span><span>현재: 3,456</span><span>목표: 9,032</span></div>
+        <h3>📊 전체 진행률</h3>
+        <div id="progressBars"></div>
     </div>
+    
     <div class="charts-container">
-        <div class="chart-card"><h3>📊 일일 계획 vs 실적</h3><div class="chart-wrapper"><canvas id="dailyChart"></canvas></div></div>
-        <div class="chart-card"><h3>📈 누적 진행 추이</h3><div class="chart-wrapper"><canvas id="cumulativeChart"></canvas></div></div>
+        <div class="chart-card">
+            <h3>📈 누계 진행 추이 (계획 vs 실적)</h3>
+            <div class="chart-wrapper"><canvas id="cumulativeChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <h3>📊 일별 실적 (계획 vs 실적)</h3>
+            <div class="chart-wrapper"><canvas id="dailyChart"></canvas></div>
+        </div>
     </div>
+    
+    <div class="charts-container">
+        <div class="chart-card">
+            <h3>📉 누적 차이 추이</h3>
+            <div class="chart-wrapper"><canvas id="diffChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <h3>🎯 완료율 비교</h3>
+            <div class="chart-wrapper"><canvas id="completionChart"></canvas></div>
+        </div>
+    </div>
+    
     <div class="table-section">
-        <h3>📋 상세 데이터 (7월)</h3>
-        <table>
-            <thead><tr><th>구분</th><th>7/6</th><th>7/7</th><th>7/8</th><th>7/9</th><th>7/10</th><th>7/11</th><th>7/12</th><th>7/13</th><th>7/14</th><th>7/15</th></tr></thead>
-            <tbody>
-                <tr class="highlight-row"><td><strong>계획</strong></td><td>67</td><td>62</td><td>54</td><td>61</td><td>110</td><td>91</td><td>95</td><td>165</td><td>228</td><td>206</td></tr>
-                <tr><td><strong>계획누계</strong></td><td>3,390</td><td>3,452</td><td>3,506</td><td>3,567</td><td>3,677</td><td>3,768</td><td>3,863</td><td>4,028</td><td>4,256</td><td>4,462</td></tr>
-                <tr class="highlight-row"><td><strong>실적</strong></td><td>45</td><td>88</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                <tr><td><strong>실적누계</strong></td><td>3,368</td><td>3,456</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                <tr class="highlight-row"><td><strong>차이</strong></td><td class="negative-cell">-22</td><td class="positive-cell">+26</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-                <tr><td><strong>차이누계</strong></td><td class="negative-cell">-22</td><td class="positive-cell">+4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-            </tbody>
-        </table>
+        <h3>📋 상세 데이터 (실적 기간, 최근일 순)</h3>
+        <div class="filter-controls">
+            <input type="date" id="startDate" placeholder="시작일">
+            <input type="date" id="endDate" placeholder="종료일">
+        </div>
+        <div class="table-scroll">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>날짜</th><th>계획</th><th>계획누계</th><th>계획누계%</th>
+                        <th>실적</th><th>실적누계</th><th>실적누계%</th>
+                        <th>차이</th><th>차이누계</th><th>차이누계%</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
     </div>
+
     <script>
-        Chart.defaults.color = '#aaa';
-        new Chart(document.getElementById('dailyChart'), {type: 'bar',data: {labels: ['7/6', '7/7', '7/8', '7/9', '7/10', '7/11', '7/12', '7/13', '7/14', '7/15'],datasets: [{label: '계획',data: [67, 62, 54, 61, 110, 91, 95, 165, 228, 206],backgroundColor: 'rgba(79, 195, 247, 0.7)',borderColor: '#4fc3f7',borderWidth: 1}, {label: '실적',data: [45, 88, null, null, null, null, null, null, null, null],backgroundColor: 'rgba(76, 175, 80, 0.7)',borderColor: '#4caf50',borderWidth: 1}]},options: {responsive: true,maintainAspectRatio: false}});
-        new Chart(document.getElementById('cumulativeChart'), {type: 'line',data: {labels: ['7/6', '7/7', '7/8', '7/9', '7/10', '7/11', '7/12', '7/13', '7/14', '7/15'],datasets: [{label: '계획 누계',data: [3390, 3452, 3506, 3567, 3677, 3768, 3863, 4028, 4256, 4462],borderColor: '#4fc3f7',fill: true,backgroundColor: 'rgba(79, 195, 247, 0.1)',tension: 0.3}, {label: '실적 누계',data: [3368, 3456, null, null, null, null, null, null, null, null],borderColor: '#4caf50',fill: true,backgroundColor: 'rgba(76, 175, 80, 0.1)',tension: 0.3}]},options: {responsive: true,maintainAspectRatio: false}});
+        const TOTAL_PKG = 9125;
+        
+        const rawData = [
+            {date:"2026-07-06",plan:67,planCum:3395,planCumPct:0.372,actual:41,actualCum:3368,actualCumPct:0.369,diff:-26,diffCum:-27,diffCumPct:-0.003},
+            {date:"2026-07-07",plan:69,planCum:3464,planCumPct:0.38,actual:88,actualCum:3456,actualCumPct:0.379,diff:19,diffCum:-8,diffCumPct:-0.001},
+            {date:"2026-07-08",plan:50,planCum:3514,planCumPct:0.385,actual:61,actualCum:3517,actualCumPct:0.385,diff:11,diffCum:3,diffCumPct:0.0},
+            {date:"2026-07-09",plan:59,planCum:3573,planCumPct:0.392,actual:35,actualCum:3552,actualCumPct:0.389,diff:-24,diffCum:-21,diffCumPct:-0.002},
+            {date:"2026-07-10",plan:82,planCum:3655,planCumPct:0.401,actual:77,actualCum:3629,actualCumPct:0.398,diff:-5,diffCum:-26,diffCumPct:-0.003},
+            {date:"2026-07-11",plan:83,planCum:3738,planCumPct:0.41,actual:70,actualCum:3699,actualCumPct:0.405,diff:-13,diffCum:-39,diffCumPct:-0.004},
+            {date:"2026-07-12",plan:73,planCum:3811,planCumPct:0.418,actual:59,actualCum:3758,actualCumPct:0.412,diff:-14,diffCum:-53,diffCumPct:-0.006},
+            {date:"2026-07-13",plan:110,planCum:3921,planCumPct:0.43,actual:71,actualCum:3829,actualCumPct:0.42,diff:-39,diffCum:-92,diffCumPct:-0.01},
+            {date:"2026-07-14",plan:129,planCum:4050,planCumPct:0.444,actual:119,actualCum:3948,actualCumPct:0.433,diff:-10,diffCum:-102,diffCumPct:-0.011},
+            {date:"2026-07-15",plan:147,planCum:4197,planCumPct:0.46,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-16",plan:186,planCum:4383,planCumPct:0.48,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-17",plan:165,planCum:4548,planCumPct:0.498,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-18",plan:122,planCum:4670,planCumPct:0.512,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-19",plan:83,planCum:4753,planCumPct:0.521,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-20",plan:162,planCum:4915,planCumPct:0.539,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-21",plan:160,planCum:5075,planCumPct:0.556,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-22",plan:162,planCum:5237,planCumPct:0.574,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-23",plan:188,planCum:5425,planCumPct:0.595,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-24",plan:177,planCum:5602,planCumPct:0.614,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-25",plan:164,planCum:5766,planCumPct:0.632,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-26",plan:181,planCum:5947,planCumPct:0.652,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-27",plan:199,planCum:6146,planCumPct:0.674,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-28",plan:188,planCum:6334,planCumPct:0.694,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-29",plan:189,planCum:6523,planCumPct:0.715,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-30",plan:154,planCum:6677,planCumPct:0.732,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-07-31",plan:176,planCum:6853,planCumPct:0.751,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-01",plan:119,planCum:6972,planCumPct:0.764,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-02",plan:142,planCum:7114,planCumPct:0.78,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-03",plan:177,planCum:7291,planCumPct:0.799,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-04",plan:144,planCum:7435,planCumPct:0.815,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-05",plan:181,planCum:7616,planCumPct:0.835,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-06",plan:150,planCum:7766,planCumPct:0.851,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-07",plan:105,planCum:7871,planCumPct:0.863,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-08",plan:88,planCum:7959,planCumPct:0.872,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-09",plan:100,planCum:8059,planCumPct:0.883,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-10",plan:126,planCum:8185,planCumPct:0.897,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-11",plan:99,planCum:8284,planCumPct:0.908,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-12",plan:116,planCum:8400,planCumPct:0.921,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-13",plan:75,planCum:8475,planCumPct:0.929,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-14",plan:122,planCum:8597,planCumPct:0.942,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-15",plan:87,planCum:8684,planCumPct:0.952,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-16",plan:44,planCum:8728,planCumPct:0.956,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-17",plan:85,planCum:8813,planCumPct:0.966,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-18",plan:45,planCum:8858,planCumPct:0.971,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-19",plan:54,planCum:8912,planCumPct:0.977,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-20",plan:57,planCum:8969,planCumPct:0.983,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-21",plan:56,planCum:9025,planCumPct:0.989,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-22",plan:45,planCum:9070,planCumPct:0.994,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-23",plan:38,planCum:9108,planCumPct:0.998,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-24",plan:10,planCum:9118,planCumPct:0.999,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-25",plan:7,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-26",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-27",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-28",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-29",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-30",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-08-31",plan:0,planCum:9125,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null}
+        ];
+
+        function formatNumber(num) {
+            if (num === null || num === undefined) return "-";
+            return num.toLocaleString('ko-KR');
+        }
+
+        function formatPercent(num) {
+            if (num === null || num === undefined) return "-";
+            return (num * 100).toFixed(1) + "%";
+        }
+
+        const actualData = rawData.filter(d => d.actual !== null);
+        const latestActual = actualData[actualData.length - 1];
+
+        document.getElementById('updateTime').textContent = 
+            `대시보드 생성: ${new Date().toLocaleString('ko-KR')}`;
+
+        // KPI Cards
+        const kpiContainer = document.getElementById('kpiContainer');
+        const kpis = [
+            { label: '총 대상', value: formatNumber(TOTAL_PKG), sub: 'Total PKG', class: 'plan' },
+            { label: '최신 실적 누계', value: formatNumber(latestActual.actualCum), sub: `${latestActual.date} 기준`, class: 'actual' },
+            { label: '실적 완료율', value: formatPercent(latestActual.actualCumPct), sub: `목표: ${formatPercent(latestActual.planCumPct)}`, class: 'actual' },
+            { label: '계획 대비 차이', value: formatNumber(latestActual.diffCum), sub: formatPercent(latestActual.diffCumPct), class: latestActual.diffCum >= 0 ? 'diff-positive' : 'diff-negative' },
+            { label: '당일 계획', value: formatNumber(latestActual.plan), sub: latestActual.date, class: 'plan' },
+            { label: '당일 실적', value: formatNumber(latestActual.actual), sub: latestActual.date, class: 'actual' }
+        ];
+
+        kpis.forEach(kpi => {
+            kpiContainer.innerHTML += `
+                <div class="kpi-card ${kpi.class}">
+                    <div class="kpi-label">${kpi.label}</div>
+                    <div class="kpi-value">${kpi.value}</div>
+                    <div class="kpi-sub">${kpi.sub}</div>
+                </div>
+            `;
+        });
+
+        // Progress Bars
+        const progressBars = document.getElementById('progressBars');
+        const planProgress = latestActual.planCumPct * 100;
+        const actualProgress = latestActual.actualCumPct * 100;
+
+        progressBars.innerHTML = `
+            <div class="progress-bar-container">
+                <div class="progress-label">
+                    <span>계획 진행률 (${latestActual.date} 목표)</span>
+                    <span>${formatNumber(latestActual.planCum)} / ${formatNumber(TOTAL_PKG)}</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill plan" style="width: ${planProgress}%">${planProgress.toFixed(1)}%</div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-label">
+                    <span>실적 진행률</span>
+                    <span>${formatNumber(latestActual.actualCum)} / ${formatNumber(TOTAL_PKG)}</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill actual" style="width: ${actualProgress}%">${actualProgress.toFixed(1)}%</div>
+                </div>
+            </div>
+        `;
+
+        // Charts
+        Chart.defaults.color = '#8892b0';
+        Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
+
+        const planColor = '#ff9f43';
+        const planColorLight = 'rgba(255, 159, 67, 0.2)';
+        const actualColor = '#00d2ff';
+        const actualColorLight = 'rgba(0, 210, 255, 0.2)';
+
+        // Cumulative Chart
+        new Chart(document.getElementById('cumulativeChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: actualData.map(d => d.date),
+                datasets: [
+                    { label: '계획 누계', data: actualData.map(d => d.planCum), borderColor: planColor, backgroundColor: planColorLight, fill: true, tension: 0.4, borderWidth: 3 },
+                    { label: '실적 누계', data: actualData.map(d => d.actualCum), borderColor: actualColor, backgroundColor: actualColorLight, fill: true, tension: 0.4, borderWidth: 3 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: false, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } } } }
+        });
+
+        // Daily Chart
+        new Chart(document.getElementById('dailyChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: actualData.map(d => d.date),
+                datasets: [
+                    { label: '계획', data: actualData.map(d => d.plan), backgroundColor: 'rgba(255, 159, 67, 0.8)', borderColor: planColor, borderWidth: 1, borderRadius: 4 },
+                    { label: '실적', data: actualData.map(d => d.actual), backgroundColor: 'rgba(0, 210, 255, 0.8)', borderColor: actualColor, borderWidth: 1, borderRadius: 4 }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } } }
+        });
+
+        // Diff Chart
+        new Chart(document.getElementById('diffChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: actualData.map(d => d.date),
+                datasets: [{
+                    label: '차이 누계',
+                    data: actualData.map(d => d.diffCum),
+                    borderColor: latestActual.diffCum >= 0 ? '#00ff88' : '#ff6b6b',
+                    backgroundColor: latestActual.diffCum >= 0 ? 'rgba(0,255,136,0.2)' : 'rgba(255,107,107,0.2)',
+                    fill: true, tension: 0.4, borderWidth: 3
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } } }
+        });
+
+        // Completion Chart
+        new Chart(document.getElementById('completionChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['실적 완료', '잔여'],
+                datasets: [{ data: [latestActual.actualCum, TOTAL_PKG - latestActual.actualCum], backgroundColor: [actualColor, 'rgba(255,255,255,0.1)'], borderWidth: 0 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+        });
+
+        // Table
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            tbody.innerHTML = sortedData.map(d => {
+                const diffClass = d.diff !== null ? (d.diff >= 0 ? 'positive' : 'negative') : '';
+                const diffCumClass = d.diffCum !== null ? (d.diffCum >= 0 ? 'positive' : 'negative') : '';
+                const isLatest = d.date === latestActual.date;
+                
+                return `
+                    <tr class="${isLatest ? 'today-row' : ''}">
+                        <td>${d.date}${isLatest ? ' (최근)' : ''}</td>
+                        <td>${formatNumber(d.plan)}</td>
+                        <td>${formatNumber(d.planCum)}</td>
+                        <td>${formatPercent(d.planCumPct)}</td>
+                        <td>${d.actual !== null ? formatNumber(d.actual) : '-'}</td>
+                        <td>${d.actualCum !== null ? formatNumber(d.actualCum) : '-'}</td>
+                        <td>${d.actualCumPct !== null ? formatPercent(d.actualCumPct) : '-'}</td>
+                        <td class="${diffClass}">${d.diff !== null ? formatNumber(d.diff) : '-'}</td>
+                        <td class="${diffCumClass}">${d.diffCum !== null ? formatNumber(d.diffCum) : '-'}</td>
+                        <td class="${diffCumClass}">${d.diffCumPct !== null ? formatPercent(d.diffCumPct) : '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        renderTable(actualData);
+
+        document.getElementById('startDate').addEventListener('change', applyDateFilter);
+        document.getElementById('endDate').addEventListener('change', applyDateFilter);
+
+        function applyDateFilter() {
+            const start = document.getElementById('startDate').value;
+            const end = document.getElementById('endDate').value;
+            let filtered = actualData;
+            if (start) filtered = filtered.filter(d => d.date >= start);
+            if (end) filtered = filtered.filter(d => d.date <= end);
+            renderTable(filtered);
+        }
     </script>
 </body>
 </html>
