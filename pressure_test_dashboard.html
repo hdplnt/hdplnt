@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAUG 제외 Pressure Test 계획/실적 대시보드</title>
+    <title>SHN1 Pressure Test 계획/실적 (UG제외)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -171,7 +171,7 @@
 </head>
 <body>
     <div class="dashboard-header">
-        <h1>🔧 DAUG 제외 Pressure Test 계획/실적 대시보드</h1>
+        <h1>🔧 SHN1 Pressure Test 계획/실적 (UG 제외)</h1>
         <div class="subtitle">Total: 9,125 | Python Standalone Script</div>
         <div class="update-time" id="updateTime"></div>
     </div>
@@ -229,7 +229,6 @@
         const TOTAL_PKG = 9125;
         
         const rawData = [
-            {date:"2026-07-06",plan:67,planCum:3395,planCumPct:0.372,actual:41,actualCum:3368,actualCumPct:0.369,diff:-26,diffCum:-27,diffCumPct:-0.003},
             {date:"2026-07-07",plan:69,planCum:3464,planCumPct:0.38,actual:88,actualCum:3456,actualCumPct:0.379,diff:19,diffCum:-8,diffCumPct:-0.001},
             {date:"2026-07-08",plan:50,planCum:3514,planCumPct:0.385,actual:61,actualCum:3517,actualCumPct:0.385,diff:11,diffCum:3,diffCumPct:0.0},
             {date:"2026-07-09",plan:59,planCum:3573,planCumPct:0.392,actual:35,actualCum:3552,actualCumPct:0.389,diff:-24,diffCum:-21,diffCumPct:-0.002},
@@ -238,6 +237,7 @@
             {date:"2026-07-12",plan:73,planCum:3811,planCumPct:0.418,actual:59,actualCum:3758,actualCumPct:0.412,diff:-14,diffCum:-53,diffCumPct:-0.006},
             {date:"2026-07-13",plan:110,planCum:3921,planCumPct:0.43,actual:71,actualCum:3829,actualCumPct:0.42,diff:-39,diffCum:-92,diffCumPct:-0.01},
             {date:"2026-07-14",plan:129,planCum:4050,planCumPct:0.444,actual:119,actualCum:3948,actualCumPct:0.433,diff:-10,diffCum:-102,diffCumPct:-0.011},
+            {date:"2026-07-15",plan:147,planCum:4197,planCumPct:0.46,actual:96,actualCum:4044,actualCumPct:0.443,diff:-51,diffCum:-153,diffCumPct:-0.017},
             {date:"2026-07-15",plan:147,planCum:4197,planCumPct:0.46,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
             {date:"2026-07-16",plan:186,planCum:4383,planCumPct:0.48,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
             {date:"2026-07-17",plan:165,planCum:4548,planCumPct:0.498,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
