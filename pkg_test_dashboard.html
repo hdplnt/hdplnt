@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKG#1 COMMON PKG TEST STATUS Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header .update-time {
+            color: #888;
+            font-size: 0.9em;
+        }
+        
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,217,255,0.2);
+        }
+        
+        .kpi-card .label {
+            font-size: 0.85em;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        
+        .kpi-card .value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .kpi-card .sub-value {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .kpi-card.plan .value { color: #00d9ff; }
+        .kpi-card.actual .value { color: #00ff88; }
+        .kpi-card.progress .value { color: #ffaa00; }
+        
+        .chart-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .chart-card h3 {
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .data-table {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+        
+        .data-table h3 {
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        th {
+            background: rgba(0,217,255,0.2);
+            color: #00d9ff;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .has-actual {
+            background: rgba(0,255,136,0.1);
+        }
+        
+        .remarks {
+            color: #ffaa00;
+            font-size: 0.8em;
+            max-width: 200px;
+            text-align: left;
+        }
+        
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .toggle-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        
+        .toggle-btn.active {
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+            font-weight: bold;
+        }
+        
+        .toggle-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .chart-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .kpi-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>📊 PKG#1 COMMON PKG TEST STATUS</h1>
+            <p class="update-time">Daily Update Dashboard | Generated: 2026-07-22 15:28</p>
+        </div>
+        
+        <div class="kpi-container">
+            <div class="kpi-card plan">
+                <div class="label">총 예상 Common 수</div>
+                <div class="value">165</div>
+                <div class="sub-value">43일 기준</div>
+            </div>
+            <div class="kpi-card plan">
+                <div class="label">총 예상 PKG 수</div>
+                <div class="value">416</div>
+                <div class="sub-value">전체 계획</div>
+            </div>
+            <div class="kpi-card actual">
+                <div class="label">실적 Common 수</div>
+                <div class="value">10</div>
+                <div class="sub-value">3일 실적</div>
+            </div>
+            <div class="kpi-card actual">
+                <div class="label">실적 PKG 수</div>
+                <div class="value">27</div>
+                <div class="sub-value">3일 실적</div>
+            </div>
+            <div class="kpi-card progress">
+                <div class="label">Common 달성률</div>
+                <div class="value">6.1%</div>
+                <div class="sub-value">계획 대비</div>
+            </div>
+            <div class="kpi-card progress">
+                <div class="label">PKG 달성률</div>
+                <div class="value">6.5%</div>
+                <div class="sub-value">계획 대비</div>
+            </div>
+        </div>
+        
+        <div class="toggle-container">
+            <button class="toggle-btn active" onclick="switchChart('daily')">일별 현황</button>
+            <button class="toggle-btn" onclick="switchChart('cumulative')">누적 현황</button>
+            <button class="toggle-btn" onclick="switchChart('comparison')">계획 vs 실적</button>
+        </div>
+        
+        <div class="chart-section">
+            <div class="chart-card">
+                <h3>📈 Common PKG 추이</h3>
+                <div class="chart-container">
+                    <canvas id="commonChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>📈 PKG 추이</h3>
+                <div class="chart-container">
+                    <canvas id="pkgChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-table">
+            <h3>📋 상세 데이터</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>예상 Common</th>
+                        <th>예상 PKG</th>
+                        <th>실적 Common</th>
+                        <th>실적 PKG</th>
+                        <th>Common 차이</th>
+                        <th>PKG 차이</th>
+                        <th>비고</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const chartData = {"dates": ["07/20", "07/21", "07/22", "07/23", "07/24", "07/25", "07/26", "07/27", "07/28", "07/29", "07/30", "07/31", "08/01", "08/02", "08/03", "08/04", "08/05", "08/06", "08/07", "08/08", "08/09", "08/10", "08/11", "08/12", "08/13", "08/14", "08/15", "08/16", "08/17", "08/18", "08/19", "08/20", "08/21", "08/22", "08/23", "08/24", "08/25", "08/26", "08/27", "08/28", "08/29", "08/30", "08/31"], "planCommon": [2, 4, 12, 12, 10, 4, 5, 2, 12, 12, 20, 5, 7, 5, 9, 11, 5, 6, 2, 2, 0, 1, 2, 4, 2, 3, 0, 0, 1, 0, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "planPkg": [6, 9, 30, 24, 21, 10, 14, 4, 30, 29, 50, 13, 15, 9, 34, 37, 16, 15, 2, 3, 0, 2, 8, 9, 5, 7, 0, 0, 2, 0, 4, 2, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], "actualCommon": [2, 2, 6, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "actualPkg": [6, 4, 17, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "cumPlanCommon": [2, 6, 18, 30, 40, 44, 49, 51, 63, 75, 95, 100, 107, 112, 121, 132, 137, 143, 145, 147, 147, 148, 150, 154, 156, 159, 159, 159, 160, 160, 162, 163, 164, 165, 165, 165, 165, 165, 165, 165, 165, 165, 165], "cumPlanPkg": [6, 15, 45, 69, 90, 100, 114, 118, 148, 177, 227, 240, 255, 264, 298, 335, 351, 366, 368, 371, 371, 373, 381, 390, 395, 402, 402, 402, 404, 404, 408, 410, 414, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416], "cumActualCommon": [2, 4, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "cumActualPkg": [6, 10, 27, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null], "remarks": ["", "2 Common \ub86f\ub370 Leak\ub85c 7/23 \uc7ac\uc2e4\uc2dc", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]};
+        let commonChart, pkgChart;
+        let currentView = 'daily';
+        
+        function initCharts() {
+            const commonCtx = document.getElementById('commonChart').getContext('2d');
+            const pkgCtx = document.getElementById('pkgChart').getContext('2d');
+            
+            commonChart = new Chart(commonCtx, {
+                type: 'bar',
+                data: getDailyData('common'),
+                options: getChartOptions('Common PKG')
+            });
+            
+            pkgChart = new Chart(pkgCtx, {
+                type: 'bar',
+                data: getDailyData('pkg'),
+                options: getChartOptions('PKG')
+            });
+            
+            populateTable();
+        }
+        
+        function getDailyData(type) {
+            const plan = type === 'common' ? chartData.planCommon : chartData.planPkg;
+            const actual = type === 'common' ? chartData.actualCommon : chartData.actualPkg;
+            
+            return {
+                labels: chartData.dates,
+                datasets: [
+                    {
+                        label: '예상',
+                        data: plan,
+                        backgroundColor: 'rgba(0, 217, 255, 0.6)',
+                        borderColor: 'rgba(0, 217, 255, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '실적',
+                        data: actual,
+                        backgroundColor: 'rgba(0, 255, 136, 0.6)',
+                        borderColor: 'rgba(0, 255, 136, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+        }
+        
+        function getCumulativeData(type) {
+            const plan = type === 'common' ? chartData.cumPlanCommon : chartData.cumPlanPkg;
+            const actual = type === 'common' ? chartData.cumActualCommon : chartData.cumActualPkg;
+            
+            return {
+                labels: chartData.dates,
+                datasets: [
+                    {
+                        label: '누적 예상',
+                        data: plan,
+                        borderColor: 'rgba(0, 217, 255, 1)',
+                        backgroundColor: 'rgba(0, 217, 255, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: '누적 실적',
+                        data: actual,
+                        borderColor: 'rgba(0, 255, 136, 1)',
+                        backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            };
+        }
+        
+        function getComparisonData(type) {
+            const plan = type === 'common' ? chartData.planCommon : chartData.planPkg;
+            const actual = type === 'common' ? chartData.actualCommon : chartData.actualPkg;
+            const diff = plan.map((p, i) => actual[i] !== null ? actual[i] - p : null);
+            
+            return {
+                labels: chartData.dates,
+                datasets: [
+                    {
+                        label: '차이 (실적 - 예상)',
+                        data: diff,
+                        backgroundColor: diff.map(d => d !== null ? (d >= 0 ? 'rgba(0, 255, 136, 0.6)' : 'rgba(255, 99, 132, 0.6)') : 'transparent'),
+                        borderColor: diff.map(d => d !== null ? (d >= 0 ? 'rgba(0, 255, 136, 1)' : 'rgba(255, 99, 132, 1)') : 'transparent'),
+                        borderWidth: 1
+                    }
+                ]
+            };
+        }
+        
+        function getChartOptions(title) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff' }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#aaa' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#aaa' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    }
+                }
+            };
+        }
+        
+        function switchChart(view) {
+            currentView = view;
+            
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (view === 'daily') {
+                commonChart.config.type = 'bar';
+                pkgChart.config.type = 'bar';
+                commonChart.data = getDailyData('common');
+                pkgChart.data = getDailyData('pkg');
+            } else if (view === 'cumulative') {
+                commonChart.config.type = 'line';
+                pkgChart.config.type = 'line';
+                commonChart.data = getCumulativeData('common');
+                pkgChart.data = getCumulativeData('pkg');
+            } else {
+                commonChart.config.type = 'bar';
+                pkgChart.config.type = 'bar';
+                commonChart.data = getComparisonData('common');
+                pkgChart.data = getComparisonData('pkg');
+            }
+            
+            commonChart.update();
+            pkgChart.update();
+        }
+        
+        function populateTable() {
+            const tbody = document.getElementById('dataTableBody');
+            let html = '';
+            
+            for (let i = 0; i < chartData.dates.length; i++) {
+                const hasActual = chartData.actualCommon[i] !== null;
+                const commonDiff = hasActual ? chartData.actualCommon[i] - chartData.planCommon[i] : '-';
+                const pkgDiff = hasActual ? chartData.actualPkg[i] - chartData.planPkg[i] : '-';
+                
+                html += `<tr class="${hasActual ? 'has-actual' : ''}">
+                    <td>${chartData.dates[i]}</td>
+                    <td>${chartData.planCommon[i]}</td>
+                    <td>${chartData.planPkg[i]}</td>
+                    <td>${hasActual ? chartData.actualCommon[i] : '-'}</td>
+                    <td>${hasActual ? chartData.actualPkg[i] : '-'}</td>
+                    <td style="color: ${commonDiff >= 0 ? '#00ff88' : '#ff6b6b'}">${typeof commonDiff === 'number' ? (commonDiff >= 0 ? '+' : '') + commonDiff : commonDiff}</td>
+                    <td style="color: ${pkgDiff >= 0 ? '#00ff88' : '#ff6b6b'}">${typeof pkgDiff === 'number' ? (pkgDiff >= 0 ? '+' : '') + pkgDiff : pkgDiff}</td>
+                    <td class="remarks">${chartData.remarks[i] || ''}</td>
+                </tr>`;
+            }
+            
+            tbody.innerHTML = html;
+        }
+        
+        initCharts();
+    </script>
+</body>
+</html>
