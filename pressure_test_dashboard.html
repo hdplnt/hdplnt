@@ -172,7 +172,7 @@
 <body>
     <div class="dashboard-header">
         <h1>🔧 SHN1 Pressure Test 계획/실적 (UG 제외)</h1>
-        <div class="subtitle">Total: 9,197 | Python Standalone Script</div>
+        <div class="subtitle">Total: 9,287 | Python Standalone Script</div>
         <div class="update-time" id="updateTime"></div>
     </div>
     
@@ -226,7 +226,7 @@
     </div>
 
     <script>
-        const TOTAL_PKG = 9197;
+        const TOTAL_PKG = 9287;
         
         const rawData = [
             {date:"2026-07-06",plan:67,planCum:3408,planCumPct:0.371,actual:41,actualCum:3368,actualCumPct:0.366,diff:-26,diffCum:-40,diffCumPct:-0.004},
@@ -282,13 +282,15 @@
             {date:"2026-08-25",plan:7,planCum:9197,planCumPct:1.0,actual:92,actualCum:6840,actualCumPct:0.744,diff:85,diffCum:-2357,diffCumPct:-0.256},
             {date:"2026-08-26",plan:0,planCum:9197,planCumPct:1.0,actual:92,actualCum:6932,actualCumPct:0.754,diff:92,diffCum:-2265,diffCumPct:-0.246},
             {date:"2026-08-27",plan:0,planCum:9197,planCumPct:1.0,actual:75,actualCum:7007,actualCumPct:0.762,diff:75,diffCum:-2190,diffCumPct:-0.238},
-            {date:"2026-08-28",plan:0,planCum:9197,planCumPct:1.0,actual:14,actualCum:7021,actualCumPct:0.763,diff:14,diffCum:-2176,diffCumPct:-0.237},
-            {date:"2026-08-29",plan:0,planCum:9197,planCumPct:1.0,actual:60,actualCum:7081,actualCumPct:0.77,diff:60,diffCum:-2116,diffCumPct:-0.23},
-            {date:"2026-08-30",plan:0,planCum:9197,planCumPct:1.0,actual:48,actualCum:7129,actualCumPct:0.775,diff:48,diffCum:-2068,diffCumPct:-0.225},
-            {date:"2026-08-31",plan:0,planCum:9197,planCumPct:1.0,actual:79,actualCum:7208,actualCumPct:0.784,diff:79,diffCum:-1989,diffCumPct:-0.216},
-            {date:"2026-08-31",plan:0,planCum:9197,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
-            {date:"2026-09-01",plan:0,planCum:9197,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
-            {date:"2026-09-02",plan:0,planCum:9197,planCumPct:1.0,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null}
+            {date:"2026-08-28",plan:14,planCum:7021,planCumPct:0.756,actual:14,actualCum:7021,actualCumPct:0.756,diff:14,diffCum:0,diffCumPct:0},
+            {date:"2026-08-29",plan:60,planCum:7081,planCumPct:0.762,actual:60,actualCum:7081,actualCumPct:0.762,diff:60,diffCum:0,diffCumPct:0},
+            {date:"2026-08-30",plan:48,planCum:7129,planCumPct:0.768,actual:48,actualCum:7129,actualCumPct:0.768,diff:48,diffCum:0,diffCumPct:0},
+            {date:"2026-08-31",plan:59,planCum:7188,planCumPct:0.774,actual:79,actualCum:7208,actualCumPct:0.776,diff:20,diffCum:20,diffCumPct:0.002},
+            {date:"2026-09-01",plan:42,planCum:7230,planCumPct:0.779,actual:56,actualCum:7264,actualCumPct:0.782,diff:14,diffCum:34,diffCumPct:0.004},
+            {date:"2026-09-02",plan:68,planCum:7298,planCumPct:0.786,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-09-03",plan:99,planCum:7397,planCumPct:0.786,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-09-04",plan:73,planCum:7470,planCumPct:0.786,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null},
+            {date:"2026-09-05",plan:83,planCum:7553,planCumPct:0.786,actual:null,actualCum:null,actualCumPct:null,diff:null,diffCum:null,diffCumPct:null}
         ];
 
         function formatNumber(num) {
