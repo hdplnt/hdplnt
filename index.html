@@ -1901,7 +1901,7 @@ function renderSac2(upToIdx) {
 }
 
 
-// 샤힌 수압 총물량: Test 9,484 PKG / 수압 5,342 PKG | CW:334 PKG | Steam:330 PKG
+// 샤힌 수압 총물량: Test 9,484 PKG / 수압 5,342 PKG | CW:334 PKG | Steam:338 PKG
 const SHN_HYDRO = [
   {date:"4/1", pkgReady:30, pkgReview:62, wd:18, wdCum:458, tst:25, tstCum:314, tstPct:3.3, hp:0, hpCum:46, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
   {date:"4/2", pkgReady:52, pkgReview:73, wd:46, wdCum:504, tst:48, tstCum:362, tstPct:3.8, hp:4, hpCum:50, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
@@ -2141,14 +2141,14 @@ function renderShnHydro(upToIdx) {
   q('shn-cw-steam-kpi').innerHTML = `
     <div class="kpi-card" style="padding:10px 12px;">
       <div class="kpi-label" style="font-size:10px">Steam Walkdown 누계</div>
-      <div style="font-size:15px;font-weight:700;color:#e2a800;margin:4px 0">${fmtN(d.stWdCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 330 PKG</span></div>
-      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/330*100).toFixed(0)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:3px;font-size:10px"><b>${(d.stWdCum/330*100).toFixed(1)}%</b></div>
+      <div style="font-size:15px;font-weight:700;color:#e2a800;margin:4px 0">${fmtN(d.stWdCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 338 PKG</span></div>
+      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill amber" style="width:${(d.stWdCum/338*100).toFixed(0)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:3px;font-size:10px"><b>${(d.stWdCum/338*100).toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card" style="padding:10px 12px;">
       <div class="kpi-label" style="font-size:10px">Steam 수압 누계</div>
-      <div style="font-size:15px;font-weight:700;color:#e05c3a;margin:4px 0">${fmtN(d.stHpCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 330 PKG</span></div>
-      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/330*100).toFixed(0)}%"></div></div>
+      <div style="font-size:15px;font-weight:700;color:#e05c3a;margin:4px 0">${fmtN(d.stHpCum)} <span style="font-size:10px;color:var(--text-secondary)">/ 338 PKG</span></div>
+      <div class="kpi-bar-wrap" style="height:4px"><div class="kpi-bar-fill coral" style="width:${(d.stHpCum/338*100).toFixed(0)}%"></div></div>
       <div class="kpi-sub" style="margin-top:3px;font-size:10px"><b>${d.stHpPct.toFixed(1)}%</b></div>
     </div>`;
 
