@@ -1909,7 +1909,7 @@ function renderSac2(upToIdx) {
 }
 
 
-// 샤힌 수압 총물량: Test 9,503 PKG / 수압 5,359 PKG | CW:334 PKG | Steam:338 PKG
+// 샤힌 수압 총물량: Test 9,503 PKG / 수압 5,358 PKG | CW:334 PKG | Steam:338 PKG
 const SHN_HYDRO = [
   {date:"4/1", pkgReady:30, pkgReview:62, wd:16, wdCum:458, tst:25, tstCum:316, tstPct:3.3, hp:0, hpCum:46, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
   {date:"4/2", pkgReady:52, pkgReview:73, wd:45, wdCum:503, tst:48, tstCum:364, tstPct:3.8, hp:4, hpCum:50, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
@@ -1933,7 +1933,7 @@ const SHN_HYDRO = [
   {date:"4/20", pkgReady:60, pkgReview:25, wd:21, wdCum:957, tst:5, tstCum:726, tstPct:7.6, hp:2, hpCum:107, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
   {date:"4/21", pkgReady:149, pkgReview:46, wd:21, wdCum:978, tst:11, tstCum:737, tstPct:7.8, hp:2, hpCum:109, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:0, stHpCum:2, stHpPct:0.6},
   {date:"4/22", pkgReady:52, pkgReview:37, wd:26, wdCum:1004, tst:26, tstCum:763, tstPct:8.0, hp:12, hpCum:121, hpPct:2.3, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:8, stHp:2, stHpCum:4, stHpPct:1.2},
-  {date:"4/23", pkgReady:29, pkgReview:65, wd:59, wdCum:1063, tst:38, tstCum:801, tstPct:8.4, hp:21, hpCum:142, hpPct:2.6, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:18, stHp:0, stHpCum:4, stHpPct:1.2},
+  {date:"4/23", pkgReady:29, pkgReview:65, wd:59, wdCum:1063, tst:38, tstCum:801, tstPct:8.4, hp:21, hpCum:142, hpPct:2.7, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:18, stHp:0, stHpCum:4, stHpPct:1.2},
   {date:"4/24", pkgReady:25, pkgReview:14, wd:58, wdCum:1121, tst:30, tstCum:831, tstPct:8.7, hp:9, hpCum:151, hpPct:2.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:22, stHp:0, stHpCum:4, stHpPct:1.2},
   {date:"4/25", pkgReady:12, pkgReview:13, wd:21, wdCum:1142, tst:20, tstCum:851, tstPct:9.0, hp:11, hpCum:162, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:24, stHp:0, stHpCum:4, stHpPct:1.2},
   {date:"4/26", pkgReady:0, pkgReview:0, wd:0, wdCum:1142, tst:0, tstCum:851, tstPct:9.0, hp:0, hpCum:162, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:24, stHp:0, stHpCum:4, stHpPct:1.2},
@@ -1948,12 +1948,12 @@ const SHN_HYDRO = [
   {date:"5/5", pkgReady:6, pkgReview:1, wd:0, wdCum:1489, tst:0, tstCum:1167, tstPct:12.3, hp:0, hpCum:379, hpPct:7.1, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:29, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/6", pkgReady:61, pkgReview:15, wd:30, wdCum:1519, tst:21, tstCum:1188, tstPct:12.5, hp:17, hpCum:396, hpPct:7.4, rst:3, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:29, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/7", pkgReady:70, pkgReview:42, wd:25, wdCum:1544, tst:29, tstCum:1217, tstPct:12.8, hp:19, hpCum:415, hpPct:7.7, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:29, stHp:0, stHpCum:24, stHpPct:7.1},
-  {date:"5/8", pkgReady:79, pkgReview:28, wd:37, wdCum:1581, tst:28, tstCum:1245, tstPct:13.1, hp:11, hpCum:426, hpPct:7.9, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:30, stHp:0, stHpCum:24, stHpPct:7.1},
+  {date:"5/8", pkgReady:79, pkgReview:28, wd:37, wdCum:1581, tst:28, tstCum:1245, tstPct:13.1, hp:11, hpCum:426, hpPct:8.0, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:30, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/9", pkgReady:21, pkgReview:54, wd:5, wdCum:1586, tst:21, tstCum:1266, tstPct:13.3, hp:21, hpCum:447, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/10", pkgReady:0, pkgReview:0, wd:0, wdCum:1586, tst:0, tstCum:1266, tstPct:13.3, hp:0, hpCum:447, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/11", pkgReady:117, pkgReview:62, wd:37, wdCum:1623, tst:34, tstCum:1300, tstPct:13.7, hp:27, hpCum:474, hpPct:8.8, rst:6, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:35, stHp:0, stHpCum:24, stHpPct:7.1},
   {date:"5/12", pkgReady:67, pkgReview:56, wd:36, wdCum:1659, tst:35, tstCum:1335, tstPct:14.0, hp:11, hpCum:485, hpPct:9.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:35, stHp:0, stHpCum:24, stHpPct:7.1},
-  {date:"5/13", pkgReady:63, pkgReview:53, wd:27, wdCum:1686, tst:22, tstCum:1357, tstPct:14.3, hp:16, hpCum:501, hpPct:9.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:35, stHp:1, stHpCum:25, stHpPct:7.4},
+  {date:"5/13", pkgReady:63, pkgReview:53, wd:27, wdCum:1686, tst:22, tstCum:1357, tstPct:14.3, hp:16, hpCum:501, hpPct:9.4, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:35, stHp:1, stHpCum:25, stHpPct:7.4},
   {date:"5/14", pkgReady:69, pkgReview:30, wd:54, wdCum:1740, tst:44, tstCum:1401, tstPct:14.7, hp:18, hpCum:519, hpPct:9.7, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:38, stHp:0, stHpCum:25, stHpPct:7.4},
   {date:"5/15", pkgReady:80, pkgReview:23, wd:39, wdCum:1779, tst:20, tstCum:1421, tstPct:15.0, hp:12, hpCum:531, hpPct:9.9, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:38, stHp:0, stHpCum:25, stHpPct:7.4},
   {date:"5/16", pkgReady:44, pkgReview:60, wd:13, wdCum:1792, tst:15, tstCum:1436, tstPct:15.1, hp:11, hpCum:542, hpPct:10.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:40, stHp:2, stHpCum:27, stHpPct:8.0},
@@ -2026,10 +2026,10 @@ const SHN_HYDRO = [
   {date:"7/22", pkgReady:22, pkgReview:97, wd:56, wdCum:7628, tst:114, tstCum:4618, tstPct:48.6, hp:75, hpCum:2393, hpPct:44.7, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:284, stHp:10, stHpCum:158, stHpPct:46.7},
   {date:"7/23", pkgReady:30, pkgReview:121, wd:68, wdCum:7696, tst:146, tstCum:4764, tstPct:50.1, hp:119, hpCum:2512, hpPct:46.9, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:286, stHp:4, stHpCum:162, stHpPct:47.9},
   {date:"7/24", pkgReady:53, pkgReview:109, wd:52, wdCum:7748, tst:50, tstCum:4814, tstPct:50.7, hp:40, hpCum:2552, hpPct:47.6, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:288, stHp:2, stHpCum:164, stHpPct:48.5},
-  {date:"7/25", pkgReady:14, pkgReview:131, wd:40, wdCum:7788, tst:16, tstCum:4830, tstPct:50.8, hp:39, hpCum:2591, hpPct:48.3, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:288, stHp:5, stHpCum:169, stHpPct:50.0},
+  {date:"7/25", pkgReady:14, pkgReview:131, wd:40, wdCum:7788, tst:16, tstCum:4830, tstPct:50.8, hp:39, hpCum:2591, hpPct:48.4, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:288, stHp:5, stHpCum:169, stHpPct:50.0},
   {date:"7/26", pkgReady:4, pkgReview:35, wd:35, wdCum:7823, tst:58, tstCum:4888, tstPct:51.4, hp:14, hpCum:2605, hpPct:48.6, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:289, stHp:1, stHpCum:170, stHpPct:50.3},
   {date:"7/27", pkgReady:27, pkgReview:109, wd:74, wdCum:7897, tst:72, tstCum:4960, tstPct:52.2, hp:43, hpCum:2648, hpPct:49.4, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:295, stHp:2, stHpCum:172, stHpPct:50.9},
-  {date:"7/28", pkgReady:21, pkgReview:155, wd:79, wdCum:7976, tst:139, tstCum:5099, tstPct:53.7, hp:50, hpCum:2698, hpPct:50.3, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:302, stHp:9, stHpCum:181, stHpPct:53.6},
+  {date:"7/28", pkgReady:21, pkgReview:155, wd:79, wdCum:7976, tst:139, tstCum:5099, tstPct:53.7, hp:50, hpCum:2698, hpPct:50.4, rst:0, rstCum:29, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:302, stHp:9, stHpCum:181, stHpPct:53.6},
   {date:"7/29", pkgReady:20, pkgReview:123, wd:68, wdCum:8044, tst:66, tstCum:5165, tstPct:54.4, hp:53, hpCum:2751, hpPct:51.3, rst:4, rstCum:33, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:306, stHp:2, stHpCum:183, stHpPct:54.1},
   {date:"7/30", pkgReady:32, pkgReview:110, wd:51, wdCum:8095, tst:109, tstCum:5274, tstPct:55.5, hp:53, hpCum:2804, hpPct:52.3, rst:16, rstCum:49, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:309, stHp:2, stHpCum:185, stHpPct:54.7},
   {date:"7/31", pkgReady:65, pkgReview:88, wd:54, wdCum:8149, tst:76, tstCum:5350, tstPct:56.3, hp:64, hpCum:2868, hpPct:53.5, rst:0, rstCum:49, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:311, stHp:6, stHpCum:191, stHpPct:56.5},
@@ -2045,7 +2045,7 @@ const SHN_HYDRO = [
   {date:"8/10", pkgReady:1, pkgReview:50, wd:41, wdCum:8523, tst:101, tstCum:6048, tstPct:63.6, hp:54, hpCum:3329, hpPct:62.1, rst:0, rstCum:62, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:320, stHp:0, stHpCum:205, stHpPct:60.7},
   {date:"8/11", pkgReady:0, pkgReview:128, wd:35, wdCum:8558, tst:50, tstCum:6098, tstPct:64.2, hp:29, hpCum:3358, hpPct:62.7, rst:5, rstCum:67, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:320, stHp:2, stHpCum:207, stHpPct:61.2},
   {date:"8/12", pkgReady:0, pkgReview:75, wd:41, wdCum:8599, tst:72, tstCum:6170, tstPct:64.9, hp:73, hpCum:3431, hpPct:64.0, rst:14, rstCum:81, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:321, stHp:5, stHpCum:212, stHpPct:62.7},
-  {date:"8/13", pkgReady:0, pkgReview:113, wd:36, wdCum:8635, tst:106, tstCum:6276, tstPct:66.0, hp:71, hpCum:3502, hpPct:65.3, rst:15, rstCum:96, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:323, stHp:5, stHpCum:217, stHpPct:64.2},
+  {date:"8/13", pkgReady:0, pkgReview:113, wd:36, wdCum:8635, tst:106, tstCum:6276, tstPct:66.0, hp:71, hpCum:3502, hpPct:65.4, rst:15, rstCum:96, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:323, stHp:5, stHpCum:217, stHpPct:64.2},
   {date:"8/14", pkgReady:0, pkgReview:66, wd:23, wdCum:8658, tst:22, tstCum:6298, tstPct:66.3, hp:18, hpCum:3520, hpPct:65.7, rst:28, rstCum:124, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:324, stHp:0, stHpCum:217, stHpPct:64.2},
   {date:"8/15", pkgReady:3, pkgReview:40, wd:12, wdCum:8670, tst:38, tstCum:6336, tstPct:66.7, hp:21, hpCum:3541, hpPct:66.1, rst:5, rstCum:129, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:3, stHpCum:220, stHpPct:65.1},
   {date:"8/16", pkgReady:0, pkgReview:2, wd:0, wdCum:8670, tst:0, tstCum:6336, tstPct:66.7, hp:0, hpCum:3541, hpPct:66.1, rst:0, rstCum:129, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:0, stHpCum:220, stHpPct:65.1},
@@ -2053,7 +2053,7 @@ const SHN_HYDRO = [
   {date:"8/18", pkgReady:0, pkgReview:47, wd:0, wdCum:8670, tst:94, tstCum:6437, tstPct:67.7, hp:50, hpCum:3591, hpPct:67.0, rst:14, rstCum:143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:6, stHpCum:227, stHpPct:67.2},
   {date:"8/19", pkgReady:0, pkgReview:28, wd:19, wdCum:8689, tst:118, tstCum:6555, tstPct:69.0, hp:84, hpCum:3675, hpPct:68.6, rst:33, rstCum:176, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:325, stHp:5, stHpCum:232, stHpPct:68.6},
   {date:"8/20", pkgReady:26, pkgReview:70, wd:40, wdCum:8729, tst:58, tstCum:6613, tstPct:69.6, hp:44, hpCum:3719, hpPct:69.4, rst:37, rstCum:213, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:326, stHp:0, stHpCum:232, stHpPct:68.6},
-  {date:"8/21", pkgReady:0, pkgReview:39, wd:14, wdCum:8743, tst:72, tstCum:6685, tstPct:70.3, hp:56, hpCum:3775, hpPct:70.4, rst:21, rstCum:234, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:328, stHp:5, stHpCum:237, stHpPct:70.1},
+  {date:"8/21", pkgReady:0, pkgReview:39, wd:14, wdCum:8743, tst:72, tstCum:6685, tstPct:70.3, hp:56, hpCum:3775, hpPct:70.5, rst:21, rstCum:234, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:328, stHp:5, stHpCum:237, stHpPct:70.1},
   {date:"8/22", pkgReady:0, pkgReview:27, wd:40, wdCum:8783, tst:61, tstCum:6746, tstPct:71.0, hp:46, hpCum:3821, hpPct:71.3, rst:100, rstCum:334, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:5, stHpCum:242, stHpPct:71.6},
   {date:"8/23", pkgReady:0, pkgReview:10, wd:13, wdCum:8796, tst:43, tstCum:6789, tstPct:71.4, hp:31, hpCum:3852, hpPct:71.9, rst:0, rstCum:334, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:242, stHpPct:71.6},
   {date:"8/24", pkgReady:3, pkgReview:21, wd:28, wdCum:8824, tst:91, tstCum:6880, tstPct:72.4, hp:85, hpCum:3937, hpPct:73.5, rst:67, rstCum:401, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:243, stHpPct:71.9},
@@ -2061,7 +2061,7 @@ const SHN_HYDRO = [
   {date:"8/26", pkgReady:0, pkgReview:63, wd:37, wdCum:8898, tst:92, tstCum:7064, tstPct:74.3, hp:64, hpCum:4060, hpPct:75.8, rst:110, rstCum:562, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:4, stHpCum:255, stHpPct:75.4},
   {date:"8/27", pkgReady:1, pkgReview:72, wd:25, wdCum:8923, tst:75, tstCum:7139, tstPct:75.1, hp:54, hpCum:4114, hpPct:76.8, rst:93, rstCum:655, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:256, stHpPct:75.7},
   {date:"8/28", pkgReady:0, pkgReview:16, wd:1, wdCum:8924, tst:15, tstCum:7154, tstPct:75.3, hp:1, hpCum:4115, hpPct:76.8, rst:11, rstCum:666, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:256, stHpPct:75.7},
-  {date:"8/29", pkgReady:0, pkgReview:1, wd:24, wdCum:8948, tst:60, tstCum:7214, tstPct:75.9, hp:51, hpCum:4166, hpPct:77.7, rst:46, rstCum:712, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:2, stHpCum:258, stHpPct:76.3},
+  {date:"8/29", pkgReady:0, pkgReview:1, wd:24, wdCum:8948, tst:60, tstCum:7214, tstPct:75.9, hp:51, hpCum:4166, hpPct:77.8, rst:46, rstCum:712, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:2, stHpCum:258, stHpPct:76.3},
   {date:"8/30", pkgReady:0, pkgReview:10, wd:10, wdCum:8958, tst:48, tstCum:7262, tstPct:76.4, hp:6, hpCum:4172, hpPct:77.9, rst:34, rstCum:746, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:259, stHpPct:76.6},
   {date:"8/31", pkgReady:2, pkgReview:2, wd:25, wdCum:8983, tst:79, tstCum:7341, tstPct:77.2, hp:78, hpCum:4250, hpPct:79.3, rst:92, rstCum:838, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:260, stHpPct:76.9},
   {date:"9/1", pkgReady:0, pkgReview:34, wd:19, wdCum:9002, tst:56, tstCum:7397, tstPct:77.8, hp:22, hpCum:4272, hpPct:79.7, rst:99, rstCum:937, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:261, stHpPct:77.2},
@@ -2078,27 +2078,28 @@ const SHN_HYDRO = [
   {date:"9/12", pkgReady:0, pkgReview:33, wd:13, wdCum:9180, tst:31, tstCum:7951, tstPct:83.7, hp:41, hpCum:4602, hpPct:85.9, rst:44, rstCum:1542, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:332, stHp:4, stHpCum:295, stHpPct:87.3},
   {date:"9/13", pkgReady:0, pkgReview:0, wd:3, wdCum:9183, tst:35, tstCum:7986, tstPct:84.0, hp:5, hpCum:4607, hpPct:86.0, rst:4, rstCum:1546, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:295, stHpPct:87.3},
   {date:"9/14", pkgReady:0, pkgReview:10, wd:13, wdCum:9196, tst:45, tstCum:8031, tstPct:84.5, hp:27, hpCum:4634, hpPct:86.5, rst:62, rstCum:1608, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:300, stHpPct:88.8},
-  {date:"9/15", pkgReady:0, pkgReview:30, wd:1, wdCum:9197, tst:64, tstCum:8095, tstPct:85.2, hp:25, hpCum:4659, hpPct:86.9, rst:93, rstCum:1701, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:11, stHpCum:311, stHpPct:92.0},
+  {date:"9/15", pkgReady:0, pkgReview:30, wd:1, wdCum:9197, tst:64, tstCum:8095, tstPct:85.2, hp:25, hpCum:4659, hpPct:87.0, rst:93, rstCum:1701, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:11, stHpCum:311, stHpPct:92.0},
   {date:"9/16", pkgReady:6, pkgReview:7, wd:9, wdCum:9206, tst:39, tstCum:8134, tstPct:85.6, hp:24, hpCum:4683, hpPct:87.4, rst:81, rstCum:1782, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:311, stHpPct:92.0},
   {date:"9/17", pkgReady:0, pkgReview:15, wd:16, wdCum:9222, tst:36, tstCum:8170, tstPct:86.0, hp:16, hpCum:4699, hpPct:87.7, rst:63, rstCum:1845, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:316, stHpPct:93.5},
   {date:"9/18", pkgReady:0, pkgReview:18, wd:0, wdCum:9222, tst:11, tstCum:8181, tstPct:86.1, hp:5, hpCum:4704, hpPct:87.8, rst:24, rstCum:1869, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:2, stHpCum:318, stHpPct:94.1},
   {date:"9/19", pkgReady:0, pkgReview:2, wd:18, wdCum:9240, tst:19, tstCum:8200, tstPct:86.3, hp:7, hpCum:4711, hpPct:87.9, rst:79, rstCum:1948, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:318, stHpPct:94.1},
-  {date:"9/20", pkgReady:0, pkgReview:10, wd:4, wdCum:9244, tst:32, tstCum:8232, tstPct:86.6, hp:7, hpCum:4718, hpPct:88.0, rst:16, rstCum:1964, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:318, stHpPct:94.1},
+  {date:"9/20", pkgReady:0, pkgReview:10, wd:4, wdCum:9244, tst:32, tstCum:8232, tstPct:86.6, hp:7, hpCum:4718, hpPct:88.1, rst:16, rstCum:1964, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:318, stHpPct:94.1},
   {date:"9/21", pkgReady:1, pkgReview:29, wd:6, wdCum:9250, tst:57, tstCum:8289, tstPct:87.2, hp:33, hpCum:4751, hpPct:88.7, rst:67, rstCum:2031, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:318, stHpPct:94.1},
-  {date:"9/22", pkgReady:1, pkgReview:13, wd:10, wdCum:9260, tst:87, tstCum:8376, tstPct:88.1, hp:81, hpCum:4832, hpPct:90.2, rst:105, rstCum:2136, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:4, stHpCum:322, stHpPct:95.3},
-  {date:"9/23", pkgReady:0, pkgReview:23, wd:7, wdCum:9267, tst:37, tstCum:8413, tstPct:88.5, hp:14, hpCum:4846, hpPct:90.4, rst:39, rstCum:2175, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/24", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2175, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/25", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2175, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/26", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2175, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/27", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2175, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/28", pkgReady:0, pkgReview:22, wd:12, wdCum:9279, tst:22, tstCum:8435, tstPct:88.8, hp:21, hpCum:4867, hpPct:90.8, rst:94, rstCum:2269, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
-  {date:"9/29", pkgReady:0, pkgReview:8, wd:4, wdCum:9283, tst:44, tstCum:8479, tstPct:89.2, hp:19, hpCum:4886, hpPct:91.2, rst:96, rstCum:2365, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:325, stHpPct:96.2},
-  {date:"9/30", pkgReady:0, pkgReview:23, wd:5, wdCum:9288, tst:19, tstCum:8498, tstPct:89.4, hp:10, hpCum:4896, hpPct:91.4, rst:112, rstCum:2477, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:328, stHpPct:97.0},
-  {date:"10/1", pkgReady:0, pkgReview:6, wd:21, wdCum:9309, tst:42, tstCum:8540, tstPct:89.9, hp:21, hpCum:4917, hpPct:91.8, rst:79, rstCum:2556, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:328, stHpPct:97.0},
-  {date:"10/2", pkgReady:0, pkgReview:7, wd:12, wdCum:9321, tst:24, tstCum:8564, tstPct:90.1, hp:21, hpCum:4938, hpPct:92.1, rst:105, rstCum:2661, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:1, stHpCum:329, stHpPct:97.3},
-  {date:"10/3", pkgReady:0, pkgReview:13, wd:4, wdCum:9325, tst:50, tstCum:8614, tstPct:90.6, hp:36, hpCum:4974, hpPct:92.8, rst:68, rstCum:2729, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:334, stHp:2, stHpCum:331, stHpPct:97.9},
-  {date:"10/4", pkgReady:0, pkgReview:1, wd:1, wdCum:9326, tst:15, tstCum:8629, tstPct:90.8, hp:16, hpCum:4990, hpPct:93.1, rst:45, rstCum:2774, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:331, stHpPct:97.9},
-  {date:"10/5", pkgReady:1, pkgReview:9, wd:6, wdCum:9332, tst:52, tstCum:8681, tstPct:91.4, hp:9, hpCum:4999, hpPct:93.3, rst:111, rstCum:2885, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:331, stHpPct:97.9},
+  {date:"9/22", pkgReady:1, pkgReview:13, wd:10, wdCum:9260, tst:87, tstCum:8376, tstPct:88.1, hp:81, hpCum:4832, hpPct:90.2, rst:106, rstCum:2137, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:4, stHpCum:322, stHpPct:95.3},
+  {date:"9/23", pkgReady:0, pkgReview:23, wd:7, wdCum:9267, tst:37, tstCum:8413, tstPct:88.5, hp:14, hpCum:4846, hpPct:90.4, rst:39, rstCum:2176, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/24", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2176, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/25", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2176, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/26", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2176, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/27", pkgReady:0, pkgReview:0, wd:0, wdCum:9267, tst:0, tstCum:8413, tstPct:88.5, hp:0, hpCum:4846, hpPct:90.4, rst:0, rstCum:2176, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/28", pkgReady:0, pkgReview:22, wd:12, wdCum:9279, tst:22, tstCum:8435, tstPct:88.8, hp:21, hpCum:4867, hpPct:90.8, rst:94, rstCum:2270, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:322, stHpPct:95.3},
+  {date:"9/29", pkgReady:0, pkgReview:8, wd:4, wdCum:9283, tst:44, tstCum:8479, tstPct:89.2, hp:19, hpCum:4886, hpPct:91.2, rst:96, rstCum:2366, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:325, stHpPct:96.2},
+  {date:"9/30", pkgReady:0, pkgReview:23, wd:5, wdCum:9288, tst:19, tstCum:8498, tstPct:89.4, hp:10, hpCum:4896, hpPct:91.4, rst:112, rstCum:2478, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:328, stHpPct:97.0},
+  {date:"10/1", pkgReady:0, pkgReview:6, wd:21, wdCum:9309, tst:42, tstCum:8540, tstPct:89.9, hp:21, hpCum:4917, hpPct:91.8, rst:79, rstCum:2557, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:328, stHpPct:97.0},
+  {date:"10/2", pkgReady:0, pkgReview:7, wd:12, wdCum:9321, tst:24, tstCum:8564, tstPct:90.1, hp:21, hpCum:4938, hpPct:92.2, rst:105, rstCum:2662, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:1, stHpCum:329, stHpPct:97.3},
+  {date:"10/3", pkgReady:0, pkgReview:13, wd:4, wdCum:9325, tst:50, tstCum:8614, tstPct:90.6, hp:36, hpCum:4974, hpPct:92.8, rst:68, rstCum:2730, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:334, stHp:2, stHpCum:331, stHpPct:97.9},
+  {date:"10/4", pkgReady:0, pkgReview:1, wd:1, wdCum:9326, tst:15, tstCum:8629, tstPct:90.8, hp:16, hpCum:4990, hpPct:93.1, rst:45, rstCum:2775, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:331, stHpPct:97.9},
+  {date:"10/5", pkgReady:1, pkgReview:14, wd:7, wdCum:9333, tst:52, tstCum:8681, tstPct:91.4, hp:9, hpCum:4999, hpPct:93.3, rst:110, rstCum:2885, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:331, stHpPct:97.9},
+  {date:"10/6", pkgReady:0, pkgReview:1, wd:23, wdCum:9356, tst:35, tstCum:8716, tstPct:91.7, hp:9, hpCum:5008, hpPct:93.5, rst:86, rstCum:2971, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:337, stHp:0, stHpCum:331, stHpPct:97.9},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -2114,7 +2115,7 @@ function renderShnHydro(upToIdx) {
 
   // ── KPI: 전체 현황 ──
   const totRemain = 9503 - d.tstCum;
-  const hpRemain  = 5359 - d.hpCum;
+  const hpRemain  = 5358 - d.hpCum;
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">Walkdown 누계</div>
@@ -2130,7 +2131,7 @@ function renderShnHydro(upToIdx) {
     </div>
     <div class="kpi-card">
       <div class="kpi-label">수압 (Hydrotest) 누계</div>
-      <div class="kpi-value amber">${fmtN(d.hpCum)} <span style="font-size:12px">/ 5,359 PKG</span></div>
+      <div class="kpi-value amber">${fmtN(d.hpCum)} <span style="font-size:12px">/ 5,358 PKG</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.hpPct}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.hpPct}%</b> | 잔여 ${fmtN(hpRemain)} PKG</div>
     </div>
