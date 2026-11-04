@@ -425,7 +425,7 @@
       <select class="date-select" id="shn-hydro-select" onchange="renderShnHydro(parseInt(this.value))"></select>
     </div>
     <div class="panel-title">
-      샤힌 (SHN1) — 배관 Pressure Test 일일 현황
+      샤힌 (SHN1) — 배관 Pressure Test / Reinstatement 일일 현황
     </div>
     <div class="section-divider" style="margin-top:18px;">
       <span class="section-label">전체 수압 현황</span>
@@ -1041,19 +1041,19 @@ const SHN_DATA = [
   {date:"3/21", scc:3198, sccCum:413382, sccW:244, sccPct:58.5, uo:479, uoCum:109780, uoW:34, uoPct:73.6, totCum:523162, totW:278, totPct:61.1},
   {date:"3/22", scc:3152, sccCum:416534, sccW:207, sccPct:58.9, uo:450, uoCum:110230, uoW:29, uoPct:73.9, totCum:526765, totW:236, totPct:61.5},
   {date:"3/23", scc:5009, sccCum:421543, sccW:347, sccPct:59.6, uo:696, uoCum:110926, uoW:36, uoPct:74.4, totCum:532470, totW:383, totPct:62.2},
-  {date:"3/24", scc:4986, sccCum:426530, sccW:353, sccPct:60.3, uo:570, uoCum:111496, uoW:39, uoPct:74.8, totCum:538026, totW:392, totPct:62.9},
+  {date:"3/24", scc:4986, sccCum:426530, sccW:353, sccPct:60.3, uo:570, uoCum:111496, uoW:39, uoPct:74.8, totCum:538026, totW:392, totPct:62.8},
   {date:"3/25", scc:4870, sccCum:431400, sccW:360, sccPct:61.0, uo:650, uoCum:112146, uoW:39, uoPct:75.2, totCum:543546, totW:399, totPct:63.5},
   {date:"3/26", scc:5186, sccCum:436586, sccW:361, sccPct:61.7, uo:570, uoCum:112716, uoW:40, uoPct:75.6, totCum:549303, totW:401, totPct:64.2},
   {date:"3/27", scc:5329, sccCum:441915, sccW:366, sccPct:62.5, uo:679, uoCum:113396, uoW:40, uoPct:76.0, totCum:555310, totW:406, totPct:64.9},
   {date:"3/28", scc:4957, sccCum:446872, sccW:340, sccPct:63.2, uo:447, uoCum:113842, uoW:42, uoPct:76.3, totCum:560714, totW:382, totPct:65.5},
   {date:"3/29", scc:1513, sccCum:448385, sccW:178, sccPct:63.4, uo:477, uoCum:114319, uoW:31, uoPct:76.7, totCum:562704, totW:209, totPct:65.7},
   {date:"3/30", scc:4515, sccCum:452900, sccW:366, sccPct:64.1, uo:466, uoCum:114786, uoW:37, uoPct:77.0, totCum:567686, totW:403, totPct:66.3},
-  {date:"3/31", scc:4970, sccCum:457871, sccW:356, sccPct:64.8, uo:486, uoCum:115272, uoW:41, uoPct:77.3, totCum:573142, totW:397, totPct:67.0},
+  {date:"3/31", scc:4970, sccCum:457871, sccW:356, sccPct:64.8, uo:486, uoCum:115272, uoW:41, uoPct:77.3, totCum:573142, totW:397, totPct:66.9},
   {date:"4/1", scc:4728, sccCum:462599, sccW:365, sccPct:65.4, uo:595, uoCum:115867, uoW:41, uoPct:77.7, totCum:578465, totW:406, totPct:67.6},
   {date:"4/2", scc:5107, sccCum:467705, sccW:368, sccPct:66.2, uo:573, uoCum:116440, uoW:40, uoPct:78.1, totCum:584145, totW:408, totPct:68.2},
   {date:"4/3", scc:4664, sccCum:472370, sccW:370, sccPct:66.8, uo:403, uoCum:116843, uoW:43, uoPct:78.4, totCum:589213, totW:413, totPct:68.8},
   {date:"4/4", scc:0, sccCum:472370, sccW:1, sccPct:66.8, uo:0, uoCum:116843, uoW:0, uoPct:78.4, totCum:589213, totW:1, totPct:68.8},
-  {date:"4/5", scc:3184, sccCum:475554, sccW:170, sccPct:67.3, uo:378, uoCum:117221, uoW:36, uoPct:78.6, totCum:592775, totW:206, totPct:69.3},
+  {date:"4/5", scc:3184, sccCum:475554, sccW:170, sccPct:67.3, uo:378, uoCum:117221, uoW:36, uoPct:78.6, totCum:592775, totW:206, totPct:69.2},
   {date:"4/6", scc:4944, sccCum:480498, sccW:376, sccPct:68.0, uo:539, uoCum:117760, uoW:43, uoPct:79.0, totCum:598258, totW:419, totPct:69.9},
   {date:"4/7", scc:4737, sccCum:485235, sccW:379, sccPct:68.6, uo:556, uoCum:118315, uoW:43, uoPct:79.3, totCum:603551, totW:422, totPct:70.5},
   {date:"4/8", scc:4873, sccCum:490109, sccW:380, sccPct:69.3, uo:474, uoCum:118790, uoW:46, uoPct:79.7, totCum:608898, totW:426, totPct:71.1},
@@ -1063,32 +1063,32 @@ const SHN_DATA = [
   {date:"4/12", scc:3376, sccCum:504170, sccW:316, sccPct:71.3, uo:569, uoCum:120606, uoW:41, uoPct:80.9, totCum:624776, totW:357, totPct:73.0},
   {date:"4/13", scc:5192, sccCum:509901, sccW:382, sccPct:72.1, uo:520, uoCum:121126, uoW:46, uoPct:81.2, totCum:631028, totW:428, totPct:73.7},
   {date:"4/14", scc:4540, sccCum:514441, sccW:388, sccPct:72.8, uo:653, uoCum:121779, uoW:48, uoPct:81.7, totCum:636220, totW:436, totPct:74.3},
-  {date:"4/15", scc:4694, sccCum:519135, sccW:389, sccPct:73.4, uo:693, uoCum:122472, uoW:49, uoPct:82.1, totCum:641607, totW:438, totPct:75.0},
+  {date:"4/15", scc:4694, sccCum:519135, sccW:389, sccPct:73.4, uo:693, uoCum:122472, uoW:49, uoPct:82.1, totCum:641607, totW:438, totPct:74.9},
   {date:"4/16", scc:5613, sccCum:524748, sccW:391, sccPct:74.2, uo:668, uoCum:123140, uoW:48, uoPct:82.6, totCum:647888, totW:439, totPct:75.7},
-  {date:"4/17", scc:4426, sccCum:529174, sccW:395, sccPct:74.8, uo:471, uoCum:123611, uoW:49, uoPct:82.9, totCum:652785, totW:444, totPct:76.3},
+  {date:"4/17", scc:4426, sccCum:529174, sccW:395, sccPct:74.8, uo:471, uoCum:123611, uoW:49, uoPct:82.9, totCum:652785, totW:444, totPct:76.2},
   {date:"4/18", scc:3070, sccCum:532244, sccW:274, sccPct:75.3, uo:480, uoCum:124090, uoW:42, uoPct:83.2, totCum:656334, totW:316, totPct:76.7},
   {date:"4/19", scc:987, sccCum:533231, sccW:110, sccPct:75.4, uo:293, uoCum:124384, uoW:24, uoPct:83.4, totCum:657614, totW:134, totPct:76.8},
   {date:"4/20", scc:4848, sccCum:538143, sccW:395, sccPct:76.1, uo:618, uoCum:125002, uoW:47, uoPct:83.8, totCum:663144, totW:442, totPct:77.5},
-  {date:"4/21", scc:5371, sccCum:543514, sccW:395, sccPct:76.9, uo:561, uoCum:125563, uoW:47, uoPct:84.2, totCum:669076, totW:442, totPct:78.2},
+  {date:"4/21", scc:5371, sccCum:543514, sccW:395, sccPct:76.9, uo:561, uoCum:125563, uoW:47, uoPct:84.2, totCum:669076, totW:442, totPct:78.1},
   {date:"4/22", scc:4815, sccCum:548328, sccW:398, sccPct:77.6, uo:484, uoCum:126046, uoW:42, uoPct:84.5, totCum:674375, totW:440, totPct:78.8},
-  {date:"4/23", scc:4437, sccCum:552765, sccW:398, sccPct:78.2, uo:473, uoCum:126520, uoW:43, uoPct:84.8, totCum:679285, totW:441, totPct:79.4},
-  {date:"4/24", scc:4686, sccCum:557452, sccW:401, sccPct:78.8, uo:483, uoCum:127002, uoW:48, uoPct:85.2, totCum:684454, totW:449, totPct:80.0},
-  {date:"4/25", scc:4551, sccCum:562003, sccW:375, sccPct:79.5, uo:565, uoCum:127568, uoW:48, uoPct:85.5, totCum:689570, totW:423, totPct:80.6},
+  {date:"4/23", scc:4437, sccCum:552765, sccW:398, sccPct:78.2, uo:473, uoCum:126520, uoW:43, uoPct:84.8, totCum:679285, totW:441, totPct:79.3},
+  {date:"4/24", scc:4686, sccCum:557452, sccW:401, sccPct:78.8, uo:483, uoCum:127002, uoW:48, uoPct:85.2, totCum:684454, totW:449, totPct:79.9},
+  {date:"4/25", scc:4551, sccCum:562003, sccW:375, sccPct:79.5, uo:565, uoCum:127568, uoW:48, uoPct:85.5, totCum:689570, totW:423, totPct:80.5},
   {date:"4/26", scc:2284, sccCum:564287, sccW:142, sccPct:79.8, uo:99, uoCum:127667, uoW:10, uoPct:85.6, totCum:691954, totW:152, totPct:80.8},
   {date:"4/27", scc:5021, sccCum:569920, sccW:401, sccPct:80.6, uo:562, uoCum:128302, uoW:51, uoPct:86.0, totCum:698221, totW:452, totPct:81.6},
   {date:"4/28", scc:4870, sccCum:574789, sccW:401, sccPct:81.3, uo:783, uoCum:129085, uoW:50, uoPct:86.6, totCum:703874, totW:451, totPct:82.2},
   {date:"4/29", scc:5003, sccCum:579792, sccW:401, sccPct:82.0, uo:600, uoCum:129685, uoW:50, uoPct:87.0, totCum:709477, totW:451, totPct:82.9},
-  {date:"4/30", scc:4461, sccCum:584253, sccW:401, sccPct:82.6, uo:428, uoCum:130113, uoW:96, uoPct:87.3, totCum:714367, totW:497, totPct:83.5},
-  {date:"5/1", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.5},
-  {date:"5/2", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.5},
-  {date:"5/3", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.5},
+  {date:"4/30", scc:4461, sccCum:584253, sccW:401, sccPct:82.6, uo:428, uoCum:130113, uoW:96, uoPct:87.3, totCum:714367, totW:497, totPct:83.4},
+  {date:"5/1", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.4},
+  {date:"5/2", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.4},
+  {date:"5/3", scc:0, sccCum:584253, sccW:0, sccPct:82.6, uo:428, uoCum:130113, uoW:0, uoPct:87.3, totCum:714367, totW:0, totPct:83.4},
   {date:"5/4", scc:3152, sccCum:587405, sccW:338, sccPct:83.1, uo:508, uoCum:130621, uoW:47, uoPct:87.6, totCum:718026, totW:385, totPct:83.9},
   {date:"5/5", scc:1666, sccCum:589071, sccW:158, sccPct:83.3, uo:383, uoCum:131005, uoW:41, uoPct:87.9, totCum:720075, totW:199, totPct:84.1},
   {date:"5/6", scc:3048, sccCum:592119, sccW:388, sccPct:83.7, uo:496, uoCum:131501, uoW:49, uoPct:88.2, totCum:723620, totW:437, totPct:84.5},
   {date:"5/7", scc:2798, sccCum:594917, sccW:388, sccPct:84.1, uo:665, uoCum:132166, uoW:47, uoPct:88.6, totCum:727083, totW:435, totPct:84.9},
   {date:"5/8", scc:2386, sccCum:597303, sccW:386, sccPct:84.5, uo:637, uoCum:132803, uoW:47, uoPct:89.1, totCum:730106, totW:433, totPct:85.3},
   {date:"5/9", scc:1933, sccCum:599236, sccW:341, sccPct:84.8, uo:572, uoCum:133376, uoW:45, uoPct:89.4, totCum:732612, totW:386, totPct:85.6},
-  {date:"5/10", scc:260, sccCum:599496, sccW:35, sccPct:84.8, uo:373, uoCum:133749, uoW:31, uoPct:89.7, totCum:733245, totW:66, totPct:85.7},
+  {date:"5/10", scc:260, sccCum:599496, sccW:35, sccPct:84.8, uo:373, uoCum:133749, uoW:31, uoPct:89.7, totCum:733245, totW:66, totPct:85.6},
   {date:"5/11", scc:2100, sccCum:601596, sccW:376, sccPct:85.1, uo:521, uoCum:134270, uoW:46, uoPct:90.0, totCum:735866, totW:422, totPct:86.0},
   {date:"5/12", scc:2312, sccCum:603909, sccW:368, sccPct:85.4, uo:542, uoCum:134812, uoW:46, uoPct:90.4, totCum:738720, totW:414, totPct:86.3},
   {date:"5/13", scc:3538, sccCum:607447, sccW:363, sccPct:85.9, uo:611, uoCum:135423, uoW:48, uoPct:90.8, totCum:742869, totW:411, totPct:86.8},
@@ -1099,14 +1099,14 @@ const SHN_DATA = [
   {date:"5/18", scc:3185, sccCum:621628, sccW:358, sccPct:87.9, uo:490, uoCum:137658, uoW:46, uoPct:92.3, totCum:759286, totW:404, totPct:88.7},
   {date:"5/19", scc:3304, sccCum:624932, sccW:355, sccPct:88.4, uo:476, uoCum:138133, uoW:46, uoPct:92.6, totCum:763065, totW:401, totPct:89.1},
   {date:"5/20", scc:386, sccCum:625318, sccW:204, sccPct:88.4, uo:20, uoCum:138153, uoW:38, uoPct:92.6, totCum:763471, totW:242, totPct:89.2},
-  {date:"5/21", scc:1393, sccCum:626711, sccW:286, sccPct:88.6, uo:24, uoCum:138177, uoW:46, uoPct:92.7, totCum:764888, totW:332, totPct:89.4},
+  {date:"5/21", scc:1393, sccCum:626711, sccW:286, sccPct:88.6, uo:24, uoCum:138177, uoW:46, uoPct:92.7, totCum:764888, totW:332, totPct:89.3},
   {date:"5/22", scc:3770, sccCum:630481, sccW:349, sccPct:89.2, uo:615, uoCum:138793, uoW:46, uoPct:93.1, totCum:769273, totW:395, totPct:89.9},
   {date:"5/23", scc:3124, sccCum:633605, sccW:313, sccPct:89.6, uo:489, uoCum:139282, uoW:45, uoPct:93.4, totCum:772887, totW:358, totPct:90.3},
-  {date:"5/24", scc:2837, sccCum:636442, sccW:263, sccPct:90.0, uo:350, uoCum:139632, uoW:42, uoPct:93.6, totCum:776074, totW:305, totPct:90.7},
+  {date:"5/24", scc:2837, sccCum:636442, sccW:263, sccPct:90.0, uo:350, uoCum:139632, uoW:42, uoPct:93.6, totCum:776074, totW:305, totPct:90.6},
   {date:"5/25", scc:3212, sccCum:639654, sccW:299, sccPct:90.5, uo:454, uoCum:140086, uoW:39, uoPct:93.9, totCum:779740, totW:338, totPct:91.1},
-  {date:"5/26", scc:2644, sccCum:642297, sccW:267, sccPct:90.8, uo:470, uoCum:140556, uoW:44, uoPct:94.3, totCum:782853, totW:311, totPct:91.5},
-  {date:"5/27", scc:0, sccCum:642297, sccW:41, sccPct:90.8, uo:0, uoCum:140556, uoW:2, uoPct:94.3, totCum:782853, totW:43, totPct:91.5},
-  {date:"5/28", scc:3380, sccCum:645677, sccW:340, sccPct:91.3, uo:872, uoCum:141428, uoW:43, uoPct:94.8, totCum:787105, totW:383, totPct:92.0},
+  {date:"5/26", scc:2644, sccCum:642297, sccW:267, sccPct:90.8, uo:470, uoCum:140556, uoW:44, uoPct:94.3, totCum:782853, totW:311, totPct:91.4},
+  {date:"5/27", scc:0, sccCum:642297, sccW:41, sccPct:90.8, uo:0, uoCum:140556, uoW:2, uoPct:94.3, totCum:782853, totW:43, totPct:91.4},
+  {date:"5/28", scc:3380, sccCum:645677, sccW:340, sccPct:91.3, uo:872, uoCum:141428, uoW:43, uoPct:94.8, totCum:787105, totW:383, totPct:91.9},
   {date:"5/29", scc:4225, sccCum:649902, sccW:336, sccPct:91.9, uo:573, uoCum:142001, uoW:44, uoPct:95.2, totCum:791903, totW:380, totPct:92.5},
   {date:"5/30", scc:3332, sccCum:653234, sccW:305, sccPct:92.4, uo:656, uoCum:142657, uoW:39, uoPct:95.7, totCum:795891, totW:344, totPct:93.0},
   {date:"5/31", scc:2093, sccCum:655328, sccW:258, sccPct:92.7, uo:542, uoCum:143199, uoW:30, uoPct:96.0, totCum:798527, totW:288, totPct:93.3},
@@ -1118,23 +1118,23 @@ const SHN_DATA = [
   {date:"6/6", scc:2986, sccCum:669852, sccW:278, sccPct:94.7, uo:249, uoCum:145748, uoW:38, uoPct:97.7, totCum:815599, totW:316, totPct:95.3},
   {date:"6/7", scc:1588, sccCum:671440, sccW:220, sccPct:95.0, uo:74, uoCum:145822, uoW:23, uoPct:97.8, totCum:817261, totW:243, totPct:95.5},
   {date:"6/8", scc:1469, sccCum:672909, sccW:294, sccPct:95.2, uo:0, uoCum:145822, uoW:38, uoPct:97.8, totCum:818730, totW:332, totPct:95.6},
-  {date:"6/9", scc:2362, sccCum:675271, sccW:305, sccPct:95.5, uo:272, uoCum:146093, uoW:38, uoPct:98.0, totCum:821364, totW:343, totPct:96.0},
+  {date:"6/9", scc:2362, sccCum:675271, sccW:305, sccPct:95.5, uo:272, uoCum:146093, uoW:38, uoPct:98.0, totCum:821364, totW:343, totPct:95.9},
   {date:"6/10", scc:3033, sccCum:678304, sccW:289, sccPct:95.9, uo:321, uoCum:146414, uoW:38, uoPct:98.2, totCum:824718, totW:327, totPct:96.3},
-  {date:"6/11", scc:3091, sccCum:681395, sccW:293, sccPct:96.4, uo:449, uoCum:146863, uoW:37, uoPct:98.5, totCum:828258, totW:330, totPct:96.8},
+  {date:"6/11", scc:3091, sccCum:681395, sccW:293, sccPct:96.4, uo:449, uoCum:146863, uoW:37, uoPct:98.5, totCum:828258, totW:330, totPct:96.7},
   {date:"6/12", scc:3631, sccCum:685025, sccW:287, sccPct:96.9, uo:553, uoCum:147416, uoW:37, uoPct:98.9, totCum:832442, totW:324, totPct:97.2},
   {date:"6/13", scc:3187, sccCum:688212, sccW:269, sccPct:97.3, uo:234, uoCum:147650, uoW:35, uoPct:99.0, totCum:835863, totW:304, totPct:97.6},
   {date:"6/14", scc:2365, sccCum:690577, sccW:246, sccPct:97.7, uo:438, uoCum:148088, uoW:24, uoPct:99.3, totCum:838666, totW:270, totPct:98.0},
   {date:"6/15", scc:3220, sccCum:693797, sccW:280, sccPct:98.1, uo:465, uoCum:148553, uoW:36, uoPct:99.6, totCum:842351, totW:316, totPct:98.4},
-  {date:"6/16", scc:3654, sccCum:697452, sccW:279, sccPct:98.6, uo:229, uoCum:148782, uoW:37, uoPct:99.8, totCum:846234, totW:316, totPct:98.9},
+  {date:"6/16", scc:3654, sccCum:697452, sccW:279, sccPct:98.6, uo:229, uoCum:148782, uoW:37, uoPct:99.8, totCum:846234, totW:316, totPct:98.8},
   {date:"6/17", scc:2162, sccCum:699614, sccW:268, sccPct:99.0, uo:143, uoCum:148925, uoW:37, uoPct:99.9, totCum:848539, totW:305, totPct:99.1},
   {date:"6/18", scc:1326, sccCum:700940, sccW:263, sccPct:99.1, uo:27, uoCum:148952, uoW:36, uoPct:99.9, totCum:849892, totW:299, totPct:99.3},
-  {date:"6/19", scc:597, sccCum:701537, sccW:267, sccPct:99.2, uo:0, uoCum:148952, uoW:35, uoPct:99.9, totCum:850489, totW:302, totPct:99.4},
-  {date:"6/20", scc:0, sccCum:701537, sccW:4, sccPct:99.2, uo:0, uoCum:148952, uoW:0, uoPct:99.9, totCum:850489, totW:4, totPct:99.4},
+  {date:"6/19", scc:597, sccCum:701537, sccW:267, sccPct:99.2, uo:0, uoCum:148952, uoW:35, uoPct:99.9, totCum:850489, totW:302, totPct:99.3},
+  {date:"6/20", scc:0, sccCum:701537, sccW:4, sccPct:99.2, uo:0, uoCum:148952, uoW:0, uoPct:99.9, totCum:850489, totW:4, totPct:99.3},
   {date:"6/21", scc:643, sccCum:702180, sccW:183, sccPct:99.3, uo:5, uoCum:148957, uoW:23, uoPct:99.9, totCum:851137, totW:206, totPct:99.4},
-  {date:"6/22", scc:1042, sccCum:703222, sccW:246, sccPct:99.5, uo:2, uoCum:148959, uoW:34, uoPct:99.9, totCum:852181, totW:280, totPct:99.6},
+  {date:"6/22", scc:1042, sccCum:703222, sccW:246, sccPct:99.5, uo:2, uoCum:148959, uoW:34, uoPct:99.9, totCum:852181, totW:280, totPct:99.5},
   {date:"6/23", scc:1109, sccCum:704331, sccW:242, sccPct:99.6, uo:2, uoCum:148961, uoW:33, uoPct:99.9, totCum:853292, totW:275, totPct:99.7},
   {date:"6/24", scc:1252, sccCum:705583, sccW:233, sccPct:99.8, uo:160, uoCum:149121, uoW:33, uoPct:100.0, totCum:854704, totW:266, totPct:99.8},
-  {date:"6/25", scc:1002, sccCum:706581, sccW:246, sccPct:99.9, uo:0, uoCum:149121, uoW:33, uoPct:100.0, totCum:855702, totW:279, totPct:100.0},
+  {date:"6/25", scc:1002, sccCum:706581, sccW:246, sccPct:99.9, uo:0, uoCum:149121, uoW:33, uoPct:100.0, totCum:855702, totW:279, totPct:99.9},
   {date:"6/26", scc:444, sccCum:707026, sccW:250, sccPct:100.0, uo:0, uoCum:149121, uoW:33, uoPct:100.0, totCum:856147, totW:283, totPct:100.0},
   {date:"6/27", scc:0, sccCum:707026, sccW:0, sccPct:100.0, uo:0, uoCum:149121, uoW:0, uoPct:100.0, totCum:856147, totW:0, totPct:100.0},
   {date:"6/28", scc:0, sccCum:707026, sccW:2, sccPct:100.0, uo:0, uoCum:149121, uoW:0, uoPct:100.0, totCum:856147, totW:2, totPct:100.0},
@@ -1212,6 +1212,39 @@ const STA4_DATA = [
 ];
 
 // ─── 유틸 ─────────────────────────────────────────
+// ── 총물량 (dashboard_updater.py 의 TOTALS 에서 자동 생성 — 여기서 수정하지 마세요) ──
+const TOTALS = {
+  SCC_WELD: 707026,
+  UO_WELD: 149121,
+  TOT_WELD: 856147,
+  HYDRO_TOT: 9530,
+  HYDRO_HP: 5339,
+  CW_TOT: 334,
+  ST_TOT: 342,
+  SACE_WELD2: 79165,
+  SACE_WELD3: 76380,
+  SACE_HP2: 1067,
+  SACE_HP3: 1054,
+  SAC2_PIPE: 310750,
+  STA4_PIPE: 263041,
+  ELEC_SHN: 1331414,
+  ELEC_SHN_SCC: 876763,
+  ELEC_SHN_UO: 454651,
+  ELEC_STA4: 1472808,
+  ELEC_SAC2: 2138139,
+  INST_SHN: 1862536,
+  INST_SHN_SCC: 1403515,
+  INST_SHN_UO: 459021,
+  INST_STA4: 866630,
+  INST_SACE2: 140663,
+  INST_SACE3: 139679,
+  MOTOR_SCC: 307,
+  MOTOR_UO: 180,
+  LOOP_SCC: 18640,
+  LOOP_UO: 6064,
+  SACE_LOOP2: 2027,
+  SACE_LOOP3: 2027
+};
 function fmtN(n) { return Math.round(n).toLocaleString('ko-KR'); }
 function q(id)   { return document.getElementById(id); }
 
@@ -1267,9 +1300,9 @@ function renderShn(upToIdx) {
   // ── 잔여 소화 예상: 7일 평균 일일 생산성 기반 ──
   // 7일 고정 기준으로 하루 평균 생산량 산출
   const w7avgDaily = w7.length > 0 ? w7tot / 7 : 0;
-  const totRemain  = 856147 - d.totCum;
-  const sccRemain  = 707026 - d.sccCum;
-  const uoRemain   = 149121 - d.uoCum;
+  const totRemain  = TOTALS.TOT_WELD - d.totCum;
+  const sccRemain  = TOTALS.SCC_WELD - d.sccCum;
+  const uoRemain   = TOTALS.UO_WELD - d.uoCum;
   // 주 6일 근무 가정 (금요일 휴무 없이 계산 시 참고용)
   const estDays    = w7avgDaily > 0 ? Math.ceil(totRemain / w7avgDaily) : null;
   const estWeeks   = estDays !== null ? (estDays / 6).toFixed(1) : null;
@@ -1300,21 +1333,21 @@ function renderShn(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">SCC+UO 합계 누계</div>
       <div class="kpi-value amber">${fmtN(d.totCum)} <span style="font-size:12px">D/I</span></div>
-      <div class="kpi-sub">총 물량: 855,992 D/I</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.TOT_WELD)} D/I</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.totPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totPct.toFixed(1)}%</b> | 잔여 ${fmtN(totRemain)} D/I</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SCC 누계</div>
       <div class="kpi-value blue">${fmtN(d.sccCum)} <span style="font-size:12px">D/I</span></div>
-      <div class="kpi-sub">총 물량: 707,026 D/I</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.SCC_WELD)} D/I</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sccPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sccPct.toFixed(1)}%</b> | 잔여 ${fmtN(sccRemain)} D/I</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">UO 누계</div>
       <div class="kpi-value teal">${fmtN(d.uoCum)} <span style="font-size:12px">D/I</span></div>
-      <div class="kpi-sub">총 물량: 149,121 D/I</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.UO_WELD)} D/I</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.uoPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.uoPct.toFixed(1)}%</b> | 잔여 ${fmtN(uoRemain)} D/I</div>
     </div>`;
@@ -1374,16 +1407,16 @@ function renderSace(upToIdx) {
 
   q('sace-kpi-sru2w').innerHTML = `${fmtN(d.sru2C)} <span style="font-size:12px">D/I</span>`;
   q('sace-bar-sru2w').style.width = d.sru2P + '%';
-  q('sace-sub-sru2w').innerHTML = `진도율 <b>${d.sru2P.toFixed(1)}%</b> | 잔여 ${fmtN(79165 - d.sru2C)}`;
+  q('sace-sub-sru2w').innerHTML = `진도율 <b>${d.sru2P.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.SACE_WELD2 - d.sru2C)}`;
   q('sace-kpi-sru2h').innerHTML = `${fmtN(d.sru2HC)} <span style="font-size:12px">건</span>`;
   q('sace-bar-sru2h').style.width = d.sru2HPct + '%';
-  q('sace-sub-sru2h').innerHTML = `진도율 <b>${d.sru2HPct.toFixed(1)}%</b> | 잔여 ${fmtN(1067 - d.sru2HC)}건`;
+  q('sace-sub-sru2h').innerHTML = `진도율 <b>${d.sru2HPct.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.SACE_HP2 - d.sru2HC)}건`;
   q('sace-kpi-sru3w').innerHTML = `${fmtN(d.sru3C)} <span style="font-size:12px">D/I</span>`;
   q('sace-bar-sru3w').style.width = d.sru3P + '%';
-  q('sace-sub-sru3w').innerHTML = `진도율 <b>${d.sru3P.toFixed(1)}%</b> | 잔여 ${fmtN(76380 - d.sru3C)}`;
+  q('sace-sub-sru3w').innerHTML = `진도율 <b>${d.sru3P.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.SACE_WELD3 - d.sru3C)}`;
   q('sace-kpi-sru3h').innerHTML = `${fmtN(d.sru3HC)} <span style="font-size:12px">건</span>`;
   q('sace-bar-sru3h').style.width = d.sru3HPct + '%';
-  q('sace-sub-sru3h').innerHTML = `진도율 <b>${d.sru3HPct.toFixed(1)}%</b> | 잔여 ${fmtN(1054 - d.sru3HC)}건`;
+  q('sace-sub-sru3h').innerHTML = `진도율 <b>${d.sru3HPct.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.SACE_HP3 - d.sru3HC)}건`;
   q('sace-weld-badge').textContent = `SRU2 ${d.sru2P.toFixed(1)}% / SRU3 ${d.sru3P.toFixed(1)}%`;
   q('sace-hp-badge').textContent   = `SRU2 ${d.sru2HPct.toFixed(1)}% / SRU3 ${d.sru3HPct.toFixed(1)}%`;
 
@@ -1454,9 +1487,9 @@ function renderSta4(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">실적 누계</div>
       <div class="kpi-value blue">${fmtN(d.actC)} <span style="font-size:12px">D/I</span></div>
-      <div class="kpi-sub">총 물량: 263,041 D/I</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.STA4_PIPE)} D/I</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.actP.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.actP.toFixed(1)}%</b> | 잔여 ${fmtN(263041 - d.actC)} D/I</div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.actP.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.STA4_PIPE - d.actC)} D/I</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">계획 누계 (동기)</div>
@@ -1597,9 +1630,9 @@ function renderElecShn(upToIdx) {
   const labels = slice.map(r => r.week);
 
   // KPI
-  const totRemain  = 1331414 - d.totCum;
-  const sccRemain  = 876763  - d.sccCum;
-  const uoRemain   = 454651  - d.uoCum;
+  const totRemain  = TOTALS.ELEC_SHN - d.totCum;
+  const sccRemain  = TOTALS.ELEC_SHN_SCC  - d.sccCum;
+  const uoRemain   = TOTALS.ELEC_SHN_UO  - d.uoCum;
   q('eshn-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">이번주 실적 (${d.week})</div>
@@ -1610,21 +1643,21 @@ function renderElecShn(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">SCC+UO 합계 누계</div>
       <div class="kpi-value amber">${fmtN(d.totCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 1,331,414 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.ELEC_SHN)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.totPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totPct.toFixed(1)}%</b> | 잔여 ${fmtN(totRemain)} M</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SCC Cable 누계</div>
       <div class="kpi-value blue">${fmtN(d.sccCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 876,763 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.ELEC_SHN_SCC)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sccPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sccPct.toFixed(1)}%</b> | 잔여 ${fmtN(sccRemain)} M</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">UO Cable 누계</div>
       <div class="kpi-value teal">${fmtN(d.uoCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 454,651 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.ELEC_SHN_UO)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.uoPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.uoPct.toFixed(1)}%</b> | 잔여 ${fmtN(uoRemain)} M</div>
     </div>`;
@@ -1703,9 +1736,9 @@ function renderInstShn(upToIdx) {
   const d      = slice[slice.length - 1];
   const labels = slice.map(r => r.week);
 
-  const totRemain = 1862536 - d.totCum;
-  const sccRemain = 1403515 - d.sccCum;
-  const uoRemain  = 459021  - d.uoCum;
+  const totRemain = TOTALS.INST_SHN - d.totCum;
+  const sccRemain = TOTALS.INST_SHN_SCC - d.sccCum;
+  const uoRemain  = TOTALS.INST_SHN_UO  - d.uoCum;
 
   q('ishn-kpi').innerHTML = `
     <div class="kpi-card">
@@ -1717,21 +1750,21 @@ function renderInstShn(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">SCC+UO 합계 누계</div>
       <div class="kpi-value amber">${fmtN(d.totCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 1,862,536 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SHN)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.totPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totPct.toFixed(1)}%</b> | 잔여 ${fmtN(totRemain)} M</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SCC Cable 누계</div>
       <div class="kpi-value blue">${fmtN(d.sccCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 1,403,515 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SHN_SCC)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sccPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sccPct.toFixed(1)}%</b> | 잔여 ${fmtN(sccRemain)} M</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">UO Cable 누계</div>
       <div class="kpi-value teal">${fmtN(d.uoCum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 459,021 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SHN_UO)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.uoPct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.uoPct.toFixed(1)}%</b> | 잔여 ${fmtN(uoRemain)} M</div>
     </div>`;
@@ -1832,9 +1865,9 @@ function renderSac2(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">실적 누계</div>
       <div class="kpi-value blue">${fmtN(d.actC)} <span style="font-size:12px">D/I</span></div>
-      <div class="kpi-sub">총 물량: 310,750 D/I</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.SAC2_PIPE)} D/I</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.actP.toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.actP.toFixed(1)}%</b> | 잔여 ${fmtN(310750 - d.actC)} D/I</div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.actP.toFixed(1)}%</b> | 잔여 ${fmtN(TOTALS.SAC2_PIPE - d.actC)} D/I</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">계획 누계 (동기)</div>
@@ -1912,223 +1945,226 @@ function renderSac2(upToIdx) {
 }
 
 
-// 샤힌 수압 총물량: Test 9,524 PKG / 수압 5,351 PKG | CW:334 PKG | Steam:342 PKG
+// 샤힌 수압 총물량: Test 9,530 PKG / 수압 5,339 PKG | CW:334 PKG | Steam:342 PKG
 const SHN_HYDRO = [
-  {date:"4/1", pkgReady:30, pkgReview:62, wd:16, wdCum:458, tst:25, tstCum:320, tstPct:3.4, hp:0, hpCum:46, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/2", pkgReady:50, pkgReview:72, wd:45, wdCum:503, tst:48, tstCum:368, tstPct:3.9, hp:4, hpCum:50, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/3", pkgReady:58, pkgReview:20, wd:37, wdCum:540, tst:26, tstCum:394, tstPct:4.1, hp:1, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/4", pkgReady:16, pkgReview:18, wd:0, wdCum:540, tst:0, tstCum:394, tstPct:4.1, hp:0, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/5", pkgReady:0, pkgReview:0, wd:0, wdCum:540, tst:0, tstCum:394, tstPct:4.1, hp:0, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/6", pkgReady:107, pkgReview:28, wd:21, wdCum:561, tst:18, tstCum:412, tstPct:4.3, hp:1, hpCum:52, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/7", pkgReady:55, pkgReview:38, wd:70, wdCum:631, tst:70, tstCum:482, tstPct:5.1, hp:0, hpCum:52, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/8", pkgReady:48, pkgReview:54, wd:46, wdCum:677, tst:43, tstCum:525, tstPct:5.5, hp:1, hpCum:53, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/9", pkgReady:45, pkgReview:13, wd:19, wdCum:696, tst:13, tstCum:538, tstPct:5.6, hp:0, hpCum:53, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/10", pkgReady:27, pkgReview:54, wd:37, wdCum:733, tst:38, tstCum:576, tstPct:6.0, hp:4, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/11", pkgReady:14, pkgReview:0, wd:2, wdCum:735, tst:2, tstCum:578, tstPct:6.1, hp:0, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/12", pkgReady:0, pkgReview:0, wd:0, wdCum:735, tst:0, tstCum:578, tstPct:6.1, hp:0, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/13", pkgReady:75, pkgReview:62, wd:8, wdCum:743, tst:4, tstCum:582, tstPct:6.1, hp:4, hpCum:61, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/14", pkgReady:36, pkgReview:71, wd:75, wdCum:818, tst:37, tstCum:619, tstPct:6.5, hp:1, hpCum:62, hpPct:1.2, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/15", pkgReady:55, pkgReview:45, wd:15, wdCum:833, tst:40, tstCum:659, tstPct:6.9, hp:34, hpCum:96, hpPct:1.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/16", pkgReady:102, pkgReview:63, wd:33, wdCum:866, tst:32, tstCum:691, tstPct:7.3, hp:3, hpCum:99, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/17", pkgReady:28, pkgReview:34, wd:49, wdCum:915, tst:18, tstCum:709, tstPct:7.4, hp:1, hpCum:100, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/18", pkgReady:14, pkgReview:10, wd:17, wdCum:932, tst:15, tstCum:724, tstPct:7.6, hp:4, hpCum:104, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/19", pkgReady:0, pkgReview:0, wd:0, wdCum:932, tst:0, tstCum:724, tstPct:7.6, hp:0, hpCum:104, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/20", pkgReady:60, pkgReview:25, wd:21, wdCum:953, tst:5, tstCum:729, tstPct:7.7, hp:2, hpCum:106, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/21", pkgReady:149, pkgReview:46, wd:20, wdCum:973, tst:11, tstCum:740, tstPct:7.8, hp:2, hpCum:108, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
-  {date:"4/22", pkgReady:52, pkgReview:37, wd:26, wdCum:999, tst:26, tstCum:766, tstPct:8.0, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:2, stHpCum:5, stHpPct:1.5},
-  {date:"4/23", pkgReady:29, pkgReview:65, wd:59, wdCum:1058, tst:38, tstCum:804, tstPct:8.4, hp:21, hpCum:141, hpPct:2.6, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:19, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/24", pkgReady:25, pkgReview:14, wd:58, wdCum:1116, tst:30, tstCum:834, tstPct:8.8, hp:9, hpCum:150, hpPct:2.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:23, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/25", pkgReady:12, pkgReview:13, wd:19, wdCum:1135, tst:20, tstCum:854, tstPct:9.0, hp:11, hpCum:161, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:25, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/26", pkgReady:0, pkgReview:0, wd:0, wdCum:1135, tst:0, tstCum:854, tstPct:9.0, hp:0, hpCum:161, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:25, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/27", pkgReady:48, pkgReview:33, wd:45, wdCum:1180, tst:36, tstCum:890, tstPct:9.3, hp:4, hpCum:165, hpPct:3.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:28, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/28", pkgReady:115, pkgReview:110, wd:12, wdCum:1192, tst:17, tstCum:907, tstPct:9.5, hp:10, hpCum:175, hpPct:3.3, rst:1, rstCum:4, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:28, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/29", pkgReady:140, pkgReview:141, wd:106, wdCum:1298, tst:17, tstCum:924, tstPct:9.7, hp:5, hpCum:180, hpPct:3.4, rst:5, rstCum:9, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"4/30", pkgReady:18, pkgReview:50, wd:124, wdCum:1422, tst:99, tstCum:1023, tstPct:10.7, hp:87, hpCum:267, hpPct:5.0, rst:4, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"5/1", pkgReady:0, pkgReview:0, wd:1, wdCum:1423, tst:0, tstCum:1023, tstPct:10.7, hp:0, hpCum:267, hpPct:5.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"5/2", pkgReady:7, pkgReview:0, wd:52, wdCum:1475, tst:38, tstCum:1061, tstPct:11.1, hp:5, hpCum:272, hpPct:5.1, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"5/3", pkgReady:0, pkgReview:0, wd:0, wdCum:1475, tst:0, tstCum:1061, tstPct:11.1, hp:0, hpCum:272, hpPct:5.1, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
-  {date:"5/4", pkgReady:54, pkgReview:33, wd:7, wdCum:1482, tst:107, tstCum:1168, tstPct:12.3, hp:104, hpCum:376, hpPct:7.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:20, stHpCum:25, stHpPct:7.3},
-  {date:"5/5", pkgReady:6, pkgReview:1, wd:0, wdCum:1482, tst:0, tstCum:1168, tstPct:12.3, hp:0, hpCum:376, hpPct:7.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/6", pkgReady:61, pkgReview:15, wd:30, wdCum:1512, tst:21, tstCum:1189, tstPct:12.5, hp:17, hpCum:393, hpPct:7.3, rst:3, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/7", pkgReady:70, pkgReview:42, wd:25, wdCum:1537, tst:29, tstCum:1218, tstPct:12.8, hp:19, hpCum:412, hpPct:7.7, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/8", pkgReady:79, pkgReview:28, wd:37, wdCum:1574, tst:28, tstCum:1246, tstPct:13.1, hp:11, hpCum:423, hpPct:7.9, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/9", pkgReady:21, pkgReview:54, wd:5, wdCum:1579, tst:21, tstCum:1267, tstPct:13.3, hp:21, hpCum:444, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/10", pkgReady:0, pkgReview:0, wd:0, wdCum:1579, tst:0, tstCum:1267, tstPct:13.3, hp:0, hpCum:444, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/11", pkgReady:116, pkgReview:62, wd:37, wdCum:1616, tst:34, tstCum:1301, tstPct:13.7, hp:27, hpCum:471, hpPct:8.8, rst:6, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:36, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/12", pkgReady:67, pkgReview:55, wd:36, wdCum:1652, tst:35, tstCum:1336, tstPct:14.0, hp:11, hpCum:482, hpPct:9.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:36, stHp:0, stHpCum:25, stHpPct:7.3},
-  {date:"5/13", pkgReady:63, pkgReview:53, wd:27, wdCum:1679, tst:22, tstCum:1358, tstPct:14.3, hp:16, hpCum:498, hpPct:9.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:36, stHp:1, stHpCum:26, stHpPct:7.6},
-  {date:"5/14", pkgReady:69, pkgReview:30, wd:54, wdCum:1733, tst:44, tstCum:1402, tstPct:14.7, hp:18, hpCum:516, hpPct:9.6, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:39, stHp:0, stHpCum:26, stHpPct:7.6},
-  {date:"5/15", pkgReady:80, pkgReview:23, wd:39, wdCum:1772, tst:20, tstCum:1422, tstPct:14.9, hp:12, hpCum:528, hpPct:9.9, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:39, stHp:0, stHpCum:26, stHpPct:7.6},
-  {date:"5/16", pkgReady:44, pkgReview:60, wd:12, wdCum:1784, tst:13, tstCum:1435, tstPct:15.1, hp:11, hpCum:539, hpPct:10.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:40, stHp:0, stHpCum:26, stHpPct:7.6},
-  {date:"5/17", pkgReady:0, pkgReview:0, wd:0, wdCum:1784, tst:0, tstCum:1435, tstPct:15.1, hp:0, hpCum:539, hpPct:10.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:40, stHp:0, stHpCum:26, stHpPct:7.6},
-  {date:"5/18", pkgReady:123, pkgReview:33, wd:39, wdCum:1823, tst:43, tstCum:1478, tstPct:15.5, hp:30, hpCum:569, hpPct:10.6, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:42, stHp:4, stHpCum:30, stHpPct:8.8},
-  {date:"5/19", pkgReady:99, pkgReview:46, wd:25, wdCum:1848, tst:40, tstCum:1518, tstPct:15.9, hp:23, hpCum:592, hpPct:11.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:42, stHp:0, stHpCum:30, stHpPct:8.8},
-  {date:"5/20", pkgReady:64, pkgReview:58, wd:63, wdCum:1911, tst:26, tstCum:1544, tstPct:16.2, hp:14, hpCum:606, hpPct:11.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:42, stHp:3, stHpCum:33, stHpPct:9.6},
-  {date:"5/21", pkgReady:73, pkgReview:20, wd:89, wdCum:2000, tst:71, tstCum:1615, tstPct:17.0, hp:46, hpCum:652, hpPct:12.2, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:46, stHp:1, stHpCum:34, stHpPct:9.9},
-  {date:"5/22", pkgReady:39, pkgReview:36, wd:79, wdCum:2079, tst:40, tstCum:1655, tstPct:17.4, hp:8, hpCum:660, hpPct:12.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:49, stHp:0, stHpCum:34, stHpPct:9.9},
-  {date:"5/23", pkgReady:5, pkgReview:5, wd:34, wdCum:2113, tst:48, tstCum:1703, tstPct:17.9, hp:35, hpCum:695, hpPct:13.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:51, stHp:0, stHpCum:34, stHpPct:9.9},
-  {date:"5/24", pkgReady:0, pkgReview:0, wd:0, wdCum:2113, tst:0, tstCum:1703, tstPct:17.9, hp:0, hpCum:695, hpPct:13.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:51, stHp:0, stHpCum:34, stHpPct:9.9},
-  {date:"5/25", pkgReady:26, pkgReview:8, wd:53, wdCum:2166, tst:12, tstCum:1715, tstPct:18.0, hp:4, hpCum:699, hpPct:13.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:57, stHp:0, stHpCum:34, stHpPct:9.9},
-  {date:"5/26", pkgReady:81, pkgReview:25, wd:88, wdCum:2254, tst:15, tstCum:1730, tstPct:18.2, hp:6, hpCum:705, hpPct:13.2, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:58, stHp:1, stHpCum:35, stHpPct:10.2},
-  {date:"5/27", pkgReady:114, pkgReview:17, wd:6, wdCum:2260, tst:6, tstCum:1736, tstPct:18.2, hp:5, hpCum:710, hpPct:13.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:58, stHp:0, stHpCum:35, stHpPct:10.2},
-  {date:"5/28", pkgReady:270, pkgReview:45, wd:109, wdCum:2369, tst:87, tstCum:1823, tstPct:19.1, hp:73, hpCum:783, hpPct:14.6, rst:4, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:18, stWdCum:76, stHp:0, stHpCum:35, stHpPct:10.2},
-  {date:"5/29", pkgReady:91, pkgReview:21, wd:89, wdCum:2458, tst:16, tstCum:1839, tstPct:19.3, hp:8, hpCum:791, hpPct:14.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:83, stHp:2, stHpCum:37, stHpPct:10.8},
-  {date:"5/30", pkgReady:61, pkgReview:8, wd:46, wdCum:2504, tst:40, tstCum:1879, tstPct:19.7, hp:30, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:9, stHpCum:46, stHpPct:13.5},
-  {date:"5/31", pkgReady:0, pkgReview:0, wd:0, wdCum:2504, tst:1, tstCum:1880, tstPct:19.7, hp:0, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
-  {date:"6/1", pkgReady:187, pkgReview:51, wd:55, wdCum:2559, tst:15, tstCum:1895, tstPct:19.9, hp:0, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
-  {date:"6/2", pkgReady:226, pkgReview:27, wd:1, wdCum:2560, tst:35, tstCum:1930, tstPct:20.3, hp:34, hpCum:855, hpPct:16.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
-  {date:"6/3", pkgReady:224, pkgReview:11, wd:116, wdCum:2676, tst:12, tstCum:1942, tstPct:20.4, hp:1, hpCum:856, hpPct:16.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:85, stHp:0, stHpCum:46, stHpPct:13.5},
-  {date:"6/4", pkgReady:204, pkgReview:38, wd:106, wdCum:2782, tst:68, tstCum:2010, tstPct:21.1, hp:51, hpCum:907, hpPct:17.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:88, stHp:1, stHpCum:47, stHpPct:13.7},
-  {date:"6/5", pkgReady:301, pkgReview:85, wd:105, wdCum:2887, tst:32, tstCum:2042, tstPct:21.4, hp:19, hpCum:926, hpPct:17.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:93, stHp:2, stHpCum:49, stHpPct:14.3},
-  {date:"6/6", pkgReady:109, pkgReview:21, wd:76, wdCum:2963, tst:48, tstCum:2090, tstPct:21.9, hp:34, hpCum:960, hpPct:17.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:96, stHp:4, stHpCum:53, stHpPct:15.5},
-  {date:"6/7", pkgReady:63, pkgReview:19, wd:6, wdCum:2969, tst:3, tstCum:2093, tstPct:22.0, hp:3, hpCum:963, hpPct:18.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:96, stHp:0, stHpCum:53, stHpPct:15.5},
-  {date:"6/8", pkgReady:904, pkgReview:20, wd:44, wdCum:3013, tst:25, tstCum:2118, tstPct:22.2, hp:9, hpCum:972, hpPct:18.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:97, stHp:4, stHpCum:57, stHpPct:16.7},
-  {date:"6/9", pkgReady:425, pkgReview:25, wd:106, wdCum:3119, tst:76, tstCum:2194, tstPct:23.0, hp:41, hpCum:1013, hpPct:18.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:99, stHp:2, stHpCum:59, stHpPct:17.3},
-  {date:"6/10", pkgReady:325, pkgReview:50, wd:144, wdCum:3263, tst:58, tstCum:2252, tstPct:23.6, hp:12, hpCum:1025, hpPct:19.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:100, stHp:1, stHpCum:60, stHpPct:17.5},
-  {date:"6/11", pkgReady:234, pkgReview:67, wd:156, wdCum:3419, tst:34, tstCum:2286, tstPct:24.0, hp:13, hpCum:1038, hpPct:19.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:102, stHp:0, stHpCum:60, stHpPct:17.5},
-  {date:"6/12", pkgReady:201, pkgReview:61, wd:126, wdCum:3545, tst:50, tstCum:2336, tstPct:24.5, hp:31, hpCum:1069, hpPct:20.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:107, stHp:0, stHpCum:60, stHpPct:17.5},
-  {date:"6/13", pkgReady:288, pkgReview:40, wd:59, wdCum:3604, tst:48, tstCum:2384, tstPct:25.0, hp:16, hpCum:1085, hpPct:20.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:109, stHp:0, stHpCum:60, stHpPct:17.5},
-  {date:"6/14", pkgReady:0, pkgReview:0, wd:25, wdCum:3629, tst:13, tstCum:2397, tstPct:25.2, hp:0, hpCum:1085, hpPct:20.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:109, stHp:0, stHpCum:60, stHpPct:17.5},
-  {date:"6/15", pkgReady:52, pkgReview:24, wd:94, wdCum:3723, tst:47, tstCum:2444, tstPct:25.7, hp:30, hpCum:1115, hpPct:20.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:113, stHp:3, stHpCum:63, stHpPct:18.4},
-  {date:"6/16", pkgReady:11, pkgReview:53, wd:109, wdCum:3832, tst:34, tstCum:2478, tstPct:26.0, hp:19, hpCum:1134, hpPct:21.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:115, stHp:0, stHpCum:63, stHpPct:18.4},
-  {date:"6/17", pkgReady:6, pkgReview:125, wd:126, wdCum:3958, tst:50, tstCum:2528, tstPct:26.5, hp:23, hpCum:1157, hpPct:21.6, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:121, stHp:1, stHpCum:64, stHpPct:18.7},
-  {date:"6/18", pkgReady:29, pkgReview:66, wd:143, wdCum:4101, tst:48, tstCum:2576, tstPct:27.0, hp:34, hpCum:1191, hpPct:22.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:125, stHp:0, stHpCum:64, stHpPct:18.7},
-  {date:"6/19", pkgReady:18, pkgReview:57, wd:155, wdCum:4256, tst:64, tstCum:2640, tstPct:27.7, hp:39, hpCum:1230, hpPct:23.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:128, stHp:0, stHpCum:64, stHpPct:18.7},
-  {date:"6/20", pkgReady:11, pkgReview:52, wd:10, wdCum:4266, tst:9, tstCum:2649, tstPct:27.8, hp:0, hpCum:1230, hpPct:23.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:128, stHp:0, stHpCum:64, stHpPct:18.7},
-  {date:"6/21", pkgReady:0, pkgReview:38, wd:66, wdCum:4332, tst:14, tstCum:2663, tstPct:28.0, hp:2, hpCum:1232, hpPct:23.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:130, stHp:0, stHpCum:64, stHpPct:18.7},
-  {date:"6/22", pkgReady:71, pkgReview:31, wd:100, wdCum:4432, tst:69, tstCum:2732, tstPct:28.7, hp:41, hpCum:1273, hpPct:23.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:135, stHp:0, stHpCum:64, stHpPct:18.7},
-  {date:"6/23", pkgReady:3, pkgReview:78, wd:137, wdCum:4569, tst:114, tstCum:2846, tstPct:29.9, hp:55, hpCum:1328, hpPct:24.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:137, stHp:3, stHpCum:67, stHpPct:19.6},
-  {date:"6/24", pkgReady:24, pkgReview:64, wd:163, wdCum:4732, tst:35, tstCum:2881, tstPct:30.2, hp:17, hpCum:1345, hpPct:25.1, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:12, stWdCum:149, stHp:4, stHpCum:71, stHpPct:20.8},
-  {date:"6/25", pkgReady:11, pkgReview:91, wd:173, wdCum:4905, tst:74, tstCum:2955, tstPct:31.0, hp:29, hpCum:1374, hpPct:25.7, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:158, stHp:0, stHpCum:71, stHpPct:20.8},
-  {date:"6/26", pkgReady:5, pkgReview:50, wd:168, wdCum:5073, tst:60, tstCum:3015, tstPct:31.7, hp:30, hpCum:1404, hpPct:26.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:162, stHp:2, stHpCum:73, stHpPct:21.3},
-  {date:"6/27", pkgReady:3, pkgReview:58, wd:91, wdCum:5164, tst:45, tstCum:3060, tstPct:32.1, hp:13, hpCum:1417, hpPct:26.5, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:172, stHp:1, stHpCum:74, stHpPct:21.6},
-  {date:"6/28", pkgReady:109, pkgReview:76, wd:77, wdCum:5241, tst:22, tstCum:3082, tstPct:32.4, hp:15, hpCum:1432, hpPct:26.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:173, stHp:0, stHpCum:74, stHpPct:21.6},
-  {date:"6/29", pkgReady:81, pkgReview:36, wd:153, wdCum:5394, tst:68, tstCum:3150, tstPct:33.1, hp:41, hpCum:1473, hpPct:27.5, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:182, stHp:4, stHpCum:78, stHpPct:22.8},
-  {date:"6/30", pkgReady:13, pkgReview:34, wd:143, wdCum:5537, tst:75, tstCum:3225, tstPct:33.9, hp:40, hpCum:1513, hpPct:28.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:185, stHp:3, stHpCum:81, stHpPct:23.7},
-  {date:"7/1", pkgReady:1, pkgReview:26, wd:52, wdCum:5589, tst:14, tstCum:3239, tstPct:34.0, hp:5, hpCum:1518, hpPct:28.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:187, stHp:1, stHpCum:82, stHpPct:24.0},
-  {date:"7/2", pkgReady:29, pkgReview:107, wd:116, wdCum:5705, tst:77, tstCum:3316, tstPct:34.8, hp:38, hpCum:1556, hpPct:29.1, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:193, stHp:4, stHpCum:86, stHpPct:25.1},
-  {date:"7/3", pkgReady:15, pkgReview:31, wd:144, wdCum:5849, tst:44, tstCum:3360, tstPct:35.3, hp:19, hpCum:1575, hpPct:29.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:197, stHp:0, stHpCum:86, stHpPct:25.1},
-  {date:"7/4", pkgReady:10, pkgReview:89, wd:92, wdCum:5941, tst:26, tstCum:3386, tstPct:35.6, hp:22, hpCum:1597, hpPct:29.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:202, stHp:3, stHpCum:89, stHpPct:26.0},
-  {date:"7/5", pkgReady:59, pkgReview:16, wd:100, wdCum:6041, tst:43, tstCum:3429, tstPct:36.0, hp:29, hpCum:1626, hpPct:30.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:211, stHp:0, stHpCum:89, stHpPct:26.0},
-  {date:"7/6", pkgReady:2, pkgReview:20, wd:163, wdCum:6204, tst:49, tstCum:3478, tstPct:36.5, hp:32, hpCum:1658, hpPct:31.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:215, stHp:1, stHpCum:90, stHpPct:26.3},
-  {date:"7/7", pkgReady:0, pkgReview:126, wd:137, wdCum:6341, tst:84, tstCum:3562, tstPct:37.4, hp:52, hpCum:1710, hpPct:32.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:8, stWdCum:223, stHp:3, stHpCum:93, stHpPct:27.2},
-  {date:"7/8", pkgReady:2, pkgReview:88, wd:135, wdCum:6476, tst:64, tstCum:3626, tstPct:38.1, hp:26, hpCum:1736, hpPct:32.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:227, stHp:3, stHpCum:96, stHpPct:28.1},
-  {date:"7/9", pkgReady:2, pkgReview:153, wd:140, wdCum:6616, tst:35, tstCum:3661, tstPct:38.4, hp:28, hpCum:1764, hpPct:33.0, rst:1, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:8, stWdCum:235, stHp:2, stHpCum:98, stHpPct:28.7},
-  {date:"7/10", pkgReady:3, pkgReview:102, wd:110, wdCum:6726, tst:77, tstCum:3738, tstPct:39.2, hp:63, hpCum:1827, hpPct:34.1, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:15, stWdCum:250, stHp:5, stHpCum:103, stHpPct:30.1},
-  {date:"7/11", pkgReady:0, pkgReview:88, wd:96, wdCum:6822, tst:70, tstCum:3808, tstPct:40.0, hp:60, hpCum:1887, hpPct:35.3, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:253, stHp:13, stHpCum:116, stHpPct:33.9},
-  {date:"7/12", pkgReady:0, pkgReview:9, wd:52, wdCum:6874, tst:68, tstCum:3876, tstPct:40.7, hp:11, hpCum:1898, hpPct:35.5, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:256, stHp:3, stHpCum:119, stHpPct:34.8},
-  {date:"7/13", pkgReady:17, pkgReview:112, wd:140, wdCum:7014, tst:72, tstCum:3948, tstPct:41.5, hp:39, hpCum:1937, hpPct:36.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:256, stHp:2, stHpCum:121, stHpPct:35.4},
-  {date:"7/14", pkgReady:40, pkgReview:116, wd:72, wdCum:7086, tst:119, tstCum:4067, tstPct:42.7, hp:70, hpCum:2007, hpPct:37.5, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:258, stHp:1, stHpCum:122, stHpPct:35.7},
-  {date:"7/15", pkgReady:25, pkgReview:117, wd:94, wdCum:7180, tst:98, tstCum:4165, tstPct:43.7, hp:89, hpCum:2096, hpPct:39.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:261, stHp:11, stHpCum:133, stHpPct:38.9},
-  {date:"7/16", pkgReady:81, pkgReview:136, wd:69, wdCum:7249, tst:107, tstCum:4272, tstPct:44.9, hp:58, hpCum:2154, hpPct:40.3, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:266, stHp:1, stHpCum:134, stHpPct:39.2},
-  {date:"7/17", pkgReady:2, pkgReview:84, wd:56, wdCum:7305, tst:61, tstCum:4333, tstPct:45.5, hp:32, hpCum:2186, hpPct:40.9, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:267, stHp:5, stHpCum:139, stHpPct:40.6},
-  {date:"7/18", pkgReady:30, pkgReview:101, wd:49, wdCum:7354, tst:7, tstCum:4340, tstPct:45.6, hp:9, hpCum:2195, hpPct:41.0, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:272, stHp:1, stHpCum:140, stHpPct:40.9},
-  {date:"7/19", pkgReady:0, pkgReview:31, wd:35, wdCum:7389, tst:3, tstCum:4343, tstPct:45.6, hp:0, hpCum:2195, hpPct:41.0, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:272, stHp:1, stHpCum:141, stHpPct:41.2},
-  {date:"7/20", pkgReady:30, pkgReview:164, wd:91, wdCum:7480, tst:55, tstCum:4398, tstPct:46.2, hp:50, hpCum:2245, hpPct:42.0, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:277, stHp:4, stHpCum:145, stHpPct:42.4},
-  {date:"7/21", pkgReady:25, pkgReview:105, wd:80, wdCum:7560, tst:106, tstCum:4504, tstPct:47.3, hp:68, hpCum:2313, hpPct:43.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:279, stHp:2, stHpCum:147, stHpPct:43.0},
-  {date:"7/22", pkgReady:22, pkgReview:97, wd:56, wdCum:7616, tst:114, tstCum:4618, tstPct:48.5, hp:75, hpCum:2388, hpPct:44.6, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:284, stHp:10, stHpCum:157, stHpPct:45.9},
-  {date:"7/23", pkgReady:30, pkgReview:121, wd:68, wdCum:7684, tst:146, tstCum:4764, tstPct:50.0, hp:119, hpCum:2507, hpPct:46.9, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:286, stHp:4, stHpCum:161, stHpPct:47.1},
-  {date:"7/24", pkgReady:53, pkgReview:109, wd:52, wdCum:7736, tst:50, tstCum:4814, tstPct:50.5, hp:40, hpCum:2547, hpPct:47.6, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:288, stHp:2, stHpCum:163, stHpPct:47.7},
-  {date:"7/25", pkgReady:14, pkgReview:133, wd:41, wdCum:7777, tst:16, tstCum:4830, tstPct:50.7, hp:39, hpCum:2586, hpPct:48.3, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:288, stHp:5, stHpCum:168, stHpPct:49.1},
-  {date:"7/26", pkgReady:4, pkgReview:35, wd:35, wdCum:7812, tst:58, tstCum:4888, tstPct:51.3, hp:14, hpCum:2600, hpPct:48.6, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:289, stHp:1, stHpCum:169, stHpPct:49.4},
-  {date:"7/27", pkgReady:27, pkgReview:109, wd:74, wdCum:7886, tst:72, tstCum:4960, tstPct:52.1, hp:43, hpCum:2643, hpPct:49.4, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:295, stHp:2, stHpCum:171, stHpPct:50.0},
-  {date:"7/28", pkgReady:21, pkgReview:155, wd:79, wdCum:7965, tst:139, tstCum:5099, tstPct:53.5, hp:50, hpCum:2693, hpPct:50.3, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:302, stHp:9, stHpCum:180, stHpPct:52.6},
-  {date:"7/29", pkgReady:20, pkgReview:123, wd:68, wdCum:8033, tst:66, tstCum:5165, tstPct:54.2, hp:53, hpCum:2746, hpPct:51.3, rst:4, rstCum:31, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:306, stHp:2, stHpCum:182, stHpPct:53.2},
-  {date:"7/30", pkgReady:32, pkgReview:110, wd:51, wdCum:8084, tst:109, tstCum:5274, tstPct:55.4, hp:53, hpCum:2799, hpPct:52.3, rst:16, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:309, stHp:2, stHpCum:184, stHpPct:53.8},
-  {date:"7/31", pkgReady:65, pkgReview:88, wd:54, wdCum:8138, tst:76, tstCum:5350, tstPct:56.2, hp:64, hpCum:2863, hpPct:53.5, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:311, stHp:6, stHpCum:190, stHpPct:55.6},
-  {date:"8/1", pkgReady:25, pkgReview:75, wd:38, wdCum:8176, tst:65, tstCum:5415, tstPct:56.9, hp:38, hpCum:2901, hpPct:54.2, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:312, stHp:0, stHpCum:190, stHpPct:55.6},
-  {date:"8/2", pkgReady:0, pkgReview:42, wd:0, wdCum:8176, tst:0, tstCum:5415, tstPct:56.9, hp:0, hpCum:2901, hpPct:54.2, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:312, stHp:0, stHpCum:190, stHpPct:55.6},
-  {date:"8/3", pkgReady:28, pkgReview:60, wd:57, wdCum:8233, tst:128, tstCum:5543, tstPct:58.2, hp:82, hpCum:2983, hpPct:55.7, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:314, stHp:0, stHpCum:190, stHpPct:55.6},
-  {date:"8/4", pkgReady:40, pkgReview:160, wd:38, wdCum:8271, tst:59, tstCum:5602, tstPct:58.8, hp:52, hpCum:3035, hpPct:56.7, rst:13, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:316, stHp:0, stHpCum:190, stHpPct:55.6},
-  {date:"8/5", pkgReady:29, pkgReview:78, wd:45, wdCum:8316, tst:77, tstCum:5679, tstPct:59.6, hp:38, hpCum:3073, hpPct:57.4, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:2, stHpCum:192, stHpPct:56.1},
-  {date:"8/6", pkgReady:31, pkgReview:120, wd:48, wdCum:8364, tst:104, tstCum:5783, tstPct:60.7, hp:80, hpCum:3153, hpPct:58.9, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:3, stHpCum:195, stHpPct:57.0},
-  {date:"8/7", pkgReady:0, pkgReview:63, wd:51, wdCum:8415, tst:95, tstCum:5878, tstPct:61.7, hp:63, hpCum:3216, hpPct:60.1, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:4, stHpCum:199, stHpPct:58.2},
-  {date:"8/8", pkgReady:1, pkgReview:87, wd:51, wdCum:8466, tst:51, tstCum:5929, tstPct:62.3, hp:36, hpCum:3252, hpPct:60.8, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:319, stHp:5, stHpCum:204, stHpPct:59.6},
-  {date:"8/9", pkgReady:1, pkgReview:42, wd:6, wdCum:8472, tst:18, tstCum:5947, tstPct:62.4, hp:18, hpCum:3270, hpPct:61.1, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:319, stHp:0, stHpCum:204, stHpPct:59.6},
-  {date:"8/10", pkgReady:1, pkgReview:51, wd:42, wdCum:8514, tst:101, tstCum:6048, tstPct:63.5, hp:54, hpCum:3324, hpPct:62.1, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:320, stHp:0, stHpCum:204, stHpPct:59.6},
-  {date:"8/11", pkgReady:0, pkgReview:128, wd:35, wdCum:8549, tst:50, tstCum:6098, tstPct:64.0, hp:29, hpCum:3353, hpPct:62.7, rst:5, rstCum:65, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:320, stHp:2, stHpCum:206, stHpPct:60.2},
-  {date:"8/12", pkgReady:0, pkgReview:76, wd:41, wdCum:8590, tst:72, tstCum:6170, tstPct:64.8, hp:73, hpCum:3426, hpPct:64.0, rst:14, rstCum:79, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:321, stHp:5, stHpCum:211, stHpPct:61.7},
-  {date:"8/13", pkgReady:0, pkgReview:113, wd:36, wdCum:8626, tst:106, tstCum:6276, tstPct:65.9, hp:71, hpCum:3497, hpPct:65.4, rst:15, rstCum:94, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:323, stHp:5, stHpCum:216, stHpPct:63.2},
-  {date:"8/14", pkgReady:0, pkgReview:67, wd:23, wdCum:8649, tst:22, tstCum:6298, tstPct:66.1, hp:18, hpCum:3515, hpPct:65.7, rst:28, rstCum:122, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:324, stHp:0, stHpCum:216, stHpPct:63.2},
-  {date:"8/15", pkgReady:3, pkgReview:40, wd:12, wdCum:8661, tst:38, tstCum:6336, tstPct:66.5, hp:21, hpCum:3536, hpPct:66.1, rst:5, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:3, stHpCum:219, stHpPct:64.0},
-  {date:"8/16", pkgReady:0, pkgReview:2, wd:0, wdCum:8661, tst:0, tstCum:6336, tstPct:66.5, hp:0, hpCum:3536, hpPct:66.1, rst:0, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:0, stHpCum:219, stHpPct:64.0},
-  {date:"8/17", pkgReady:18, pkgReview:37, wd:0, wdCum:8661, tst:7, tstCum:6343, tstPct:66.6, hp:0, hpCum:3536, hpPct:66.1, rst:0, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:1, stHpCum:220, stHpPct:64.3},
-  {date:"8/18", pkgReady:0, pkgReview:47, wd:0, wdCum:8661, tst:94, tstCum:6437, tstPct:67.6, hp:50, hpCum:3586, hpPct:67.0, rst:14, rstCum:141, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:6, stHpCum:226, stHpPct:66.1},
-  {date:"8/19", pkgReady:0, pkgReview:28, wd:19, wdCum:8680, tst:118, tstCum:6555, tstPct:68.8, hp:84, hpCum:3670, hpPct:68.6, rst:33, rstCum:174, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:325, stHp:5, stHpCum:231, stHpPct:67.5},
-  {date:"8/20", pkgReady:26, pkgReview:70, wd:40, wdCum:8720, tst:58, tstCum:6613, tstPct:69.4, hp:44, hpCum:3714, hpPct:69.4, rst:37, rstCum:211, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:326, stHp:0, stHpCum:231, stHpPct:67.5},
-  {date:"8/21", pkgReady:0, pkgReview:39, wd:14, wdCum:8734, tst:72, tstCum:6685, tstPct:70.2, hp:56, hpCum:3770, hpPct:70.5, rst:21, rstCum:232, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:328, stHp:5, stHpCum:236, stHpPct:69.0},
-  {date:"8/22", pkgReady:0, pkgReview:27, wd:40, wdCum:8774, tst:61, tstCum:6746, tstPct:70.8, hp:46, hpCum:3816, hpPct:71.3, rst:100, rstCum:332, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:5, stHpCum:241, stHpPct:70.5},
-  {date:"8/23", pkgReady:0, pkgReview:10, wd:14, wdCum:8788, tst:43, tstCum:6789, tstPct:71.3, hp:31, hpCum:3847, hpPct:71.9, rst:0, rstCum:332, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:241, stHpPct:70.5},
-  {date:"8/24", pkgReady:3, pkgReview:21, wd:28, wdCum:8816, tst:91, tstCum:6880, tstPct:72.2, hp:85, hpCum:3932, hpPct:73.5, rst:67, rstCum:399, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:242, stHpPct:70.8},
-  {date:"8/25", pkgReady:0, pkgReview:37, wd:37, wdCum:8853, tst:92, tstCum:6972, tstPct:73.2, hp:59, hpCum:3991, hpPct:74.6, rst:51, rstCum:450, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:8, stHpCum:250, stHpPct:73.1},
-  {date:"8/26", pkgReady:0, pkgReview:67, wd:37, wdCum:8890, tst:92, tstCum:7064, tstPct:74.2, hp:64, hpCum:4055, hpPct:75.8, rst:110, rstCum:560, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:4, stHpCum:254, stHpPct:74.3},
-  {date:"8/27", pkgReady:1, pkgReview:72, wd:25, wdCum:8915, tst:75, tstCum:7139, tstPct:75.0, hp:54, hpCum:4109, hpPct:76.8, rst:93, rstCum:653, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:255, stHpPct:74.6},
-  {date:"8/28", pkgReady:0, pkgReview:20, wd:1, wdCum:8916, tst:15, tstCum:7154, tstPct:75.1, hp:1, hpCum:4110, hpPct:76.8, rst:11, rstCum:664, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:255, stHpPct:74.6},
-  {date:"8/29", pkgReady:0, pkgReview:2, wd:24, wdCum:8940, tst:60, tstCum:7214, tstPct:75.7, hp:51, hpCum:4161, hpPct:77.8, rst:45, rstCum:709, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:2, stHpCum:257, stHpPct:75.1},
-  {date:"8/30", pkgReady:0, pkgReview:10, wd:10, wdCum:8950, tst:48, tstCum:7262, tstPct:76.2, hp:6, hpCum:4167, hpPct:77.9, rst:34, rstCum:743, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:258, stHpPct:75.4},
-  {date:"8/31", pkgReady:2, pkgReview:2, wd:25, wdCum:8975, tst:79, tstCum:7341, tstPct:77.1, hp:78, hpCum:4245, hpPct:79.3, rst:92, rstCum:835, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:259, stHpPct:75.7},
-  {date:"9/1", pkgReady:0, pkgReview:35, wd:21, wdCum:8996, tst:56, tstCum:7397, tstPct:77.7, hp:22, hpCum:4267, hpPct:79.7, rst:99, rstCum:934, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:260, stHpPct:76.0},
-  {date:"9/2", pkgReady:0, pkgReview:27, wd:23, wdCum:9019, tst:54, tstCum:7451, tstPct:78.2, hp:35, hpCum:4302, hpPct:80.4, rst:101, rstCum:1035, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:261, stHpPct:76.3},
-  {date:"9/3", pkgReady:2, pkgReview:17, wd:6, wdCum:9025, tst:101, tstCum:7552, tstPct:79.3, hp:46, hpCum:4348, hpPct:81.3, rst:108, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:6, stHpCum:267, stHpPct:78.1},
-  {date:"9/4", pkgReady:0, pkgReview:16, wd:1, wdCum:9026, tst:6, tstCum:7558, tstPct:79.4, hp:0, hpCum:4348, hpPct:81.3, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
-  {date:"9/5", pkgReady:0, pkgReview:6, wd:0, wdCum:9026, tst:0, tstCum:7558, tstPct:79.4, hp:0, hpCum:4348, hpPct:81.3, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
-  {date:"9/6", pkgReady:0, pkgReview:9, wd:0, wdCum:9026, tst:0, tstCum:7558, tstPct:79.4, hp:0, hpCum:4348, hpPct:81.3, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
-  {date:"9/7", pkgReady:0, pkgReview:20, wd:28, wdCum:9054, tst:90, tstCum:7648, tstPct:80.3, hp:63, hpCum:4411, hpPct:82.4, rst:71, rstCum:1214, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:13, stHpCum:280, stHpPct:81.9},
-  {date:"9/8", pkgReady:1, pkgReview:33, wd:22, wdCum:9076, tst:76, tstCum:7724, tstPct:81.1, hp:35, hpCum:4446, hpPct:83.1, rst:77, rstCum:1291, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:330, stHp:0, stHpCum:280, stHpPct:81.9},
-  {date:"9/9", pkgReady:5, pkgReview:38, wd:36, wdCum:9112, tst:65, tstCum:7789, tstPct:81.8, hp:29, hpCum:4475, hpPct:83.6, rst:61, rstCum:1352, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:7, stHpCum:287, stHpPct:83.9},
-  {date:"9/10", pkgReady:1, pkgReview:33, wd:38, wdCum:9150, tst:80, tstCum:7869, tstPct:82.6, hp:47, hpCum:4522, hpPct:84.5, rst:56, rstCum:1408, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:3, stHpCum:290, stHpPct:84.8},
-  {date:"9/11", pkgReady:1, pkgReview:19, wd:17, wdCum:9167, tst:51, tstCum:7920, tstPct:83.2, hp:34, hpCum:4556, hpPct:85.1, rst:86, rstCum:1494, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:0, stHpCum:290, stHpPct:84.8},
-  {date:"9/12", pkgReady:0, pkgReview:34, wd:12, wdCum:9179, tst:31, tstCum:7951, tstPct:83.5, hp:41, hpCum:4597, hpPct:85.9, rst:44, rstCum:1538, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:332, stHp:4, stHpCum:294, stHpPct:86.0},
-  {date:"9/13", pkgReady:0, pkgReview:0, wd:3, wdCum:9182, tst:35, tstCum:7986, tstPct:83.9, hp:5, hpCum:4602, hpPct:86.0, rst:4, rstCum:1542, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:294, stHpPct:86.0},
-  {date:"9/14", pkgReady:0, pkgReview:10, wd:13, wdCum:9195, tst:45, tstCum:8031, tstPct:84.3, hp:27, hpCum:4629, hpPct:86.5, rst:62, rstCum:1604, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:299, stHpPct:87.4},
-  {date:"9/15", pkgReady:0, pkgReview:30, wd:1, wdCum:9196, tst:64, tstCum:8095, tstPct:85.0, hp:25, hpCum:4654, hpPct:87.0, rst:91, rstCum:1695, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:11, stHpCum:310, stHpPct:90.6},
-  {date:"9/16", pkgReady:6, pkgReview:7, wd:9, wdCum:9205, tst:39, tstCum:8134, tstPct:85.4, hp:23, hpCum:4677, hpPct:87.4, rst:81, rstCum:1776, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:310, stHpPct:90.6},
-  {date:"9/17", pkgReady:0, pkgReview:15, wd:16, wdCum:9221, tst:36, tstCum:8170, tstPct:85.8, hp:16, hpCum:4693, hpPct:87.7, rst:56, rstCum:1832, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:315, stHpPct:92.1},
-  {date:"9/18", pkgReady:0, pkgReview:19, wd:0, wdCum:9221, tst:11, tstCum:8181, tstPct:85.9, hp:5, hpCum:4698, hpPct:87.8, rst:24, rstCum:1856, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:2, stHpCum:317, stHpPct:92.7},
-  {date:"9/19", pkgReady:0, pkgReview:2, wd:17, wdCum:9238, tst:19, tstCum:8200, tstPct:86.1, hp:7, hpCum:4705, hpPct:87.9, rst:78, rstCum:1934, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
-  {date:"9/20", pkgReady:0, pkgReview:10, wd:4, wdCum:9242, tst:32, tstCum:8232, tstPct:86.4, hp:7, hpCum:4712, hpPct:88.1, rst:16, rstCum:1950, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
-  {date:"9/21", pkgReady:1, pkgReview:29, wd:6, wdCum:9248, tst:57, tstCum:8289, tstPct:87.0, hp:33, hpCum:4745, hpPct:88.7, rst:67, rstCum:2017, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
-  {date:"9/22", pkgReady:1, pkgReview:14, wd:10, wdCum:9258, tst:87, tstCum:8376, tstPct:87.9, hp:80, hpCum:4825, hpPct:90.2, rst:105, rstCum:2122, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:320, stHpPct:93.6},
-  {date:"9/23", pkgReady:0, pkgReview:23, wd:7, wdCum:9265, tst:37, tstCum:8413, tstPct:88.3, hp:14, hpCum:4839, hpPct:90.4, rst:39, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/24", pkgReady:0, pkgReview:0, wd:0, wdCum:9265, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.4, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/25", pkgReady:0, pkgReview:0, wd:0, wdCum:9265, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.4, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/26", pkgReady:0, pkgReview:0, wd:0, wdCum:9265, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.4, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/27", pkgReady:0, pkgReview:0, wd:0, wdCum:9265, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.4, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/28", pkgReady:0, pkgReview:22, wd:12, wdCum:9277, tst:22, tstCum:8435, tstPct:88.6, hp:20, hpCum:4859, hpPct:90.8, rst:93, rstCum:2254, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
-  {date:"9/29", pkgReady:0, pkgReview:8, wd:4, wdCum:9281, tst:44, tstCum:8479, tstPct:89.0, hp:19, hpCum:4878, hpPct:91.2, rst:95, rstCum:2349, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:323, stHpPct:94.4},
-  {date:"9/30", pkgReady:0, pkgReview:23, wd:5, wdCum:9286, tst:19, tstCum:8498, tstPct:89.2, hp:10, hpCum:4888, hpPct:91.3, rst:111, rstCum:2460, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:326, stHpPct:95.3},
-  {date:"10/1", pkgReady:0, pkgReview:12, wd:22, wdCum:9308, tst:42, tstCum:8540, tstPct:89.7, hp:21, hpCum:4909, hpPct:91.7, rst:80, rstCum:2540, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:326, stHpPct:95.3},
-  {date:"10/2", pkgReady:2, pkgReview:7, wd:12, wdCum:9320, tst:24, tstCum:8564, tstPct:89.9, hp:21, hpCum:4930, hpPct:92.1, rst:105, rstCum:2645, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:1, stHpCum:327, stHpPct:95.6},
-  {date:"10/3", pkgReady:0, pkgReview:13, wd:4, wdCum:9324, tst:50, tstCum:8614, tstPct:90.4, hp:36, hpCum:4966, hpPct:92.8, rst:67, rstCum:2712, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:334, stHp:2, stHpCum:329, stHpPct:96.2},
-  {date:"10/4", pkgReady:0, pkgReview:1, wd:1, wdCum:9325, tst:9, tstCum:8623, tstPct:90.5, hp:16, hpCum:4982, hpPct:93.1, rst:45, rstCum:2757, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:329, stHpPct:96.2},
-  {date:"10/5", pkgReady:1, pkgReview:14, wd:7, wdCum:9332, tst:49, tstCum:8672, tstPct:91.1, hp:8, hpCum:4990, hpPct:93.3, rst:110, rstCum:2867, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:329, stHpPct:96.2},
-  {date:"10/6", pkgReady:0, pkgReview:6, wd:23, wdCum:9355, tst:32, tstCum:8704, tstPct:91.4, hp:8, hpCum:4998, hpPct:93.4, rst:91, rstCum:2958, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:337, stHp:0, stHpCum:329, stHpPct:96.2},
-  {date:"10/7", pkgReady:0, pkgReview:15, wd:16, wdCum:9371, tst:58, tstCum:8762, tstPct:92.0, hp:43, hpCum:5041, hpPct:94.2, rst:168, rstCum:3126, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:1, stHpCum:330, stHpPct:96.5},
-  {date:"10/8", pkgReady:0, pkgReview:21, wd:7, wdCum:9378, tst:56, tstCum:8818, tstPct:92.6, hp:26, hpCum:5067, hpPct:94.7, rst:111, rstCum:3237, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:330, stHpPct:96.5},
-  {date:"10/9", pkgReady:1, pkgReview:14, wd:6, wdCum:9384, tst:25, tstCum:8843, tstPct:92.8, hp:18, hpCum:5085, hpPct:95.0, rst:97, rstCum:3334, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:330, stHpPct:96.5},
-  {date:"10/10", pkgReady:1, pkgReview:8, wd:2, wdCum:9386, tst:45, tstCum:8888, tstPct:93.3, hp:29, hpCum:5114, hpPct:95.6, rst:110, rstCum:3444, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:2, stHpCum:332, stHpPct:97.1},
-  {date:"10/11", pkgReady:0, pkgReview:0, wd:3, wdCum:9389, tst:51, tstCum:8939, tstPct:93.9, hp:8, hpCum:5122, hpPct:95.7, rst:78, rstCum:3522, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:332, stHpPct:97.1},
-  {date:"10/12", pkgReady:0, pkgReview:10, wd:5, wdCum:9394, tst:40, tstCum:8979, tstPct:94.3, hp:29, hpCum:5151, hpPct:96.3, rst:113, rstCum:3635, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:332, stHpPct:97.1},
-  {date:"10/13", pkgReady:1, pkgReview:15, wd:5, wdCum:9399, tst:45, tstCum:9024, tstPct:94.8, hp:14, hpCum:5165, hpPct:96.5, rst:120, rstCum:3755, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:2, stHpCum:334, stHpPct:97.7},
-  {date:"10/14", pkgReady:1, pkgReview:21, wd:7, wdCum:9406, tst:7, tstCum:9031, tstPct:94.8, hp:5, hpCum:5170, hpPct:96.6, rst:131, rstCum:3886, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:1, stHpCum:335, stHpPct:98.0},
-  {date:"10/15", pkgReady:4, pkgReview:11, wd:11, wdCum:9417, tst:43, tstCum:9074, tstPct:95.3, hp:12, hpCum:5182, hpPct:96.8, rst:135, rstCum:4021, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:335, stHpPct:98.0},
-  {date:"10/16", pkgReady:0, pkgReview:17, wd:7, wdCum:9424, tst:21, tstCum:9095, tstPct:95.5, hp:7, hpCum:5189, hpPct:97.0, rst:115, rstCum:4136, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:340, stHp:3, stHpCum:338, stHpPct:98.8},
-  {date:"10/17", pkgReady:0, pkgReview:1, wd:4, wdCum:9428, tst:15, tstCum:9110, tstPct:95.7, hp:8, hpCum:5197, hpPct:97.1, rst:91, rstCum:4227, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
-  {date:"10/18", pkgReady:0, pkgReview:8, wd:3, wdCum:9431, tst:32, tstCum:9142, tstPct:96.0, hp:6, hpCum:5203, hpPct:97.2, rst:70, rstCum:4297, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
-  {date:"10/19", pkgReady:0, pkgReview:4, wd:1, wdCum:9432, tst:27, tstCum:9169, tstPct:96.3, hp:14, hpCum:5217, hpPct:97.5, rst:122, rstCum:4419, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
-  {date:"10/20", pkgReady:1, pkgReview:11, wd:2, wdCum:9434, tst:23, tstCum:9192, tstPct:96.5, hp:6, hpCum:5223, hpPct:97.6, rst:2, rstCum:4421, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
-  {date:"10/21", pkgReady:0, pkgReview:1, wd:12, wdCum:9446, tst:40, tstCum:9232, tstPct:96.9, hp:20, hpCum:5243, hpPct:98.0, rst:148, rstCum:4569, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:341, stHp:2, stHpCum:340, stHpPct:99.4},
-  {date:"10/22", pkgReady:0, pkgReview:2, wd:2, wdCum:9448, tst:39, tstCum:9271, tstPct:97.3, hp:9, hpCum:5252, hpPct:98.1, rst:130, rstCum:4699, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
-  {date:"10/23", pkgReady:2, pkgReview:8, wd:6, wdCum:9454, tst:15, tstCum:9286, tstPct:97.5, hp:9, hpCum:5261, hpPct:98.3, rst:131, rstCum:4830, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
-  {date:"10/24", pkgReady:1, pkgReview:0, wd:2, wdCum:9456, tst:14, tstCum:9300, tstPct:97.6, hp:0, hpCum:5261, hpPct:98.3, rst:42, rstCum:4872, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
-  {date:"10/25", pkgReady:0, pkgReview:1, wd:0, wdCum:9456, tst:2, tstCum:9302, tstPct:97.7, hp:0, hpCum:5261, hpPct:98.3, rst:4, rstCum:4876, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
-  {date:"10/26", pkgReady:1, pkgReview:6, wd:6, wdCum:9462, tst:34, tstCum:9336, tstPct:98.0, hp:7, hpCum:5268, hpPct:98.4, rst:153, rstCum:5029, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
-  {date:"10/27", pkgReady:1, pkgReview:3, wd:4, wdCum:9466, tst:14, tstCum:9350, tstPct:98.2, hp:8, hpCum:5276, hpPct:98.6, rst:113, rstCum:5142, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:1, stHpCum:341, stHpPct:99.7},
-  {date:"10/28", pkgReady:0, pkgReview:3, wd:7, wdCum:9473, tst:29, tstCum:9379, tstPct:98.5, hp:17, hpCum:5293, hpPct:98.9, rst:172, rstCum:5314, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
-  {date:"10/29", pkgReady:0, pkgReview:0, wd:4, wdCum:9477, tst:23, tstCum:9402, tstPct:98.7, hp:12, hpCum:5305, hpPct:99.1, rst:158, rstCum:5472, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
-  {date:"10/30", pkgReady:1, pkgReview:1, wd:6, wdCum:9483, tst:9, tstCum:9411, tstPct:98.8, hp:4, hpCum:5309, hpPct:99.2, rst:124, rstCum:5596, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
-  {date:"10/31", pkgReady:0, pkgReview:0, wd:11, wdCum:9494, tst:10, tstCum:9421, tstPct:98.9, hp:2, hpCum:5311, hpPct:99.3, rst:120, rstCum:5716, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:342, stHp:1, stHpCum:342, stHpPct:100},
-  {date:"11/1", pkgReady:0, pkgReview:0, wd:3, wdCum:9497, tst:6, tstCum:9427, tstPct:99.0, hp:4, hpCum:5315, hpPct:99.3, rst:59, rstCum:5775, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:342, stHp:0, stHpCum:342, stHpPct:100},
+  {date:"4/1", pkgReady:30, pkgReview:62, wd:16, wdCum:445, tst:25, tstCum:317, tstPct:3.3, hp:0, hpCum:46, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/2", pkgReady:50, pkgReview:72, wd:45, wdCum:490, tst:48, tstCum:365, tstPct:3.8, hp:4, hpCum:50, hpPct:0.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/3", pkgReady:58, pkgReview:20, wd:37, wdCum:527, tst:26, tstCum:391, tstPct:4.1, hp:1, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/4", pkgReady:16, pkgReview:18, wd:0, wdCum:527, tst:0, tstCum:391, tstPct:4.1, hp:0, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/5", pkgReady:0, pkgReview:0, wd:0, wdCum:527, tst:0, tstCum:391, tstPct:4.1, hp:0, hpCum:51, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/6", pkgReady:107, pkgReview:28, wd:21, wdCum:548, tst:18, tstCum:409, tstPct:4.3, hp:1, hpCum:52, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/7", pkgReady:55, pkgReview:38, wd:70, wdCum:618, tst:70, tstCum:479, tstPct:5.0, hp:0, hpCum:52, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/8", pkgReady:48, pkgReview:54, wd:46, wdCum:664, tst:43, tstCum:522, tstPct:5.5, hp:1, hpCum:53, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/9", pkgReady:45, pkgReview:13, wd:19, wdCum:683, tst:13, tstCum:535, tstPct:5.6, hp:0, hpCum:53, hpPct:1.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/10", pkgReady:27, pkgReview:54, wd:36, wdCum:719, tst:38, tstCum:573, tstPct:6.0, hp:4, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/11", pkgReady:14, pkgReview:0, wd:2, wdCum:721, tst:2, tstCum:575, tstPct:6.0, hp:0, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/12", pkgReady:0, pkgReview:0, wd:0, wdCum:721, tst:0, tstCum:575, tstPct:6.0, hp:0, hpCum:57, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/13", pkgReady:75, pkgReview:62, wd:8, wdCum:729, tst:4, tstCum:579, tstPct:6.1, hp:4, hpCum:61, hpPct:1.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/14", pkgReady:36, pkgReview:71, wd:75, wdCum:804, tst:37, tstCum:616, tstPct:6.5, hp:1, hpCum:62, hpPct:1.2, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/15", pkgReady:55, pkgReview:45, wd:15, wdCum:819, tst:40, tstCum:656, tstPct:6.9, hp:34, hpCum:96, hpPct:1.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/16", pkgReady:102, pkgReview:63, wd:33, wdCum:852, tst:32, tstCum:688, tstPct:7.2, hp:3, hpCum:99, hpPct:1.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/17", pkgReady:28, pkgReview:34, wd:49, wdCum:901, tst:18, tstCum:706, tstPct:7.4, hp:1, hpCum:100, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/18", pkgReady:14, pkgReview:10, wd:17, wdCum:918, tst:15, tstCum:721, tstPct:7.6, hp:4, hpCum:104, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/19", pkgReady:0, pkgReview:0, wd:0, wdCum:918, tst:0, tstCum:721, tstPct:7.6, hp:0, hpCum:104, hpPct:1.9, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/20", pkgReady:60, pkgReview:25, wd:21, wdCum:939, tst:5, tstCum:726, tstPct:7.6, hp:2, hpCum:106, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/21", pkgReady:149, pkgReview:46, wd:20, wdCum:959, tst:11, tstCum:737, tstPct:7.7, hp:2, hpCum:108, hpPct:2.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:0, stHpCum:3, stHpPct:0.9},
+  {date:"4/22", pkgReady:52, pkgReview:37, wd:26, wdCum:985, tst:26, tstCum:763, tstPct:8.0, hp:12, hpCum:120, hpPct:2.2, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:9, stHp:2, stHpCum:5, stHpPct:1.5},
+  {date:"4/23", pkgReady:29, pkgReview:65, wd:59, wdCum:1044, tst:39, tstCum:802, tstPct:8.4, hp:21, hpCum:141, hpPct:2.6, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:19, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/24", pkgReady:25, pkgReview:14, wd:58, wdCum:1102, tst:30, tstCum:832, tstPct:8.7, hp:9, hpCum:150, hpPct:2.8, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:23, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/25", pkgReady:12, pkgReview:13, wd:19, wdCum:1121, tst:20, tstCum:852, tstPct:8.9, hp:11, hpCum:161, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:25, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/26", pkgReady:0, pkgReview:0, wd:0, wdCum:1121, tst:0, tstCum:852, tstPct:8.9, hp:0, hpCum:161, hpPct:3.0, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:25, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/27", pkgReady:48, pkgReview:33, wd:45, wdCum:1166, tst:36, tstCum:888, tstPct:9.3, hp:4, hpCum:165, hpPct:3.1, rst:0, rstCum:3, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:28, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/28", pkgReady:115, pkgReview:110, wd:12, wdCum:1178, tst:17, tstCum:905, tstPct:9.5, hp:10, hpCum:175, hpPct:3.3, rst:1, rstCum:4, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:28, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/29", pkgReady:140, pkgReview:141, wd:106, wdCum:1284, tst:17, tstCum:922, tstPct:9.7, hp:5, hpCum:180, hpPct:3.4, rst:5, rstCum:9, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"4/30", pkgReady:18, pkgReview:50, wd:123, wdCum:1407, tst:99, tstCum:1021, tstPct:10.7, hp:87, hpCum:267, hpPct:5.0, rst:4, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"5/1", pkgReady:0, pkgReview:0, wd:1, wdCum:1408, tst:0, tstCum:1021, tstPct:10.7, hp:0, hpCum:267, hpPct:5.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"5/2", pkgReady:7, pkgReview:0, wd:52, wdCum:1460, tst:38, tstCum:1059, tstPct:11.1, hp:5, hpCum:272, hpPct:5.1, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"5/3", pkgReady:0, pkgReview:0, wd:0, wdCum:1460, tst:0, tstCum:1059, tstPct:11.1, hp:0, hpCum:272, hpPct:5.1, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:5, stHpPct:1.5},
+  {date:"5/4", pkgReady:54, pkgReview:33, wd:7, wdCum:1467, tst:107, tstCum:1166, tstPct:12.2, hp:104, hpCum:376, hpPct:7.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:20, stHpCum:25, stHpPct:7.3},
+  {date:"5/5", pkgReady:6, pkgReview:1, wd:0, wdCum:1467, tst:0, tstCum:1166, tstPct:12.2, hp:0, hpCum:376, hpPct:7.0, rst:0, rstCum:13, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/6", pkgReady:61, pkgReview:15, wd:30, wdCum:1497, tst:21, tstCum:1187, tstPct:12.5, hp:17, hpCum:393, hpPct:7.3, rst:3, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/7", pkgReady:70, pkgReview:42, wd:25, wdCum:1522, tst:29, tstCum:1216, tstPct:12.8, hp:19, hpCum:412, hpPct:7.7, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:30, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/8", pkgReady:79, pkgReview:28, wd:37, wdCum:1559, tst:28, tstCum:1244, tstPct:13.1, hp:11, hpCum:423, hpPct:7.9, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/9", pkgReady:21, pkgReview:54, wd:5, wdCum:1564, tst:21, tstCum:1265, tstPct:13.3, hp:21, hpCum:444, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/10", pkgReady:0, pkgReview:0, wd:0, wdCum:1564, tst:0, tstCum:1265, tstPct:13.3, hp:0, hpCum:444, hpPct:8.3, rst:0, rstCum:16, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:31, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/11", pkgReady:116, pkgReview:62, wd:37, wdCum:1601, tst:34, tstCum:1299, tstPct:13.6, hp:27, hpCum:471, hpPct:8.8, rst:6, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:36, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/12", pkgReady:67, pkgReview:55, wd:36, wdCum:1637, tst:38, tstCum:1337, tstPct:14.0, hp:11, hpCum:482, hpPct:9.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:36, stHp:0, stHpCum:25, stHpPct:7.3},
+  {date:"5/13", pkgReady:63, pkgReview:53, wd:27, wdCum:1664, tst:22, tstCum:1359, tstPct:14.3, hp:16, hpCum:498, hpPct:9.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:36, stHp:1, stHpCum:26, stHpPct:7.6},
+  {date:"5/14", pkgReady:69, pkgReview:30, wd:54, wdCum:1718, tst:44, tstCum:1403, tstPct:14.7, hp:18, hpCum:516, hpPct:9.6, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:39, stHp:0, stHpCum:26, stHpPct:7.6},
+  {date:"5/15", pkgReady:80, pkgReview:23, wd:39, wdCum:1757, tst:20, tstCum:1423, tstPct:14.9, hp:12, hpCum:528, hpPct:9.8, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:39, stHp:0, stHpCum:26, stHpPct:7.6},
+  {date:"5/16", pkgReady:44, pkgReview:60, wd:12, wdCum:1769, tst:13, tstCum:1436, tstPct:15.1, hp:11, hpCum:539, hpPct:10.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:40, stHp:0, stHpCum:26, stHpPct:7.6},
+  {date:"5/17", pkgReady:0, pkgReview:0, wd:0, wdCum:1769, tst:0, tstCum:1436, tstPct:15.1, hp:0, hpCum:539, hpPct:10.1, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:40, stHp:0, stHpCum:26, stHpPct:7.6},
+  {date:"5/18", pkgReady:123, pkgReview:33, wd:39, wdCum:1808, tst:43, tstCum:1479, tstPct:15.5, hp:30, hpCum:569, hpPct:10.6, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:42, stHp:4, stHpCum:30, stHpPct:8.8},
+  {date:"5/19", pkgReady:99, pkgReview:46, wd:25, wdCum:1833, tst:40, tstCum:1519, tstPct:15.9, hp:23, hpCum:592, hpPct:11.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:42, stHp:0, stHpCum:30, stHpPct:8.8},
+  {date:"5/20", pkgReady:64, pkgReview:58, wd:63, wdCum:1896, tst:26, tstCum:1545, tstPct:16.2, hp:14, hpCum:606, hpPct:11.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:42, stHp:3, stHpCum:33, stHpPct:9.6},
+  {date:"5/21", pkgReady:73, pkgReview:20, wd:89, wdCum:1985, tst:71, tstCum:1616, tstPct:17.0, hp:46, hpCum:652, hpPct:12.2, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:46, stHp:1, stHpCum:34, stHpPct:9.9},
+  {date:"5/22", pkgReady:39, pkgReview:36, wd:79, wdCum:2064, tst:40, tstCum:1656, tstPct:17.4, hp:8, hpCum:660, hpPct:12.3, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:49, stHp:0, stHpCum:34, stHpPct:9.9},
+  {date:"5/23", pkgReady:5, pkgReview:5, wd:34, wdCum:2098, tst:48, tstCum:1704, tstPct:17.9, hp:35, hpCum:695, hpPct:13.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:51, stHp:0, stHpCum:34, stHpPct:9.9},
+  {date:"5/24", pkgReady:0, pkgReview:0, wd:0, wdCum:2098, tst:0, tstCum:1704, tstPct:17.9, hp:0, hpCum:695, hpPct:13.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:51, stHp:0, stHpCum:34, stHpPct:9.9},
+  {date:"5/25", pkgReady:26, pkgReview:8, wd:53, wdCum:2151, tst:12, tstCum:1716, tstPct:18.0, hp:4, hpCum:699, hpPct:13.0, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:57, stHp:0, stHpCum:34, stHpPct:9.9},
+  {date:"5/26", pkgReady:81, pkgReview:25, wd:88, wdCum:2239, tst:15, tstCum:1731, tstPct:18.2, hp:6, hpCum:705, hpPct:13.2, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:58, stHp:1, stHpCum:35, stHpPct:10.2},
+  {date:"5/27", pkgReady:114, pkgReview:17, wd:6, wdCum:2245, tst:6, tstCum:1737, tstPct:18.2, hp:5, hpCum:710, hpPct:13.2, rst:0, rstCum:22, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:58, stHp:0, stHpCum:35, stHpPct:10.2},
+  {date:"5/28", pkgReady:270, pkgReview:45, wd:109, wdCum:2354, tst:87, tstCum:1824, tstPct:19.1, hp:73, hpCum:783, hpPct:14.6, rst:4, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:18, stWdCum:76, stHp:0, stHpCum:35, stHpPct:10.2},
+  {date:"5/29", pkgReady:91, pkgReview:21, wd:89, wdCum:2443, tst:16, tstCum:1840, tstPct:19.3, hp:8, hpCum:791, hpPct:14.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:83, stHp:2, stHpCum:37, stHpPct:10.8},
+  {date:"5/30", pkgReady:61, pkgReview:8, wd:46, wdCum:2489, tst:40, tstCum:1880, tstPct:19.7, hp:30, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:9, stHpCum:46, stHpPct:13.5},
+  {date:"5/31", pkgReady:0, pkgReview:0, wd:0, wdCum:2489, tst:1, tstCum:1881, tstPct:19.7, hp:0, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
+  {date:"6/1", pkgReady:187, pkgReview:51, wd:55, wdCum:2544, tst:15, tstCum:1896, tstPct:19.9, hp:0, hpCum:821, hpPct:15.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
+  {date:"6/2", pkgReady:226, pkgReview:27, wd:1, wdCum:2545, tst:35, tstCum:1931, tstPct:20.3, hp:34, hpCum:855, hpPct:15.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:83, stHp:0, stHpCum:46, stHpPct:13.5},
+  {date:"6/3", pkgReady:224, pkgReview:11, wd:116, wdCum:2661, tst:12, tstCum:1943, tstPct:20.4, hp:1, hpCum:856, hpPct:16.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:85, stHp:0, stHpCum:46, stHpPct:13.5},
+  {date:"6/4", pkgReady:204, pkgReview:38, wd:106, wdCum:2767, tst:68, tstCum:2011, tstPct:21.1, hp:51, hpCum:907, hpPct:16.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:88, stHp:1, stHpCum:47, stHpPct:13.7},
+  {date:"6/5", pkgReady:301, pkgReview:85, wd:105, wdCum:2872, tst:32, tstCum:2043, tstPct:21.4, hp:19, hpCum:926, hpPct:17.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:93, stHp:2, stHpCum:49, stHpPct:14.3},
+  {date:"6/6", pkgReady:109, pkgReview:21, wd:77, wdCum:2949, tst:48, tstCum:2091, tstPct:21.9, hp:34, hpCum:960, hpPct:17.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:96, stHp:4, stHpCum:53, stHpPct:15.5},
+  {date:"6/7", pkgReady:63, pkgReview:19, wd:6, wdCum:2955, tst:3, tstCum:2094, tstPct:22.0, hp:3, hpCum:963, hpPct:18.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:96, stHp:0, stHpCum:53, stHpPct:15.5},
+  {date:"6/8", pkgReady:904, pkgReview:20, wd:43, wdCum:2998, tst:25, tstCum:2119, tstPct:22.2, hp:9, hpCum:972, hpPct:18.1, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:97, stHp:4, stHpCum:57, stHpPct:16.7},
+  {date:"6/9", pkgReady:425, pkgReview:25, wd:106, wdCum:3104, tst:76, tstCum:2195, tstPct:23.0, hp:41, hpCum:1013, hpPct:18.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:99, stHp:2, stHpCum:59, stHpPct:17.3},
+  {date:"6/10", pkgReady:325, pkgReview:50, wd:144, wdCum:3248, tst:58, tstCum:2253, tstPct:23.6, hp:12, hpCum:1025, hpPct:19.1, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:100, stHp:1, stHpCum:60, stHpPct:17.5},
+  {date:"6/11", pkgReady:234, pkgReview:67, wd:156, wdCum:3404, tst:34, tstCum:2287, tstPct:24.0, hp:13, hpCum:1038, hpPct:19.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:102, stHp:0, stHpCum:60, stHpPct:17.5},
+  {date:"6/12", pkgReady:201, pkgReview:61, wd:126, wdCum:3530, tst:50, tstCum:2337, tstPct:24.5, hp:31, hpCum:1069, hpPct:19.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:107, stHp:0, stHpCum:60, stHpPct:17.5},
+  {date:"6/13", pkgReady:288, pkgReview:40, wd:59, wdCum:3589, tst:48, tstCum:2385, tstPct:25.0, hp:16, hpCum:1085, hpPct:20.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:109, stHp:0, stHpCum:60, stHpPct:17.5},
+  {date:"6/14", pkgReady:0, pkgReview:0, wd:25, wdCum:3614, tst:13, tstCum:2398, tstPct:25.2, hp:0, hpCum:1085, hpPct:20.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:109, stHp:0, stHpCum:60, stHpPct:17.5},
+  {date:"6/15", pkgReady:52, pkgReview:24, wd:94, wdCum:3708, tst:47, tstCum:2445, tstPct:25.7, hp:30, hpCum:1115, hpPct:20.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:113, stHp:3, stHpCum:63, stHpPct:18.4},
+  {date:"6/16", pkgReady:11, pkgReview:53, wd:109, wdCum:3817, tst:34, tstCum:2479, tstPct:26.0, hp:19, hpCum:1134, hpPct:21.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:115, stHp:0, stHpCum:63, stHpPct:18.4},
+  {date:"6/17", pkgReady:6, pkgReview:125, wd:126, wdCum:3943, tst:50, tstCum:2529, tstPct:26.5, hp:23, hpCum:1157, hpPct:21.6, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:121, stHp:1, stHpCum:64, stHpPct:18.7},
+  {date:"6/18", pkgReady:29, pkgReview:66, wd:143, wdCum:4086, tst:47, tstCum:2576, tstPct:27.0, hp:34, hpCum:1191, hpPct:22.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:125, stHp:0, stHpCum:64, stHpPct:18.7},
+  {date:"6/19", pkgReady:18, pkgReview:57, wd:155, wdCum:4241, tst:64, tstCum:2640, tstPct:27.7, hp:39, hpCum:1230, hpPct:22.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:128, stHp:0, stHpCum:64, stHpPct:18.7},
+  {date:"6/20", pkgReady:11, pkgReview:52, wd:10, wdCum:4251, tst:9, tstCum:2649, tstPct:27.8, hp:0, hpCum:1230, hpPct:22.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:128, stHp:0, stHpCum:64, stHpPct:18.7},
+  {date:"6/21", pkgReady:0, pkgReview:38, wd:66, wdCum:4317, tst:14, tstCum:2663, tstPct:27.9, hp:2, hpCum:1232, hpPct:23.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:130, stHp:0, stHpCum:64, stHpPct:18.7},
+  {date:"6/22", pkgReady:71, pkgReview:31, wd:100, wdCum:4417, tst:69, tstCum:2732, tstPct:28.7, hp:41, hpCum:1273, hpPct:23.7, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:135, stHp:0, stHpCum:64, stHpPct:18.7},
+  {date:"6/23", pkgReady:3, pkgReview:78, wd:137, wdCum:4554, tst:114, tstCum:2846, tstPct:29.9, hp:55, hpCum:1328, hpPct:24.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:137, stHp:3, stHpCum:67, stHpPct:19.6},
+  {date:"6/24", pkgReady:24, pkgReview:64, wd:163, wdCum:4717, tst:35, tstCum:2881, tstPct:30.2, hp:17, hpCum:1345, hpPct:25.1, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:12, stWdCum:149, stHp:4, stHpCum:71, stHpPct:20.8},
+  {date:"6/25", pkgReady:11, pkgReview:91, wd:173, wdCum:4890, tst:74, tstCum:2955, tstPct:31.0, hp:29, hpCum:1374, hpPct:25.6, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:158, stHp:0, stHpCum:71, stHpPct:20.8},
+  {date:"6/26", pkgReady:5, pkgReview:50, wd:169, wdCum:5059, tst:60, tstCum:3015, tstPct:31.6, hp:30, hpCum:1404, hpPct:26.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:162, stHp:2, stHpCum:73, stHpPct:21.3},
+  {date:"6/27", pkgReady:3, pkgReview:58, wd:91, wdCum:5150, tst:45, tstCum:3060, tstPct:32.1, hp:13, hpCum:1417, hpPct:26.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:10, stWdCum:172, stHp:1, stHpCum:74, stHpPct:21.6},
+  {date:"6/28", pkgReady:109, pkgReview:76, wd:77, wdCum:5227, tst:22, tstCum:3082, tstPct:32.3, hp:15, hpCum:1432, hpPct:26.7, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:173, stHp:0, stHpCum:74, stHpPct:21.6},
+  {date:"6/29", pkgReady:81, pkgReview:36, wd:153, wdCum:5380, tst:68, tstCum:3150, tstPct:33.1, hp:41, hpCum:1473, hpPct:27.5, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:182, stHp:4, stHpCum:78, stHpPct:22.8},
+  {date:"6/30", pkgReady:13, pkgReview:34, wd:143, wdCum:5523, tst:75, tstCum:3225, tstPct:33.8, hp:40, hpCum:1513, hpPct:28.2, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:185, stHp:3, stHpCum:81, stHpPct:23.7},
+  {date:"7/1", pkgReady:1, pkgReview:26, wd:52, wdCum:5575, tst:14, tstCum:3239, tstPct:34.0, hp:5, hpCum:1518, hpPct:28.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:187, stHp:1, stHpCum:82, stHpPct:24.0},
+  {date:"7/2", pkgReady:29, pkgReview:107, wd:116, wdCum:5691, tst:77, tstCum:3316, tstPct:34.8, hp:38, hpCum:1556, hpPct:29.0, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:193, stHp:4, stHpCum:86, stHpPct:25.1},
+  {date:"7/3", pkgReady:15, pkgReview:31, wd:144, wdCum:5835, tst:44, tstCum:3360, tstPct:35.3, hp:19, hpCum:1575, hpPct:29.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:197, stHp:0, stHpCum:86, stHpPct:25.1},
+  {date:"7/4", pkgReady:10, pkgReview:89, wd:92, wdCum:5927, tst:26, tstCum:3386, tstPct:35.5, hp:22, hpCum:1597, hpPct:29.8, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:202, stHp:3, stHpCum:89, stHpPct:26.0},
+  {date:"7/5", pkgReady:59, pkgReview:16, wd:100, wdCum:6027, tst:43, tstCum:3429, tstPct:36.0, hp:29, hpCum:1626, hpPct:30.3, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:9, stWdCum:211, stHp:0, stHpCum:89, stHpPct:26.0},
+  {date:"7/6", pkgReady:2, pkgReview:20, wd:163, wdCum:6190, tst:49, tstCum:3478, tstPct:36.5, hp:32, hpCum:1658, hpPct:30.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:215, stHp:1, stHpCum:90, stHpPct:26.3},
+  {date:"7/7", pkgReady:0, pkgReview:126, wd:137, wdCum:6327, tst:84, tstCum:3562, tstPct:37.4, hp:52, hpCum:1710, hpPct:31.9, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:8, stWdCum:223, stHp:3, stHpCum:93, stHpPct:27.2},
+  {date:"7/8", pkgReady:2, pkgReview:88, wd:135, wdCum:6462, tst:64, tstCum:3626, tstPct:38.0, hp:26, hpCum:1736, hpPct:32.4, rst:0, rstCum:26, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:227, stHp:3, stHpCum:96, stHpPct:28.1},
+  {date:"7/9", pkgReady:2, pkgReview:153, wd:140, wdCum:6602, tst:35, tstCum:3661, tstPct:38.4, hp:28, hpCum:1764, hpPct:32.9, rst:1, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:8, stWdCum:235, stHp:2, stHpCum:98, stHpPct:28.7},
+  {date:"7/10", pkgReady:3, pkgReview:102, wd:110, wdCum:6712, tst:77, tstCum:3738, tstPct:39.2, hp:63, hpCum:1827, hpPct:34.1, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:15, stWdCum:250, stHp:5, stHpCum:103, stHpPct:30.1},
+  {date:"7/11", pkgReady:0, pkgReview:88, wd:96, wdCum:6808, tst:70, tstCum:3808, tstPct:40.0, hp:60, hpCum:1887, hpPct:35.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:253, stHp:13, stHpCum:116, stHpPct:33.9},
+  {date:"7/12", pkgReady:0, pkgReview:9, wd:53, wdCum:6861, tst:68, tstCum:3876, tstPct:40.7, hp:11, hpCum:1898, hpPct:35.4, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:256, stHp:3, stHpCum:119, stHpPct:34.8},
+  {date:"7/13", pkgReady:17, pkgReview:112, wd:140, wdCum:7001, tst:72, tstCum:3948, tstPct:41.4, hp:39, hpCum:1937, hpPct:36.1, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:256, stHp:2, stHpCum:121, stHpPct:35.4},
+  {date:"7/14", pkgReady:40, pkgReview:116, wd:72, wdCum:7073, tst:119, tstCum:4067, tstPct:42.7, hp:70, hpCum:2007, hpPct:37.4, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:258, stHp:1, stHpCum:122, stHpPct:35.7},
+  {date:"7/15", pkgReady:25, pkgReview:117, wd:94, wdCum:7167, tst:98, tstCum:4165, tstPct:43.7, hp:89, hpCum:2096, hpPct:39.1, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:261, stHp:11, stHpCum:133, stHpPct:38.9},
+  {date:"7/16", pkgReady:81, pkgReview:136, wd:69, wdCum:7236, tst:107, tstCum:4272, tstPct:44.8, hp:58, hpCum:2154, hpPct:40.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:266, stHp:1, stHpCum:134, stHpPct:39.2},
+  {date:"7/17", pkgReady:2, pkgReview:84, wd:56, wdCum:7292, tst:61, tstCum:4333, tstPct:45.5, hp:32, hpCum:2186, hpPct:40.8, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:267, stHp:5, stHpCum:139, stHpPct:40.6},
+  {date:"7/18", pkgReady:30, pkgReview:101, wd:49, wdCum:7341, tst:7, tstCum:4340, tstPct:45.5, hp:9, hpCum:2195, hpPct:40.9, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:272, stHp:1, stHpCum:140, stHpPct:40.9},
+  {date:"7/19", pkgReady:0, pkgReview:31, wd:35, wdCum:7376, tst:3, tstCum:4343, tstPct:45.6, hp:0, hpCum:2195, hpPct:40.9, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:272, stHp:1, stHpCum:141, stHpPct:41.2},
+  {date:"7/20", pkgReady:30, pkgReview:164, wd:91, wdCum:7467, tst:55, tstCum:4398, tstPct:46.1, hp:50, hpCum:2245, hpPct:41.9, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:277, stHp:4, stHpCum:145, stHpPct:42.4},
+  {date:"7/21", pkgReady:25, pkgReview:105, wd:80, wdCum:7547, tst:106, tstCum:4504, tstPct:47.3, hp:68, hpCum:2313, hpPct:43.1, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:279, stHp:2, stHpCum:147, stHpPct:43.0},
+  {date:"7/22", pkgReady:22, pkgReview:97, wd:56, wdCum:7603, tst:114, tstCum:4618, tstPct:48.5, hp:75, hpCum:2388, hpPct:44.5, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:5, stWdCum:284, stHp:10, stHpCum:157, stHpPct:45.9},
+  {date:"7/23", pkgReady:30, pkgReview:121, wd:68, wdCum:7671, tst:146, tstCum:4764, tstPct:50.0, hp:119, hpCum:2507, hpPct:46.8, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:286, stHp:4, stHpCum:161, stHpPct:47.1},
+  {date:"7/24", pkgReady:53, pkgReview:109, wd:52, wdCum:7723, tst:50, tstCum:4814, tstPct:50.5, hp:40, hpCum:2547, hpPct:47.5, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:288, stHp:2, stHpCum:163, stHpPct:47.7},
+  {date:"7/25", pkgReady:14, pkgReview:133, wd:41, wdCum:7764, tst:16, tstCum:4830, tstPct:50.7, hp:39, hpCum:2586, hpPct:48.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:288, stHp:5, stHpCum:168, stHpPct:49.1},
+  {date:"7/26", pkgReady:4, pkgReview:35, wd:35, wdCum:7799, tst:58, tstCum:4888, tstPct:51.3, hp:14, hpCum:2600, hpPct:48.5, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:289, stHp:1, stHpCum:169, stHpPct:49.4},
+  {date:"7/27", pkgReady:27, pkgReview:109, wd:74, wdCum:7873, tst:72, tstCum:4960, tstPct:52.0, hp:43, hpCum:2643, hpPct:49.3, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:6, stWdCum:295, stHp:2, stHpCum:171, stHpPct:50.0},
+  {date:"7/28", pkgReady:21, pkgReview:155, wd:79, wdCum:7952, tst:139, tstCum:5099, tstPct:53.5, hp:50, hpCum:2693, hpPct:50.2, rst:0, rstCum:27, cwWdCum:107, cwHpCum:107, stWd:7, stWdCum:302, stHp:9, stHpCum:180, stHpPct:52.6},
+  {date:"7/29", pkgReady:20, pkgReview:123, wd:68, wdCum:8020, tst:66, tstCum:5165, tstPct:54.2, hp:53, hpCum:2746, hpPct:51.2, rst:4, rstCum:31, cwWdCum:107, cwHpCum:107, stWd:4, stWdCum:306, stHp:2, stHpCum:182, stHpPct:53.2},
+  {date:"7/30", pkgReady:32, pkgReview:110, wd:51, wdCum:8071, tst:109, tstCum:5274, tstPct:55.3, hp:53, hpCum:2799, hpPct:52.2, rst:16, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:309, stHp:2, stHpCum:184, stHpPct:53.8},
+  {date:"7/31", pkgReady:65, pkgReview:88, wd:54, wdCum:8125, tst:76, tstCum:5350, tstPct:56.1, hp:64, hpCum:2863, hpPct:53.4, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:311, stHp:6, stHpCum:190, stHpPct:55.6},
+  {date:"8/1", pkgReady:25, pkgReview:75, wd:38, wdCum:8163, tst:65, tstCum:5415, tstPct:56.8, hp:38, hpCum:2901, hpPct:54.1, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:312, stHp:0, stHpCum:190, stHpPct:55.6},
+  {date:"8/2", pkgReady:0, pkgReview:42, wd:0, wdCum:8163, tst:0, tstCum:5415, tstPct:56.8, hp:0, hpCum:2901, hpPct:54.1, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:312, stHp:0, stHpCum:190, stHpPct:55.6},
+  {date:"8/3", pkgReady:28, pkgReview:60, wd:57, wdCum:8220, tst:128, tstCum:5543, tstPct:58.2, hp:82, hpCum:2983, hpPct:55.6, rst:0, rstCum:47, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:314, stHp:0, stHpCum:190, stHpPct:55.6},
+  {date:"8/4", pkgReady:40, pkgReview:160, wd:38, wdCum:8258, tst:59, tstCum:5602, tstPct:58.8, hp:52, hpCum:3035, hpPct:56.6, rst:13, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:316, stHp:0, stHpCum:190, stHpPct:55.6},
+  {date:"8/5", pkgReady:29, pkgReview:78, wd:45, wdCum:8303, tst:77, tstCum:5679, tstPct:59.6, hp:38, hpCum:3073, hpPct:57.3, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:2, stHpCum:192, stHpPct:56.1},
+  {date:"8/6", pkgReady:31, pkgReview:120, wd:48, wdCum:8351, tst:104, tstCum:5783, tstPct:60.7, hp:80, hpCum:3153, hpPct:58.8, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:3, stHpCum:195, stHpPct:57.0},
+  {date:"8/7", pkgReady:0, pkgReview:63, wd:51, wdCum:8402, tst:95, tstCum:5878, tstPct:61.7, hp:63, hpCum:3216, hpPct:60.0, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:316, stHp:4, stHpCum:199, stHpPct:58.2},
+  {date:"8/8", pkgReady:1, pkgReview:87, wd:51, wdCum:8453, tst:51, tstCum:5929, tstPct:62.2, hp:36, hpCum:3252, hpPct:60.7, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:319, stHp:5, stHpCum:204, stHpPct:59.6},
+  {date:"8/9", pkgReady:1, pkgReview:42, wd:6, wdCum:8459, tst:18, tstCum:5947, tstPct:62.4, hp:18, hpCum:3270, hpPct:61.0, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:319, stHp:0, stHpCum:204, stHpPct:59.6},
+  {date:"8/10", pkgReady:1, pkgReview:51, wd:42, wdCum:8501, tst:101, tstCum:6048, tstPct:63.5, hp:54, hpCum:3324, hpPct:62.0, rst:0, rstCum:60, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:320, stHp:0, stHpCum:204, stHpPct:59.6},
+  {date:"8/11", pkgReady:0, pkgReview:128, wd:35, wdCum:8536, tst:50, tstCum:6098, tstPct:64.0, hp:29, hpCum:3353, hpPct:62.5, rst:5, rstCum:65, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:320, stHp:2, stHpCum:206, stHpPct:60.2},
+  {date:"8/12", pkgReady:0, pkgReview:76, wd:41, wdCum:8577, tst:72, tstCum:6170, tstPct:64.7, hp:73, hpCum:3426, hpPct:63.9, rst:14, rstCum:79, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:321, stHp:5, stHpCum:211, stHpPct:61.7},
+  {date:"8/13", pkgReady:0, pkgReview:113, wd:36, wdCum:8613, tst:106, tstCum:6276, tstPct:65.9, hp:71, hpCum:3497, hpPct:65.2, rst:15, rstCum:94, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:323, stHp:5, stHpCum:216, stHpPct:63.2},
+  {date:"8/14", pkgReady:0, pkgReview:67, wd:23, wdCum:8636, tst:22, tstCum:6298, tstPct:66.1, hp:18, hpCum:3515, hpPct:65.6, rst:28, rstCum:122, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:324, stHp:0, stHpCum:216, stHpPct:63.2},
+  {date:"8/15", pkgReady:3, pkgReview:40, wd:12, wdCum:8648, tst:38, tstCum:6336, tstPct:66.5, hp:21, hpCum:3536, hpPct:66.0, rst:5, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:3, stHpCum:219, stHpPct:64.0},
+  {date:"8/16", pkgReady:0, pkgReview:2, wd:0, wdCum:8648, tst:0, tstCum:6336, tstPct:66.5, hp:0, hpCum:3536, hpPct:66.0, rst:0, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:0, stHpCum:219, stHpPct:64.0},
+  {date:"8/17", pkgReady:18, pkgReview:37, wd:0, wdCum:8648, tst:7, tstCum:6343, tstPct:66.6, hp:0, hpCum:3536, hpPct:66.0, rst:0, rstCum:127, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:1, stHpCum:220, stHpPct:64.3},
+  {date:"8/18", pkgReady:0, pkgReview:47, wd:0, wdCum:8648, tst:94, tstCum:6437, tstPct:67.5, hp:50, hpCum:3586, hpPct:66.9, rst:14, rstCum:141, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:324, stHp:6, stHpCum:226, stHpPct:66.1},
+  {date:"8/19", pkgReady:0, pkgReview:28, wd:19, wdCum:8667, tst:118, tstCum:6555, tstPct:68.8, hp:84, hpCum:3670, hpPct:68.5, rst:33, rstCum:174, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:325, stHp:5, stHpCum:231, stHpPct:67.5},
+  {date:"8/20", pkgReady:26, pkgReview:70, wd:40, wdCum:8707, tst:58, tstCum:6613, tstPct:69.4, hp:44, hpCum:3714, hpPct:69.3, rst:37, rstCum:211, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:326, stHp:0, stHpCum:231, stHpPct:67.5},
+  {date:"8/21", pkgReady:0, pkgReview:39, wd:14, wdCum:8721, tst:72, tstCum:6685, tstPct:70.1, hp:56, hpCum:3770, hpPct:70.3, rst:21, rstCum:232, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:328, stHp:5, stHpCum:236, stHpPct:69.0},
+  {date:"8/22", pkgReady:0, pkgReview:27, wd:40, wdCum:8761, tst:61, tstCum:6746, tstPct:70.8, hp:46, hpCum:3816, hpPct:71.2, rst:100, rstCum:332, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:5, stHpCum:241, stHpPct:70.5},
+  {date:"8/23", pkgReady:0, pkgReview:10, wd:14, wdCum:8775, tst:43, tstCum:6789, tstPct:71.2, hp:31, hpCum:3847, hpPct:71.8, rst:0, rstCum:332, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:241, stHpPct:70.5},
+  {date:"8/24", pkgReady:3, pkgReview:21, wd:28, wdCum:8803, tst:91, tstCum:6880, tstPct:72.2, hp:85, hpCum:3932, hpPct:73.3, rst:67, rstCum:399, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:242, stHpPct:70.8},
+  {date:"8/25", pkgReady:0, pkgReview:37, wd:37, wdCum:8840, tst:92, tstCum:6972, tstPct:73.2, hp:59, hpCum:3991, hpPct:74.4, rst:51, rstCum:450, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:8, stHpCum:250, stHpPct:73.1},
+  {date:"8/26", pkgReady:0, pkgReview:67, wd:37, wdCum:8877, tst:92, tstCum:7064, tstPct:74.1, hp:64, hpCum:4055, hpPct:75.6, rst:110, rstCum:560, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:4, stHpCum:254, stHpPct:74.3},
+  {date:"8/27", pkgReady:1, pkgReview:72, wd:25, wdCum:8902, tst:75, tstCum:7139, tstPct:74.9, hp:54, hpCum:4109, hpPct:76.6, rst:93, rstCum:653, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:255, stHpPct:74.6},
+  {date:"8/28", pkgReady:0, pkgReview:20, wd:1, wdCum:8903, tst:15, tstCum:7154, tstPct:75.1, hp:1, hpCum:4110, hpPct:76.7, rst:11, rstCum:664, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:255, stHpPct:74.6},
+  {date:"8/29", pkgReady:0, pkgReview:2, wd:24, wdCum:8927, tst:60, tstCum:7214, tstPct:75.7, hp:51, hpCum:4161, hpPct:77.6, rst:45, rstCum:709, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:2, stHpCum:257, stHpPct:75.1},
+  {date:"8/30", pkgReady:0, pkgReview:10, wd:10, wdCum:8937, tst:48, tstCum:7262, tstPct:76.2, hp:6, hpCum:4167, hpPct:77.7, rst:34, rstCum:743, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:258, stHpPct:75.4},
+  {date:"8/31", pkgReady:2, pkgReview:2, wd:25, wdCum:8962, tst:79, tstCum:7341, tstPct:77.0, hp:78, hpCum:4245, hpPct:79.2, rst:92, rstCum:835, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:259, stHpPct:75.7},
+  {date:"9/1", pkgReady:0, pkgReview:35, wd:21, wdCum:8983, tst:56, tstCum:7397, tstPct:77.6, hp:22, hpCum:4267, hpPct:79.6, rst:99, rstCum:934, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:260, stHpPct:76.0},
+  {date:"9/2", pkgReady:0, pkgReview:27, wd:23, wdCum:9006, tst:54, tstCum:7451, tstPct:78.2, hp:35, hpCum:4302, hpPct:80.2, rst:101, rstCum:1035, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:1, stHpCum:261, stHpPct:76.3},
+  {date:"9/3", pkgReady:2, pkgReview:17, wd:6, wdCum:9012, tst:101, tstCum:7552, tstPct:79.2, hp:46, hpCum:4348, hpPct:81.1, rst:108, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:6, stHpCum:267, stHpPct:78.1},
+  {date:"9/4", pkgReady:0, pkgReview:16, wd:1, wdCum:9013, tst:6, tstCum:7558, tstPct:79.3, hp:0, hpCum:4348, hpPct:81.1, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
+  {date:"9/5", pkgReady:0, pkgReview:6, wd:0, wdCum:9013, tst:0, tstCum:7558, tstPct:79.3, hp:0, hpCum:4348, hpPct:81.1, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
+  {date:"9/6", pkgReady:0, pkgReview:9, wd:0, wdCum:9013, tst:0, tstCum:7558, tstPct:79.3, hp:0, hpCum:4348, hpPct:81.1, rst:0, rstCum:1143, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:0, stHpCum:267, stHpPct:78.1},
+  {date:"9/7", pkgReady:0, pkgReview:20, wd:28, wdCum:9041, tst:90, tstCum:7648, tstPct:80.3, hp:63, hpCum:4411, hpPct:82.3, rst:71, rstCum:1214, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:328, stHp:13, stHpCum:280, stHpPct:81.9},
+  {date:"9/8", pkgReady:1, pkgReview:33, wd:22, wdCum:9063, tst:76, tstCum:7724, tstPct:81.0, hp:35, hpCum:4446, hpPct:82.9, rst:77, rstCum:1291, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:330, stHp:0, stHpCum:280, stHpPct:81.9},
+  {date:"9/9", pkgReady:5, pkgReview:38, wd:36, wdCum:9099, tst:65, tstCum:7789, tstPct:81.7, hp:29, hpCum:4475, hpPct:83.5, rst:61, rstCum:1352, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:7, stHpCum:287, stHpPct:83.9},
+  {date:"9/10", pkgReady:1, pkgReview:33, wd:38, wdCum:9137, tst:80, tstCum:7869, tstPct:82.6, hp:47, hpCum:4522, hpPct:84.3, rst:56, rstCum:1408, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:3, stHpCum:290, stHpPct:84.8},
+  {date:"9/11", pkgReady:1, pkgReview:19, wd:17, wdCum:9154, tst:51, tstCum:7920, tstPct:83.1, hp:34, hpCum:4556, hpPct:85.0, rst:86, rstCum:1494, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:330, stHp:0, stHpCum:290, stHpPct:84.8},
+  {date:"9/12", pkgReady:0, pkgReview:34, wd:12, wdCum:9166, tst:31, tstCum:7951, tstPct:83.4, hp:41, hpCum:4597, hpPct:85.7, rst:44, rstCum:1538, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:332, stHp:4, stHpCum:294, stHpPct:86.0},
+  {date:"9/13", pkgReady:0, pkgReview:0, wd:3, wdCum:9169, tst:35, tstCum:7986, tstPct:83.8, hp:5, hpCum:4602, hpPct:85.8, rst:4, rstCum:1542, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:294, stHpPct:86.0},
+  {date:"9/14", pkgReady:0, pkgReview:10, wd:13, wdCum:9182, tst:45, tstCum:8031, tstPct:84.3, hp:27, hpCum:4629, hpPct:86.3, rst:62, rstCum:1604, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:299, stHpPct:87.4},
+  {date:"9/15", pkgReady:0, pkgReview:30, wd:1, wdCum:9183, tst:64, tstCum:8095, tstPct:84.9, hp:25, hpCum:4654, hpPct:86.8, rst:91, rstCum:1695, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:11, stHpCum:310, stHpPct:90.6},
+  {date:"9/16", pkgReady:6, pkgReview:7, wd:9, wdCum:9192, tst:39, tstCum:8134, tstPct:85.4, hp:23, hpCum:4677, hpPct:87.2, rst:81, rstCum:1776, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:310, stHpPct:90.6},
+  {date:"9/17", pkgReady:0, pkgReview:15, wd:16, wdCum:9208, tst:36, tstCum:8170, tstPct:85.7, hp:16, hpCum:4693, hpPct:87.5, rst:56, rstCum:1832, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:5, stHpCum:315, stHpPct:92.1},
+  {date:"9/18", pkgReady:0, pkgReview:19, wd:0, wdCum:9208, tst:11, tstCum:8181, tstPct:85.8, hp:5, hpCum:4698, hpPct:87.6, rst:24, rstCum:1856, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:2, stHpCum:317, stHpPct:92.7},
+  {date:"9/19", pkgReady:0, pkgReview:2, wd:17, wdCum:9225, tst:19, tstCum:8200, tstPct:86.0, hp:7, hpCum:4705, hpPct:87.8, rst:78, rstCum:1934, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
+  {date:"9/20", pkgReady:0, pkgReview:10, wd:4, wdCum:9229, tst:32, tstCum:8232, tstPct:86.4, hp:7, hpCum:4712, hpPct:87.9, rst:16, rstCum:1950, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
+  {date:"9/21", pkgReady:1, pkgReview:29, wd:6, wdCum:9235, tst:57, tstCum:8289, tstPct:87.0, hp:33, hpCum:4745, hpPct:88.5, rst:67, rstCum:2017, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:317, stHpPct:92.7},
+  {date:"9/22", pkgReady:1, pkgReview:14, wd:10, wdCum:9245, tst:87, tstCum:8376, tstPct:87.9, hp:80, hpCum:4825, hpPct:90.0, rst:105, rstCum:2122, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:320, stHpPct:93.6},
+  {date:"9/23", pkgReady:0, pkgReview:23, wd:7, wdCum:9252, tst:37, tstCum:8413, tstPct:88.3, hp:14, hpCum:4839, hpPct:90.3, rst:39, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/24", pkgReady:0, pkgReview:0, wd:0, wdCum:9252, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.3, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/25", pkgReady:0, pkgReview:0, wd:0, wdCum:9252, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.3, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/26", pkgReady:0, pkgReview:0, wd:0, wdCum:9252, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.3, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/27", pkgReady:0, pkgReview:0, wd:0, wdCum:9252, tst:0, tstCum:8413, tstPct:88.3, hp:0, hpCum:4839, hpPct:90.3, rst:0, rstCum:2161, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/28", pkgReady:0, pkgReview:22, wd:12, wdCum:9264, tst:22, tstCum:8435, tstPct:88.5, hp:20, hpCum:4859, hpPct:90.6, rst:93, rstCum:2254, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:320, stHpPct:93.6},
+  {date:"9/29", pkgReady:0, pkgReview:8, wd:4, wdCum:9268, tst:44, tstCum:8479, tstPct:89.0, hp:19, hpCum:4878, hpPct:91.0, rst:95, rstCum:2349, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:323, stHpPct:94.4},
+  {date:"9/30", pkgReady:0, pkgReview:23, wd:5, wdCum:9273, tst:19, tstCum:8498, tstPct:89.2, hp:10, hpCum:4888, hpPct:91.2, rst:111, rstCum:2460, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:3, stHpCum:326, stHpPct:95.3},
+  {date:"10/1", pkgReady:0, pkgReview:12, wd:22, wdCum:9295, tst:42, tstCum:8540, tstPct:89.6, hp:21, hpCum:4909, hpPct:91.6, rst:80, rstCum:2540, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:0, stHpCum:326, stHpPct:95.3},
+  {date:"10/2", pkgReady:2, pkgReview:7, wd:12, wdCum:9307, tst:24, tstCum:8564, tstPct:89.9, hp:21, hpCum:4930, hpPct:92.0, rst:105, rstCum:2645, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:332, stHp:1, stHpCum:327, stHpPct:95.6},
+  {date:"10/3", pkgReady:0, pkgReview:13, wd:4, wdCum:9311, tst:50, tstCum:8614, tstPct:90.4, hp:36, hpCum:4966, hpPct:92.6, rst:67, rstCum:2712, cwWdCum:107, cwHpCum:107, stWd:2, stWdCum:334, stHp:2, stHpCum:329, stHpPct:96.2},
+  {date:"10/4", pkgReady:0, pkgReview:1, wd:1, wdCum:9312, tst:9, tstCum:8623, tstPct:90.5, hp:16, hpCum:4982, hpPct:92.9, rst:45, rstCum:2757, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:329, stHpPct:96.2},
+  {date:"10/5", pkgReady:1, pkgReview:14, wd:7, wdCum:9319, tst:49, tstCum:8672, tstPct:91.0, hp:8, hpCum:4990, hpPct:93.1, rst:110, rstCum:2867, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:334, stHp:0, stHpCum:329, stHpPct:96.2},
+  {date:"10/6", pkgReady:0, pkgReview:6, wd:23, wdCum:9342, tst:32, tstCum:8704, tstPct:91.3, hp:8, hpCum:4998, hpPct:93.2, rst:91, rstCum:2958, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:337, stHp:0, stHpCum:329, stHpPct:96.2},
+  {date:"10/7", pkgReady:0, pkgReview:15, wd:16, wdCum:9358, tst:58, tstCum:8762, tstPct:91.9, hp:43, hpCum:5041, hpPct:94.0, rst:168, rstCum:3126, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:1, stHpCum:330, stHpPct:96.5},
+  {date:"10/8", pkgReady:0, pkgReview:21, wd:7, wdCum:9365, tst:56, tstCum:8818, tstPct:92.5, hp:26, hpCum:5067, hpPct:94.5, rst:111, rstCum:3237, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:330, stHpPct:96.5},
+  {date:"10/9", pkgReady:1, pkgReview:14, wd:6, wdCum:9371, tst:25, tstCum:8843, tstPct:92.8, hp:18, hpCum:5085, hpPct:94.9, rst:97, rstCum:3334, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:330, stHpPct:96.5},
+  {date:"10/10", pkgReady:1, pkgReview:8, wd:2, wdCum:9373, tst:45, tstCum:8888, tstPct:93.3, hp:29, hpCum:5114, hpPct:95.4, rst:110, rstCum:3444, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:2, stHpCum:332, stHpPct:97.1},
+  {date:"10/11", pkgReady:0, pkgReview:0, wd:3, wdCum:9376, tst:51, tstCum:8939, tstPct:93.8, hp:8, hpCum:5122, hpPct:95.5, rst:78, rstCum:3522, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:332, stHpPct:97.1},
+  {date:"10/12", pkgReady:0, pkgReview:10, wd:5, wdCum:9381, tst:40, tstCum:8979, tstPct:94.2, hp:29, hpCum:5151, hpPct:96.1, rst:113, rstCum:3635, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:332, stHpPct:97.1},
+  {date:"10/13", pkgReady:1, pkgReview:15, wd:4, wdCum:9385, tst:45, tstCum:9024, tstPct:94.7, hp:14, hpCum:5165, hpPct:96.3, rst:119, rstCum:3754, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:2, stHpCum:334, stHpPct:97.7},
+  {date:"10/14", pkgReady:1, pkgReview:21, wd:7, wdCum:9392, tst:7, tstCum:9031, tstPct:94.8, hp:5, hpCum:5170, hpPct:96.4, rst:131, rstCum:3885, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:1, stHpCum:335, stHpPct:98.0},
+  {date:"10/15", pkgReady:4, pkgReview:11, wd:11, wdCum:9403, tst:43, tstCum:9074, tstPct:95.2, hp:12, hpCum:5182, hpPct:96.7, rst:135, rstCum:4020, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:337, stHp:0, stHpCum:335, stHpPct:98.0},
+  {date:"10/16", pkgReady:0, pkgReview:17, wd:7, wdCum:9410, tst:21, tstCum:9095, tstPct:95.4, hp:7, hpCum:5189, hpPct:96.8, rst:115, rstCum:4135, cwWdCum:107, cwHpCum:107, stWd:3, stWdCum:340, stHp:3, stHpCum:338, stHpPct:98.8},
+  {date:"10/17", pkgReady:0, pkgReview:1, wd:4, wdCum:9414, tst:15, tstCum:9110, tstPct:95.6, hp:8, hpCum:5197, hpPct:96.9, rst:91, rstCum:4226, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
+  {date:"10/18", pkgReady:0, pkgReview:8, wd:3, wdCum:9417, tst:32, tstCum:9142, tstPct:95.9, hp:6, hpCum:5203, hpPct:97.1, rst:70, rstCum:4296, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
+  {date:"10/19", pkgReady:0, pkgReview:4, wd:1, wdCum:9418, tst:27, tstCum:9169, tstPct:96.2, hp:14, hpCum:5217, hpPct:97.3, rst:122, rstCum:4418, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
+  {date:"10/20", pkgReady:1, pkgReview:11, wd:2, wdCum:9420, tst:23, tstCum:9192, tstPct:96.5, hp:6, hpCum:5223, hpPct:97.4, rst:2, rstCum:4420, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:340, stHp:0, stHpCum:338, stHpPct:98.8},
+  {date:"10/21", pkgReady:0, pkgReview:1, wd:12, wdCum:9432, tst:40, tstCum:9232, tstPct:96.9, hp:20, hpCum:5243, hpPct:97.8, rst:148, rstCum:4568, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:341, stHp:2, stHpCum:340, stHpPct:99.4},
+  {date:"10/22", pkgReady:0, pkgReview:2, wd:2, wdCum:9434, tst:39, tstCum:9271, tstPct:97.3, hp:9, hpCum:5252, hpPct:98.0, rst:130, rstCum:4698, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
+  {date:"10/23", pkgReady:2, pkgReview:8, wd:6, wdCum:9440, tst:15, tstCum:9286, tstPct:97.4, hp:9, hpCum:5261, hpPct:98.1, rst:129, rstCum:4827, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
+  {date:"10/24", pkgReady:1, pkgReview:0, wd:2, wdCum:9442, tst:14, tstCum:9300, tstPct:97.6, hp:0, hpCum:5261, hpPct:98.1, rst:42, rstCum:4869, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
+  {date:"10/25", pkgReady:0, pkgReview:1, wd:0, wdCum:9442, tst:2, tstCum:9302, tstPct:97.6, hp:0, hpCum:5261, hpPct:98.1, rst:4, rstCum:4873, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
+  {date:"10/26", pkgReady:1, pkgReview:6, wd:6, wdCum:9448, tst:34, tstCum:9336, tstPct:98.0, hp:7, hpCum:5268, hpPct:98.3, rst:153, rstCum:5026, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:340, stHpPct:99.4},
+  {date:"10/27", pkgReady:1, pkgReview:3, wd:4, wdCum:9452, tst:14, tstCum:9350, tstPct:98.1, hp:8, hpCum:5276, hpPct:98.4, rst:113, rstCum:5139, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:1, stHpCum:341, stHpPct:99.7},
+  {date:"10/28", pkgReady:0, pkgReview:3, wd:7, wdCum:9459, tst:29, tstCum:9379, tstPct:98.4, hp:17, hpCum:5293, hpPct:98.7, rst:170, rstCum:5309, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
+  {date:"10/29", pkgReady:1, pkgReview:0, wd:4, wdCum:9463, tst:23, tstCum:9402, tstPct:98.7, hp:12, hpCum:5305, hpPct:99.0, rst:160, rstCum:5469, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
+  {date:"10/30", pkgReady:1, pkgReview:3, wd:6, wdCum:9469, tst:12, tstCum:9414, tstPct:98.8, hp:4, hpCum:5309, hpPct:99.0, rst:124, rstCum:5593, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:341, stHp:0, stHpCum:341, stHpPct:99.7},
+  {date:"10/31", pkgReady:0, pkgReview:0, wd:11, wdCum:9480, tst:12, tstCum:9426, tstPct:98.9, hp:4, hpCum:5313, hpPct:99.1, rst:122, rstCum:5715, cwWdCum:107, cwHpCum:107, stWd:1, stWdCum:342, stHp:1, stHpCum:342, stHpPct:100},
+  {date:"11/1", pkgReady:12, pkgReview:0, wd:9, wdCum:9489, tst:11, tstCum:9437, tstPct:99.0, hp:4, hpCum:5317, hpPct:99.2, rst:59, rstCum:5774, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:342, stHp:0, stHpCum:342, stHpPct:100},
+  {date:"11/2", pkgReady:1, pkgReview:14, wd:3, wdCum:9492, tst:7, tstCum:9444, tstPct:99.1, hp:2, hpCum:5319, hpPct:99.2, rst:145, rstCum:5919, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:342, stHp:0, stHpCum:342, stHpPct:100},
+  {date:"11/3", pkgReady:0, pkgReview:10, wd:6, wdCum:9498, tst:12, tstCum:9456, tstPct:99.2, hp:9, hpCum:5328, hpPct:99.4, rst:176, rstCum:6095, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:342, stHp:0, stHpCum:342, stHpPct:100},
+  {date:"11/4", pkgReady:0, pkgReview:0, wd:2, wdCum:9500, tst:12, tstCum:9468, tstPct:99.3, hp:11, hpCum:5339, hpPct:99.6, rst:166, rstCum:6261, cwWdCum:107, cwHpCum:107, stWd:0, stWdCum:342, stHp:0, stHpCum:342, stHpPct:100},
 ];
 // ══════════════════════════════════════════════════
 // 샤힌 수압 렌더링
@@ -2143,20 +2179,21 @@ function renderShnHydro(upToIdx) {
   const xT     = { ticks:{font:{size:9}, maxRotation:45}, grid:{display:false} };
 
   // ── KPI: 전체 현황 ──
-  const totRemain = 9524 - d.tstCum;
+  const totRemain = TOTALS.HYDRO_TOT - d.tstCum;
+  const rstRemain = TOTALS.HYDRO_TOT - d.rstCum;
   q('shn-hydro-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">Test 누계 (전체)</div>
-      <div class="kpi-value teal">${fmtN(d.tstCum)} <span style="font-size:12px">/ 9,524 PKG</span></div>
+      <div class="kpi-value teal">${fmtN(d.tstCum)} <span style="font-size:12px">/ ${fmtN(TOTALS.HYDRO_TOT)} PKG</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.tstPct}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.tstPct}%</b> | 잔여 ${fmtN(totRemain)} PKG</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">복원 누계</div>
       <div class="kpi-value coral">${fmtN(d.rstCum)} <span style="font-size:12px">PKG</span></div>
-      <div class="kpi-sub">총 물량 대비 (9,524 PKG)</div>
-      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/9524*100).toFixed(1)}%"></div></div>
-      <div class="kpi-sub" style="margin-top:5px">${(d.rstCum/9518*100).toFixed(1)}% 복원 완료</div>
+      <div class="kpi-sub">총 물량 대비 (${fmtN(TOTALS.HYDRO_TOT)} PKG)</div>
+      <div class="kpi-bar-wrap"><div class="kpi-bar-fill coral" style="width:${(d.rstCum/TOTALS.HYDRO_TOT*100).toFixed(1)}%"></div></div>
+      <div class="kpi-sub" style="margin-top:5px">진도율 <b>${(d.rstCum/TOTALS.HYDRO_TOT*100).toFixed(1)}%</b> | 잔여 ${fmtN(rstRemain)} PKG</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">일일 실적 (${d.date})</div>
@@ -2187,7 +2224,7 @@ function renderShnHydro(upToIdx) {
   const labels2m = slice2m.map(r => r.date);
   mkChart('shn-hydro-progress', { type:'line', data:{ labels:labels2m, datasets:[
     { label:'Test%', data:slice2m.map(r=>r.tstPct),                        borderColor:'#0d7a5f', tension:0.3, pointRadius:2, borderWidth:2 },
-    { label:'복원%', data:slice2m.map(r=>+(r.rstCum/9524*100).toFixed(1)), borderColor:'#e05c3a', tension:0.3, pointRadius:2, borderWidth:2 },
+    { label:'복원%', data:slice2m.map(r=>+(r.rstCum/TOTALS.HYDRO_TOT*100).toFixed(1)), borderColor:'#e05c3a', tension:0.3, pointRadius:2, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
   // ── 테이블 ──
@@ -2212,7 +2249,7 @@ function renderElecSta4(upToIdx) {
   const slice  = ELEC_STA4_DATA.slice(0, upToIdx + 1);
   const d      = slice[slice.length - 1];
   const labels = slice.map(r => r.week);
-  const remain = 1472808 - d.cum;
+  const remain = TOTALS.ELEC_STA4 - d.cum;
   const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
   const xT     = { ticks:{font:{size:10}}, grid:{display:false} };
 
@@ -2220,7 +2257,7 @@ function renderElecSta4(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">Cable 누계 (${d.week})</div>
       <div class="kpi-value blue">${fmtN(d.cum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 1,472,808 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.ELEC_STA4)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.pct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.pct.toFixed(1)}%</b> | 잔여 ${fmtN(remain)} M</div>
     </div>
@@ -2257,7 +2294,7 @@ function renderInstSta4(upToIdx) {
   const slice  = INST_STA4_DATA.slice(0, upToIdx + 1);
   const d      = slice[slice.length - 1];
   const labels = slice.map(r => r.week);
-  const remain = 866630 - d.cum;
+  const remain = TOTALS.INST_STA4 - d.cum;
   const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
   const xT     = { ticks:{font:{size:10}}, grid:{display:false} };
 
@@ -2265,7 +2302,7 @@ function renderInstSta4(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">Cable 누계 (${d.week})</div>
       <div class="kpi-value teal">${fmtN(d.cum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 866,630 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_STA4)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.pct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.pct.toFixed(1)}%</b> | 잔여 ${fmtN(remain)} M</div>
     </div>
@@ -2302,7 +2339,7 @@ function renderElecSac2(upToIdx) {
   const slice  = ELEC_SAC2_DATA.slice(0, upToIdx + 1);
   const d      = slice[slice.length - 1];
   const labels = slice.map(r => r.week);
-  const remain = 2138139 - d.cum;
+  const remain = TOTALS.ELEC_SAC2 - d.cum;
   const base   = { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} };
   const xT     = { ticks:{font:{size:10}, maxRotation:45}, grid:{display:false} };
 
@@ -2310,7 +2347,7 @@ function renderElecSac2(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">Cable 누계 (${d.week})</div>
       <div class="kpi-value blue">${fmtN(d.cum)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 2,138,139 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.ELEC_SAC2)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.pct.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.pct.toFixed(1)}%</b> | 잔여 ${fmtN(remain)} M</div>
     </div>
@@ -2350,21 +2387,21 @@ function renderInstSace(upToIdx) {
     <div class="kpi-card">
       <div class="kpi-label">SRU2 누계</div>
       <div class="kpi-value blue">${fmtN(d.sru2C)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 140,663 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SACE2)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sru2P.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sru2P.toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SRU3 누계</div>
       <div class="kpi-value teal">${fmtN(d.sru3C)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 139,679 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SACE3)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.sru3P.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.sru3P.toFixed(1)}%</b></div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SRU2+SRU3 합계 누계</div>
       <div class="kpi-value amber">${fmtN(d.totC)} <span style="font-size:12px">M</span></div>
-      <div class="kpi-sub">총 물량: 280,342 M</div>
+      <div class="kpi-sub">총 물량: ${fmtN(TOTALS.INST_SACE2 + TOTALS.INST_SACE3)} M</div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill amber" style="width:${d.totP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:5px">진도율 <b>${d.totP.toFixed(1)}%</b></div>
     </div>`;
@@ -2612,13 +2649,13 @@ function renderShnPrecomm(upToIdx) {
   q('shn-motor-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">SCC Motor 누계</div>
-      <div class="kpi-value blue">${fmtN(mD.sccActC)} <span style="font-size:11px">/ 307 대</span></div>
+      <div class="kpi-value blue">${fmtN(mD.sccActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.MOTOR_SCC)} 대</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${mD.sccActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${mD.sccActP.toFixed(1)}%</b> | 계획 ${mD.sccPlanP.toFixed(1)}%</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">UO Motor 누계</div>
-      <div class="kpi-value teal">${fmtN(mD.uoActC)} <span style="font-size:11px">/ 180 대</span></div>
+      <div class="kpi-value teal">${fmtN(mD.uoActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.MOTOR_UO)} 대</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${mD.uoActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${mD.uoActP.toFixed(1)}%</b> | 계획 ${mD.uoPlanP.toFixed(1)}%</div>
     </div>
@@ -2639,21 +2676,21 @@ function renderShnPrecomm(upToIdx) {
   ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
 
   mkChart('shn-motor-progress', { type:'line', data:{ labels, datasets:[
-    { label:'계획%', data:mSlice.map(r=>+((r.sccPlanC+r.uoPlanC)/487*100).toFixed(1)), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
-    { label:'실적%', data:mSlice.map(r=>+((r.sccActC+r.uoActC)/487*100).toFixed(1)),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+    { label:'계획%', data:mSlice.map(r=>+((r.sccPlanC+r.uoPlanC)/(TOTALS.MOTOR_SCC + TOTALS.MOTOR_UO)*100).toFixed(1)), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'실적%', data:mSlice.map(r=>+((r.sccActC+r.uoActC)/(TOTALS.MOTOR_SCC + TOTALS.MOTOR_UO)*100).toFixed(1)),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, max:100, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
   // Loop KPI
   q('shn-loop-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">SCC Loop 누계</div>
-      <div class="kpi-value blue">${fmtN(lD.sccActC)} <span style="font-size:11px">/ 18,640 EA</span></div>
+      <div class="kpi-value blue">${fmtN(lD.sccActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.LOOP_SCC)} EA</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${lD.sccActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${lD.sccActP.toFixed(1)}%</b> | 계획 ${lD.sccPlanP.toFixed(1)}%</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">UO Loop 누계</div>
-      <div class="kpi-value teal">${fmtN(lD.uoActC)} <span style="font-size:11px">/ 6,064 EA</span></div>
+      <div class="kpi-value teal">${fmtN(lD.uoActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.LOOP_UO)} EA</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${lD.uoActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${lD.uoActP.toFixed(1)}%</b> | 계획 ${lD.uoPlanP.toFixed(1)}%</div>
     </div>
@@ -2674,8 +2711,8 @@ function renderShnPrecomm(upToIdx) {
   ]}, options:{ ...base, scales:{ x:xT, y:{ ticks:{font:{size:9}}, grid:{color:'#f0f0f0'} } } } });
 
   mkChart('shn-loop-progress', { type:'line', data:{ labels:lLabels, datasets:[
-    { label:'계획%', data:lSlice.map(r=>+((r.sccPlanC+r.uoPlanC)/24704*100).toFixed(1)), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
-    { label:'실적%', data:lSlice.map(r=>+((r.sccActC+r.uoActC)/24704*100).toFixed(1)),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
+    { label:'계획%', data:lSlice.map(r=>+((r.sccPlanC+r.uoPlanC)/(TOTALS.LOOP_SCC + TOTALS.LOOP_UO)*100).toFixed(1)), borderColor:'#b35c00', borderDash:[4,3], tension:0.3, pointRadius:2, borderWidth:1.5 },
+    { label:'실적%', data:lSlice.map(r=>+((r.sccActC+r.uoActC)/(TOTALS.LOOP_SCC + TOTALS.LOOP_UO)*100).toFixed(1)),  borderColor:'#1a5fb4', tension:0.3, pointRadius:3, borderWidth:2 },
   ]}, options:{ ...base, scales:{ x:xT, y:{ min:0, max:100, ticks:{font:{size:9}, callback:v=>v+'%'}, grid:{color:'#f0f0f0'} } } } });
 
   // 테이블
@@ -2690,9 +2727,9 @@ function renderShnPrecomm(upToIdx) {
   </tr></thead><tbody>${rows.map((r,i)=>{
     const l = lSlice[lSlice.findIndex(x=>x.week===r.week)] || {};
     const mPlan=r.sccPlan+r.uoPlan, mAct=r.sccAct+r.uoAct, mCum=r.sccActC+r.uoActC;
-    const mPlanCum=r.sccPlanC+r.uoPlanC, mPct=+(mCum/487*100).toFixed(1), mPlanPct=+(mPlanCum/487*100).toFixed(1);
+    const mPlanCum=r.sccPlanC+r.uoPlanC, mPct=+(mCum/(TOTALS.MOTOR_SCC + TOTALS.MOTOR_UO)*100).toFixed(1), mPlanPct=+(mPlanCum/(TOTALS.MOTOR_SCC + TOTALS.MOTOR_UO)*100).toFixed(1);
     const lPlan=(l.sccPlan||0)+(l.uoPlan||0), lAct=(l.sccAct||0)+(l.uoAct||0), lCum=(l.sccActC||0)+(l.uoActC||0);
-    const lPlanCum=(l.sccPlanC||0)+(l.uoPlanC||0), lPct=+(lCum/24704*100).toFixed(1), lPlanPct=+(lPlanCum/24704*100).toFixed(1);
+    const lPlanCum=(l.sccPlanC||0)+(l.uoPlanC||0), lPct=+(lCum/(TOTALS.LOOP_SCC + TOTALS.LOOP_UO)*100).toFixed(1), lPlanPct=+(lPlanCum/(TOTALS.LOOP_SCC + TOTALS.LOOP_UO)*100).toFixed(1);
     return `<tr class="${i===0?'highlight':''}">
       <td class="date-col">${r.week}</td>
       <td>${fmtN(mPlan)}</td><td>${fmtN(mAct)}</td><td>${fmtN(mCum)}</td>
@@ -2717,13 +2754,13 @@ function renderSacePrecomm(upToIdx) {
   q('sace-loop-kpi').innerHTML = `
     <div class="kpi-card">
       <div class="kpi-label">SRU2 Loop 누계</div>
-      <div class="kpi-value blue">${fmtN(d.sru2ActC)} <span style="font-size:11px">/ 2,027 EA</span></div>
+      <div class="kpi-value blue">${fmtN(d.sru2ActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.SACE_LOOP2)} EA</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill" style="width:${d.sru2ActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${d.sru2ActP.toFixed(1)}%</b> | 계획 ${d.sru2PlanP.toFixed(1)}%</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">SRU3 Loop 누계</div>
-      <div class="kpi-value teal">${fmtN(d.sru3ActC)} <span style="font-size:11px">/ 2,027 EA</span></div>
+      <div class="kpi-value teal">${fmtN(d.sru3ActC)} <span style="font-size:11px">/ ${fmtN(TOTALS.SACE_LOOP3)} EA</span></div>
       <div class="kpi-bar-wrap"><div class="kpi-bar-fill teal" style="width:${d.sru3ActP.toFixed(1)}%"></div></div>
       <div class="kpi-sub" style="margin-top:4px">실적 <b>${d.sru3ActP.toFixed(1)}%</b> | 계획 ${d.sru3PlanP.toFixed(1)}%</div>
     </div>
